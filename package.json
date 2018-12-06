@@ -1,7 +1,7 @@
 {
   "scripts": {
     "clean": "rimraf build",
-    "build": "yarn clean && yarn webpack --mode production",
+    "build": "yarn clean && yarn webpack --mode production && node scripts/copy-files",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
