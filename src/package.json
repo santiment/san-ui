@@ -1,0 +1,14 @@
+{
+  "name": "@santiment-network/ui",
+  "description": "Santiment React UI Library",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}
