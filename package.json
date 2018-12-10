@@ -4,12 +4,13 @@
     "url": "https://github.com/santiment/san-ui.git"
   },
   "scripts": {
-    "clean": "rimraf pckg-build",
-    "scripts": "node scripts/copy-files && node scripts/update-version",
-    "pckg-publish": "yarn publish pckg-build --patch --no-git-tag-version",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o build",
-    "build": "yarn clean && yarn webpack && yarn scripts && yarn pckg-publish && yarn build-storybook"
+    "clean": "rimraf lib-build",
+    "scripts": "node scripts/copy-files && node scripts/update-version",
+    "lib-publish": "yarn publish lib-build --patch --no-git-tag-version",
+    "build:storybook": "build-storybook -o build",
+    "build:lib": "yarn webpack && yarn scripts",
+    "build": "yarn clean && yarn build:lib && yarn lib-publish && yarn build:storybook"
   },
   "dependencies": {
     "@babel/cli": "^7.2.0",

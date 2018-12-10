@@ -1,4 +1,4 @@
 node_modules
 build
-pckg-build
+lib-build
 storybook-static
