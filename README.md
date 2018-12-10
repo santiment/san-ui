@@ -6,7 +6,7 @@ This is the source of the Santiment UI React library.
 
 ### Cloning
 
-`git clone git@github.com:santiment/san-ui.git`
+`git clone git@github.com:santiment/san-ui.git && cd san-ui`
 
 ### Installing dependencies
 

@@ -5,6 +5,7 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
+    "start": "node server/index.js",
     "clean": "rimraf lib-build",
     "scripts": "node scripts/copy-files && node scripts/update-version",
     "lib-publish": "yarn publish lib-build --patch --no-git-tag-version",
@@ -25,6 +26,7 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
+    "express": "^4.16.4",
     "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
