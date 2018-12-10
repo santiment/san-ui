@@ -12,6 +12,8 @@ This is the source of the Santiment UI React library.
 
 `yarn`
 
+## Usage
+
 ### Starting a development build
 
 `yarn storybook`
