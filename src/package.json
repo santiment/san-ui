@@ -1,7 +1,6 @@
 {
   "name": "@santiment-network/ui",
   "description": "Santiment React UI Library",
-  "version": "0.1.0",
   "author": "Santiment",
   "keywords": [
     "react",
