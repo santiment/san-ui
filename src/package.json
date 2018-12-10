@@ -1,7 +1,7 @@
 {
   "name": "@dmitrivanguard/webpack-ui",
   "description": "Santiment React UI Library",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
