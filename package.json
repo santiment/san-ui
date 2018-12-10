@@ -1,9 +1,11 @@
 {
   "scripts": {
-    "clean": "rimraf build",
-    "build": "node scripts/copy-files",
+    "clean": "rimraf pckg-build && rimraf storybook-static",
+    "copy-files": "node scripts/copy-files",
+    "pckg-publish": "yarn publish pckg-build --patch --no-git-tag-version",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build": "yarn clean && yarn webpack && yarn copy-files && yarn pckg-publish && yarn build-storybook"
   },
   "dependencies": {
     "@babel/cli": "^7.2.0",

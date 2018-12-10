@@ -7,7 +7,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/'),
 
   output: {
-    path: path.resolve(__dirname, 'build/'),
+    path: path.resolve(__dirname, 'pckg-build/'),
     filename: 'index.js',
     library: '',
     libraryTarget: 'commonjs'
