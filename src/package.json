@@ -2,13 +2,20 @@
   "name": "@santiment-network/ui",
   "description": "Santiment React UI Library",
   "version": "0.1.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Santiment",
+  "keywords": [
+    "react",
+    "react-component",
+    "santiment",
+    "ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/santiment/san-ui.git"
   },
-  "author": "",
-  "license": "ISC",
+  "main": "index.js",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "license": "ISC"
 }

@@ -1,4 +1,8 @@
 {
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/santiment/san-ui.git"
+  },
   "scripts": {
     "clean": "rimraf pckg-build && rimraf storybook-static",
     "copy-files": "node scripts/copy-files",
