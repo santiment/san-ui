@@ -11,7 +11,7 @@
     "lib-publish": "yarn publish lib-build --patch --no-git-tag-version",
     "build:storybook": "build-storybook -o build",
     "build:lib": "yarn webpack && yarn scripts",
-    "build": "yarn clean && yarn build:lib && yarn lib-publish && yarn build:storybook",
+    "build": "yarn clean && yarn build:storybook",
     "docker-dev": "docker-compose build frontend && docker-compose run --service-ports frontend"
   },
   "dependencies": {
