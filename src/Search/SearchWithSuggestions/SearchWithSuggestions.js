@@ -8,12 +8,15 @@ class SearchWithSuggestions extends PureComponent {
   static propTypes = {
     data: PropTypes.array.isRequired,
     suggestionContent: PropTypes.func.isRequired,
+    onResultSelect: PropTypes.func.isRequired,
     predicate: PropTypes.func.isRequired,
-    maxSuggestions: PropTypes.number
+    maxSuggestions: PropTypes.number,
+    iconPosition: PropTypes.oneOf(['left', 'right', 'none'])
   }
 
   static defaultProps = {
-    maxSuggestions: 5
+    maxSuggestions: 5,
+    iconPosition: 'left'
   }
 
   state = {
@@ -29,6 +32,12 @@ class SearchWithSuggestions extends PureComponent {
         searchTerm: currentTarget.value
       }),
       this.filterData
+    )
+  }
+
+  handleOnResultSelect = suggestion => {
+    this.setState({searchTerm: ''}, () => 
+      this.props.onResultSelect(suggestion)
     )
   }
 
@@ -53,18 +62,23 @@ class SearchWithSuggestions extends PureComponent {
     return (
       <div className={styles.wrapper}>
         <Search
+          iconPosition={this.props.iconPosition}
           value={searchTerm}
           onFocus={this.toggleFocusState}
           onBlur={this.toggleFocusState}
           onChange={this.handleInputChange}
         />
-        {isFocused && searchTerm !== '' && (
+        {searchTerm !== '' && (
           <Panel popup className={styles.suggestions}>
             <ul className={styles.suggestions__list}>
               {suggestions.length !== 0 ? (
-                suggestions.slice(0, maxSuggestions).map(suggestion => (
-                  <li className={styles.suggestions__item}>
-                    <div className={styles.suggestion}>
+                suggestions.slice(0, maxSuggestions).map((suggestion, index) => (
+                  <li 
+                    key={index}
+                    className={styles.suggestions__item}>
+                    <div 
+                      onClick={this.handleOnResultSelect.bind(this, suggestion)}
+                      className={styles.suggestion}>
                       {suggestionContent(suggestion)}
                     </div>
                   </li>
