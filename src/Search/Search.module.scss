@@ -23,6 +23,10 @@
 }
 
 .input {
+  line-height: 20px;
+  font-size: 14px;
+  color: #15181F;
+
   &.left {
     padding-left: 35px;
   }
@@ -38,4 +42,13 @@
       color: $input-color-night;
     }
   }
+}
+
+.input:placeholder {
+  color: #ADB6CD;
+}
+
+.input:hover,
+.input:focus {
+  border: 1px solid #14C393;
 }

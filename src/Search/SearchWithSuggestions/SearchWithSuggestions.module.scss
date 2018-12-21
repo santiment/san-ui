@@ -39,14 +39,17 @@ $border-color-night: #4a4a4a;
   width: 100%;
   cursor: pointer;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7A859E;
 
   &:hover,
   &:focus {
-    background-color: #f3f4f5;
+    color: #14C393;
+    background: #F6F6F8;
 
     :global(.night-mode) & {
-      background-color: #2e2e2e;
+      background: #F6F6F8;
     }
   }
 }
