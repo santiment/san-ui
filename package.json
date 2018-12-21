@@ -7,6 +7,8 @@
     "storybook": "start-storybook -p 6006",
     "start": "PORT=3000 node server/index.js",
     "clean": "rimraf lib-build",
+    "test:js": "jest",
+    "test": "yarn test:js",
     "scripts": "node scripts/copy-files && node scripts/update-version",
     "lib-publish": "yarn publish lib-build --patch --no-git-tag-version",
     "build:storybook": "build-storybook -o build",
@@ -44,6 +46,16 @@
     "@storybook/addon-actions": "^4.0.12",
     "@storybook/addon-links": "^4.0.12",
     "@storybook/react": "^4.0.12",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
+    "identity-obj-proxy": "^3.0.0",
     "webpack-cli": "^3.1.2"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "moduleNameMapper": {
+      "\\.(css|sass|scss)$": "identity-obj-proxy"
+    }
   }
 }

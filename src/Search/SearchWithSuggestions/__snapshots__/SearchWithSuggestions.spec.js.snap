@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
+<SearchWithSuggestions
+  data={
+    Array [
+      "Bibox Token",
+      "Bigbom",
+      "Binance Coin",
+      "BioCoin",
+      "BitBay",
+      "bitcoin",
+    ]
+  }
+  iconPosition="none"
+  maxSuggestions={5}
+  onResultSelect={[Function]}
+  predicate={[Function]}
+  suggestionContent={[Function]}
+>
+  <div
+    className="wrapper"
+  >
+    <Search
+      iconPosition="none"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      value="Big"
+    >
+      <div
+        className="wrapper"
+      >
+        <Input
+          className="input none"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Search..."
+          value="Big"
+        >
+          <input
+            className="input  input none"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="Search..."
+            type="text"
+            value="Big"
+          />
+        </Input>
+      </div>
+    </Search>
+    <Panel
+      className="suggestions"
+      popup={true}
+    >
+      <div
+        className="panel popup suggestions"
+      >
+        <ul
+          className="suggestions__list"
+        >
+          <li
+            className="suggestions__item"
+            key="0"
+          >
+            <div
+              className="suggestion"
+              onClick={[Function]}
+            >
+              Bigbom
+            </div>
+          </li>
+        </ul>
+      </div>
+    </Panel>
+  </div>
+</SearchWithSuggestions>
+`;
+
+exports[`SearchWithSuggestions should render correctly 1`] = `
+<div
+  className="wrapper"
+>
+  <Search
+    iconPosition="left"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    value=""
+  />
+</div>
+`;
