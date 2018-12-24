@@ -1,6 +1,14 @@
 # Santiment UI Library
 
-This is the source of the Santiment UI React library.
+Santiment UI React library.
+
+### List of components
+
+  1. Button
+  2. Input
+  3. Panel
+  4. Search input
+  5. Select search input 
 
 ## Setup
 
