@@ -1,5 +1,7 @@
 const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -12,6 +14,13 @@ module.exports = {
     library: '',
     libraryTarget: 'commonjs'
   },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "styles.css",
+      chunkFilename: "[id].css"
+    })
+  ],
 
   stats: {
     colors: true
@@ -26,7 +35,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "css-loader"
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
       },
       {
         test: /\.(sass|scss)$/,
@@ -40,7 +52,8 @@ module.exports = {
         uglifyOptions: {
           keep_fnames: true
         }
-      })
+      }),
+      new OptimizeCSSAssetsPlugin({})
     ]
   }
 }
