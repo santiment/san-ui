@@ -17,3 +17,28 @@ stories.add('Simple', () => (
     <Select options={options} />
   </ColorModeComparison>
 ))
+
+class SelectExample extends React.Component {
+
+  state = {
+    selected: '' 
+  }
+
+  render () {
+    return(
+      <Select
+        autofocus
+        options={options}
+        multi={true}
+        value={this.state.selected}
+        onChange={selected => this.setState({ selected})} 
+      />
+    ) 
+  }
+}
+
+stories.add('Open options menu', () => (
+  <ColorModeComparison>
+    <SelectExample /> 
+  </ColorModeComparison>
+))
