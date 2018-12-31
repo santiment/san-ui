@@ -2,33 +2,40 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './Button.module.scss'
 
-const getBorderedStyles = border => `${styles['border']} ${styles[border]}`
-const getFillStyles = fill => `${styles['fill']} ${styles[fill]}`
-
 const Button = ({
   children,
-  fill,
-  border,
-  onClick,
-  className = '',
+  as: BaseButton,
+  isActive,
+  variant,
+  accent,
+  fluid,
+  className,
   ...props
 }) => {
   return (
-    <button
-      onClick={onClick}
-      className={`${styles.btn} ${
-        fill ? getFillStyles(fill) : getBorderedStyles(border)
-      } ${className} `}
+    <BaseButton
+      className={`${styles[variant]} ${styles[accent]} ${
+        styles.button
+      } ${className} ${isActive ? styles.active : ''}`}
       {...props}
     >
       {children}
-    </button>
+    </BaseButton>
   )
 }
 
 Button.propTypes = {
-  fill: PropTypes.oneOf(['grey', 'positive', 'negative', 'purple']),
-  border: PropTypes.oneOf(['positive', 'negative', 'purple'])
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  fluid: PropTypes.bool,
+  variant: PropTypes.oneOf(['flat', 'ghost', 'fill', 'border']),
+  accent: PropTypes.oneOf(['grey', 'positive', 'negative', 'purple'])
+}
+
+Button.defaultProps = {
+  as: 'button',
+  variant: 'fill',
+  accent: 'grey',
+  className: ''
 }
 
 export default Button

@@ -1,3 +1,6 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
 $button-positive-day: #26a987;
 $button-negative-day: #d22f2f;
 $button-purple-day: #9627ba;
@@ -10,12 +13,22 @@ $button-grey-night: #4a4a4a;
 
 $color-night: #ccc;
 
-.btn {
+.button {
+  @include border-box;
+  display: inline-block;
   border: none;
   outline: none;
-  padding: 10px 20px;
+  height: 32px;
+  padding: 6px 12px;
+  font-family: Rubik, sans-serif;
+  font-size: $font-size-regular;
+  line-height: $line-height-regular;
+  border-radius: $border-radius;
   cursor: pointer;
-  border-radius: 4px;
+
+  &.fluid {
+    display: block;
+  }
 }
 
 .fill {
@@ -181,6 +194,49 @@ $color-night: #ccc;
       &:active {
         background-color: darken($button-purple-night, 31%);
       }
+    }
+  }
+}
+
+.flat {
+  color: $text-grey;
+
+  & svg {
+    fill: #15181f;
+  }
+
+  &:hover {
+    color: $text-green;
+    & svg {
+      fill: $text-green;
+    }
+  }
+
+  &.active {
+    color: $text-green;
+    background-color: $btn-background-light-green;
+    & svg {
+      fill: $text-green;
+    }
+  }
+}
+
+.ghost {
+  color: #15181f;
+  background-color: transparent;
+
+  & svg {
+    fill: #15181f;
+  }
+
+  &:hover {
+    background: $btn-background-light-grey;
+  }
+
+  &.active {
+    color: $text-green;
+    & svg {
+      fill: $text-green;
     }
   }
 }
