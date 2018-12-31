@@ -16,7 +16,7 @@ const Button = ({
     <BaseButton
       className={`${styles[variant]} ${styles[accent]} ${
         styles.button
-      } ${className} ${isActive ? styles.active : ''}`}
+      } ${className} ${isActive ? styles.active : ''} ${fluid ? styles.fluid : ''}`}
       {...props}
     >
       {children}
