@@ -7,8 +7,8 @@ storiesOf('Panel', module)
   .add('Simple', () => (
     <div>
       <ColorModeComparison>
-        <Panel />
-        <Panel>
+        <Panel padding />
+        <Panel padding>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique,
           illum?
         </Panel>
@@ -18,8 +18,8 @@ storiesOf('Panel', module)
   .add('Popup', () => (
     <div>
       <ColorModeComparison>
-        <Panel popup />
-        <Panel popup>
+        <Panel padding popup />
+        <Panel padding popup>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique,
           illum?
         </Panel>
