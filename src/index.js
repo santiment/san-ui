@@ -9,3 +9,4 @@ export {
 
 export { default as Icon } from './Icon'
 export { default as Toggle } from './Toggle'
+export { default as Switch } from './Switch'
