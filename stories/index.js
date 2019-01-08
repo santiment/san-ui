@@ -1,3 +1,4 @@
+import './ColorStory.js'
 import './ButtonStory.js'
 import './InputStory.js'
 import './SearchStory.js'
