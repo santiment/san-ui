@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import BaseSelect from './BaseSelect'
-import styles from './BaseSelect.module.scss'
+import styles from './HorizontalSelect.module.scss'
 
 const HorizontalSelect = ({ options, onSelect, selectedIndex }) => {
   return (

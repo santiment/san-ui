@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styles from './BaseSelect.module.scss'
-
-/* import BaseSelect from './BaseSelect' */
 
 class BaseSelect extends Component {
   static propTypes = {
