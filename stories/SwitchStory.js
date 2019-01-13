@@ -35,6 +35,7 @@ storiesOf('Switch', module).add('Simple', () => (
     <ColorModeComparison>
       <Switch options={['First', 'Second']} />
       <Switch options={['First', 'Second']} selectedIndex={1} />
+      <Switch options={['First', 'Second', 'Third']} />
     </ColorModeComparison>
   </div>
 ))
