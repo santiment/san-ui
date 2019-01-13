@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
-import Switch from '../src/Switch'
+import Switch from '../src/Switch/Select'
 import ColorModeComparison from './ColorModeComparison'
 
 class StateWrapper extends Component {
@@ -12,7 +12,7 @@ class StateWrapper extends Component {
     this.setState({ isSwitched: !this.state.isSwitched })
   }
 
-  render () {
+  render() {
     return React.cloneElement(this.props.render, {
       onClick: this.onClick,
       isSwitched: this.state.isSwitched
@@ -20,13 +20,21 @@ class StateWrapper extends Component {
   }
 }
 
+/* storiesOf('Switch', module).add('Simple', () => (
+ *   <div>
+ *     <ColorModeComparison>
+ *       <StateWrapper render={<Switch options={['First', 'Second']} />} />
+ *       <StateWrapper
+ *         render={<Switch options={['First', 'Second']} isSwitched />}
+ *       />
+ *     </ColorModeComparison>
+ *   </div>
+ * )) */
 storiesOf('Switch', module).add('Simple', () => (
   <div>
     <ColorModeComparison>
-      <StateWrapper render={<Switch option1='First' option2='Second' />} />
-      <StateWrapper
-        render={<Switch option1='First' option2='Second' isSwitched />}
-      />
+      <Switch options={['First', 'Second']} />
+      <Switch options={['First', 'Second']} selectedIndex={1} />
     </ColorModeComparison>
   </div>
 ))

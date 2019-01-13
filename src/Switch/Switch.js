@@ -2,22 +2,35 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './Switch.module.scss'
 
-const Switch = ({ isSwitched, option1, option2, ...props }) => {
+const Switch = ({ selectedIndex, onClick, isSwitched, options, ...props }) => {
   return (
     <div
-      className={`${styles.wrapper} ${isSwitched ? styles.switched : ''}`}
+      // className={`${styles.wrapper} ${isSwitched ? styles.switched : ''}`}
+      className={styles.wrapper}
       {...props}
     >
-      <button className={styles.btn}>{option1}</button>
-      <button className={styles.btn}>{option2}</button>
+      {options.map((option, i) => {
+        return (
+          <button
+            key={i}
+            onClick={() => onClick(i)}
+            className={`${styles.btn} ${
+              selectedIndex === i ? styles.selected : ''
+            }`}
+          >
+            {option}
+          </button>
+        )
+      })}
     </div>
   )
 }
 
 Switch.propTypes = {
-  option1: PropTypes.any.isRequired,
-  option2: PropTypes.any.isRequired,
-  isSwitched: PropTypes.bool
+  options: PropTypes.any.isRequired,
+  isSwitched: PropTypes.bool,
+  selectedIndex: PropTypes.number,
+  onClick: PropTypes.func.isRequired
 }
 
 export default Switch
