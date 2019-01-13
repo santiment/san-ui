@@ -1,40 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import BaseSelect from './BaseSelect'
+import styles from './BaseSelect.module.scss'
 
-class Select extends Component {
-  static propTypes = {
-    selectedIndex: PropTypes.number,
-    onSelect: PropTypes.func
-  }
-
-  static defaultProps = {
-    selectedIndex: 0,
-    onSelect: () => {}
-  }
-
-  state = {
-    selectedIndex: this.props.selectedIndex
-  }
-
-  onClick = selectedIndex => {
-    const { onSelect } = this.props
-    this.setState({ selectedIndex })
-
-    onSelect(selectedIndex)
-  }
-
-  render() {
-    const { ...props } = this.props
-    const { selectedIndex } = this.state
-    return (
+const HorizontalSelect = ({ options, onSelect, selectedIndex }) => {
+  return (
+    <div className={styles.wrapper}>
       <BaseSelect
-        {...props}
+        className={styles.btn}
         selectedIndex={selectedIndex}
-        onClick={this.onClick}
+        selectedClassName={styles.selected}
+        onSelect={onSelect}
+        options={options}
       />
-    )
-  }
+    </div>
+  )
 }
 
-export default Select
+export default HorizontalSelect
