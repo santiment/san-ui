@@ -1,14 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './Switch.module.scss'
+import styles from './BaseSelect.module.scss'
 
-const Switch = ({ selectedIndex, onClick, isSwitched, options, ...props }) => {
+const BaseSelect = ({ selectedIndex, onClick, options, ...props }) => {
   return (
-    <div
-      // className={`${styles.wrapper} ${isSwitched ? styles.switched : ''}`}
-      className={styles.wrapper}
-      {...props}
-    >
+    <div className={styles.wrapper} {...props}>
       {options.map((option, i) => {
         return (
           <button
@@ -26,11 +22,10 @@ const Switch = ({ selectedIndex, onClick, isSwitched, options, ...props }) => {
   )
 }
 
-Switch.propTypes = {
+BaseSelect.propTypes = {
   options: PropTypes.any.isRequired,
-  isSwitched: PropTypes.bool,
-  selectedIndex: PropTypes.number,
+  selectedIndex: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired
 }
 
-export default Switch
+export default BaseSelect

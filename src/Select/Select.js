@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import BaseSelect from './Switch'
+import BaseSelect from './BaseSelect'
 
 class Select extends Component {
   static propTypes = {
