@@ -1,23 +1,27 @@
 @import '../mixins.scss';
 
-$input-border-day: #dededf;
+$input-border-day: #E0E4EE;
 $input-border-night: #2d3239;
 
-$input-border-focus-day: #85b7d9;
+$input-border-focus-day: #14C393;
 $input-border-focus-night: #1b3f58;
 
 $input-color-night: #a0a0a0;
 
-$input-placeholder-color-day: #999;
+$input-placeholder-color-day: #ADB6CD;
 $input-placeholder-color-night: #4b4b4b;
+
+$input-error-color-day: #FF5B5B;
 
 .input {
   @include border-box;
   width: 100%;
   outline: none;
   border: 1px solid $input-border-day;
-  padding: 10px 15px;
+  padding: 6px 10px;
   border-radius: 4px;
+  height: 32px;
+  color: #15181F;
 
   &::placeholder {
     color: $input-placeholder-color-day;
@@ -33,12 +37,20 @@ $input-placeholder-color-night: #4b4b4b;
     }
   }
 
+  &[disabled] {
+      color: #E0E4EE;
+  }
+
   &:focus {
     border-color: $input-border-focus-day;
 
     :global(.night-mode) & {
       border-color: $input-border-focus-night;
     }
+  }
+
+  &:hover {
+      border-color: $input-border-focus-day;
   }
 
   &.inplace {
@@ -55,5 +67,9 @@ $input-placeholder-color-night: #4b4b4b;
         color: $input-color-night;
       }
     }
+  }
+
+  &.error {
+      border-color: $input-error-color-day;
   }
 }
