@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 class BaseSelect extends Component {
   static propTypes = {
-    options: PropTypes.any.isRequired,
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
     className: PropTypes.string.isRequired,
     selectedClassName: PropTypes.string,
     selectedIndex: PropTypes.number,

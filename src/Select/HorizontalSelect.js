@@ -18,7 +18,7 @@ const HorizontalSelect = ({ options, onSelect, selectedIndex }) => {
 }
 
 HorizontalSelect.propTypes = {
-  options: PropTypes.any.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onSelect: PropTypes.func,
   selectedIndex: PropTypes.number
 }
