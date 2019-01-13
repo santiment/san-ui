@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import BaseSelect from './BaseSelect'
 import styles from './BaseSelect.module.scss'
@@ -15,6 +15,12 @@ const HorizontalSelect = ({ options, onSelect, selectedIndex }) => {
       />
     </div>
   )
+}
+
+HorizontalSelect.propTypes = {
+  options: PropTypes.any.isRequired,
+  onSelect: PropTypes.func,
+  selectedIndex: PropTypes.number
 }
 
 export default HorizontalSelect

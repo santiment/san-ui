@@ -1,1 +1,1 @@
-export { default } from './Select'
+export { default as HorizontalSelect } from './HorizontalSelect'
