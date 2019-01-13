@@ -12,11 +12,13 @@ storiesOf('HorizontalSelect', module).add('Simple', () => (
         options={['First', 'Second']}
         onSelect={action('Selected')}
       />
+      <div>Specified default 'selectedIndex=1'</div>
       <HorizontalSelect
         options={['First', 'Second']}
         selectedIndex={1}
         onSelect={action('Selected')}
       />
+      <div>Multiple options</div>
       <HorizontalSelect
         options={['First', 'Second', 'Third']}
         onSelect={action('Selected')}
