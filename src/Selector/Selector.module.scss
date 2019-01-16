@@ -1,38 +1,79 @@
-.selector {
+@import '../mixins.scss';
+@import '../variables.scss';
+
+.wrapper {
     display: flex;
-    user-select: none;
+    position: relative;
+    height: 32px;
+    box-sizing: border-box;
+    border-radius: $border-radius;
+    align-items: center;
+}
+
+.btn {
+    @include text-normal;
+
+    flex: 1;
+    position: relative;
+    border: none;
+    color: $text-grey;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     cursor: pointer;
-    min-width: 32px;
-    text-align: center;
-    border-radius: 4px;
-    padding: 10px 25px;
+    outline: none;
 
-    & .selector-item--selected {
-        background: rgba(38, 43, 51, 0.8);
-        color: white !important;
+    background-color: transparent;
+    z-index: 2;
+}
+
+.selected {
+    color: $text-green;
+
+    &::before {
+        display: inline-block;
+        content: '';
+        width: 100%;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        bottom: -1px;
+        background: $btn-background-light-green;
+        // box-sizing: border-box;
+        border-radius: $border-radius;
+        z-index: -1;
     }
-    & .selector-item--disabled {
-        color: #888;
-        cursor: not-allowed;
+    &:last-of-type::before{
+        left: auto;
+        right: -2px;
     }
+}
 
-    :global(.night-mode) {
-        .selector,
-        .selector-item--selected {
-            color: #a0a0a0;
-            background-color: #252932;
-        }
+.disabled {
+    color: #888;
+    cursor: not-allowed;
+}
 
-        .selector--item--disabled {
-            color: #595959;
+.border {
+    &.wrapper {
+        border: 1px solid $light-gray3;
+        & .selected::before {
+            border: 1px solid $green;
         }
     }
 }
 
-.selector-item {
-    cursor: pointer;
-    min-width: 32px;
-    text-align: center;
-    border-radius: 4px;
-    padding: 0 5px;
+:global(.night-mode) {
+    .wrapper,
+    .selected {
+        color: #a0a0a0;
+        background-color: #252932;
+    }
+
+    .disabled {
+        color: #595959;
+    }
 }

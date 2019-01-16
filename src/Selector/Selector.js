@@ -12,9 +12,9 @@ export const SelectorItem = ({
 }) => (
   <div
     className={cx({
-      [styles['selector-item']]: true,
-      [styles['selector-item--selected']]: isSelected,
-      [styles['selector-item--disabled']]: disabled
+      [styles['btn']]: true,
+      [styles['selected']]: isSelected,
+      [styles['disabled']]: disabled
     })}
     onClick={() => !disabled && setFilter(value)}
   >
@@ -50,10 +50,16 @@ export class Selector extends Component {
 
   render() {
     const { selected } = this.state
-    const { options, disabled, className } = this.props
+    const { variant, options, disabled, className } = this.props
     const nameOptions = this.props.nameOptions || options
     return (
-      <div className={`${styles.selector} ${className}`}>
+      <div
+        className={cx({
+          [styles.wrapper]: true,
+          [className]: !!className,
+          [styles[variant]]: !!variant
+        })}
+      >
         {options.map((option, index) => (
           <SelectorItem
             key={option}

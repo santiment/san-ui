@@ -8,26 +8,31 @@ import ColorModeComparison from './ColorModeComparison'
 storiesOf('HorizontalSelect', module).add('Simple', () => (
   <div>
     <ColorModeComparison>
-      <HorizontalSelect
+      <div>No default selected</div>
+      <Selector
         options={['First', 'Second']}
-        onSelect={action('Selected')}
-      />
-      <div>Specified default 'selectedIndex=1'</div>
-      <HorizontalSelect
-        options={['First', 'Second']}
-        selectedIndex={1}
-        onSelect={action('Selected')}
+        onSelectOption={action('Selected')}
       />
       <div>Multiple options</div>
-      <HorizontalSelect
+      <Selector
         options={['First', 'Second', 'Third']}
-        onSelect={action('Selected')}
-        variant='border'
+        onSelectOption={action('Selected')}
+        defaultSelected='Second'
       />
+      <div>Border variant</div>
       <Selector
         options={['First', 'Second', 'Third']}
         onSelectOption={action('Selected')}
         defaultSelected='First'
+        variant='border'
+      />
+      <div>Disabled selector</div>
+      <Selector
+        options={['First', 'Second', 'Third']}
+        onSelectOption={action('Selected')}
+        defaultSelected='First'
+        variant='border'
+        disabled
       />
     </ColorModeComparison>
   </div>
