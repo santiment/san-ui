@@ -39,7 +39,8 @@ export class Selector extends Component {
     options: PropTypes.array,
     onSelectOption: PropTypes.func,
     disabled: PropTypes.bool,
-    className: PropTypes.string
+    className: PropTypes.string,
+    variant: PropTypes.oneOf(['border'])
   }
 
   onSelectOption = newOption => {

@@ -1,11 +1,10 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { HorizontalSelect } from '../src/Select'
 import Selector from '../src/Selector/Selector'
 import ColorModeComparison from './ColorModeComparison'
 
-storiesOf('HorizontalSelect', module).add('Simple', () => (
+storiesOf('Selector', module).add('Simple', () => (
   <div>
     <ColorModeComparison>
       <div>No default selected</div>
