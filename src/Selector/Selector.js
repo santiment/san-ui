@@ -51,8 +51,14 @@ export class Selector extends Component {
 
   render() {
     const { selected } = this.state
-    const { variant, options, disabled, className } = this.props
-    const nameOptions = this.props.nameOptions || options
+    const {
+      variant,
+      options,
+      nameOptions = options,
+      disabled,
+      className
+    } = this.props
+
     return (
       <div
         className={cx({

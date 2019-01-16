@@ -9,4 +9,4 @@ export {
 
 export { default as Icon } from './Icon'
 export { default as Toggle } from './Toggle'
-export { HorizontalSelect } from './Select'
+export { default as Selector } from './Selector/Selector'
