@@ -2,6 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { HorizontalSelect } from '../src/Select'
+import Selector from '../src/Selector/Selector'
 import ColorModeComparison from './ColorModeComparison'
 
 storiesOf('HorizontalSelect', module).add('Simple', () => (
@@ -21,6 +22,11 @@ storiesOf('HorizontalSelect', module).add('Simple', () => (
       <HorizontalSelect
         options={['First', 'Second', 'Third']}
         onSelect={action('Selected')}
+      />
+      <Selector
+        options={['First', 'Second', 'Third']}
+        onSelectOption={action('Selected')}
+        defaultSelected='First'
       />
     </ColorModeComparison>
   </div>

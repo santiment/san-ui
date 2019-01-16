@@ -4710,6 +4710,14 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
+cx@^19.1.1:
+  version "19.1.1"
+  resolved "https://registry.yarnpkg.com/cx/-/cx-19.1.1.tgz#9d13cd6226c8462cfa185b44208b77f923e4057f"
+  integrity sha512-6g22nkHRK+Go0uNeAfaHvk7Q3ze/9lgGc1xxawbipSnGjT3S3pVJPSEK0WUEVWABLBtK+c9l16y8YEUTSpAAMw==
+  dependencies:
+    intl-io "^0.2.11"
+    route-parser "^0.0.5"
+
 cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
@@ -7117,6 +7125,11 @@ interpret@^1.0.0, interpret@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
   integrity sha1-ftGxQQxqDg94z5XTuEQMY/eLhhQ=
+
+intl-io@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/intl-io/-/intl-io-0.2.11.tgz#2afeb409fcebc30d2c588b465f141679935e31f8"
+  integrity sha512-KO0SVdtoopouPZO/RmPrO0nu9FcRQ+Mkv+EVFm67ErfBfSK1ZNC093Fvo3OJ5HvmuV3O+6NwpxUl5boJKXyaQA==
 
 invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
@@ -11701,6 +11714,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+route-parser@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/route-parser/-/route-parser-0.0.5.tgz#7d1d09d335e49094031ea16991a4a79b01bbe1f4"
+  integrity sha1-fR0J0zXkkJQDHqFpkaSnmwG74fQ=
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"
