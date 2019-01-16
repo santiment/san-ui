@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 import BaseSelect from './BaseSelect'
 import styles from './HorizontalSelect.module.scss'
 
-const HorizontalSelect = ({ options, onSelect, selectedIndex }) => {
+const HorizontalSelect = ({ variant, options, onSelect, selectedIndex }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={cx({ [styles.wrapper]: true, [styles[variant]]: variant })}>
       <BaseSelect
         className={styles.btn}
         selectedIndex={selectedIndex}

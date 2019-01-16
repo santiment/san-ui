@@ -22,6 +22,7 @@ storiesOf('HorizontalSelect', module).add('Simple', () => (
       <HorizontalSelect
         options={['First', 'Second', 'Third']}
         onSelect={action('Selected')}
+        variant='border'
       />
       <Selector
         options={['First', 'Second', 'Third']}
