@@ -7,16 +7,21 @@ import ColorModeComparison from './ColorModeComparison'
 storiesOf('Selector', module).add('Simple', () => (
   <div>
     <ColorModeComparison>
+      <div>With full words</div>
+      <Selector
+        options={['Current trends', 'Previous', 'Older']}
+        onSelectOption={action('Selected')}
+      />
       <div>No default selected</div>
       <Selector
-        options={['First', 'Second']}
+        options={['1w', '1m', '3m', '6m', 'all']}
         onSelectOption={action('Selected')}
       />
       <div>Multiple options</div>
       <Selector
-        options={['First', 'Second', 'Third']}
+        options={['1w', '1m', '3m', '6m', 'all']}
         onSelectOption={action('Selected')}
-        defaultSelected='Second'
+        defaultSelected='1m'
       />
       <div>Border variant</div>
       <Selector
