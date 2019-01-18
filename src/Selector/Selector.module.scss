@@ -2,17 +2,19 @@
 @import '../variables.scss';
 
 .wrapper {
+    @include border-box;
     display: flex;
     position: relative;
     height: 32px;
-    box-sizing: border-box;
     border-radius: $border-radius;
     align-items: center;
 }
 
 .btn {
     @include text-normal;
+    @include border-box;
 
+    padding: 6px 12px;
     flex: 1;
     position: relative;
     border: none;
@@ -22,12 +24,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    white-space: nowrap; 
 
     cursor: pointer;
     outline: none;
 
     background-color: transparent;
     z-index: 2;
+
+    &:hover {
+        color: $green;
+    }
 }
 
 .selected {
@@ -42,7 +49,6 @@
         left: -1px;
         bottom: -1px;
         background: $btn-background-light-green;
-        // box-sizing: border-box;
         border-radius: $border-radius;
         z-index: -1;
     }
