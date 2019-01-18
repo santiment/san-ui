@@ -1,23 +1,28 @@
 @import '../mixins.scss';
+@import '../variables.scss';
 
-$input-border-day: #dededf;
+$input-border-day: $light-gray3;
 $input-border-night: #2d3239;
 
-$input-border-focus-day: #85b7d9;
+$input-border-focus-day: $green;
 $input-border-focus-night: #1b3f58;
 
 $input-color-night: #a0a0a0;
 
-$input-placeholder-color-day: #999;
+$input-placeholder-color-day: $dark-gray;
 $input-placeholder-color-night: #4b4b4b;
+
+$input-error-color-day: $red;
 
 .input {
   @include border-box;
   width: 100%;
   outline: none;
   border: 1px solid $input-border-day;
-  padding: 10px 15px;
+  padding: 6px 10px;
   border-radius: 4px;
+  height: 32px;
+  color: $black;
 
   &::placeholder {
     color: $input-placeholder-color-day;
@@ -33,12 +38,20 @@ $input-placeholder-color-night: #4b4b4b;
     }
   }
 
+  &[disabled] {
+      color: $light-gray3;
+  }
+
   &:focus {
     border-color: $input-border-focus-day;
 
     :global(.night-mode) & {
       border-color: $input-border-focus-night;
     }
+  }
+
+  &:hover {
+      border-color: $input-border-focus-day;
   }
 
   &.inplace {
@@ -49,11 +62,15 @@ $input-placeholder-color-night: #4b4b4b;
     }
 
     &:focus {
-      color: #000;
+      color: $black;
 
       :global(.night-mode) & {
         color: $input-color-night;
       }
     }
+  }
+
+  &.error {
+      border-color: $input-error-color-day;
   }
 }
