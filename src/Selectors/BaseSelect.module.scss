@@ -1,7 +1,12 @@
+@import '../mixins.scss';
+
 .wrapper {
     display: inline-flex;
+    @include text-normal;
+    align-items: center;
 }
 
 .fluid {
     display: flex;
+    justify-content: space-between;
 }
