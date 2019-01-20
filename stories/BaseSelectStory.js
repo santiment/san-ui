@@ -1,18 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import BaseSelect, { toggleSingle, toggleMultiple } from '../src/BaseSelect'
+import BaseSelect, { toggleSingle, toggleMultiple } from '../src/Selectors'
+import LabeledSelector from '../src/Selectors/LabeledSelect'
 import ColorModeComparison from './ColorModeComparison'
-
-const LabeledSelector = ({ labels, container: Container, ...props }) => (
-  <BaseSelect
-    options={labels.map(label => ({
-      index: label,
-      content: <Container label={label} />
-    }))}
-    {...props}
-  />
-)
 
 const RadioContainer = ({ label }) => (
   <>
@@ -24,8 +15,10 @@ const RadioContainer = ({ label }) => (
 const RadioBtns = ({ options, ...props }) => {
   return (
     <LabeledSelector
+      className=''
+      selectedClassName=''
+      disabledClassName=''
       labelOnRight
-      classNames={{}}
       labels={options}
       container={RadioContainer}
       stateReducer={toggleSingle}
@@ -35,11 +28,23 @@ const RadioBtns = ({ options, ...props }) => {
 }
 
 const Selector = props => (
-  <BaseSelect classNames={{}} stateReducer={toggleSingle} {...props} />
+  <BaseSelect
+    className=''
+    selectedClassName=''
+    disabledClassName=''
+    stateReducer={toggleSingle}
+    {...props}
+  />
 )
 
 const Checkboxes = props => (
-  <BaseSelect classNames={{}} stateReducer={toggleMultiple} {...props} />
+  <BaseSelect
+    className=''
+    selectedClassName=''
+    disabledClassName=''
+    stateReducer={toggleMultiple}
+    {...props}
+  />
 )
 
 storiesOf('Base Select', module).add('Simple', () => (

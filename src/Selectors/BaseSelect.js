@@ -12,12 +12,9 @@ export const toggleMultiple = (state, newSelection) =>
 class BaseSelect extends Component {
   static propTypes = {
     options: PropTypes.arrayOf(PropTypes.string).isRequired,
-    classNames: PropTypes.shape({
-      base: PropTypes.string.isRequired,
-      selected: PropTypes.string.isRequired
-      /* disabled: PropTypes.string.isRequired */
-    }).isRequired,
-    /* selectedClassName: PropTypes.string, */
+    className: PropTypes.string.isRequired,
+    selectedClassName: PropTypes.string.isRequired,
+    disabledClassName: PropTypes.string.isRequired,
     selectedIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
     disabledIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
     onSelect: PropTypes.func,
@@ -44,7 +41,13 @@ class BaseSelect extends Component {
   }
 
   render() {
-    const { classNames, options, disabledIndexes } = this.props
+    const {
+      className,
+      selectedClassName,
+      disabledClassName,
+      options,
+      disabledIndexes
+    } = this.props
     const { selectedIndexes } = this.state
 
     return options.map(option => {
@@ -53,13 +56,13 @@ class BaseSelect extends Component {
       const isDisabled = disabledIndexes.includes(index)
 
       return (
-        <button
+        <div
           key={index}
           className={
             cx({
-              [classNames.base]: true,
-              [classNames.selected]: selectedIndexes.includes(index),
-              [classNames.disabled]: isDisabled
+              [className]: true,
+              [selectedClassName]: selectedIndexes.includes(index),
+              [disabledClassName]: isDisabled
             })
             /* `${className} ${key === selectedIndex && */
             /* selectedClassName}` */
@@ -67,7 +70,7 @@ class BaseSelect extends Component {
           onClick={!isDisabled ? () => this.onClick(index) : undefined}
         >
           {content}
-        </button>
+        </div>
       )
     })
   }
