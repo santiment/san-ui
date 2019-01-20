@@ -5,6 +5,29 @@ import RadioBtns from '../src/Selectors/RadioBtns'
 import Button from '../src/Button'
 import ColorModeComparison from './ColorModeComparison'
 
+class Example extends React.Component {
+  state = {
+    selectedOption: ''
+  }
+
+  onSelect = option => {
+    this.setState({ selectedOption: option })
+  }
+
+  render() {
+    const { selectedOption } = this.state
+    return (
+      <div>
+        <RadioBtns
+          onSelect={this.onSelect}
+          options={['First', 'Second', 'Third']}
+        />
+        <h4>Selected option: {selectedOption}</h4>
+      </div>
+    )
+  }
+}
+
 storiesOf('Radio Buttons', module)
   .add('Normal', () => (
     <div>
@@ -175,3 +198,4 @@ storiesOf('Radio Buttons', module)
       </ColorModeComparison>
     </div>
   ))
+  .add('Usage example', () => <Example />)

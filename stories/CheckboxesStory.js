@@ -5,6 +5,29 @@ import Checkboxes from '../src/Selectors/Checkboxes'
 import Button from '../src/Button'
 import ColorModeComparison from './ColorModeComparison'
 
+class Example extends React.Component {
+  state = {
+    selectedOptions: []
+  }
+
+  onSelect = (newSelection, state) => {
+    this.setState({ selectedOptions: state.selectedIndexes })
+  }
+
+  render() {
+    const { selectedOptions } = this.state
+    return (
+      <div>
+        <Checkboxes
+          onSelect={this.onSelect}
+          options={['First', 'Second', 'Third']}
+        />
+        <h4>Selected option: {selectedOptions.join(', ')}</h4>
+      </div>
+    )
+  }
+}
+
 storiesOf('Checkboxes', module)
   .add('Normal', () => (
     <div>
@@ -175,3 +198,4 @@ storiesOf('Checkboxes', module)
       </ColorModeComparison>
     </div>
   ))
+  .add('Usage example', () => <Example />)
