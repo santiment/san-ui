@@ -7,5 +7,6 @@ storiesOf('Icon', module).add('All', () => (
     <Icon type='profile' fill='#000' />
     <Icon type='profile-round' fill='#000' />
     <Icon type='help-round' fill='#000' />
+    <Icon type='checkmark' fill='#000' />
   </div>
 ))
