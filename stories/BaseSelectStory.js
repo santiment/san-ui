@@ -5,12 +5,7 @@ import BaseSelect, { toggleSingle, toggleMultiple } from '../src/Selectors'
 import LabeledSelector from '../src/Selectors/LabeledSelect'
 import ColorModeComparison from './ColorModeComparison'
 
-const RadioContainer = ({ label }) => (
-  <>
-    {label}
-    <div />
-  </>
-)
+const RadioContainer = ({ label }) => <div />
 
 const RadioBtns = ({ options, ...props }) => {
   return (
@@ -20,7 +15,7 @@ const RadioBtns = ({ options, ...props }) => {
       disabledClassName=''
       labelOnRight
       labels={options}
-      container={RadioContainer}
+      selectElement={<RadioContainer />}
       stateReducer={toggleSingle}
       {...props}
     />

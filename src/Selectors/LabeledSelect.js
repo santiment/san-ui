@@ -5,14 +5,19 @@ import styles from './LabeledSelect.module.scss'
 const LabeledSelector = ({
   labels,
   labelOnRight,
-  container: Container,
+  selectElement,
   className = '',
   ...props
 }) => (
   <BaseSelect
     options={labels.map(label => ({
       index: label,
-      content: <Container label={label} />
+      content: (
+        <>
+          {label}
+          {selectElement}
+        </>
+      )
     }))}
     className={`${className} ${labelOnRight ? styles.right : ''}`}
     {...props}
