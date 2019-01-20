@@ -1,0 +1,49 @@
+@import '../variables.scss';
+
+.btn {
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid $light-gray3;
+    background: $white;
+
+    &:hover {
+        border-color: $green;
+    }
+}
+
+.selected {
+    & .btn {
+        background: $green;
+        border-color: $green;
+
+        &:hover {
+            background: $green-hover;
+            border-color: $green-hover;
+        }
+    }
+}
+
+.disabled {
+    & .btn {
+        cursor: not-allowed;
+        background: $light-gray;
+        border-color: $light-gray3;
+
+        &:hover {
+            border-color: $light-gray3;
+        }
+    }
+
+    &.selected .btn {
+        background: $light-gray2;
+        border-color: $light-gray2;
+
+        &:hover {
+            background: $light-gray2;
+            border-color: $light-gray2;
+        }
+    }
+}
