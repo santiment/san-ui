@@ -2,6 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import RadioBtns from '../src/Selectors/RadioBtns'
+import Button from '../src/Button'
 import ColorModeComparison from './ColorModeComparison'
 
 storiesOf('Radio Buttons', module)
@@ -30,6 +31,13 @@ storiesOf('Radio Buttons', module)
           options={['1w', '1m', '3m', '6m', 'all']}
           selectedIndex='1m'
           disabledIndexes={['1m', '3m']}
+          onSelect={action('Selected')}
+        />
+        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <RadioBtns
+          options={['1w', '1m', '3m', '6m', 'all']}
+          selectedIndex='1m'
+          as={props => <Button variant='ghost' {...props} />}
           onSelect={action('Selected')}
         />
       </ColorModeComparison>
@@ -66,6 +74,14 @@ storiesOf('Radio Buttons', module)
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
+        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <RadioBtns
+          labelOnRight
+          options={['1w', '1m', '3m', '6m', 'all']}
+          selectedIndex='1m'
+          as={props => <Button variant='ghost' {...props} />}
+          onSelect={action('Selected')}
+        />
       </ColorModeComparison>
     </div>
   ))
@@ -98,6 +114,14 @@ storiesOf('Radio Buttons', module)
           options={['1w', '1m', '3m', '6m', 'all']}
           selectedIndex='1m'
           disabledIndexes={['1m', '3m']}
+          onSelect={action('Selected')}
+        />
+        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <RadioBtns
+          fluid
+          options={['1w', '1m', '3m', '6m', 'all']}
+          selectedIndex='1m'
+          as={props => <Button variant='ghost' {...props} />}
           onSelect={action('Selected')}
         />
       </ColorModeComparison>
@@ -137,6 +161,15 @@ storiesOf('Radio Buttons', module)
           options={['1w', '1m', '3m', '6m', 'all']}
           selectedIndex='1m'
           disabledIndexes={['1m', '3m']}
+          onSelect={action('Selected')}
+        />
+        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <RadioBtns
+          labelOnRight
+          fluid
+          options={['1w', '1m', '3m', '6m', 'all']}
+          selectedIndex='1m'
+          as={props => <Button variant='ghost' {...props} />}
           onSelect={action('Selected')}
         />
       </ColorModeComparison>
