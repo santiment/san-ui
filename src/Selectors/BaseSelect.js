@@ -19,13 +19,15 @@ class BaseSelect extends Component {
     selectedIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
     disabledIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
     onSelect: PropTypes.func,
-    stateReducer: PropTypes.func.isRequired
+    stateReducer: PropTypes.func.isRequired,
+    as: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
   }
 
   static defaultProps = {
     selectedIndexes: [],
     disabledIndexes: [],
-    onSelect: () => {}
+    onSelect: () => {},
+    as: 'div'
     /* selectedClassName: '' */
   }
 
@@ -48,7 +50,8 @@ class BaseSelect extends Component {
       disabledClassName,
       options,
       disabledIndexes,
-      fluid
+      fluid,
+      as: SelectorWrapper
     } = this.props
     const { selectedIndexes } = this.state
 
@@ -58,7 +61,7 @@ class BaseSelect extends Component {
       const isDisabled = disabledIndexes.includes(index)
 
       return (
-        <div
+        <SelectorWrapper
           key={index}
           className={
             cx({
@@ -73,7 +76,7 @@ class BaseSelect extends Component {
           onClick={!isDisabled ? () => this.onClick(index) : undefined}
         >
           {content}
-        </div>
+        </SelectorWrapper>
       )
     })
   }
