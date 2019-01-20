@@ -2,25 +2,9 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import BaseSelect, { toggleSingle, toggleMultiple } from '../src/Selectors'
-import LabeledSelector from '../src/Selectors/LabeledSelect'
+import Checkboxes from '../src/Selectors/Checkboxes'
+import RadioBtns from '../src/Selectors/RadioBtns'
 import ColorModeComparison from './ColorModeComparison'
-
-const RadioContainer = ({ label }) => <div />
-
-const RadioBtns = ({ options, ...props }) => {
-  return (
-    <LabeledSelector
-      className=''
-      selectedClassName=''
-      disabledClassName=''
-      labelOnRight
-      labels={options}
-      selectElement={<RadioContainer />}
-      stateReducer={toggleSingle}
-      {...props}
-    />
-  )
-}
 
 const Selector = props => (
   <BaseSelect
@@ -28,16 +12,6 @@ const Selector = props => (
     selectedClassName=''
     disabledClassName=''
     stateReducer={toggleSingle}
-    {...props}
-  />
-)
-
-const Checkboxes = props => (
-  <BaseSelect
-    className=''
-    selectedClassName=''
-    disabledClassName=''
-    stateReducer={toggleMultiple}
     {...props}
   />
 )

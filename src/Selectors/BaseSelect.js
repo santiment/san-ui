@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
+import styles from './BaseSelect.module.scss'
 
 export const toggleSingle = (state, newSelection) => [newSelection]
 
@@ -46,7 +47,8 @@ class BaseSelect extends Component {
       selectedClassName,
       disabledClassName,
       options,
-      disabledIndexes
+      disabledIndexes,
+      fluid
     } = this.props
     const { selectedIndexes } = this.state
 
@@ -60,9 +62,10 @@ class BaseSelect extends Component {
           key={index}
           className={
             cx({
-              [className]: true,
+              [`${styles.wrapper} ${className}`]: true,
               [selectedClassName]: selectedIndexes.includes(index),
-              [disabledClassName]: isDisabled
+              [disabledClassName]: isDisabled,
+              [styles.fluid]: fluid
             })
             /* `${className} ${key === selectedIndex && */
             /* selectedClassName}` */
