@@ -2,72 +2,69 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-export const singleSelectionReducer = (state, newSelection) =>
-  new Set([newSelection])
+export const toggleSingle = (state, newSelection) => [newSelection]
 
-export const multipleSelectionReducer = (state, newSelection) => {
-  const newState = new Set([...state.selectedIndexes])
-
-  if (state.selectedIndexes.has(newSelection)) {
-    newState.delete(newSelection)
-  } else {
-    newState.add(newSelection)
-  }
-
-  return newState
-}
+export const toggleMultiple = (state, newSelection) =>
+  state.selectedIndexes.includes(newSelection)
+    ? state.selectedIndexes.filter(index => index !== newSelection)
+    : [...state.selectedIndexes, newSelection]
 
 class BaseSelect extends Component {
   static propTypes = {
     options: PropTypes.arrayOf(PropTypes.string).isRequired,
-    classNames: PropTypes.any.isRequired,
+    classNames: PropTypes.shape({
+      base: PropTypes.string.isRequired,
+      selected: PropTypes.string.isRequired
+      /* disabled: PropTypes.string.isRequired */
+    }).isRequired,
     /* selectedClassName: PropTypes.string, */
-    selectedIndexes: PropTypes.arrayOf(PropTypes.number),
-    disabledIndexes: PropTypes.arrayOf(PropTypes.number),
+    selectedIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
+    disabledIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
     onSelect: PropTypes.func,
-    stateReducer: PropTypes.func
+    stateReducer: PropTypes.func.isRequired
   }
 
   static defaultProps = {
     selectedIndexes: [],
     disabledIndexes: [],
-    onSelect: () => {},
-    stateReducer: () => {}
+    onSelect: () => {}
     /* selectedClassName: '' */
   }
 
   state = {
-    selectedIndexes: new Set(this.props.selectedIndexes)
+    selectedIndexes: this.props.selectedIndexes
   }
 
   onClick = selectedIndex => {
     const { stateReducer, onSelect } = this.props
     this.setState(
-      state => stateReducer(state, selectedIndex),
-      () => onSelect(selectedIndex)
+      state => ({ selectedIndexes: stateReducer(state, selectedIndex) }),
+      () => onSelect(selectedIndex, this.state)
     )
   }
 
   render() {
     const { classNames, options, disabledIndexes } = this.props
     const { selectedIndexes } = this.state
+
     return options.map(option => {
       const content = option.content || option
-      const key = option.key || option
+      const index = option.index || option
+      const isDisabled = disabledIndexes.includes(index)
 
       return (
         <button
-          key={key}
+          key={index}
           className={
             cx({
               [classNames.base]: true,
-              [classNames.selected]: selectedIndexes.has(key),
-              [classNames.disabled]: disabledIndexes.includes(key)
+              [classNames.selected]: selectedIndexes.includes(index),
+              [classNames.disabled]: isDisabled
             })
             /* `${className} ${key === selectedIndex && */
             /* selectedClassName}` */
           }
-          onClick={() => this.onClick(key)}
+          onClick={!isDisabled ? () => this.onClick(index) : undefined}
         >
           {content}
         </button>

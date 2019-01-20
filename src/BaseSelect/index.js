@@ -1,1 +1,1 @@
-export { default } from './BaseSelect'
+export { default, toggleSingle, toggleMultiple } from './BaseSelect'
