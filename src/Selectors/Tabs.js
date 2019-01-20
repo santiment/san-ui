@@ -11,7 +11,7 @@ const Tabs = ({ className, selectedIndex, ...props }) => (
       selectedClassName={styles.selected}
       disabledClassName={styles.disabled}
       {...props}
-      selectedIndexes={[selectedIndex]}
+      selectedIndexes={selectedIndex && [selectedIndex]}
     />
   </div>
 )

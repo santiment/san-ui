@@ -40,7 +40,7 @@ storiesOf('Radio Buttons', module)
         <div>Options with selected index by the default</div>
         <RadioBtns
           options={['Current trends', 'Previous', 'Older']}
-          selectedIndex={'Older'}
+          selectedIndex='Older'
           onSelect={action('Selected')}
         />
         <div>Specified disabled options with no selected by the default</div>
@@ -79,7 +79,7 @@ storiesOf('Radio Buttons', module)
         <RadioBtns
           labelOnRight
           options={['Current trends', 'Previous', 'Older']}
-          selectedIndex={'Older'}
+          selectedIndex='Older'
           onSelect={action('Selected')}
         />
         <div>Specified disabled options with no selected by the default</div>

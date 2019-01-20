@@ -8,14 +8,18 @@ const ContentContainer = () => <div className={styles.btn} />
 const RadioBtns = ({ options, className, selectedIndex, ...props }) => (
   <LabeledSelector
     stateReducer={toggleSingle}
-    selectedIndexes={[selectedIndex]}
     labels={options}
     selectElement={<ContentContainer />}
     className={`${className}`}
     selectedClassName={styles.selected}
     disabledClassName={styles.disabled}
     {...props}
+    selectedIndexes={selectedIndex && [selectedIndex]}
   />
 )
+
+RadioBtns.defaultProps = {
+  selectedIndex: undefined
+}
 
 export default RadioBtns

@@ -79,7 +79,7 @@ storiesOf('Checkboxes', module)
         <Checkboxes
           labelOnRight
           options={['Current trends', 'Previous', 'Older']}
-          selectedIndexes={'Older'}
+          selectedIndexes={['Older']}
           onSelect={action('Selected')}
         />
         <div>Specified disabled options with no selected by the default</div>

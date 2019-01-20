@@ -12,7 +12,15 @@ export const toggleMultiple = (state, newSelection) =>
 
 class BaseSelect extends Component {
   static propTypes = {
-    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    options: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          index: PropTypes.any.isRequired,
+          content: PropTypes.any.isRequired
+        })
+      ])
+    ).isRequired,
     className: PropTypes.string.isRequired,
     selectedClassName: PropTypes.string.isRequired,
     disabledClassName: PropTypes.string.isRequired,
@@ -28,7 +36,6 @@ class BaseSelect extends Component {
     disabledIndexes: [],
     onSelect: () => {},
     as: 'div'
-    /* selectedClassName: '' */
   }
 
   state = {
@@ -63,17 +70,13 @@ class BaseSelect extends Component {
       return (
         <SelectorWrapper
           key={index}
-          className={
-            cx({
-              [`${styles.wrapper} ${className}`]: true,
-              [selectedClassName]: selectedIndexes.includes(index),
-              [disabledClassName]: isDisabled,
-              [styles.fluid]: fluid
-            })
-            /* `${className} ${key === selectedIndex && */
-            /* selectedClassName}` */
-          }
-          onClick={!isDisabled ? () => this.onClick(index) : undefined}
+          className={cx({
+            [`${styles.wrapper} ${className}`]: true,
+            [selectedClassName]: selectedIndexes.includes(index),
+            [disabledClassName]: isDisabled,
+            [styles.fluid]: fluid
+          })}
+          onClick={isDisabled ? undefined : () => this.onClick(index)}
         >
           {content}
         </SelectorWrapper>
