@@ -2,6 +2,10 @@
 
 .btn {
     box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     cursor: pointer;
     width: 16px;
     height: 16px;
@@ -14,6 +18,10 @@
     }
 }
 
+.checkmark {
+    display: none;
+}
+
 .selected {
     & .btn {
         background: $green;
@@ -23,6 +31,11 @@
             background: $green-hover;
             border-color: $green-hover;
         }
+    }
+
+    & .checkmark {
+        display: block;
+        fill: $white;
     }
 }
 
