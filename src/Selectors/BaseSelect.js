@@ -58,7 +58,7 @@ class BaseSelect extends Component {
       options,
       disabledIndexes,
       fluid,
-      as: SelectorWrapper
+      as: SelectItem
     } = this.props
     const { selectedIndexes } = this.state
 
@@ -68,7 +68,7 @@ class BaseSelect extends Component {
       const isDisabled = disabledIndexes.includes(index)
 
       return (
-        <SelectorWrapper
+        <SelectItem
           key={index}
           className={cx({
             [`${styles.wrapper} ${className}`]: true,
@@ -79,7 +79,7 @@ class BaseSelect extends Component {
           onClick={isDisabled ? undefined : () => this.onClick(index)}
         >
           {content}
-        </SelectorWrapper>
+        </SelectItem>
       )
     })
   }
