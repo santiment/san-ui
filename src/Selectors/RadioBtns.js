@@ -5,12 +5,11 @@ import styles from './RadioBtns.module.scss'
 
 const ContentContainer = () => <div className={styles.btn} />
 
-const RadioBtns = ({ options, className, selectedIndex, ...props }) => (
+const RadioBtns = ({ options, selectedIndex, ...props }) => (
   <LabeledSelector
     stateReducer={toggleSingle}
     labels={options}
     selectElement={<ContentContainer />}
-    className={`${className}`}
     selectedClassName={styles.selected}
     disabledClassName={styles.disabled}
     {...props}

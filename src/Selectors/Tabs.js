@@ -4,7 +4,7 @@ import { toggleSingle } from './BaseSelect'
 import styles from './Tabs.module.scss'
 
 const Tabs = ({ className, selectedIndex, ...props }) => (
-  <div className={styles.tabs}>
+  <div className={`${styles.tabs} ${className}`}>
     <BaseSelect
       stateReducer={toggleSingle}
       className={`${styles.tab}`}
@@ -15,5 +15,9 @@ const Tabs = ({ className, selectedIndex, ...props }) => (
     />
   </div>
 )
+
+Tabs.defaultProps = {
+  className: ''
+}
 
 export default Tabs

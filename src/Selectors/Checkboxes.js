@@ -10,12 +10,11 @@ const ContentContainer = () => (
   </div>
 )
 
-const Checkboxes = ({ options, className, ...props }) => (
+const Checkboxes = ({ options, ...props }) => (
   <LabeledSelector
     stateReducer={toggleMultiple}
     labels={options}
     selectElement={<ContentContainer />}
-    className={`${className}`}
     selectedClassName={styles.selected}
     disabledClassName={styles.disabled}
     {...props}
