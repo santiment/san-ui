@@ -4,7 +4,7 @@ import { toggleMultiple } from './BaseSelect'
 import Icon from '../Icon'
 import styles from './Checkboxes.module.scss'
 
-const ContentContainer = () => (
+const SelectElement = () => (
   <div className={styles.btn}>
     <Icon type='checkmark' className={styles.checkmark} />
   </div>
@@ -13,7 +13,7 @@ const ContentContainer = () => (
 const Checkboxes = props => (
   <LabeledSelector
     stateReducer={toggleMultiple}
-    selectElement={<ContentContainer />}
+    selectElement={<SelectElement />}
     selectedClassName={styles.selected}
     disabledClassName={styles.disabled}
     {...props}

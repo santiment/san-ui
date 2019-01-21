@@ -4,12 +4,12 @@ import LabeledSelector from './LabeledSelect'
 import { toggleSingle } from './BaseSelect'
 import styles from './RadioBtns.module.scss'
 
-const ContentContainer = () => <div className={styles.btn} />
+const SelectElement = () => <div className={styles.btn} />
 
 const RadioBtns = ({ defaultSelectedIndex, ...props }) => (
   <LabeledSelector
     stateReducer={toggleSingle}
-    selectElement={<ContentContainer />}
+    selectElement={<SelectElement />}
     selectedClassName={styles.selected}
     disabledClassName={styles.disabled}
     {...props}
