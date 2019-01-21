@@ -8,6 +8,7 @@ const LabeledSelector = ({
   labelOnRight,
   selectElement,
   className,
+  labelClassName,
   ...props
 }) => (
   <BaseSelect
@@ -15,7 +16,7 @@ const LabeledSelector = ({
       index: label,
       content: (
         <>
-          {label}
+          <span className={`${styles.label} ${labelClassName}`}>{label}</span>
           {selectElement}
         </>
       )
@@ -28,13 +29,15 @@ const LabeledSelector = ({
 LabeledSelector.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   selectElement: PropTypes.element.isRequired,
+  labelOnRight: PropTypes.bool,
   className: PropTypes.string,
-  labelOnRight: PropTypes.bool
+  labelClassName: PropTypes.string
 }
 
 LabeledSelector.defaultProps = {
+  labelOnRight: false,
   className: '',
-  labelOnRight: false
+  labelClassName: ''
 }
 
 export default LabeledSelector
