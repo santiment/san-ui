@@ -36,18 +36,21 @@ storiesOf('Checkboxes', module)
         <Checkboxes
           options={['Current trends', 'Previous', 'Older']}
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
         <div>Options with selected index by the default</div>
         <Checkboxes
           options={['Current trends', 'Previous', 'Older']}
           defaultSelectedIndexes={['Older']}
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
         <div>Specified disabled options with no selected by the default</div>
         <Checkboxes
           options={['1w', '1m', '3m', '6m', 'all']}
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
         <div>Selected disabled option</div>
         <Checkboxes
@@ -55,13 +58,15 @@ storiesOf('Checkboxes', module)
           defaultSelectedIndexes={['1m']}
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
-        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <div>SelectItem rendered as "Button" element via "as" prop.</div>
         <Checkboxes
           options={['1w', '1m', '3m', '6m', 'all']}
           defaultSelectedIndexes={['1m']}
           as={props => <Button variant='ghost' {...props} />}
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
       </ColorModeComparison>
     </div>
@@ -97,7 +102,7 @@ storiesOf('Checkboxes', module)
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
-        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <div>SelectItem rendered as "Button" element via "as" prop.</div>
         <Checkboxes
           labelOnRight
           options={['1w', '1m', '3m', '6m', 'all']}
@@ -139,7 +144,7 @@ storiesOf('Checkboxes', module)
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
-        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <div>SelectItem rendered as "Button" element via "as" prop.</div>
         <Checkboxes
           fluid
           options={['1w', '1m', '3m', '6m', 'all']}
@@ -186,7 +191,7 @@ storiesOf('Checkboxes', module)
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
-        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <div>SelectItem rendered as "Button" element via "as" prop.</div>
         <Checkboxes
           labelOnRight
           fluid

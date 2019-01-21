@@ -63,7 +63,7 @@ storiesOf('Tabs', module)
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
-        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <div>SelectItem rendered as "Button" element via "as" prop.</div>
         <Tabs
           options={['1w', '1m', '3m', '6m', 'all']}
           defaultSelectedIndex='1m'

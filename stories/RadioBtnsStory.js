@@ -43,12 +43,14 @@ storiesOf('Radio Buttons', module)
           options={['Current trends', 'Previous', 'Older']}
           defaultSelectedIndex='Older'
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
         <div>Specified disabled options with no selected by the default</div>
         <RadioBtns
           options={['1w', '1m', '3m', '6m', 'all']}
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
         <div>Selected disabled option</div>
         <RadioBtns
@@ -56,13 +58,15 @@ storiesOf('Radio Buttons', module)
           defaultSelectedIndex='1m'
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
-        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <div>SelectItem rendered as "Button" element via "as" prop.</div>
         <RadioBtns
           options={['1w', '1m', '3m', '6m', 'all']}
           defaultSelectedIndex='1m'
           as={props => <Button variant='ghost' {...props} />}
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
       </ColorModeComparison>
     </div>
@@ -98,7 +102,7 @@ storiesOf('Radio Buttons', module)
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
-        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <div>SelectItem rendered as "Button" element via "as" prop.</div>
         <RadioBtns
           labelOnRight
           options={['1w', '1m', '3m', '6m', 'all']}
@@ -140,7 +144,7 @@ storiesOf('Radio Buttons', module)
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
-        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <div>SelectItem rendered as "Button" element via "as" prop.</div>
         <RadioBtns
           fluid
           options={['1w', '1m', '3m', '6m', 'all']}
@@ -187,7 +191,7 @@ storiesOf('Radio Buttons', module)
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
-        <div>Select wrapper rendered as "Button" element via "as" prop.</div>
+        <div>SelectItem rendered as "Button" element via "as" prop.</div>
         <RadioBtns
           labelOnRight
           fluid
