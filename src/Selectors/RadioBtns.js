@@ -1,14 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import LabeledSelector from './LabeledSelect'
 import { toggleSingle } from './BaseSelect'
 import styles from './RadioBtns.module.scss'
 
 const ContentContainer = () => <div className={styles.btn} />
 
-const RadioBtns = ({ options, defaultSelectedIndex, ...props }) => (
+const RadioBtns = ({ defaultSelectedIndex, ...props }) => (
   <LabeledSelector
     stateReducer={toggleSingle}
-    labels={options}
     selectElement={<ContentContainer />}
     selectedClassName={styles.selected}
     disabledClassName={styles.disabled}
@@ -16,6 +16,10 @@ const RadioBtns = ({ options, defaultSelectedIndex, ...props }) => (
     defaultSelectedIndexes={defaultSelectedIndex && [defaultSelectedIndex]}
   />
 )
+
+RadioBtns.propTypes = {
+  defaultSelectedIndex: PropTypes.string
+}
 
 RadioBtns.defaultProps = {
   defaultSelectedIndex: undefined

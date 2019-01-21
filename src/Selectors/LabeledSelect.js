@@ -4,14 +4,14 @@ import BaseSelect from './BaseSelect'
 import styles from './LabeledSelect.module.scss'
 
 const LabeledSelector = ({
-  labels,
+  options,
   labelOnRight,
   selectElement,
   className,
   ...props
 }) => (
   <BaseSelect
-    options={labels.map(label => ({
+    options={options.map(label => ({
       index: label,
       content: (
         <>
@@ -26,11 +26,15 @@ const LabeledSelector = ({
 )
 
 LabeledSelector.propTypes = {
-  className: PropTypes.string
+  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  selectElement: PropTypes.element.isRequired,
+  className: PropTypes.string,
+  labelOnRight: PropTypes.bool
 }
 
 LabeledSelector.defaultProps = {
-  className: ''
+  className: '',
+  labelOnRight: false
 }
 
 export default LabeledSelector

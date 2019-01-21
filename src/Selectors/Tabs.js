@@ -1,6 +1,6 @@
 import React from 'react'
-import BaseSelect from './BaseSelect'
-import { toggleSingle } from './BaseSelect'
+import PropTypes from 'prop-types'
+import BaseSelect, { toggleSingle } from './BaseSelect'
 import styles from './Tabs.module.scss'
 
 const Tabs = ({ className, defaultSelectedIndex, ...props }) => (
@@ -16,8 +16,14 @@ const Tabs = ({ className, defaultSelectedIndex, ...props }) => (
   </div>
 )
 
+Tabs.propTypes = {
+  className: PropTypes.string,
+  defaultSelectedIndex: PropTypes.string
+}
+
 Tabs.defaultProps = {
-  className: ''
+  className: '',
+  defaultSelectedIndex: undefined
 }
 
 export default Tabs
