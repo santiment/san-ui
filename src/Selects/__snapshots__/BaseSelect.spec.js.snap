@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseSelect component smoke 1`] = `
+Array [
+  <div
+    className="wrapper "
+    key="1w"
+    onClick={[Function]}
+  >
+    1w
+  </div>,
+  <div
+    className="wrapper "
+    key="1m"
+    onClick={[Function]}
+  >
+    1m
+  </div>,
+  <div
+    className="wrapper "
+    key="3m"
+    onClick={[Function]}
+  >
+    3m
+  </div>,
+  <div
+    className="wrapper "
+    key="6m"
+    onClick={[Function]}
+  >
+    6m
+  </div>,
+  <div
+    className="wrapper "
+    key="1y"
+    onClick={[Function]}
+  >
+    1y
+  </div>,
+  <div
+    className="wrapper "
+    key="all"
+    onClick={[Function]}
+  >
+    all
+  </div>,
+]
+`;

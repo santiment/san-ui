@@ -26,9 +26,10 @@ $color-night: #ccc;
   border-radius: $border-radius;
   cursor: pointer;
 
-  &.fluid {
+}
+
+.fluid {
     display: block;
-  }
 }
 
 .fill {

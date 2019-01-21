@@ -1,0 +1,59 @@
+@import '../variables.scss';
+
+.tabs {
+    display: inline-block;
+    border-bottom: 1px solid $light-gray2;
+}
+
+.tab {
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+    background: transparent;
+    color: $dark-gray2;
+    padding-bottom: 16px;
+
+    margin: 0 16px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:hover {
+        color: $green;
+    }
+}
+
+.selected {
+        color: $green;
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -1px;
+            height: 2px;
+            left:0;
+            right: 0;
+            border-radius: 1px;
+            background: $green;
+        }
+}
+
+.disabled {
+        cursor: not-allowed;
+        color: $light-gray3;
+
+        &::after {
+            background: $light-gray3;
+        }
+
+        &:hover {
+            color: $light-gray3;
+        }
+
+}
