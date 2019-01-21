@@ -1,6 +1,5 @@
 import React from 'react'
-import LabeledSelector from './LabeledSelect'
-import { toggleMultiple } from './BaseSelect'
+import { LabeledSelect, toggleMultiple } from '../Selects'
 import Icon from '../Icon'
 import styles from './Checkboxes.module.scss'
 
@@ -11,7 +10,7 @@ const SelectElement = () => (
 )
 
 const Checkboxes = props => (
-  <LabeledSelector
+  <LabeledSelect
     stateReducer={toggleMultiple}
     selectElement={<SelectElement />}
     selectedClassName={styles.selected}

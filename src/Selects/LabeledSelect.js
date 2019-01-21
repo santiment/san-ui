@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import BaseSelect from './BaseSelect'
 import styles from './LabeledSelect.module.scss'
 
-const LabeledSelector = ({
+const LabeledSelect = ({
   options,
   labelOnRight,
   selectElement,
@@ -26,7 +26,7 @@ const LabeledSelector = ({
   />
 )
 
-LabeledSelector.propTypes = {
+LabeledSelect.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   selectElement: PropTypes.element.isRequired,
   labelOnRight: PropTypes.bool,
@@ -34,10 +34,10 @@ LabeledSelector.propTypes = {
   labelClassName: PropTypes.string
 }
 
-LabeledSelector.defaultProps = {
+LabeledSelect.defaultProps = {
   labelOnRight: false,
   className: '',
   labelClassName: ''
 }
 
-export default LabeledSelector
+export default LabeledSelect

@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import RadioBtns from '../src/Selectors/RadioBtns'
+import RadioBtns from '../src/RadioBtns'
 import Button from '../src/Button'
 import ColorModeComparison from './ColorModeComparison'
 

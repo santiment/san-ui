@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import Tabs from '../src/Selectors/Tabs'
+import Tabs from '../src/Tabs'
 import Button from '../src/Button'
 import ColorModeComparison from './ColorModeComparison'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BaseSelect, { toggleSingle } from './BaseSelect'
+import { BaseSelect, toggleSingle } from '../Selects'
 import styles from './Tabs.module.scss'
 
 const Tabs = ({ className, defaultSelectedIndex, ...props }) => (

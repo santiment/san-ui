@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import LabeledSelector from './LabeledSelect'
-import { toggleSingle } from './BaseSelect'
+import { LabeledSelect, toggleSingle } from '../Selects'
 import styles from './RadioBtns.module.scss'
 
 const SelectElement = () => <div className={styles.btn} />
 
 const RadioBtns = ({ defaultSelectedIndex, ...props }) => (
-  <LabeledSelector
+  <LabeledSelect
     stateReducer={toggleSingle}
     selectElement={<SelectElement />}
     selectedClassName={styles.selected}
