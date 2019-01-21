@@ -10,3 +10,6 @@ export {
 export { default as Icon } from './Icon'
 export { default as Toggle } from './Toggle'
 export { default as Selector } from './Selector/Selector'
+export { default as Tabs } from './Tabs'
+export { default as Checkboxes } from './Checkboxes'
+export { default as RadioBtns } from './RadioBtns'
