@@ -28,14 +28,16 @@ class BaseSelect extends Component {
     disabledIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
     onSelect: PropTypes.func,
     stateReducer: PropTypes.func.isRequired,
-    as: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+    as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    fluid: PropTypes.bool
   }
 
   static defaultProps = {
     defaultSelectedIndexes: [],
     disabledIndexes: [],
     onSelect: () => {},
-    as: 'div'
+    as: 'div',
+    fluid: false
   }
 
   state = {
@@ -58,7 +60,13 @@ class BaseSelect extends Component {
       options,
       disabledIndexes,
       fluid,
-      as: SelectItem
+      as: SelectItem,
+      // Destructing possible unnecessary props to access 'rest' props
+      defaultSelectedIndexes,
+      onSelect,
+      stateReducer,
+      // Destructing possible unnecessary props to access 'rest' props
+      ...rest
     } = this.props
     const { selectedIndexes } = this.state
 
@@ -69,6 +77,7 @@ class BaseSelect extends Component {
 
       return (
         <SelectItem
+          {...rest}
           key={index}
           className={cx({
             [`${styles.wrapper} ${className}`]: true,

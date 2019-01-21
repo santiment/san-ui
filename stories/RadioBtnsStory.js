@@ -36,6 +36,7 @@ storiesOf('Radio Buttons', module)
         <RadioBtns
           options={['Current trends', 'Previous', 'Older']}
           onSelect={action('Selected')}
+          style={{ marginRight: '15px' }}
         />
         <div>Options with selected index by the default</div>
         <RadioBtns
