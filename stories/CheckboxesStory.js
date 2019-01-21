@@ -40,7 +40,7 @@ storiesOf('Checkboxes', module)
         <div>Options with selected index by the default</div>
         <Checkboxes
           options={['Current trends', 'Previous', 'Older']}
-          selectedIndexes={['Older']}
+          defaultSelectedIndexes={['Older']}
           onSelect={action('Selected')}
         />
         <div>Specified disabled options with no selected by the default</div>
@@ -52,14 +52,14 @@ storiesOf('Checkboxes', module)
         <div>Selected disabled option</div>
         <Checkboxes
           options={['1w', '1m', '3m', '6m', 'all']}
-          selectedIndexes={['1m']}
+          defaultSelectedIndexes={['1m']}
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
         <div>Select wrapper rendered as "Button" element via "as" prop.</div>
         <Checkboxes
           options={['1w', '1m', '3m', '6m', 'all']}
-          selectedIndexes={['1m']}
+          defaultSelectedIndexes={['1m']}
           as={props => <Button variant='ghost' {...props} />}
           onSelect={action('Selected')}
         />
@@ -79,7 +79,7 @@ storiesOf('Checkboxes', module)
         <Checkboxes
           labelOnRight
           options={['Current trends', 'Previous', 'Older']}
-          selectedIndexes={['Older']}
+          defaultSelectedIndexes={['Older']}
           onSelect={action('Selected')}
         />
         <div>Specified disabled options with no selected by the default</div>
@@ -93,7 +93,7 @@ storiesOf('Checkboxes', module)
         <Checkboxes
           labelOnRight
           options={['1w', '1m', '3m', '6m', 'all']}
-          selectedIndexes={['1m']}
+          defaultSelectedIndexes={['1m']}
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
@@ -101,7 +101,7 @@ storiesOf('Checkboxes', module)
         <Checkboxes
           labelOnRight
           options={['1w', '1m', '3m', '6m', 'all']}
-          selectedIndexes={['1m']}
+          defaultSelectedIndexes={['1m']}
           as={props => <Button variant='ghost' {...props} />}
           onSelect={action('Selected')}
         />
@@ -121,7 +121,7 @@ storiesOf('Checkboxes', module)
         <Checkboxes
           fluid
           options={['Current trends', 'Previous', 'Older']}
-          selectedIndexes={['Older']}
+          defaultSelectedIndexes={['Older']}
           onSelect={action('Selected')}
         />
         <div>Specified disabled options with no selected by the default</div>
@@ -135,7 +135,7 @@ storiesOf('Checkboxes', module)
         <Checkboxes
           fluid
           options={['1w', '1m', '3m', '6m', 'all']}
-          selectedIndexes={['1m']}
+          defaultSelectedIndexes={['1m']}
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
@@ -143,7 +143,7 @@ storiesOf('Checkboxes', module)
         <Checkboxes
           fluid
           options={['1w', '1m', '3m', '6m', 'all']}
-          selectedIndexes={['1m']}
+          defaultSelectedIndexes={['1m']}
           as={props => <Button variant='ghost' {...props} />}
           onSelect={action('Selected')}
         />
@@ -166,7 +166,7 @@ storiesOf('Checkboxes', module)
           labelOnRight
           fluid
           options={['Current trends', 'Previous', 'Older']}
-          selectedIndexes={['Older']}
+          defaultSelectedIndexes={['Older']}
           onSelect={action('Selected')}
         />
         <div>Specified disabled options with no selected by the default</div>
@@ -182,7 +182,7 @@ storiesOf('Checkboxes', module)
           labelOnRight
           fluid
           options={['1w', '1m', '3m', '6m', 'all']}
-          selectedIndexes={['1m']}
+          defaultSelectedIndexes={['1m']}
           disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
@@ -191,7 +191,7 @@ storiesOf('Checkboxes', module)
           labelOnRight
           fluid
           options={['1w', '1m', '3m', '6m', 'all']}
-          selectedIndexes={['1m']}
+          defaultSelectedIndexes={['1m']}
           as={props => <Button variant='ghost' {...props} />}
           onSelect={action('Selected')}
         />

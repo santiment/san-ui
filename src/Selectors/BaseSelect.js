@@ -24,7 +24,7 @@ class BaseSelect extends Component {
     className: PropTypes.string.isRequired,
     selectedClassName: PropTypes.string.isRequired,
     disabledClassName: PropTypes.string.isRequired,
-    selectedIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
+    defaultSelectedIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
     disabledIndexes: PropTypes.arrayOf(PropTypes.any.isRequired),
     onSelect: PropTypes.func,
     stateReducer: PropTypes.func.isRequired,
@@ -32,14 +32,14 @@ class BaseSelect extends Component {
   }
 
   static defaultProps = {
-    selectedIndexes: [],
+    defaultSelectedIndexes: [],
     disabledIndexes: [],
     onSelect: () => {},
     as: 'div'
   }
 
   state = {
-    selectedIndexes: this.props.selectedIndexes
+    selectedIndexes: this.props.defaultSelectedIndexes
   }
 
   onClick = selectedIndex => {

@@ -5,7 +5,7 @@ import styles from './RadioBtns.module.scss'
 
 const ContentContainer = () => <div className={styles.btn} />
 
-const RadioBtns = ({ options, selectedIndex, ...props }) => (
+const RadioBtns = ({ options, defaultSelectedIndex, ...props }) => (
   <LabeledSelector
     stateReducer={toggleSingle}
     labels={options}
@@ -13,12 +13,12 @@ const RadioBtns = ({ options, selectedIndex, ...props }) => (
     selectedClassName={styles.selected}
     disabledClassName={styles.disabled}
     {...props}
-    selectedIndexes={selectedIndex && [selectedIndex]}
+    defaultSelectedIndexes={defaultSelectedIndex && [defaultSelectedIndex]}
   />
 )
 
 RadioBtns.defaultProps = {
-  selectedIndex: undefined
+  defaultSelectedIndex: undefined
 }
 
 export default RadioBtns
