@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AccountIcon = props => {
+const IconCheckmark = props => {
   return (
     <svg
       width='8'
@@ -18,4 +18,4 @@ const AccountIcon = props => {
   )
 }
 
-export default AccountIcon
+export default IconCheckmark
