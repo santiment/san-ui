@@ -31,13 +31,13 @@ storiesOf('Button', module)
   .add('Bordered', () => (
     <div>
       <ColorModeComparison>
-        <Button variant='border' accent='negative'>
+        <Button border accent='negative'>
           Negative border
         </Button>
-        <Button variant='border' accent='positive'>
+        <Button border accent='positive'>
           Positive border
         </Button>
-        <Button variant='border' accent='purple'>
+        <Button border accent='purple'>
           Purple border
         </Button>
       </ColorModeComparison>
@@ -55,6 +55,9 @@ storiesOf('Button', module)
     <div>
       <ColorModeComparison>
         <Button variant='flat'>Flat Button</Button>
+        <Button border variant='flat'>
+          Flat Border Button
+        </Button>
         <Button variant='flat' isActive>
           Flat Active Button
         </Button>
@@ -65,6 +68,9 @@ storiesOf('Button', module)
     <div>
       <ColorModeComparison>
         <Button variant='ghost'>Ghost Button</Button>
+        <Button border variant='ghost'>
+          Ghost Border Button
+        </Button>
         <Button variant='ghost' isActive>
           Ghost Active Button
         </Button>

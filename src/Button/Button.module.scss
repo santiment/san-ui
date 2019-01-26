@@ -128,7 +128,13 @@ $color-night: #ccc;
 }
 
 .border {
-  background-color: transparent;
+    border: 1px solid $light-gray3;
+
+  &.negative,
+  &.positive,
+  &.purple {
+      background-color: transparent;
+  }
 
   &.negative {
     color: $button-negative-day;
