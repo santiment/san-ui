@@ -13,6 +13,7 @@ import IconTelegram from './IconTelegram'
 import IconLock from './IconLock'
 import IconEye from './IconEye'
 import IconPlusRound from './IconPlusRound'
+import IconShare from './IconShare'
 
 export const icons = {
   checkmark: IconCheckmark,
@@ -27,7 +28,8 @@ export const icons = {
   telegram: IconTelegram,
   lock: IconLock,
   eye: IconEye,
-  'plus-round': IconPlusRound
+  'plus-round': IconPlusRound,
+  share: IconShare
 }
 
 const Icon = ({ type, ...props }) => {
