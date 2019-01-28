@@ -1,0 +1,39 @@
+@import '../variables.scss';
+
+.wrapper {
+    position: relative;
+
+    &:hover .icon {
+        fill: $green;
+    }
+}
+
+.icon {
+    position: absolute;
+    top: 0;
+    padding: 0 10px;
+    height: 100%;
+    fill: $dark-gray;
+
+    :global(.night-mode) & {
+        fill: $input-placeholder-color-night;
+    }
+
+    &.left {
+        left: 0;
+    }
+    &.right {
+        right: 0;
+    }
+}
+
+.input {
+    &.left {
+        padding-left: 30px;
+    }
+
+    &.right {
+        padding-right: 30px;
+    }
+
+}

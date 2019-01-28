@@ -11,12 +11,12 @@ class SearchWithSuggestions extends PureComponent {
     onResultSelect: PropTypes.func.isRequired,
     predicate: PropTypes.func.isRequired,
     maxSuggestions: PropTypes.number,
-    iconPosition: PropTypes.oneOf(['left', 'right', 'none'])
+    iconPosition: PropTypes.oneOf(['left', 'right'])
   }
 
   static defaultProps = {
     maxSuggestions: 5,
-    iconPosition: 'left'
+    iconPosition: undefined
   }
 
   state = {
@@ -36,12 +36,12 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   handleOnResultSelect = suggestion => {
-    this.setState({searchTerm: ''}, () => 
+    this.setState({ searchTerm: '' }, () =>
       this.props.onResultSelect(suggestion)
     )
   }
 
-  filterData () {
+  filterData() {
     const { data, predicate } = this.props
     this.setState(prevState => ({
       ...prevState,
@@ -56,7 +56,7 @@ class SearchWithSuggestions extends PureComponent {
     }))
   }
 
-  render () {
+  render() {
     const { suggestions, searchTerm, isFocused } = this.state
     const { maxSuggestions, suggestionContent } = this.props
     return (
@@ -72,17 +72,21 @@ class SearchWithSuggestions extends PureComponent {
           <Panel popup className={styles.suggestions}>
             <ul className={styles.suggestions__list}>
               {suggestions.length !== 0 ? (
-                suggestions.slice(0, maxSuggestions).map((suggestion, index) => (
-                  <li 
-                    key={index}
-                    className={styles.suggestions__item}>
-                    <div 
-                      onClick={this.handleOnResultSelect.bind(this, suggestion)}
-                      className={styles.suggestion}>
-                      {suggestionContent(suggestion)}
-                    </div>
-                  </li>
-                ))
+                suggestions
+                  .slice(0, maxSuggestions)
+                  .map((suggestion, index) => (
+                    <li key={index} className={styles.suggestions__item}>
+                      <div
+                        onClick={this.handleOnResultSelect.bind(
+                          this,
+                          suggestion
+                        )}
+                        className={styles.suggestion}
+                      >
+                        {suggestionContent(suggestion)}
+                      </div>
+                    </li>
+                  ))
               ) : (
                 <div className={styles.suggestion + ' ' + styles.noresults}>
                   No results found.

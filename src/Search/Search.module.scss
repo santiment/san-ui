@@ -8,10 +8,10 @@
   position: absolute;
   padding: 0 10px;
   height: 100%;
-  color: $input-placeholder-color-day;
+  fill: $dark-gray;
 
   :global(.night-mode) & {
-    color: $input-placeholder-color-night;
+    fill: $input-placeholder-color-night;
   }
 
   &.left {
@@ -35,13 +35,6 @@
     padding-right: 35px;
   }
 
-  &:focus + .icon {
-    color: #000;
-
-    :global(.night-mode) & {
-      color: $input-color-night;
-    }
-  }
 }
 
 .input:placeholder {
