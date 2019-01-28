@@ -29,7 +29,7 @@ const InputWithIcon = ({
 
 InputWithIcon.propTypes = {
   icon: PropTypes.string.isRequired,
-  iconPosition: PropTypes.oneOf(['left', 'right', undefined]),
+  iconPosition: PropTypes.oneOf(['left', 'right']),
   className: PropTypes.string,
   inputClassName: PropTypes.string
 }
