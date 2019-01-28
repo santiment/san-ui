@@ -42,7 +42,6 @@ stories.add(
   'Suggestions (usage info)',
   () => (
     <SearchWithSuggestions
-      iconPosition='none'
       data={[
         'Bibox Token',
         'Bigbom',

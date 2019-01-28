@@ -69,7 +69,7 @@ class SearchWithSuggestions extends PureComponent {
           onChange={this.handleInputChange}
         />
         {searchTerm !== '' && (
-          <Panel popup className={styles.suggestions}>
+          <Panel variant='modal' className={styles.suggestions}>
             <ul className={styles.suggestions__list}>
               {suggestions.length !== 0 ? (
                 suggestions
