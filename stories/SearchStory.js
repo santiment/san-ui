@@ -9,9 +9,11 @@ const stories = storiesOf('Search', module)
 
 stories.add('Simple', () => (
   <ColorModeComparison>
-    <Search defaultValue={'Left icon'} />
-    <Search iconPosition='right' defaultValue={'Right icon'} />
+    <Search defaultValue='No icon' />
+    <Search iconPosition='left' defaultValue='Left icon' />
+    <Search iconPosition='right' defaultValue='Right icon' />
     <Search />
+    <Search iconPosition='left' />
     <Search iconPosition='right' />
   </ColorModeComparison>
 ))
@@ -19,7 +21,6 @@ stories.add('Simple', () => (
 stories.add('Suggestions', () => (
   <ColorModeComparison>
     <SearchWithSuggestions
-      iconPosition='none'
       data={[
         'Bibox Token',
         'Bigbom',
@@ -31,32 +32,34 @@ stories.add('Suggestions', () => (
       onResultSelect={action('selected')}
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
-          item.toUpperCase().includes(searchTerm.toUpperCase())}
-          maxSuggestions={5}
-        />
-      </ColorModeComparison>
+        item.toUpperCase().includes(searchTerm.toUpperCase())}
+      maxSuggestions={5}
+    />
+  </ColorModeComparison>
 ))
 
-stories.add('Suggestions (usage info)', () => (
-  <SearchWithSuggestions
-    iconPosition='none'
-    data={[
-      'Bibox Token',
-      'Bigbom',
-      'Binance Coin',
-      'BioCoin',
-      'BitBay',
-      'bitcoin'
-    ]}
-    onResultSelect={action('selected')}
-    suggestionContent={suggestion => suggestion}
-    predicate={searchTerm => item =>
+stories.add(
+  'Suggestions (usage info)',
+  () => (
+    <SearchWithSuggestions
+      data={[
+        'Bibox Token',
+        'Bigbom',
+        'Binance Coin',
+        'BioCoin',
+        'BitBay',
+        'bitcoin'
+      ]}
+      onResultSelect={action('selected')}
+      suggestionContent={suggestion => suggestion}
+      predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
-        maxSuggestions={5}
-      />
-), {
-  info: {
-    text: `
+      maxSuggestions={5}
+    />
+  ),
+  {
+    info: {
+      text: `
     **SearchWithSuggestions** component is made for Search with a suggestion popup panel.
 
     ~~~js
@@ -78,6 +81,8 @@ stories.add('Suggestions (usage info)', () => (
         />
     ~~~
   `,
-    inline: true, source: false 
+      inline: true,
+      source: false
+    }
   }
-})
+)

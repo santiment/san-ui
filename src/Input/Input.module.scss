@@ -15,7 +15,9 @@ $input-placeholder-color-night: #4b4b4b;
 $input-error-color-day: $red;
 
 .input {
-  @include border-box;
+    @include border-box;
+    @include text-normal;
+    line-height: 20px;
   width: 100%;
   outline: none;
   border: 1px solid $input-border-day;

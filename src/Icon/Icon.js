@@ -14,6 +14,8 @@ import IconLock from './IconLock'
 import IconEye from './IconEye'
 import IconPlusRound from './IconPlusRound'
 import IconShare from './IconShare'
+import IconSearch from './IconSearch'
+import IconSearchSmall from './IconSearchSmall'
 
 export const icons = {
   checkmark: IconCheckmark,
@@ -29,7 +31,9 @@ export const icons = {
   lock: IconLock,
   eye: IconEye,
   'plus-round': IconPlusRound,
-  share: IconShare
+  share: IconShare,
+  search: IconSearch,
+  'search-small': IconSearchSmall
 }
 
 const Icon = ({ type, ...props }) => {
