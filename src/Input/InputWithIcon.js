@@ -9,6 +9,7 @@ const InputWithIcon = ({
   iconPosition,
   className,
   inputClassName,
+  iconClassName,
   ...props
 }) => {
   return (
@@ -20,7 +21,7 @@ const InputWithIcon = ({
       {iconPosition && (
         <Icon
           type={icon}
-          className={`${styles.icon} ${styles[iconPosition]}`}
+          className={`${iconClassName} ${styles.icon} ${styles[iconPosition]}`}
         />
       )}
     </div>
@@ -31,13 +32,15 @@ InputWithIcon.propTypes = {
   icon: PropTypes.string.isRequired,
   iconPosition: PropTypes.oneOf(['left', 'right']),
   className: PropTypes.string,
-  inputClassName: PropTypes.string
+  inputClassName: PropTypes.string,
+  iconClassName: PropTypes.string
 }
 
 InputWithIcon.defaultProps = {
   iconPosition: undefined,
   className: '',
-  inputClassName: ''
+  inputClassName: '',
+  iconClassName: ''
 }
 
 export default InputWithIcon

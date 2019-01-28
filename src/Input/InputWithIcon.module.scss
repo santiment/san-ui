@@ -9,6 +9,8 @@
 }
 
 .icon {
+    box-sizing: content-box;
+    width: 14px;
     position: absolute;
     top: 0;
     padding: 0 10px;
