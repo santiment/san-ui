@@ -1,6 +1,6 @@
 import React from 'react'
 
-const IconSearchSmall = props => {
+const IconSearch = props => {
   return (
     <svg
       width='17'
@@ -18,4 +18,4 @@ const IconSearchSmall = props => {
   )
 }
 
-export default IconSearchSmall
+export default IconSearch
