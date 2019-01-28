@@ -1,13 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 import styles from './Panel.module.scss'
 
-const Panel = ({ popup, children, padding, className = '', ...props }) => {
+const Panel = ({ variant, children, padding, className, ...props }) => {
   return (
     <div
-      className={`${styles.panel} ${popup ? styles.popup : ''} ${
-        padding ? styles.padding : ''
-      } ${className}`}
+      className={cx({
+        [`${className} ${styles.panel}`]: true,
+        [styles.padding]: padding,
+        [styles[variant]]: variant
+      })}
       {...props}
     >
       {children}
@@ -16,8 +19,16 @@ const Panel = ({ popup, children, padding, className = '', ...props }) => {
 }
 
 Panel.propTypes = {
-  popup: PropTypes.bool,
-  padding: PropTypes.bool
+  variant: PropTypes.oneOf(['tooltip', 'modal', undefined]),
+  padding: PropTypes.bool,
+  className: PropTypes.string,
+  children: PropTypes.any.isRequired
+}
+
+Panel.defaultProps = {
+  variant: undefined,
+  padding: false,
+  className: ''
 }
 
 export default Panel
