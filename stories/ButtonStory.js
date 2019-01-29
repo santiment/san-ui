@@ -64,6 +64,21 @@ storiesOf('Button', module)
       </ColorModeComparison>
     </div>
   ))
+  .add('Flated (Fluid)', () => (
+    <div>
+      <ColorModeComparison>
+        <Button fluid variant='flat'>
+          Flat Button
+        </Button>
+        <Button fluid border variant='flat'>
+          Flat Border Button
+        </Button>
+        <Button fluid variant='flat' isActive>
+          Flat Active Button
+        </Button>
+      </ColorModeComparison>
+    </div>
+  ))
   .add('Ghosted', () => (
     <div>
       <ColorModeComparison>
@@ -72,6 +87,21 @@ storiesOf('Button', module)
           Ghost Border Button
         </Button>
         <Button variant='ghost' isActive>
+          Ghost Active Button
+        </Button>
+      </ColorModeComparison>
+    </div>
+  ))
+  .add('Ghosted (fluid)', () => (
+    <div>
+      <ColorModeComparison>
+        <Button fluid variant='ghost'>
+          Ghost Button
+        </Button>
+        <Button fluid border variant='ghost'>
+          Ghost Border Button
+        </Button>
+        <Button fluid variant='ghost' isActive>
           Ghost Active Button
         </Button>
       </ColorModeComparison>
