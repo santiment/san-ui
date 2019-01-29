@@ -15,21 +15,23 @@ $color-night: #ccc;
 
 .button {
   @include border-box;
-  display: inline-block;
+  display: inline-flex;
+  align-items:center;
   border: none;
   outline: none;
   height: 32px;
   padding: 6px 12px;
   font-family: Rubik, sans-serif;
   font-size: $font-size-regular;
-  line-height: $line-height-regular;
+  line-height: 1;
   border-radius: $border-radius;
   cursor: pointer;
 
 }
 
 .fluid {
-    display: block;
+    display: flex;
+    width: 100%;
 }
 
 .fill {
@@ -206,7 +208,8 @@ $color-night: #ccc;
 }
 
 .flat {
-  color: $text-grey;
+    color: $text-grey;
+    background-color: $white;
 
   & svg {
     fill: #15181f;
