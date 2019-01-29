@@ -16,7 +16,7 @@ $color-night: #ccc;
 .button {
   @include border-box;
   display: inline-flex;
-  align-items:center;
+  align-items: center;
   border: none;
   outline: none;
   height: 32px;
@@ -208,8 +208,8 @@ $color-night: #ccc;
 }
 
 .flat {
-    color: $text-grey;
-    background-color: $white;
+  color: $text-grey;
+  background-color: $white;
 
   & svg {
     fill: #15181f;
