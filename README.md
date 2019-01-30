@@ -43,7 +43,7 @@ In order to access CSS variables `main.scss` should be imported into the project
 ```scss
 /* index.scss */
 
-@import "~/@santiment-network/ui/main.scss";
+@import "~@santiment-network/ui/main.scss";
 
 /* ... */
 ```
