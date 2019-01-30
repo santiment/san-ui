@@ -12,7 +12,7 @@
     "clean": "rimraf lib-build",
     "test:js": "jest",
     "test": "yarn test:js",
-    "scripts": "node scripts/copy-files",
+    "scripts": "node scripts/copy-files && node scripts/update-version",
     "lib-publish": "yarn publish lib-build --patch --no-git-tag-version",
     "build:storybook": "build-storybook -o build",
     "build:lib": "yarn webpack && yarn scripts && cp -r ./README.md lib-build/README.md",

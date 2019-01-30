@@ -26,7 +26,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(sass|scss)$/,
+        test: /\.(css|sass|scss)$/,
         loaders: ['style-loader', 'css-loader?modules&sass', 'sass-loader']
       }
     ]
