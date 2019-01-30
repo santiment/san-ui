@@ -11,24 +11,39 @@ $input-color-night: #a0a0a0;
 $input-placeholder-color-day: #999;
 $input-placeholder-color-night: #4b4b4b;
 
-// COLORS
+// COLORS - NOTE: DEPRECATED. SHOULD USE CSS VARS AS IN MAIN.SCSS
 
 // Basic
 $white: #ffffff;
-$light-gray: #f6f6f8;
+
+$black: #15181f;
+
+$light-gray: #F7F8F9;
 $light-gray2: #ebeef5;
 $light-gray3: #e0e4ee;
 $dark-gray: #adb6cd;
-$dark-gray2: #808ba1;
-$black: #15181f;
+$dark-gray2: #7A859E;
+
 $green: #14c393;
 $green-hover: #07b988;
-$green-light: #808ba1;
+$green-light: #DCF6EF;
+$green-light-2: #B9EDDF;
+
 $orange: #ffad4d;
 $orange-hover: #ffa030;
-$blue: #5275ff;
+$orange-light: #FFF3E4;
+
 $red: #ff5b5b;
+$red-hover: #ED4F4F;
+$red-light: #FFE6E6;
+
+$blue: #5275ff;
+$blue-hover: #4567ED;
+$blue-light: #E5EAFF;
+
 $violet: #8358ff;
+$violet-hover: #774EED;
+$violet-light: #F0EEFF;
 
 //With names
 $text-grey: #7a859e;

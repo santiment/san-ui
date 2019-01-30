@@ -1,3 +1,5 @@
+import '../src/main.scss'
+
 import './ColorStory.js'
 import './ButtonStory.js'
 import './InputStory.js'

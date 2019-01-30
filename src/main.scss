@@ -1,0 +1,71 @@
+/* NOTE
+    This file should be included at the top of the target project index.scss
+*/
+
+@import "./variables.scss";
+
+
+// --CSS VARS--
+:root {
+    --white: #{$white};
+
+    --black: #{$black};
+
+    --grey-light: #{$light-gray};
+    --grey-light-2: #{$light-gray2};
+    --grey-light-3: #{$light-gray3};
+    --grey-dark: #{$dark-gray};
+    --grey-dark-2: #{$dark-gray2};
+
+    --green: #{$green};
+    --green-hover: #{$green-hover};
+    --green-light: #{$green-light}; 
+    --green-light-2: #{$green-light-2};
+
+    --orange: #{$orange};
+    --orange-hover: #{$orange-hover};
+    --orange-light: #{$orange-light};
+
+    --red: #{$red};
+    --red-hover: #{$red-hover};
+    --red-light: #{$red-light};
+
+    --blue: #{$blue};
+    --blue-hover: #{$blue-hover};
+    --blue-light: #{$blue-light};
+
+    --violet: #{$violet};
+    --violet-hover: #{$violet-hover};
+    --violet-light: #{$violet-light};
+
+    & .night-mode {
+        
+    }
+}
+
+// --SCROLLBAR STYLES--
+*::-webkit-scrollbar {
+    background: transparent !important;
+    width: 4px !important;
+}
+
+*::-webkit-scrollbar:horizontal {
+    height: 4px !important;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: $border-radius !important;
+    background: var(--grey-light-2) !important;
+}
+*::-webkit-scrollbar-thumb {
+    width: 4px !important;
+    border-radius: $border-radius !important;
+    background: var(--grey-dark) !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    cursor: pointer !important;
+    background: var(--grey-dark-2) !important;
+}
+// --SCROLLBAR STYLES--
+
