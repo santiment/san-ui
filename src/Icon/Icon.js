@@ -1,40 +1,30 @@
+/*
+   NOTE
+   For successful transformation, all icon components filename should start with the 'Icon' and end with the '.js' extension.
+   E.G.:
+      Component "IconProfileRound.js" will be transformed into "profile-round"
+*/
+
 import React from 'react'
 import PropTypes from 'prop-types'
-import IconHelpRound from './IconHelpRound'
-import IconProfile from './IconProfile'
-import IconCheckmark from './IconCheckmark'
-import IconProfileRound from './IconProfileRound'
-import IconClose from './IconClose'
-import IconReddit from './IconReddit'
-import IconTwitter from './IconTwitter'
-import IconFacebook from './IconFacebook'
-import IconLinkedIn from './IconLinkedIn'
-import IconTelegram from './IconTelegram'
-import IconLock from './IconLock'
-import IconEye from './IconEye'
-import IconPlusRound from './IconPlusRound'
-import IconShare from './IconShare'
-import IconSearch from './IconSearch'
-import IconSearchSmall from './IconSearchSmall'
 
-export const icons = {
-  checkmark: IconCheckmark,
-  profile: IconProfile,
-  'profile-round': IconProfileRound,
-  'help-round': IconHelpRound,
-  close: IconClose,
-  reddit: IconReddit,
-  twitter: IconTwitter,
-  facebook: IconFacebook,
-  linkedIn: IconLinkedIn,
-  telegram: IconTelegram,
-  lock: IconLock,
-  eye: IconEye,
-  'plus-round': IconPlusRound,
-  share: IconShare,
-  search: IconSearch,
-  'search-small': IconSearchSmall
-}
+const context = require.context('./', false, /\.js$/)
+
+export const icons = context
+  .keys()
+  .filter(iconKey => {
+    return iconKey !== './Icon.js' && iconKey !== './index.js'
+  })
+  .reduce((acc, iconKey) => {
+    const icon = iconKey
+      .slice('./Icon'.length, -'.js'.length)
+      .replace(/(\B[A-Z])/, '-$1')
+      .toLowerCase()
+
+    acc[icon] = context(iconKey).default
+
+    return acc
+  }, {})
 
 const Icon = ({ type, ...props }) => {
   const SelectedIcon = icons[type]
