@@ -87,9 +87,9 @@
     cursor: pointer !important;
     background: var(--grey-dark-2) !important;
 }
-// --SCROLLBAR STYLES--
 
 
+// --SELECTION STYLES--
 :global(.night-mode) {
     & ::selection {
         background-color: #a5a8b1;
