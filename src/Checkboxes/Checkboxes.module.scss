@@ -10,11 +10,11 @@
     width: 16px;
     height: 16px;
     border-radius: 2px;
-    border: 1px solid $light-gray3;
-    background: $white;
+    border: 1px solid var(--grey-light-3);
+    background: var(--white);
 
     &:hover {
-        border-color: $green;
+        border-color: var(--green);
     }
 }
 
@@ -24,39 +24,39 @@
 
 .selected {
     & .btn {
-        background: $green;
-        border-color: $green;
+        background: var(--green);
+        border-color: var(--green);
 
         &:hover {
-            background: $green-hover;
-            border-color: $green-hover;
+            background: var(--green-hover);
+            border-color: var(--green-hover);
         }
     }
 
     & .checkmark {
         display: block;
-        fill: $white;
+        fill: var(--white);
     }
 }
 
 .disabled {
     & .btn {
         cursor: not-allowed;
-        background: $light-gray;
-        border-color: $light-gray3;
+        background: var(--grey-light);
+        border-color: var(--grey-light-3);
 
         &:hover {
-            border-color: $light-gray3;
+            border-color: var(--grey-light-3);
         }
     }
 
     &.selected .btn {
-        background: $light-gray2;
-        border-color: $light-gray2;
+        background: var(--grey-light-2);
+        border-color: var(--grey-light-2);
 
         &:hover {
-            background: $light-gray2;
-            border-color: $light-gray2;
+            background: var(--grey-light-2);
+            border-color: var(--grey-light-2);
         }
     }
 }
