@@ -51,6 +51,8 @@
         --grey-dark: #{$dark-4};
         --grey-dark-2: #{$dark-5};
 
+        --green-light: #{$green-dark};
+
         --orange-light: #{$orange-dark};
 
         --red-light: #{$red-dark};
@@ -87,3 +89,9 @@
 }
 // --SCROLLBAR STYLES--
 
+
+:global(.night-mode) {
+    & ::selection {
+        background-color: #a5a8b1;
+    }
+}
