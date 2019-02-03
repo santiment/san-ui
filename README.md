@@ -37,3 +37,13 @@ Santiment UI React library.
 ### Publishing the library
 
 `yarn lib-publish`
+
+### In the project
+In order to access CSS variables `main.scss` should be imported into the project's main style file, e.g.:
+```scss
+/* index.scss */
+
+@import "~@santiment-network/ui/main.scss";
+
+/* ... */
+```

@@ -2,7 +2,7 @@
 
 .tabs {
     display: inline-block;
-    border-bottom: 1px solid $light-gray2;
+    border-bottom: 1px solid var(--grey-light-2);
 }
 
 .tab {
@@ -10,7 +10,7 @@
     box-sizing: border-box;
     cursor: pointer;
     background: transparent;
-    color: $dark-gray2;
+    color: var(--grey-dark-2);
     padding-bottom: 16px;
 
     margin: 0 16px;
@@ -24,12 +24,12 @@
     }
 
     &:hover {
-        color: $green;
+        color: var(--green);
     }
 }
 
 .selected {
-        color: $green;
+    color: var(--green);
 
         &::after {
             content: '';
@@ -40,20 +40,20 @@
             left:0;
             right: 0;
             border-radius: 1px;
-            background: $green;
+            background: var(--green);
         }
 }
 
 .disabled {
         cursor: not-allowed;
-        color: $light-gray3;
+        color: var(--grey-light-3);
 
         &::after {
-            background: $light-gray3;
+            background: var(--grey-light-3);
         }
 
         &:hover {
-            color: $light-gray3;
+            color: var(--grey-light-3);
         }
 
 }

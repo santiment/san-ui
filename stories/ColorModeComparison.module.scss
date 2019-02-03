@@ -19,11 +19,7 @@
 }
 
 .column {
-  background-color: #f0f4f8;
-}
-
-:global(.night-mode).column {
-  background-color: #1a1b1e;
+    background-color: var(--white);
 }
 
 :global(.night-mode) .title {

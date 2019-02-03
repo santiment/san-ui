@@ -12,39 +12,22 @@ $block-box-shadow:0px 6px 32px rgba(21, 24, 31, 0.03);
 
 .panel {
   @include border-box;
-  background-color: $white;
+  background-color: var(--white);
+  color: var(--black);
   border-radius: 4px;
-  border: 1px solid $light-gray3;
+  border: 1px solid var(--grey-light-3);
   box-shadow: $block-box-shadow;
 
   &.padding {
     padding: 15px;
   }
-
-  :global(.night-mode) & {
-    background-color: #1c1e21;
-    box-shadow: none;
-    border: 1px solid $border-color-night;
-  }
-
 }
 
 .tooltip {
     box-shadow: $tooltip-box-shadow;
-
-    :global(.night-mode) & {
-        background-color: #23252a;
-    }
 }
 
 .modal {
     box-shadow: $modal-box-shadow;
 }
 
-// @TODO(vanguard): Extract to index css
-body :global(.night-mode) {
-  color: #a0a0a0;
-  & ::selection {
-    background-color: #a5a8b1;
-  }
-}
