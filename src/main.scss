@@ -63,6 +63,10 @@
     }
 }
 
+body {
+    background-color: var(--white);
+}
+
 // --SCROLLBAR STYLES--
 *::-webkit-scrollbar {
     background: transparent !important;
