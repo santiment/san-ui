@@ -130,7 +130,6 @@ $color-night: #ccc;
 }
 
 .border {
-    // border: 1px solid $light-gray3;
     border: 1px solid var(--grey-light-3);
 
   &.negative,
@@ -209,56 +208,44 @@ $color-night: #ccc;
 }
 
 .flat {
-  // color: $text-grey;
     color: var(--grey-dark-2);
     background-color: transparent;
 
   & svg {
-    // fill: #15181f;
       fill: var(--black);
   }
 
   &:hover {
-    // color: $text-green;
       color: var(--green);
     & svg {
-      // fill: $text-green;
         fill: var(--green);
     }
   }
 
   &.active {
-    // color: $text-green;
       color: var(--green);
-    // background-color: $btn-background-light-green;
       background-color: var(--green-light);
     & svg {
-      // fill: $text-green;
         fill: var(--green);
     }
   }
 }
 
 .ghost {
-  // color: #15181f;
     color: var(--black);
   background-color: transparent;
 
   & svg {
-    // fill: #15181f;
       fill: var(--black);
   }
 
   &:hover {
-    // background: $btn-background-light-grey;
       background: var(--grey-light);
   }
 
   &.active {
-    // color: $text-green;
       color: var(--green);
     & svg {
-      // fill: $text-green;
         fill: var(--green);
     }
   }
