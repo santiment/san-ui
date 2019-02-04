@@ -20,59 +20,38 @@ $input-error-color-day: $red;
     line-height: 20px;
   width: 100%;
   outline: none;
-  border: 1px solid $input-border-day;
+  background-color: var(--white);
+  border: 1px solid var(--grey-light-3);
   padding: 6px 10px;
   border-radius: 4px;
   height: 32px;
-  color: $black;
+  color: var(--black);
 
   &::placeholder {
-    color: $input-placeholder-color-day;
-  }
-
-  :global(.night-mode) & {
-    color: $input-color-night;
-    border-color: $input-border-night;
-    background-color: #17181b;
-
-    &::placeholder {
-      color: $input-placeholder-color-night;
-    }
+      color: var(--grey-dark);
   }
 
   &[disabled] {
-      color: $light-gray3;
+      color: var(--grey-light-3);
   }
 
   &:focus {
-    border-color: $input-border-focus-day;
-
-    :global(.night-mode) & {
-      border-color: $input-border-focus-night;
-    }
+      border-color: var(--green);
   }
 
   &:hover {
-      border-color: $input-border-focus-day;
+      border-color: var(--green);
   }
 
   &.inplace {
-    color: $input-placeholder-color-day;
-
-    :global(.night-mode) & {
-      color: $input-placeholder-color-night;
-    }
+      color: var(--grey-dark);
 
     &:focus {
-      color: $black;
-
-      :global(.night-mode) & {
-        color: $input-color-night;
-      }
+        color: var(--black);
     }
   }
 
   &.error {
-      border-color: $input-error-color-day;
+      border-color: var(--red);
   }
 }

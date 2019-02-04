@@ -4,7 +4,7 @@
     position: relative;
 
     &:hover .icon {
-        fill: $green;
+        fill: var(--green);
     }
 }
 
@@ -15,11 +15,7 @@
     top: 0;
     padding: 0 10px;
     height: 100%;
-    fill: $dark-gray;
-
-    :global(.night-mode) & {
-        fill: $input-placeholder-color-night;
-    }
+    fill: var(--grey-dark);
 
     &.left {
         left: 0;
@@ -37,5 +33,4 @@
     &.right {
         padding-right: 30px;
     }
-
 }
