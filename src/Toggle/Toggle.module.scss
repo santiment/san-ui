@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .toggle {
   position: relative;
   cursor: pointer;
@@ -13,7 +15,8 @@
     position: absolute;
     width: 14px;
     height: 14px;
-    background: #ffffff;
+    // background: #ffffff;
+    background: $white;
     border-radius: 10px;
 
     left: 3px;
@@ -21,16 +24,18 @@
   }
 
   & rect {
-    fill: #adb6cd;
+    // fill: #adb6cd;
+      fill: var(--grey-dark);
   }
 
   &.active {
     & rect {
-      fill: #14c393;
+      // fill: #14c393;
+        fill: var(--green);
     }
 
     &::before {
-      left: calc(100% - 14px - 3px);
+        left: calc(100% - 14px - 3px);
     }
   }
 
