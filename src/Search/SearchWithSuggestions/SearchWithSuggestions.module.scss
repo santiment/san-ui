@@ -21,16 +21,12 @@ $border-color-night: #4a4a4a;
 }
 
 .suggestions__item {
-  // border-bottom: 1px solid #dededf;
     border-bottom: 1px solid var(--grey-light-3);
 
   &:last-child {
     border-bottom: none;
   }
 
-  // :global(.night-mode) & {
-  //   border-color: $border-color-night;
-  // }
 }
 
 .suggestion {
@@ -42,19 +38,12 @@ $border-color-night: #4a4a4a;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
   line-height: 20px;
-  // color: #7A859E;
   color: var(--grey-dark-2);
 
   &:hover,
   &:focus {
-    // color: #14C393;
       color: var(--green);
-    // background: #F6F6F8;
       background: var(--grey-light);
-
-    // :global(.night-mode) & {
-    //   background: #F6F6F8;
-    // }
   }
 }
 
