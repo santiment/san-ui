@@ -15,7 +15,6 @@
     position: absolute;
     width: 14px;
     height: 14px;
-    // background: #ffffff;
     background: $white;
     border-radius: 10px;
 
@@ -24,13 +23,11 @@
   }
 
   & rect {
-    // fill: #adb6cd;
       fill: var(--grey-dark);
   }
 
   &.active {
     & rect {
-      // fill: #14c393;
         fill: var(--green);
     }
 
