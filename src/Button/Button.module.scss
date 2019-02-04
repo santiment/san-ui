@@ -209,7 +209,7 @@ $color-night: #ccc;
 
 .flat {
     color: var(--grey-dark-2);
-    background-color: transparent;
+    background-color: var(--white);
 
   & svg {
       fill: var(--black);
@@ -233,7 +233,7 @@ $color-night: #ccc;
 
 .ghost {
     color: var(--black);
-  background-color: transparent;
+    background-color: var(--white);
 
   & svg {
       fill: var(--black);
