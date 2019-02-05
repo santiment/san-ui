@@ -29,7 +29,7 @@ stories.add('Suggestions', () => (
         'BitBay',
         'bitcoin'
       ]}
-      onResultSelect={action('selected')}
+      onSuggestionSelect={action('selected')}
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
@@ -50,7 +50,7 @@ stories.add(
         'BitBay',
         'bitcoin'
       ]}
-      onResultSelect={action('selected')}
+      onSuggestionSelect={action('selected')}
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
@@ -73,7 +73,7 @@ stories.add(
           'BitBay',
           'bitcoin'
         ]}
-        onResultSelect={suggestion = console.log(suggestion)}
+        onSuggestionSelect={suggestion = console.log(suggestion)}
         suggestionContent={suggestion => suggestion}
         predicate={searchTerm => item =>
           item.toUpperCase().includes(searchTerm.toUpperCase())}
