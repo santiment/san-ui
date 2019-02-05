@@ -2,21 +2,33 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Panel from '../../Panel/Panel'
 import Search from '../Search'
+import Button from '../../Button'
 import styles from './SearchWithSuggestions.module.scss'
+
+let debounceTimer
+const debounce = (clb, time) => clbArgs => {
+  clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(() => clb(clbArgs), time)
+}
 
 class SearchWithSuggestions extends PureComponent {
   static propTypes = {
     data: PropTypes.array.isRequired,
     suggestionContent: PropTypes.func.isRequired,
-    onResultSelect: PropTypes.func.isRequired,
     predicate: PropTypes.func.isRequired,
+    onSuggestionSelect: PropTypes.func,
     maxSuggestions: PropTypes.number,
-    iconPosition: PropTypes.oneOf(['left', 'right'])
+    iconPosition: PropTypes.oneOf(['left', 'right']),
+    debounceTime: PropTypes.number,
+    className: PropTypes.string
   }
 
   static defaultProps = {
     maxSuggestions: 5,
-    iconPosition: undefined
+    iconPosition: undefined,
+    onSuggestionSelect: () => {},
+    debounceTime: 200,
+    className: ''
   }
 
   state = {
@@ -25,7 +37,11 @@ class SearchWithSuggestions extends PureComponent {
     isFocused: false
   }
 
-  handleInputChange = ({ currentTarget }) => {
+  componentWillUnmount() {
+    clearTimeout(debounceTimer)
+  }
+
+  onInputChange = ({ currentTarget }) => {
     this.setState(
       prevState => ({
         ...prevState,
@@ -35,19 +51,19 @@ class SearchWithSuggestions extends PureComponent {
     )
   }
 
-  handleOnResultSelect = suggestion => {
+  onSuggestionSelect = suggestion => {
     this.setState({ searchTerm: '' }, () =>
-      this.props.onResultSelect(suggestion)
+      this.props.onSuggestionSelect(suggestion)
     )
   }
 
-  filterData() {
+  filterData = debounce(() => {
     const { data, predicate } = this.props
     this.setState(prevState => ({
       ...prevState,
       suggestions: data.filter(predicate(prevState.searchTerm))
     }))
-  }
+  }, this.props.debounceTime)
 
   toggleFocusState = () => {
     this.setState(prevState => ({
@@ -58,41 +74,40 @@ class SearchWithSuggestions extends PureComponent {
 
   render() {
     const { suggestions, searchTerm, isFocused } = this.state
-    const { maxSuggestions, suggestionContent } = this.props
+    const {
+      maxSuggestions,
+      suggestionContent,
+      iconPosition,
+      className
+    } = this.props
     return (
-      <div className={styles.wrapper}>
+      <div className={`${styles.wrapper} ${className}`}>
         <Search
-          iconPosition={this.props.iconPosition}
+          iconPosition={iconPosition}
           value={searchTerm}
           onFocus={this.toggleFocusState}
           onBlur={this.toggleFocusState}
-          onChange={this.handleInputChange}
+          onChange={this.onInputChange}
         />
-        {searchTerm !== '' && (
+        {isFocused && searchTerm !== '' && (
           <Panel variant='modal' className={styles.suggestions}>
-            <ul className={styles.suggestions__list}>
-              {suggestions.length !== 0 ? (
-                suggestions
-                  .slice(0, maxSuggestions)
-                  .map((suggestion, index) => (
-                    <li key={index} className={styles.suggestions__item}>
-                      <div
-                        onClick={this.handleOnResultSelect.bind(
-                          this,
-                          suggestion
-                        )}
-                        className={styles.suggestion}
-                      >
-                        {suggestionContent(suggestion)}
-                      </div>
-                    </li>
-                  ))
-              ) : (
-                <div className={styles.suggestion + ' ' + styles.noresults}>
-                  No results found.
-                </div>
-              )}
-            </ul>
+            {suggestions.length > 0 ? (
+              suggestions.slice(0, maxSuggestions).map((suggestion, index) => (
+                <Button
+                  key={index}
+                  fluid
+                  variant='ghost'
+                  className={styles.suggestion}
+                  onMouseDown={() => this.onSuggestionSelect(suggestion)}
+                >
+                  {suggestionContent(suggestion)}
+                </Button>
+              ))
+            ) : (
+              <div className={styles.suggestion + ' ' + styles.noresults}>
+                No results found.
+              </div>
+            )}
           </Panel>
         )}
       </div>

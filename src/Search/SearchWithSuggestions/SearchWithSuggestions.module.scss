@@ -10,40 +10,17 @@ $border-color-night: #4a4a4a;
   position: absolute;
   top: 100%;
   width: 100%;
-  margin-top: 2px;
-  padding: 0;
-}
-
-.suggestions__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.suggestions__item {
-    border-bottom: 1px solid var(--grey-light-3);
-
-  &:last-child {
-    border-bottom: none;
-  }
-
+  margin-top: 4px;
+  padding: 8px;
 }
 
 .suggestion {
-  @include border-box;
-  padding: 12px;
-  display: inline-block;
-  width: 100%;
-  cursor: pointer;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 14px;
-  line-height: 20px;
+  padding: 6px 8px;
   color: var(--grey-dark-2);
 
   &:hover,
   &:focus {
       color: var(--green);
-      background: var(--grey-light);
   }
 }
 

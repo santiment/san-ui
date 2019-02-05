@@ -15,12 +15,12 @@ describe('SearchWithSuggestions', () => {
           'BitBay',
           'bitcoin'
         ]}
-        onResultSelect={() => console.log('check')}
+        onSuggestionSelect={() => console.log('check')}
         suggestionContent={suggestion => suggestion}
         predicate={searchTerm => item =>
-            item.toUpperCase().includes(searchTerm.toUpperCase())}
-            maxSuggestions={5}
-          />
+          item.toUpperCase().includes(searchTerm.toUpperCase())}
+        maxSuggestions={5}
+      />
     )
     expect(shallowToJson(output)).toMatchSnapshot()
   })
@@ -37,12 +37,12 @@ describe('SearchWithSuggestions', () => {
           'BitBay',
           'bitcoin'
         ]}
-        onResultSelect={() => console.log('check')}
+        onSuggestionSelect={() => console.log('check')}
         suggestionContent={suggestion => suggestion}
         predicate={searchTerm => item =>
-            item.toUpperCase().includes(searchTerm.toUpperCase())}
-            maxSuggestions={5}
-          />
+          item.toUpperCase().includes(searchTerm.toUpperCase())}
+        maxSuggestions={5}
+      />
     )
     const searchInput = output.find('Input')
     searchInput.children().instance().value = 'Big'
@@ -50,4 +50,3 @@ describe('SearchWithSuggestions', () => {
     expect(shallowToJson(output)).toMatchSnapshot()
   })
 })
-
