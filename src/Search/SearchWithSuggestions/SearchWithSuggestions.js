@@ -95,11 +95,11 @@ class SearchWithSuggestions extends PureComponent {
     switch (key) {
       case 'ArrowUp':
         evt.preventDefault()
-        newCursor = cursor <= 0 ? suggestions.length - 1 : cursor - 1
+        newCursor = cursor - 1
         break
       case 'ArrowDown':
         evt.preventDefault()
-        newCursor = cursor + 1 >= suggestions.length ? 0 : cursor + 1
+        newCursor = cursor + 1
         break
       case 'Enter':
         selectedSuggestion = suggestions[cursor]
@@ -107,6 +107,10 @@ class SearchWithSuggestions extends PureComponent {
       default:
         return
     }
+
+    const { maxSuggestions } = this.props
+    newCursor = newCursor % maxSuggestions
+    newCursor = newCursor < 0 ? maxSuggestions - 1 : newCursor
 
     this.setState({ cursor: newCursor })
   }
