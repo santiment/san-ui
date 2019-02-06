@@ -109,10 +109,12 @@ class SearchWithSuggestions extends PureComponent {
     }
 
     const { maxSuggestions } = this.props
-    newCursor = newCursor % maxSuggestions
-    newCursor = newCursor < 0 ? maxSuggestions - 1 : newCursor
+    const maxCursor =
+      suggestions.length > maxSuggestions ? maxSuggestions : suggestions.length
 
-    this.setState({ cursor: newCursor })
+    newCursor = newCursor % maxCursor
+
+    this.setState({ cursor: newCursor < 0 ? maxCursor - 1 : newCursor })
   }
 
   resetForm(clb) {
