@@ -27,9 +27,11 @@ stories.add('Suggestions', () => (
         'Binance Coin',
         'BioCoin',
         'BitBay',
-        'bitcoin'
+        'bitcoin',
+        'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
       ]}
       onSuggestionSelect={action('selected')}
+      iconPosition='left'
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
