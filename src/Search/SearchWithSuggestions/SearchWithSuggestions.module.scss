@@ -17,6 +17,9 @@ $border-color-night: #4a4a4a;
 .suggestion {
   padding: 6px 8px;
   color: var(--grey-dark-2);
+  height: auto;
+  min-height: 32px;
+  text-align: left;
 
   &:hover,
   &:focus {
@@ -24,8 +27,15 @@ $border-color-night: #4a4a4a;
   }
 }
 
+.cursored {
+    background: var(--grey-light-2);
+}
+
 .noresults {
-  cursor: initial;
+    @include text-normal;
+    cursor: initial;
+    min-height: auto;
+    text-align: center;
   &:hover,
   &:focus {
     background-color: inherit !important;
