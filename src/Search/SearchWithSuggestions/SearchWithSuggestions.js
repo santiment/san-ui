@@ -32,6 +32,8 @@ class SearchWithSuggestions extends PureComponent {
     iconPosition: undefined,
     onSuggestionSelect: () => {},
     onSuggestionsUpdate: () => {},
+    inputProps: {},
+    suggestionsProps: {},
     debounceTime: 200,
     className: ''
   }
@@ -76,25 +78,12 @@ class SearchWithSuggestions extends PureComponent {
     )
   }, this.props.debounceTime)
 
-  toggleFocusState = () => {
-    this.setState(prevState => ({
-      ...prevState,
-      isFocused: !prevState.isFocused
-    }))
+  onFocus = () => {
+    this.setState({ isFocused: true })
   }
 
-  resetForm(clb) {
-    console.log('reseting form')
-    this.setState(
-      {
-        isFocused: false,
-        isSearching: false,
-        searchTerm: '',
-        suggestions: [],
-        cursor: 0
-      },
-      clb
-    )
+  onBlur = () => {
+    this.setState({ isFocused: false })
   }
 
   onKeyDown = evt => {
@@ -122,13 +111,24 @@ class SearchWithSuggestions extends PureComponent {
     this.setState({ cursor: newCursor })
   }
 
+  resetForm(clb) {
+    this.setState(
+      {
+        isSearching: false,
+        searchTerm: '',
+        suggestions: [],
+        cursor: 0
+      },
+      clb
+    )
+  }
+
   render() {
     const { suggestions, searchTerm, isFocused, isSearching } = this.state
     const {
       maxSuggestions,
       suggestionContent,
       iconPosition,
-      icon,
       inputProps = {},
       suggestionsProps = {},
       className
@@ -136,16 +136,15 @@ class SearchWithSuggestions extends PureComponent {
     return (
       <div className={`${styles.wrapper} ${className}`}>
         <Search
-          icon={icon}
           iconPosition={iconPosition}
           value={searchTerm}
-          onFocus={this.toggleFocusState}
-          onBlur={this.toggleFocusState}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
           onChange={this.onInputChange}
           onKeyDown={this.onKeyDown}
           {...inputProps}
         />
-        {searchTerm !== '' && (
+        {isFocused && searchTerm !== '' && (
           <Panel
             variant='modal'
             className={styles.suggestions}
