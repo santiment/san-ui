@@ -2,6 +2,7 @@
 
 exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
 <SearchWithSuggestions
+  className=""
   data={
     Array [
       "Bibox Token",
@@ -12,82 +13,76 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
       "bitcoin",
     ]
   }
-  iconPosition="none"
+  debounceTime={200}
+  inputProps={Object {}}
   maxSuggestions={5}
-  onResultSelect={[Function]}
+  onSuggestionSelect={[Function]}
+  onSuggestionsUpdate={[Function]}
   predicate={[Function]}
   suggestionContent={[Function]}
+  suggestionsProps={Object {}}
 >
   <div
-    className="wrapper"
+    className="wrapper "
   >
     <Search
-      iconPosition="none"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       value="Big"
     >
-      <div
-        className="wrapper"
+      <InputWithIcon
+        className=""
+        icon="search-small"
+        iconClassName="icon"
+        inputClassName=""
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Type to search..."
+        value="Big"
       >
-        <Input
-          className="input none"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="Search..."
-          value="Big"
+        <div
+          className=" wrapper"
         >
-          <input
-            className="input  input none"
+          <Input
+            className=" input undefined"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            placeholder="Search..."
-            type="text"
+            onKeyDown={[Function]}
+            placeholder="Type to search..."
             value="Big"
-          />
-        </Input>
-      </div>
-    </Search>
-    <Panel
-      className="suggestions"
-      popup={true}
-    >
-      <div
-        className="panel popup suggestions"
-      >
-        <ul
-          className="suggestions__list"
-        >
-          <li
-            className="suggestions__item"
-            key="0"
           >
-            <div
-              className="suggestion"
-              onClick={[Function]}
-            >
-              Bigbom
-            </div>
-          </li>
-        </ul>
-      </div>
-    </Panel>
+            <input
+              className="input    input undefined"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Type to search..."
+              type="text"
+              value="Big"
+            />
+          </Input>
+        </div>
+      </InputWithIcon>
+    </Search>
   </div>
 </SearchWithSuggestions>
 `;
 
 exports[`SearchWithSuggestions should render correctly 1`] = `
 <div
-  className="wrapper"
+  className="wrapper "
 >
   <Search
-    iconPosition="left"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
+    onKeyDown={[Function]}
     value=""
   />
 </div>

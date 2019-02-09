@@ -28,7 +28,6 @@ describe('SearchWithSuggestions', () => {
   it('should render Bigbom as a child', () => {
     const output = mount(
       <SearchWithSuggestions
-        iconPosition={'none'}
         data={[
           'Bibox Token',
           'Bigbom',
