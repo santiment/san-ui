@@ -22,7 +22,7 @@ export const icons = context
   .reduce((acc, iconKey) => {
     const icon = iconKey
       .slice('./Icon'.length, -'.js'.length)
-      .replace(/(\B[A-Z])/, '-$1')
+      .replace(/(\B[A-Z])/g, '-$1')
       .toLowerCase()
 
     acc[icon] = context(iconKey).default
@@ -31,6 +31,11 @@ export const icons = context
   }, {})
 
 const Icon = ({ type, ...props }) => {
+  if (process.NODE_ENV === 'development') {
+    if (!type || icons[type]) {
+      throw new Error('Unknow icon type -> ', type)
+    }
+  }
   const SelectedIcon = icons[type]
   return <SelectedIcon {...props} />
 }
