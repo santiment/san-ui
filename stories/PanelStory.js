@@ -35,6 +35,16 @@ storiesOf('Panel', module)
       </ColorModeComparison>
     </div>
   ))
+  .add('Tooltip small', () => (
+    <div>
+      <ColorModeComparison>
+        <Panel padding variant='tooltip-small'>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique,
+          illum?
+        </Panel>
+      </ColorModeComparison>
+    </div>
+  ))
   .add('With Header (simple)', () => (
     <div>
       <ColorModeComparison>
@@ -59,6 +69,16 @@ storiesOf('Panel', module)
     <div>
       <ColorModeComparison>
         <PanelWithHeader variant='tooltip' header='Some header text'>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique,
+          illum?
+        </PanelWithHeader>
+      </ColorModeComparison>
+    </div>
+  ))
+  .add('With Header (Tooltip small)', () => (
+    <div>
+      <ColorModeComparison>
+        <PanelWithHeader variant='tooltip-small' header='Some header text'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique,
           illum?
         </PanelWithHeader>
