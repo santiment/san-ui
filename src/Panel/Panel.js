@@ -19,7 +19,7 @@ const Panel = ({ variant, children, padding, className, ...props }) => {
 }
 
 Panel.propTypes = {
-  variant: PropTypes.oneOf(['tooltip', 'modal', undefined]),
+  variant: PropTypes.oneOf(['tooltip-small', 'tooltip', 'modal']),
   padding: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.any.isRequired
