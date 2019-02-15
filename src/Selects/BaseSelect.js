@@ -79,6 +79,7 @@ class BaseSelect extends Component {
         <SelectItem
           {...rest}
           key={index}
+          selectionIndex={index}
           className={cx({
             [`${styles.wrapper} ${className}`]: true,
             [selectedClassName]: selectedIndexes.includes(index),
