@@ -29,7 +29,8 @@ class BaseSelect extends Component {
     onSelect: PropTypes.func,
     stateReducer: PropTypes.func.isRequired,
     as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-    fluid: PropTypes.bool
+    fluid: PropTypes.bool,
+    passSelectionIndexToItem: PropTypes.bool
   }
 
   static defaultProps = {
@@ -37,7 +38,8 @@ class BaseSelect extends Component {
     disabledIndexes: [],
     onSelect: () => {},
     as: 'div',
-    fluid: false
+    fluid: false,
+    passSelectionIndexToItem: false
   }
 
   state = {
@@ -61,6 +63,7 @@ class BaseSelect extends Component {
       disabledIndexes,
       fluid,
       as: SelectItem,
+      passSelectionIndexToItem,
       // Destructing possible unnecessary props to access 'rest' props
       defaultSelectedIndexes,
       onSelect,
@@ -74,6 +77,10 @@ class BaseSelect extends Component {
       const content = option.content || option
       const index = option.index || option
       const isDisabled = disabledIndexes.includes(index)
+
+      if (passSelectionIndexToItem) {
+        rest.selectionIndex = index
+      }
 
       return (
         <SelectItem
