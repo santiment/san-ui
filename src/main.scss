@@ -40,7 +40,7 @@
 
     --cyan: #{$cyan};
 
-    & .night-mode {
+    & :global(.night-mode) {
         --white: #{$dark};
 
         --black: #{$white};
