@@ -26,5 +26,23 @@ storiesOf('Messages', module)
         Message with warn type
       </Message>
     </ColorModeComparison>
+  ))
+  .add('Messages with Icon', () => (
+    <ColorModeComparison>
+      <Message type="info" icon="help-round">
+        You guessed it right, this is same as default.
+      </Message>
+    
+      <Message type="error" icon="close">
+        Message with error type
+      </Message>
+    
+      <Message type="success" icon="checkmark">
+      Message with success type
+      </Message>
+    
+      <Message type="warn" icon="alert">
+        Message with warn type
+      </Message>
+    </ColorModeComparison>
   ));
-  
