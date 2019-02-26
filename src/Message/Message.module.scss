@@ -19,39 +19,28 @@
   border-color: $light-gray2;
   color: $dark-gray2;
 
-  .icon-info {
-    fill: $dark-gray2;
-  }
+  fill: $dark-gray2;
 }
 
 .warn {
   background-color: $orange-light;
   border-color: $orange;
   color: $orange;
-
-  .icon-warn {
-    fill: $orange;
-  }
+  fill: $orange;
 }
 
 .error {
   background-color: $red-light;
   border-color: $red;
   color: $red;
-
-  .icon-error {
-    fill: $red;
-  }
+  fill: $red;
 }
 
 .success {
   background-color: $green-light;
   border-color: $green;
   color: $green;
-
-  .icon-success {
-    fill: $green;
-  }
+  fill: $green;
 }
 
 .iconWrapper {
