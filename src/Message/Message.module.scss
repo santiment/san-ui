@@ -15,32 +15,31 @@
 }
 
 .info {
-  background-color: $light-gray;
-  border-color: $light-gray2;
-  color: $dark-gray2;
-
-  fill: $dark-gray2;
+  background-color: var(--grey-light);
+  border-color: var(--grey-light-2);
+  color: var(--grey-dark-2);
+  fill: var(--grey-dark-2);
 }
 
 .warn {
-  background-color: $orange-light;
-  border-color: $orange;
-  color: $orange;
-  fill: $orange;
+  background-color: var(--orange-light);
+  border-color: var(--orange);
+  color: var(--orange);
+  fill: var(--orange);
 }
 
 .error {
-  background-color: $red-light;
-  border-color: $red;
-  color: $red;
-  fill: $red;
+  background-color: var(--red-light);
+  border-color: var(--red);
+  color: var(--red);
+  fill: var(--red);
 }
 
 .success {
-  background-color: $green-light;
-  border-color: $green;
-  color: $green;
-  fill: $green;
+  background-color: var(--green-light);
+  border-color: var(--green);
+  color: var(--green);
+  fill: var(--green);
 }
 
 .iconWrapper {
