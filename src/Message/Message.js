@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
-import styles from './Message.module.scss'
 import Icon from '../Icon'
+import styles from './Message.module.scss'
 
 const Message = ({
   wrapperClassName,
