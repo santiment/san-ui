@@ -18,11 +18,7 @@ const Message = ({
       <div className={styles.iconWrapper}>
         <Icon
           type={icon}
-          className={cx({
-            [styles.icon]: true,
-            [styles[`icon-${variant}`]]: variant,
-            [iconClassName]: iconClassName,
-          })}
+          className={cx(iconClassName)}
         />
       </div>
     )}
