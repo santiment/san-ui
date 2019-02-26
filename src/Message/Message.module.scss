@@ -17,28 +17,40 @@
   background-color: var(--grey-light);
   border-color: var(--grey-light-2);
   color: var(--grey-dark-2);
-  fill: var(--grey-dark-2);
+
+  svg {
+    fill: var(--grey-dark-2);
+  }
 }
 
 .warn {
   background-color: var(--orange-light);
   border-color: var(--orange);
   color: var(--orange);
-  fill: var(--orange);
+
+  svg {
+    fill: var(--orange);
+  }
 }
 
 .error {
   background-color: var(--red-light);
   border-color: var(--red);
   color: var(--red);
-  fill: var(--red);
+
+  svg {
+    fill: var(--red);
+  }
 }
 
 .success {
   background-color: var(--green-light);
   border-color: var(--green);
   color: var(--green);
-  fill: var(--green);
+
+  svg {
+    fill: var(--green);
+  }
 }
 
 .iconWrapper {
