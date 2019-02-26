@@ -7,7 +7,7 @@ import Icon from '../Icon'
 const Message = ({
   wrapperClassName,
   className,
-  type,
+  variant,
   children,
   icon,
   iconClassName,
@@ -15,7 +15,7 @@ const Message = ({
 }) => (
   <div
     className={cx({
-      [`${wrapperClassName} ${styles.wrapper} ${styles[type]}`]: true,
+      [`${wrapperClassName} ${styles.wrapper} ${styles[variant]}`]: true,
     })}
     {...props}
   >
@@ -25,14 +25,14 @@ const Message = ({
           type={icon}
           className={cx({
             [styles.icon]: true,
-            [styles[`icon-${type}`]]: type,
+            [styles[`icon-${variant}`]]: variant,
             [iconClassName]: iconClassName,
           })}
         />
       </div>
     )}
     <p className={cx({
-      [`${className} ${styles.message} ${styles[type]}`]: true,
+      [`${className} ${styles.message} ${styles[variant]}`]: true,
     })}>
       {children}
     </p>
@@ -43,13 +43,13 @@ Message.propTypes = {
   className: PropTypes.string,
   iconClassName: PropTypes.string,
   wrapperClassName: PropTypes.string,
-  type: PropTypes.string,
+  variant: PropTypes.string,
   icon: PropTypes.string,
   children: PropTypes.any.isRequired,
 };
 
 Message.defaultProps = {
-  type: 'info',
+  variant: 'info',
   wrapperClassName: '',
   className: '',
   iconClassName: '',
