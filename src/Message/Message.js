@@ -13,12 +13,7 @@ const Message = ({
   iconClassName,
   ...props,
 }) => (
-  <div
-    className={cx({
-      [`${wrapperClassName} ${styles.wrapper} ${styles[variant]}`]: true,
-    })}
-    {...props}
-  >
+  <div className={cx(wrapperClassName, styles.wrapper, styles[variant])} {...props}>
     {icon && (
       <div className={styles.iconWrapper}>
         <Icon
@@ -31,9 +26,7 @@ const Message = ({
         />
       </div>
     )}
-    <p className={cx({
-      [`${className} ${styles.message} ${styles[variant]}`]: true,
-    })}>
+    <p className={cx(className, styles.message, styles[variant])}>
       {children}
     </p>
   </div>
