@@ -32,7 +32,7 @@ Message.propTypes = {
   className: PropTypes.string,
   iconClassName: PropTypes.string,
   wrapperClassName: PropTypes.string,
-  variant: PropTypes.string,
+  variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
   icon: PropTypes.string,
   children: PropTypes.any.isRequired,
 };
