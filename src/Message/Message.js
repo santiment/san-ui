@@ -13,13 +13,7 @@ const Message = ({
   ...props,
 }) => (
   <div className={cx(className, styles.wrapper, styles[variant])} {...props}>
-    {icon && (
-      <Icon
-        fill="inherit"
-        type={icon}
-        className={cx(iconClassName, styles.icon)}
-      />
-    )}
+    {icon && <Icon type={icon} className={cx(iconClassName, styles.icon)} />}
     {children}
   </div>
 );
