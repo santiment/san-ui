@@ -14,14 +14,7 @@ const Message = ({
   ...props,
 }) => (
   <div className={cx(wrapperClassName, styles.wrapper, styles[variant])} {...props}>
-    {icon && (
-      <div className={styles.iconWrapper}>
-        <Icon
-          type={icon}
-          className={cx(iconClassName)}
-        />
-      </div>
-    )}
+    {icon && <Icon type={icon} className={cx(iconClassName)} />}
     <p className={cx(className, styles.message, styles[variant])}>
       {children}
     </p>
