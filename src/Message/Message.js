@@ -21,9 +21,7 @@ const Message = ({
         className={cx(iconClassName, styles.icon, styles[`icon-${variant}`])}
       />
     )}
-    <div>
-      {children}
-    </div>
+    {children}
   </div>
 );
 
