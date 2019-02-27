@@ -17,7 +17,7 @@ const Message = ({
       <Icon
         fill="inherit"
         type={icon}
-        className={cx(iconClassName, styles.icon, styles[`icon-${variant}`])}
+        className={cx(iconClassName, styles.icon)}
       />
     )}
     {children}
