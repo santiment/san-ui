@@ -16,24 +16,28 @@
   background-color: var(--grey-light);
   border-color: var(--grey-light-2);
   color: var(--grey-dark-2);
+  fill: var(--grey-dark-2);
 }
 
 .warn {
   background-color: var(--orange-light);
   border-color: var(--orange);
   color: var(--orange);
+  fill: var(--orange);
 }
 
 .error {
   background-color: var(--red-light);
   border-color: var(--red);
   color: var(--red);
+  fill: var(--red);
 }
 
 .success {
   background-color: var(--green-light);
   border-color: var(--green);
   color: var(--green);
+  fill: var(--green);
 }
 
 .icon {
@@ -41,20 +45,4 @@
   height: 17px;
   text-align: center;
   margin-right: 10px;
-}
-
-.icon-info {
-  fill: var(--grey-dark-2);
-}
-
-.icon-error {
-  fill: var(--red);
-}
-
-.icon-success {
-  fill: var(--green);
-}
-
-.icon-warn {
-  fill: var(--orange);
 }
