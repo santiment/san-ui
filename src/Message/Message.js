@@ -5,7 +5,6 @@ import Icon from '../Icon'
 import styles from './Message.module.scss'
 
 const Message = ({
-  wrapperClassName,
   className,
   variant,
   children,
@@ -13,7 +12,7 @@ const Message = ({
   iconClassName,
   ...props,
 }) => (
-  <div className={cx(wrapperClassName, styles.wrapper, styles[variant])} {...props}>
+  <div className={cx(className, styles.wrapper, styles[variant])} {...props}>
     {icon && (
       <Icon
         fill="inherit"
@@ -26,9 +25,8 @@ const Message = ({
 );
 
 Message.propTypes = {
-  className: PropTypes.string,
   iconClassName: PropTypes.string,
-  wrapperClassName: PropTypes.string,
+  className: PropTypes.string,
   variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
   icon: PropTypes.string,
   children: PropTypes.any.isRequired,
@@ -36,7 +34,6 @@ Message.propTypes = {
 
 Message.defaultProps = {
   variant: 'info',
-  wrapperClassName: '',
   className: '',
   iconClassName: '',
 };
