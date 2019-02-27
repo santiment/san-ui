@@ -4,13 +4,12 @@
 .wrapper {
   @include text-normal;
 
-  height: 40px;
   border: 1px solid;
   box-sizing: border-box;
   border-radius: $border-radius;
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 8px 12px;
 
   svg {
     width: 17px;
