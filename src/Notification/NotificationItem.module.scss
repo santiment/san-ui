@@ -1,0 +1,32 @@
+@import '../mixins.scss';
+@import '../variables.scss';
+
+.wrapper {
+    @include text-normal;
+
+    color: var(--grey-dark-2);
+    background-color: var(--white);
+    border-radius: $border-radius;
+    display: inline-flex;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+}
+
+.icon {
+    fill: var(--black);
+}
+
+.title {
+    font-weight: bold;
+    color: var(--black);
+    margin-bottom: 6px;
+}
+
+.messageArea {
+    // background: green;
+}
+
+.actionArea {
+    // background: red;
+    margin-left: 12px;
+}
