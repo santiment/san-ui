@@ -46,6 +46,13 @@ const notifications = [
     variant: 'Info',
     hideTitleIcon: true,
   },
+  {
+    id: 8,
+    description: 'Simple Notification with a custom icon ',
+    title: 'Processing',
+    variant: 'Info',
+    titleIconName: 'clock',
+  },
 ];
 
 storiesOf('Notifications', module)

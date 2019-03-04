@@ -14,6 +14,7 @@ const titleIcons = {
 
 const NotificationItem = ({
   title,
+  titleIconName,
   hideTitleIcon,
   description,
   variant,
@@ -21,7 +22,7 @@ const NotificationItem = ({
   <Panel variant="tooltip" className={cx(styles.wrapper, styles[variant])}>
     {!hideTitleIcon && (
       <Icon
-        type={titleIcons[variant]}
+        type={titleIconName || titleIcons[variant]}
         className={cx(styles.icon, styles.titleIcon)}
       />
     )}
@@ -44,6 +45,7 @@ const NotificationItem = ({
 NotificationItem.propTypes = {
   description: PropTypes.string,
   hideTitleIcon: PropTypes.bool,
+  titleIconName: PropTypes.string,
   variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
   title: PropTypes.string
 }
