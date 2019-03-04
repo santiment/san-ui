@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import Notification from '../src/Notification'
 import ColorModeComparison from './ColorModeComparison'
@@ -43,21 +43,43 @@ const notifications = [
     id: 7,
     description: 'Notification without title icon',
     title: 'Info',
-    variant: 'Info',
+    variant: 'info',
     hideTitleIcon: true,
   },
   {
     id: 8,
     description: 'Simple Notification with a custom icon ',
     title: 'Processing',
-    variant: 'Info',
+    variant: 'info',
     titleIconName: 'clock',
   },
 ];
 
+class NotificationExample extends Component {
+  state = {
+    notifications
+  }
+
+  closeNotification = notificationId => {
+    this.setState(({ notifications }) => ({
+      notifications: notifications.filter(({ id }) => id !== notificationId)
+    }))
+  }
+
+  render() {
+    return (
+      <Notification
+        notifications={this.state.notifications}
+        onClose={notification => this.closeNotification(notification.id)}
+        {...this.props}
+      />
+    )
+  }
+}
+
 storiesOf('Notifications', module)
   .add('Default', () => (
     <ColorModeComparison>
-      <Notification notifications={notifications} />
+      <NotificationExample notifications={notifications} />
     </ColorModeComparison>
   ))

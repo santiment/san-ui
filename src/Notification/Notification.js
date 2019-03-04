@@ -1,38 +1,34 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
 import NotificationItem from './NotificationItem';
-import styles from './Notification.module.scss'
 
-class Notification extends Component {
-  static propTypes = {
-    notifications: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.oneOfType([
-          PropTypes.number,
-          PropTypes.string,
-        ]).isRequired,
-        description: PropTypes.string,
-        title: PropTypes.string
-      })
-    ).isRequired
-  }
+const Notification = props => (
+  <Fragment>
+    {props.notifications.map(notification => (
+      <NotificationItem
+        key={notification.id}
+        onClose={() => props.onClose(notification)}
+        {...notification}
+      />
+    ))}
+  </Fragment>
+)
 
-  static defaultProps = {
-    notifications: []
-  }
-
-  state = {}
-
-  render() {
-    return (
-      <Fragment>
-        {this.props.notifications.map(notification => (
-          <NotificationItem key={notification.id} {...notification} />
-        ))}
-      </Fragment>
-    )
-  }
+Notification.propTypes = {
+  notifications: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+      ]).isRequired,
+      description: PropTypes.string,
+      hideTitleIcon: PropTypes.bool,
+      titleIconName: PropTypes.string,
+      variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
+      title: PropTypes.string
+    })
+  ).isRequired,
+  onClose: PropTypes.func,
 }
 
 export default Notification

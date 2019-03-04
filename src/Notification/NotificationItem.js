@@ -18,6 +18,7 @@ const NotificationItem = ({
   hideTitleIcon,
   description,
   variant,
+  onClose,
 }) => (
   <Panel variant="tooltip" className={cx(styles.wrapper, styles[variant])}>
     {!hideTitleIcon && (
@@ -38,7 +39,11 @@ const NotificationItem = ({
         </div>
       )}
     </div>
-    <Icon type="close" className={cx(styles.icon, styles.closeIcon)} />
+    <Icon
+      type="close"
+      onClick={onClose}
+      className={cx(styles.icon, styles.closeIcon)}
+    />
   </Panel>
 )
 
@@ -46,6 +51,7 @@ NotificationItem.propTypes = {
   description: PropTypes.string,
   hideTitleIcon: PropTypes.bool,
   titleIconName: PropTypes.string,
+  onClose: PropTypes.func,
   variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
   title: PropTypes.string
 }
