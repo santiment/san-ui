@@ -10,10 +10,23 @@
     display: inline-flex;
     padding: 8px 12px;
     margin-bottom: 5px;
+
+    :global(.night-mode) & {
+        color: var(--black);
+    }
 }
 
 .icon {
+    margin: 5px;
+}
+
+.closeIcon {
     fill: var(--black);
+    cursor: pointer;
+}
+
+.titleIcon {
+    margin: 3px 10px 0 0;
 }
 
 .title {
@@ -23,10 +36,26 @@
 }
 
 .messageArea {
-    // background: green;
+    width: 100%;
 }
 
 .actionArea {
     // background: red;
     margin-left: 12px;
+}
+
+.info {
+    fill: var(--blue);
+}
+
+.warn {
+    fill: var(--orange);
+}
+
+.error {
+    fill: var(--red);
+}
+
+.success {
+    fill: var(--green);
 }

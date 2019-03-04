@@ -5,11 +5,23 @@ import Icon from '../Icon';
 import Panel from '../Panel/Panel';
 import styles from './NotificationItem.module.scss'
 
+const titleIcons = {
+  error: 'error',
+  info: 'info-round',
+  warn: 'alert',
+  success: 'checkmark-round',
+}
+
 const NotificationItem = ({
   title,
   description,
+  variant,
 }) => (
-  <Panel variant="tooltip" className={styles.wrapper}>
+  <Panel variant="tooltip" className={cx(styles.wrapper, styles[variant])}>
+    <Icon
+      type={titleIcons[variant]}
+      className={cx(styles.icon, styles.titleIcon)}
+    />
     <div className={styles.messageArea}>
       {title && (
         <div className={styles.title}>
@@ -22,14 +34,13 @@ const NotificationItem = ({
         </div>
       )}
     </div>
-    <div className={styles.actionArea}>
-      <Icon type="close" className={styles.icon} />
-    </div>
+    <Icon type="close" className={cx(styles.icon, styles.closeIcon)} />
   </Panel>
 )
 
 NotificationItem.propTypes = {
   description: PropTypes.string,
+  variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
   title: PropTypes.string
 }
 
