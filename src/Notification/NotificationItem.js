@@ -14,14 +14,17 @@ const titleIcons = {
 
 const NotificationItem = ({
   title,
+  hideTitleIcon,
   description,
   variant,
 }) => (
   <Panel variant="tooltip" className={cx(styles.wrapper, styles[variant])}>
-    <Icon
-      type={titleIcons[variant]}
-      className={cx(styles.icon, styles.titleIcon)}
-    />
+    {!hideTitleIcon && (
+      <Icon
+        type={titleIcons[variant]}
+        className={cx(styles.icon, styles.titleIcon)}
+      />
+    )}
     <div className={styles.messageArea}>
       {title && (
         <div className={styles.title}>
@@ -40,8 +43,13 @@ const NotificationItem = ({
 
 NotificationItem.propTypes = {
   description: PropTypes.string,
+  hideTitleIcon: PropTypes.bool,
   variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
   title: PropTypes.string
+}
+
+NotificationItem.defaultProps = {
+  hideTitleIcon: false,
 }
 
 export default NotificationItem
