@@ -4,15 +4,27 @@
 .wrapper {
     @include text-normal;
 
-    color: var(--grey-dark-2);
-    background-color: var(--white);
     border-radius: $border-radius;
     display: inline-flex;
     padding: 8px 12px;
     margin-bottom: 5px;
+}
+
+.default {
+    color: var(--grey-dark-2);
+    background-color: var(--white);
+    fill: var(--black);
 
     :global(.night-mode) & {
         color: var(--black);
+    }
+
+    .title {
+        color: var(--black);
+    }
+
+    .closeIcon {
+        fill: var(--black);
     }
 }
 
@@ -21,7 +33,6 @@
 }
 
 .closeIcon {
-    fill: var(--black);
     cursor: pointer;
 }
 
@@ -31,17 +42,11 @@
 
 .title {
     font-weight: bold;
-    color: var(--black);
     margin-bottom: 6px;
 }
 
 .messageArea {
     width: 100%;
-}
-
-.actionArea {
-    // background: red;
-    margin-left: 12px;
 }
 
 .info {
@@ -58,4 +63,25 @@
 
 .success {
     fill: var(--green);
+}
+
+.solid {
+    color: var(--white);
+    fill: var(--white);
+}
+
+.infoSolid {
+    background-color: var(--blue);
+}
+
+.warnSolid {
+    background-color: var(--orange);
+}
+
+.errorSolid {
+    background-color: var(--red);
+}
+
+.successSolid {
+    background-color: var(--green);
 }

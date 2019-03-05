@@ -57,8 +57,12 @@ const notifications = [
 ];
 
 class NotificationExample extends Component {
-  state = {
-    notifications
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      notifications: props.notifications
+    }
   }
 
   closeNotification = notificationId => {
@@ -82,5 +86,12 @@ storiesOf('Notifications', module)
   .add('Default', () => (
     <ColorModeComparison>
       <NotificationExample notifications={notifications} />
+    </ColorModeComparison>
+  ))
+  .add('With solid fills', () => (
+    <ColorModeComparison>
+      <NotificationExample
+        notifications={notifications.map(notification => ({ ...notification, solidFill: true }))}
+      />
     </ColorModeComparison>
   ))

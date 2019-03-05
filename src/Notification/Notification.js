@@ -29,6 +29,7 @@ Notification.propTypes = {
       ]).isRequired,
       description: PropTypes.string,
       hideTitleIcon: PropTypes.bool,
+      solidFill: PropTypes.bool,
       titleIconName: PropTypes.string,
       variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
       title: PropTypes.string

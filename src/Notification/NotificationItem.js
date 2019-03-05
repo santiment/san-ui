@@ -16,6 +16,7 @@ class NotificationItem extends Component {
   static propTypes = {
     description: PropTypes.string,
     hideTitleIcon: PropTypes.bool,
+    solidFill: PropTypes.bool,
     titleIconName: PropTypes.string,
     onClose: PropTypes.func,
     variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
@@ -23,7 +24,7 @@ class NotificationItem extends Component {
     title: PropTypes.string
   }
 
-  defaultProps = {
+  static defaultProps = {
     hideTitleIcon: false,
   }
 
@@ -46,13 +47,21 @@ class NotificationItem extends Component {
       title,
       titleIconName,
       hideTitleIcon,
+      solidFill,
       description,
       variant,
       onClose,
     } = this.props;
 
     return (
-      <Panel variant="tooltip" className={cx(styles.wrapper, styles[variant])}>
+      <Panel
+        variant="tooltip"
+        className={cx(styles.wrapper, styles[variant], {
+          [styles[`${variant}Solid`]]: solidFill,
+          [styles.solid]: solidFill,
+          [styles.default]: !solidFill,
+        })}
+      >
         {!hideTitleIcon && (
           <Icon
             type={titleIconName || titleIcons[variant]}
