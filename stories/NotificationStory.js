@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import Notification from '../src/Notification'
 import ColorModeComparison from './ColorModeComparison'
+import Button from '../src/Button';
 
 const notifications = [
   {
@@ -32,7 +33,16 @@ const notifications = [
     id: 5,
     description: 'This is a simple text description',
     title: 'A really long notification title that will let the text go down to the next line',
-    variant: 'error'
+    variant: 'error',
+    renderActionButton: () => (
+      <Button
+        border
+        style={{ backgroundColor: 'transparent', color: 'inherit' }}
+        onClick={() => alert('Button clicked')}
+      >
+        Button
+      </Button>
+    )
   },
   {
     id: 6,

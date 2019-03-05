@@ -19,6 +19,7 @@ class NotificationItem extends Component {
     solidFill: PropTypes.bool,
     titleIconName: PropTypes.string,
     onClose: PropTypes.func,
+    renderActionButton: PropTypes.func,
     variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
     timeout: PropTypes.number,
     title: PropTypes.string
@@ -51,6 +52,7 @@ class NotificationItem extends Component {
       description,
       variant,
       onClose,
+      renderActionButton,
     } = this.props;
 
     return (
@@ -79,6 +81,7 @@ class NotificationItem extends Component {
               {description}
             </div>
           )}
+          {renderActionButton && renderActionButton()}
         </div>
         <Icon
           type="close"

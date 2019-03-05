@@ -30,6 +30,7 @@ Notification.propTypes = {
       description: PropTypes.string,
       hideTitleIcon: PropTypes.bool,
       solidFill: PropTypes.bool,
+      renderActionButton: PropTypes.func,
       titleIconName: PropTypes.string,
       variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
       title: PropTypes.string
