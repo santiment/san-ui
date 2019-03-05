@@ -1,14 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames';
 import NotificationItem from './NotificationItem';
 import styles from './Notification.module.scss';
 
-const Notification = props => (
-  <div className={styles.wrapper}>
-    {props.notifications.map(notification => (
+const Notification = ({
+  className,
+  notifications,
+  onClose,
+}) => (
+  <div className={cx(styles.wrapper, className)}>
+    {notifications.map(notification => (
       <NotificationItem
         key={notification.id}
-        onClose={() => props.onClose(notification)}
+        onClose={() => onClose(notification)}
         {...notification}
       />
     ))}
@@ -30,6 +35,7 @@ Notification.propTypes = {
     })
   ).isRequired,
   onClose: PropTypes.func,
+  className: PropTypes.string,
 }
 
 export default Notification
