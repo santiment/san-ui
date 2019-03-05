@@ -2,12 +2,6 @@
 
 .wrapper {
     display: inline-flex;
-    @include text-normal;
-    align-items: center;
-}
-
-.fluid {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+    flex-direction: column-reverse;
+    width: 320px;
 }

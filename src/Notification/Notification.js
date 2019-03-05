@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import NotificationItem from './NotificationItem';
+import styles from './Notification.module.scss';
 
 const Notification = props => (
-  <Fragment>
+  <div className={styles.wrapper}>
     {props.notifications.map(notification => (
       <NotificationItem
         key={notification.id}
@@ -11,7 +12,7 @@ const Notification = props => (
         {...notification}
       />
     ))}
-  </Fragment>
+  </div>
 )
 
 Notification.propTypes = {
