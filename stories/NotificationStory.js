@@ -52,6 +52,7 @@ const notifications = [
     title: 'Processing',
     variant: 'info',
     titleIconName: 'clock',
+    timeout: 3000,
   },
 ];
 
@@ -69,9 +70,9 @@ class NotificationExample extends Component {
   render() {
     return (
       <Notification
+        {...this.props}
         notifications={this.state.notifications}
         onClose={notification => this.closeNotification(notification.id)}
-        {...this.props}
       />
     )
   }
