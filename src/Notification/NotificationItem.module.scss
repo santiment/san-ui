@@ -73,6 +73,10 @@
 .solid {
     color: var(--white);
     fill: var(--white);
+
+    .actionButton {
+        color: var(--white);
+    }
 }
 
 .infoSolid {
@@ -89,4 +93,20 @@
 
 .successSolid {
     background-color: var(--green);
+}
+
+.actionButtonArea {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.actionButton {
+    color: var(--green);
+    cursor: pointer;
+    margin-right: 20px;
+
+    &:last-child {
+        margin-right: 0;
+    }
 }

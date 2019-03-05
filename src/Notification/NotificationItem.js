@@ -22,7 +22,17 @@ class NotificationItem extends Component {
     renderActionButton: PropTypes.func,
     variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
     timeout: PropTypes.number,
-    title: PropTypes.string
+    title: PropTypes.string,
+    actions: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.oneOfType([
+          PropTypes.number,
+          PropTypes.string,
+        ]).isRequired,  
+        label: PropTypes.string,
+        onClick: PropTypes.func,
+      })
+    )
   }
 
   static defaultProps = {
@@ -52,7 +62,7 @@ class NotificationItem extends Component {
       description,
       variant,
       onClose,
-      renderActionButton,
+      actions,
     } = this.props;
 
     return (
@@ -81,7 +91,15 @@ class NotificationItem extends Component {
               {description}
             </div>
           )}
-          {renderActionButton && renderActionButton(this.props)}
+          {(actions && actions.length) && (
+            <div className={styles.actionButtonArea}>
+              {actions.map(action => (
+                <div key={action.id} className={styles.actionButton} onClick={() => action.onClick(this.props)}>
+                  {action.label}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <Icon
           type="close"
