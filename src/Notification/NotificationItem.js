@@ -81,7 +81,7 @@ class NotificationItem extends Component {
               {description}
             </div>
           )}
-          {renderActionButton && renderActionButton()}
+          {renderActionButton && renderActionButton(this.props)}
         </div>
         <Icon
           type="close"

@@ -34,11 +34,11 @@ const notifications = [
     description: 'This is a simple text description',
     title: 'A really long notification title that will let the text go down to the next line',
     variant: 'error',
-    renderActionButton: () => (
+    renderActionButton: ({ id }) => (
       <Button
         border
         style={{ backgroundColor: 'transparent', color: 'inherit' }}
-        onClick={() => alert('Button clicked')}
+        onClick={() => alert(`You clicked a button notification with id ${id}`)}
       >
         Button
       </Button>
