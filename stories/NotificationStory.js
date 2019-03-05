@@ -34,15 +34,6 @@ const notifications = [
     description: 'This is a simple text description',
     title: 'A really long notification title that will let the text go down to the next line',
     variant: 'error',
-    renderActionButton: ({ id }) => (
-      <Button
-        border
-        style={{ backgroundColor: 'transparent', color: 'inherit' }}
-        onClick={() => alert(`You clicked a button notification with id ${id}`)}
-      >
-        Button
-      </Button>
-    )
   },
   {
     id: 6,
@@ -65,6 +56,55 @@ const notifications = [
     timeout: 3000,
   },
 ];
+
+const showNotificationAlert = notification => alert(`Action button on notification ${notification.id} clicked`);
+
+const notificationsWithActionButtons = [
+  {
+    id: 1,
+    description: 'This is a simple text description',
+    title: 'Error',
+    variant: 'error',
+    actions: [
+      {
+        id: 'button-1',
+        label: 'Button',
+        onClick: showNotificationAlert,
+      }
+    ]
+  },
+  {
+    id: 2,
+    description: 'This is a simple text description',
+    title: 'Info',
+    variant: 'info',
+    actions: [
+      {
+        id: 'button-1',
+        label: 'Button',
+        onClick: showNotificationAlert,
+      }
+    ]
+  },
+  {
+    id: 3,
+    description: 'This is a simple text description',
+    title: 'Warn',
+    variant: 'warn',
+    actions: [
+      {
+        id: 'button-1',
+        label: 'Button',
+        onClick: showNotificationAlert,
+      },
+      {
+        id: 'button-2',
+        label: 'Button',
+        onClick: showNotificationAlert,
+      }
+    ]
+  }
+]
 
 class NotificationExample extends Component {
   constructor(props) {
@@ -105,3 +145,21 @@ storiesOf('Notifications', module)
       />
     </ColorModeComparison>
   ))
+  .add('With action buttons', () => {
+    return (
+      <ColorModeComparison>
+        <NotificationExample notifications={notificationsWithActionButtons} />
+      </ColorModeComparison>
+    )
+  })
+  .add('With action buttons and solid fills', () => {
+    return (
+      <ColorModeComparison>
+        <NotificationExample
+          notifications={notificationsWithActionButtons.map(
+            notification => ({ ...notification, solidFill: true })
+          )}
+        />
+      </ColorModeComparison>
+    )
+  })
