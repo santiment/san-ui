@@ -6,8 +6,9 @@
 
     border-radius: $border-radius;
     display: inline-flex;
-    padding: 8px 12px;
-    margin-bottom: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    align-items: flex-start;
 }
 
 .default {
@@ -24,20 +25,24 @@
     }
 
     .closeIcon {
-        fill: var(--black);
+        fill: var(--grey-dark);
     }
 }
 
 .icon {
-    margin: 5px;
+    margin: 5px 0;
 }
 
 .closeIcon {
     cursor: pointer;
+    width: 13px;
+    height: auto;
 }
 
 .titleIcon {
-    margin: 3px 10px 0 0;
+    width: 22px;
+    height: auto;
+    margin: 2px 15px 0 0;
 }
 
 .title {
