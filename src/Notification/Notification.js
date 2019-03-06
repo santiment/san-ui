@@ -30,67 +30,58 @@ const Notification = ({
       [styles.default]: !solidFill,
     })}
   >
-    {!hideTitleIcon && (
+    <div className={styles.header}>
       <Icon
         type={titleIconName || titleIcons[variant]}
         className={cx(styles.icon, styles.titleIcon)}
       />
-    )}
-    <div className={styles.messageArea}>
       <div className={styles.title}>
         {title}
       </div>
-      {description && (
-        <div className={styles.description}>
-          {description}
-        </div>
-      )}
-      {(actions && actions.length) && (
-        <div className={styles.actionButtonArea}>
-          {actions.map(action => (
-            <div
-              key={action.label}
-              className={styles.actionButton}
-              onClick={() => action.onClick(this.props)}
-            >
-              {action.label}
-            </div>
-          ))}
-        </div>
-      )}
+      <Icon
+        type="close"
+        onClick={onClose}
+        className={cx(styles.icon, styles.closeIcon)}
+      />
     </div>
-    <Icon
-      type="close"
-      onClick={onClose}
-      className={cx(styles.icon, styles.closeIcon)}
-    />
+    {description && (
+      <div className={styles.description}>
+        {description}
+      </div>
+    )}
+    {(actions && actions.length) && (
+      <div className={styles.actionButtonArea}>
+        {actions.map(action => (
+          <div
+            key={action.label}
+            className={styles.actionButton}
+            onClick={() => action.onClick(this.props)}
+          >
+            {action.label}
+          </div>
+        ))}
+      </div>
+    )}
   </Panel>
 )
 
 Notification.propTypes = {
   description: PropTypes.string,
-  hideTitleIcon: PropTypes.bool,
   solidFill: PropTypes.bool,
   titleIconName: PropTypes.string,
   onClose: PropTypes.func,
-  renderActionButton: PropTypes.func,
   variant: PropTypes.oneOf(['info', 'warning', 'success', 'error']),
-  timeout: PropTypes.number,
   title: PropTypes.string.isRequired,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-      ]).isRequired,  
-      label: PropTypes.string,
-      onClick: PropTypes.func,
+      label: PropTypes.string.isRequired,
+      onClick: PropTypes.func.isRequired,
     })
   )
 }
 
 Notification.defaultProps = {
-  hideTitleIcon: false,
+  onClose: () => {}
 }
 
 export default Notification

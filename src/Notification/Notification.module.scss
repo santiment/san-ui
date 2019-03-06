@@ -5,9 +5,7 @@
     @include text-normal;
 
     border-radius: $border-radius;
-    display: inline-flex;
     padding: 14px 18px 16px 15px;
-    align-items: flex-start;
     width: 320px;
     margin-bottom: 15px;
 }
@@ -30,6 +28,11 @@
     // margin-right: 5px;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+}
+
 .closeIcon {
     cursor: pointer;
     width: 13px;
@@ -37,18 +40,19 @@
 }
 
 .titleIcon {
-    width: 22px;
-    height: auto;
-    margin: 2px 15px 0 0;
+    margin: 0 15px 0 0;
 }
 
 .title {
     font-weight: bold;
-    margin-bottom: 6px;
+    padding-right: 15px;
+    width: 100%;
 }
 
-.messageArea {
-    width: 100%;
+.description {
+    margin-top: 8px;
+    padding-left: 29px;
+    padding-right: 25px;
 }
 
 .info {

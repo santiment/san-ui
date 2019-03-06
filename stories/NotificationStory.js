@@ -35,24 +35,16 @@ const notifications = [
     variant: 'error',
   },
   {
-    id: 6,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-    variant: 'warning',
-  },
-  {
     id: 7,
-    description: 'Notification without title icon',
-    title: 'Info',
-    variant: 'info',
-    hideTitleIcon: true,
-  },
-  {
-    id: 8,
     description: 'Simple Notification with a custom icon ',
     title: 'Processing',
     variant: 'info',
     titleIconName: 'clock',
-    timeout: 3000,
+  },
+  {
+    id: 8,
+    title: 'Notification without a description',
+    variant: 'info',
   },
 ];
 
