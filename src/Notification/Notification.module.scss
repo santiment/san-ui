@@ -1,7 +1,109 @@
 @import '../mixins.scss';
+@import '../variables.scss';
 
 .wrapper {
+    @include text-normal;
+
+    border-radius: $border-radius;
     display: inline-flex;
-    flex-direction: column-reverse;
+    padding: 14px 18px 16px 15px;
+    align-items: flex-start;
     width: 320px;
+    margin-bottom: 15px;
+}
+
+.default {
+    color: var(--grey-dark-2);
+    background-color: var(--white);
+    fill: var(--black);
+
+    .title {
+        color: var(--black);
+    }
+
+    .closeIcon {
+        fill: var(--grey-dark);
+    }
+}
+
+.icon {
+    // margin-right: 5px;
+}
+
+.closeIcon {
+    cursor: pointer;
+    width: 13px;
+    height: auto;
+}
+
+.titleIcon {
+    width: 22px;
+    height: auto;
+    margin: 2px 15px 0 0;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.messageArea {
+    width: 100%;
+}
+
+.info {
+    fill: var(--blue);
+}
+
+.warning {
+    fill: var(--orange);
+}
+
+.error {
+    fill: var(--red);
+}
+
+.success {
+    fill: var(--green);
+}
+
+.solid {
+    color: var(--white);
+    fill: var(--white);
+
+    .actionButton {
+        color: var(--white);
+    }
+}
+
+.infoSolid {
+    background-color: var(--blue);
+}
+
+.warningSolid {
+    background-color: var(--orange);
+}
+
+.errorSolid {
+    background-color: var(--red);
+}
+
+.successSolid {
+    background-color: var(--green);
+}
+
+.actionButtonArea {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.actionButton {
+    color: var(--green);
+    cursor: pointer;
+    margin-right: 20px;
+
+    &:last-child {
+        margin-right: 0;
+    }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import Notification from '../src/Notification'
 import ColorModeComparison from './ColorModeComparison'
-import Button from '../src/Button';
 
 const notifications = [
   {
@@ -20,8 +19,8 @@ const notifications = [
   {
     id: 3,
     description: 'This is a simple text description',
-    title: 'Warn',
-    variant: 'warn'
+    title: 'Warning',
+    variant: 'warning'
   },
   {
     id: 4,
@@ -38,7 +37,7 @@ const notifications = [
   {
     id: 6,
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-    variant: 'warn',
+    variant: 'warning',
   },
   {
     id: 7,
@@ -67,7 +66,6 @@ const notificationsWithActionButtons = [
     variant: 'error',
     actions: [
       {
-        id: 'button-1',
         label: 'Button',
         onClick: showNotificationAlert,
       }
@@ -80,7 +78,6 @@ const notificationsWithActionButtons = [
     variant: 'info',
     actions: [
       {
-        id: 'button-1',
         label: 'Button',
         onClick: showNotificationAlert,
       }
@@ -89,17 +86,15 @@ const notificationsWithActionButtons = [
   {
     id: 3,
     description: 'This is a simple text description',
-    title: 'Warn',
-    variant: 'warn',
+    title: 'Warning',
+    variant: 'warning',
     actions: [
       {
-        id: 'button-1',
-        label: 'Button',
+        label: 'Button 1',
         onClick: showNotificationAlert,
       },
       {
-        id: 'button-2',
-        label: 'Button',
+        label: 'Button 2',
         onClick: showNotificationAlert,
       }
     ]
@@ -123,11 +118,15 @@ class NotificationExample extends Component {
 
   render() {
     return (
-      <Notification
-        {...this.props}
-        notifications={this.state.notifications}
-        onClose={notification => this.closeNotification(notification.id)}
-      />
+      this.state.notifications.map(
+        notification => (
+          <Notification
+            style={{ marginBottom: 15 }}
+            key={notification.id}
+            onClose={() => this.closeNotification(notification.id)}
+            {...notification}
+          />
+        ))
     )
   }
 }
