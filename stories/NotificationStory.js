@@ -3,6 +3,12 @@ import { storiesOf } from '@storybook/react'
 import Notification from '../src/Notification'
 import ColorModeComparison from './ColorModeComparison'
 
+const Description = () => (
+  <div style={{ backgroundColor: '#dfdfdf', padding: 10 }}>
+    A custom description element
+  </div>
+)
+
 const notifications = [
   {
     id: 1,
@@ -45,6 +51,12 @@ const notifications = [
     id: 8,
     title: 'Notification without a description',
     variant: 'info',
+  },
+  {
+    id: 8,
+    title: 'Notification with custom description',
+    variant: 'info',
+    renderDescription: () => <Description />
   },
 ];
 
