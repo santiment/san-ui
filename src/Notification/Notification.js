@@ -37,11 +37,9 @@ const Notification = ({
       />
     )}
     <div className={styles.messageArea}>
-      {title && (
-        <div className={styles.title}>
-          {title}
-        </div>
-      )}
+      <div className={styles.title}>
+        {title}
+      </div>
       {description && (
         <div className={styles.description}>
           {description}
@@ -78,7 +76,7 @@ Notification.propTypes = {
   renderActionButton: PropTypes.func,
   variant: PropTypes.oneOf(['info', 'warning', 'success', 'error']),
   timeout: PropTypes.number,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.oneOfType([
