@@ -32,6 +32,8 @@ const Notification = ({
   >
     <div className={styles.header}>
       <Icon
+        width={20}
+        height={20}
         type={titleIconName || titleIcons[variant]}
         className={cx(styles.icon, styles.titleIcon)}
       />
