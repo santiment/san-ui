@@ -24,18 +24,18 @@ const Notification = ({
 }) => (
   <Panel
     variant="modal"
-    className={cx(styles.wrapper, styles[variant], {
-      [styles[`${variant}Solid`]]: solidFill,
-      [styles.solid]: solidFill,
-      [styles.default]: !solidFill,
-    })}
+    className={cx(
+      styles.wrapper,
+      styles[variant],
+      solidFill ? styles.solid : styles.default
+    )}
   >
     <div className={styles.header}>
       <Icon
         width={20}
         height={20}
         type={titleIconName || titleIcons[variant]}
-        className={cx(styles.icon, styles.titleIcon)}
+        className={styles.titleIcon}
       />
       <div className={styles.title}>
         {title}
@@ -43,7 +43,7 @@ const Notification = ({
       <Icon
         type="close"
         onClick={onClose}
-        className={cx(styles.icon, styles.closeIcon)}
+        className={styles.closeIcon}
       />
     </div>
     {description && (
