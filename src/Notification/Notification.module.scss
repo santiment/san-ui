@@ -10,10 +10,6 @@
 
     color: var(--grey-dark-2);
     background-color: var(--white);
-
-    .closeIcon {
-        fill: var(--grey-dark);
-    }
 }
 
 .info {
@@ -41,18 +37,21 @@
     cursor: pointer;
     width: 13px;
     height: auto;
+    fill: var(--grey-dark);
 }
 
 .title {
     font-weight: bold;
     padding: 0 15px;
     width: 100%;
+    color: var(--black);
 }
 
 .solid {
     color: var(--white);
     fill: var(--white);
 
+    .title,
     .action {
         color: var(--white);
     }
@@ -74,7 +73,7 @@
     }
 
     svg {
-        fill: var(--white) !important;
+        fill: var(--white);
     }
 }
 
