@@ -7,21 +7,29 @@
     border-radius: $border-radius;
     padding: 14px 18px 16px 15px;
     width: 320px;
-    margin-bottom: 15px;
-}
 
-.default {
     color: var(--grey-dark-2);
     background-color: var(--white);
-    fill: var(--black);
-
-    .title {
-        color: var(--black);
-    }
 
     .closeIcon {
         fill: var(--grey-dark);
     }
+}
+
+.info {
+    fill: var(--blue);
+}
+
+.warning {
+    fill: var(--orange);
+}
+
+.error {
+    fill: var(--red);
+}
+
+.success {
+    fill: var(--green);
 }
 
 .header {
@@ -35,68 +43,53 @@
     height: auto;
 }
 
-.titleIcon {
-    margin: 0 15px 0 0;
-}
-
 .title {
     font-weight: bold;
-    padding-right: 15px;
+    padding: 0 15px;
     width: 100%;
 }
 
 .description {
-    margin-top: 8px;
-    padding-left: 31px;
-    padding-right: 25px;
-}
-
-.info {
-    fill: var(--blue);
-    &.solid {
-        background-color: var(--blue);
-    }
-}
-
-.warning {
-    fill: var(--orange);
-    &.solid {
-        background-color: var(--red);
-    }
-}
-
-.error {
-    fill: var(--red);
-    &.solid {
-        background-color: var(--orange);
-    }
-}
-
-.success {
-    fill: var(--green);
-    &.solid {
-        background-color: var(--green);
-    }
+    padding: 8px 25px 0 31px;
 }
 
 .solid {
     color: var(--white);
     fill: var(--white);
 
-    .actionButton {
+    .action {
         color: var(--white);
+    }
+
+    &.info {
+        background-color: var(--blue);
+    }
+
+    &.error {
+        background-color: var(--red);
+    }
+
+    &.warning {
+        background-color: var(--orange);
+    }
+
+    &.success {
+        background-color: var(--green);
+    }
+
+    svg {
+        fill: var(--white) !important;
     }
 }
 
-.actionButtonArea {
+.actions {
     display: flex;
     margin-top: 10px;
-    align-items: center;
     padding-left: 31px;
     padding-right: 25px;
 }
 
-.actionButton {
+.action {
     color: var(--green);
     cursor: pointer;
     margin-right: 20px;

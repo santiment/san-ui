@@ -15,6 +15,7 @@ const titleIcons = {
 const Notification = ({
   title,
   titleIconName,
+  className,
   solidFill,
   description,
   variant,
@@ -25,6 +26,7 @@ const Notification = ({
   <Panel
     variant="modal"
     className={cx(
+      className,
       styles.wrapper,
       styles[variant],
       solidFill ? styles.solid : styles.default
@@ -35,7 +37,6 @@ const Notification = ({
         width={20}
         height={20}
         type={titleIconName || titleIcons[variant]}
-        className={styles.titleIcon}
       />
       <div className={styles.title}>
         {title}
@@ -57,14 +58,14 @@ const Notification = ({
       </div>
     )}
     {(actions && actions.length) && (
-      <div className={styles.actionButtonArea}>
-        {actions.map(action => (
+      <div className={styles.actions}>
+        {actions.map(({ label, onClick }) => (
           <div
-            key={action.label}
-            className={styles.actionButton}
-            onClick={() => action.onClick(this.props)}
+            key={label}
+            className={styles.action}
+            onClick={onClick}
           >
-            {action.label}
+            {label}
           </div>
         ))}
       </div>
@@ -73,6 +74,7 @@ const Notification = ({
 )
 
 Notification.propTypes = {
+  className: PropTypes.string,
   description: PropTypes.string,
   solidFill: PropTypes.bool,
   titleIconName: PropTypes.string,

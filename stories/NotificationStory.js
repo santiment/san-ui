@@ -53,7 +53,7 @@ const notifications = [
     variant: 'info',
   },
   {
-    id: 8,
+    id: 9,
     title: 'Notification with custom description',
     variant: 'info',
     renderDescription: () => <Description />
