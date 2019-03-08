@@ -49,10 +49,6 @@
     width: 100%;
 }
 
-.description {
-    padding: 8px 25px 0 31px;
-}
-
 .solid {
     color: var(--white);
     fill: var(--white);
@@ -82,11 +78,11 @@
     }
 }
 
-.actions {
+// display flex is important for the action buttons to be aligned in a row
+// however, it won't effect the description as it would only one element
+.content {
     display: flex;
-    margin-top: 10px;
-    padding-left: 31px;
-    padding-right: 25px;
+    padding: 10px 25px 0 31px;
 }
 
 .action {

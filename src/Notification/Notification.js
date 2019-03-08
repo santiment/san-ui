@@ -48,7 +48,7 @@ const Notification = ({
       />
     </div>
     {description && (
-      <div className={styles.description}>
+      <div className={styles.content}>
         {description}
       </div>
     )}
@@ -58,7 +58,7 @@ const Notification = ({
       </div>
     )}
     {(actions && actions.length) && (
-      <div className={styles.actions}>
+      <div className={styles.content}>
         {actions.map(({ label, onClick }) => (
           <div
             key={label}
