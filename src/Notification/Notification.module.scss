@@ -30,7 +30,13 @@
 
 .header {
     display: flex;
-    align-items: center;
+    position: relative;
+
+    svg {
+        position: absolute;
+        top: 3px;
+        left: 0px;
+    }
 }
 
 .closeIcon {
@@ -38,11 +44,14 @@
     width: 13px;
     height: auto;
     fill: var(--grey-dark);
+    right: 0px;
+    top: 4px !important;
+    left: unset !important;
 }
 
 .title {
     font-weight: bold;
-    padding: 0 15px;
+    padding: 0 30px;
     width: 100%;
     color: var(--black);
 }
