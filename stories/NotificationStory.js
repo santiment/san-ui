@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import Notification from '../src/Notification'
 import ColorModeComparison from './ColorModeComparison'
+import styles from './NotificationStory.module.scss'
 
 const Description = () => (
   <div style={{ backgroundColor: '#dfdfdf', padding: 10 }}>
@@ -125,7 +126,7 @@ class NotificationExample extends Component {
       this.state.notifications.map(
         notification => (
           <Notification
-            style={{ marginBottom: 15 }}
+            className={styles.notification}
             key={notification.id}
             onClose={() => this.closeNotification(notification.id)}
             {...notification}
