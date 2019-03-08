@@ -71,7 +71,7 @@ const Notification = ({
 
 Notification.propTypes = {
   className: PropTypes.string,
-  description: PropTypes.string,
+  description: PropTypes.node,
   solidFill: PropTypes.bool,
   titleIconName: PropTypes.string,
   onClose: PropTypes.func,
