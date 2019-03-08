@@ -243,6 +243,13 @@ $color-night: #ccc;
     &:hover {
       background-color: var(--grey-light);
     }
+
+    :global(.night-mode) & {
+      border-color: var(--grey-light-2);
+      &:hover {
+        background-color:var(--grey-light-2);
+      }
+    }
   }
 }
 
