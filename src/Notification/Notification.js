@@ -21,7 +21,6 @@ const Notification = ({
   variant,
   onClose,
   actions,
-  renderDescription,
 }) => (
   <Panel
     variant="modal"
@@ -48,11 +47,6 @@ const Notification = ({
         {description}
       </div>
     )}
-    {renderDescription && (
-      <div className={styles.description}>
-        {renderDescription()}
-      </div>
-    )}
     {(actions && actions.length) && (
       <div className={styles.content}>
         {actions.map(({ label, onClick }) => (
@@ -75,7 +69,6 @@ Notification.propTypes = {
   solidFill: PropTypes.bool,
   titleIconName: PropTypes.string,
   onClose: PropTypes.func,
-  renderDescription: PropTypes.func,
   variant: PropTypes.oneOf(['info', 'warning', 'success', 'error']),
   title: PropTypes.string.isRequired,
   actions: PropTypes.arrayOf(
