@@ -32,7 +32,11 @@ const Notification = ({
     )}
   >
     <div className={styles.header}>
-      <Icon type={titleIconName || titleIcons[variant]} />
+      <Icon
+        type={titleIconName || titleIcons[variant]}
+        width={22}
+        height={22}
+      />
       <div className={styles.title}>
         {title}
       </div>

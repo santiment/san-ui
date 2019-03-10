@@ -31,28 +31,32 @@
 .header {
     display: flex;
     position: relative;
-
-    svg {
-        position: absolute;
-        top: 3px;
-        left: 0px;
-    }
 }
 
 .closeIcon {
+    position: absolute;
     cursor: pointer;
     width: 13px;
     fill: var(--grey-dark);
     right: 0px;
-    top: 4px !important;
-    left: unset !important;
+    top: 3px;
 }
 
 .title {
     font-weight: bold;
-    padding: 0 30px;
+    padding: 0px 30px 0 15px;
     width: 100%;
     color: var(--black);
+}
+
+.action {
+    color: var(--green);
+    cursor: pointer;
+    margin-right: 20px;
+
+    &:last-child {
+        margin-right: 0;
+    }
 }
 
 .solid {
@@ -62,6 +66,10 @@
     .title,
     .action {
         color: var(--white);
+    }
+
+    .closeIcon {
+        fill: var(--white);
     }
 
     &.info {
@@ -79,25 +87,9 @@
     &.success {
         background-color: var(--green);
     }
-
-    svg {
-        fill: var(--white);
-    }
 }
 
-// display flex is important for the action buttons to be aligned in a row
-// however, it won't effect the description as it would only one element
 .content {
     display: flex;
     padding: 10px 25px 0 31px;
-}
-
-.action {
-    color: var(--green);
-    cursor: pointer;
-    margin-right: 20px;
-
-    &:last-child {
-        margin-right: 0;
-    }
 }
