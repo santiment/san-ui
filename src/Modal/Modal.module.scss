@@ -36,3 +36,13 @@
 .closeIcon {
   cursor: pointer;
 }
+
+.content {
+  padding: 20px 24px 24px;
+}
+
+.actions {
+  padding: 0px 24px 24px;
+  display: flex;
+  justify-content: flex-end;
+}
