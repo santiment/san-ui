@@ -2,6 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import Modal, { ModalContent, ModalActions } from "../src/Modal";
 import Button from "../src/Button";
+import styles from './ModalStory.module.scss';
 
 storiesOf("Modal", module)
   .add("default", () => (
@@ -14,6 +15,8 @@ storiesOf("Modal", module)
       </ModalContent>
       <ModalActions>
         <Button
+          border
+          className={styles.buttonCancel}
           accent="negative"
           onClick={() => alert("you pressed Cancel")}
         >
@@ -40,6 +43,8 @@ storiesOf("Modal", module)
       </ModalContent>
       <ModalActions>
         <Button
+          border
+          className={styles.buttonCancel}
           accent="negative"
           onClick={() => alert("you pressed Cancel")}
         >
