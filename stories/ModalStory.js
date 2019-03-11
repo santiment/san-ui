@@ -29,7 +29,7 @@ storiesOf("Modal", module)
       </ModalActions>
     </Modal>
   ))
-  .add("without close icon", () => (
+  .add('without close icon', () => (
     <Modal
       trigger={<Button>Show</Button>}
       title="Lorem Ipsum"
