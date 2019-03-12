@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
+import Panel from '../Panel/Panel';
 import styles from "./Modal.module.scss";
 
 class Portal extends React.Component {
@@ -37,9 +38,9 @@ class Portal extends React.Component {
         onClick={this.handleOnClick}
         onKeyUp={this.handleOnKeyUp}
       >
-        <div className={styles.dialog}>
+        <Panel variant="modal" className={styles.dialog}>
           {children}
-        </div>
+        </Panel>
       </div>,
       document.body
     );
