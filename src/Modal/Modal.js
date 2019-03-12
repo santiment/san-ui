@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import ModalHeader from "./ModalHeader";
+import ModalActions from "./ModalActions";
 import Portal from "./Portal";
 
 class Modal extends Component {
@@ -37,6 +38,9 @@ class Modal extends Component {
       trigger,
       hideCloseIcon,
       title,
+      onConfirmClick,
+      confirmLabel,
+      cancelLabel,
       children,
     } = this.props;
     const { open } = this.state;
@@ -54,6 +58,12 @@ class Modal extends Component {
               title={title}
             />
             {children}
+            <ModalActions
+              closeModal={this.closeModal}
+              onConfirmClick={onConfirmClick}
+              confirmLabel={confirmLabel}
+              cancelLabel={cancelLabel}
+            />
           </Portal>
         )}
       </div>
@@ -73,6 +83,9 @@ Modal.propTypes = {
   children: PropTypes.node,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
+  confirmLabel: PropTypes.string,
+  cancelLabel: PropTypes.string,
+  onConfirmClick: PropTypes.func,
 };
 
 export default Modal;

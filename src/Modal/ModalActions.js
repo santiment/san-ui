@@ -1,17 +1,45 @@
 import React from "react";
-import cx from 'classnames';
 import PropTypes from "prop-types";
+import Button from '../Button';
 import styles from "./Modal.module.scss";
 
-const ModalActions = ({ className, children })  => (
-  <div className={cx(styles.actions, className)}>
-    {children}
+const ModalActions = ({
+  onConfirmClick,
+  confirmLabel,
+  closeModal,
+  cancelLabel,
+}) => (
+  <div className={styles.actions}>
+    <Button
+      border
+      className={styles.btnCancel}
+      accent="negative"
+      onClick={closeModal}
+    >
+      {cancelLabel}
+    </Button>
+    {onConfirmClick && (
+      <Button
+        variant="fill"
+        accent="positive"
+        onClick={e => onConfirmClick(e, closeModal)}
+      >
+        {confirmLabel}
+      </Button>
+    )}
   </div>
 )
 
+ModalActions.defaultProps = {
+  confirmLabel: 'Confirm',
+  cancelLabel: 'Cancel',
+};
+
 ModalActions.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  onConfirmClick: PropTypes.func,
+  closeModal: PropTypes.func.isRequired,
+  confirmLabel: PropTypes.string,
+  cancelLabel: PropTypes.string,
 };
 
 export default ModalActions
