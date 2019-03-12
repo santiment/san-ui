@@ -8,11 +8,10 @@ class Portal extends React.Component {
   constructor() {
     super();
 
-    this.portal = React.createRef();
-  }
-
-  componentDidMount() {
-    this.portal.current.focus();
+    this.mountNode = document.createElement('div');
+    this.mountNode.id = 'ui-modal';
+    this.mountNode.className = styles.wrapper;
+    document.body.appendChild(this.mountNode);
   }
 
   handleOnKeyUp = e => {
@@ -21,28 +20,26 @@ class Portal extends React.Component {
     }
   };
 
-  handleOnClick = e => {
-    if (this.portal.current == e.target) {
-      this.props.closeModal();
-    }
-  };
+  componentWillUnmount() {
+    document.body.removeChild(this.mountNode);
+  }
 
   render() {
-    const { children } = this.props;
+    const { children, closeModal } = this.props;
 
     return ReactDOM.createPortal(
-      <div
-        tabIndex={0}
-        ref={this.portal}
-        className={styles.container}
-        onClick={this.handleOnClick}
-        onKeyUp={this.handleOnKeyUp}
-      >
+      <React.Fragment>
         <Panel variant="modal" className={styles.dialog}>
           {children}
         </Panel>
-      </div>,
-      document.body
+        <div
+          tabIndex={0}
+          className={styles.container}
+          onClick={closeModal}
+          onKeyUp={this.handleOnKeyUp}
+        />
+      </React.Fragment>,
+      this.mountNode
     );
   }
 }
