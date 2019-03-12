@@ -10,29 +10,24 @@ class Modal extends Component {
   };
 
   openModal = () => {
+    const { onOpen } = this.props;
     this.setState({
       open: true,
     });
+
+    if (onOpen) {
+      onOpen();
+    }
   };
 
   closeModal = () => {
+    const { onClose } = this.props;
     this.setState({
       open: false,
     });
-  };
 
-  onClickTrigger = e => {
-    const { trigger } = this.props;
-    const { open } = this.state;
-
-    if (trigger.props.onClick) {
-      trigger.props.onClick(e);
-    }
-
-    if (open) {
-      this.closeModal();
-    } else {
-      this.openModal();
+    if (onClose) {
+      onClose();
     }
   };
 
@@ -49,7 +44,7 @@ class Modal extends Component {
     return (
       <div className={className}>
         {React.cloneElement(trigger, {
-          onClick: this.onClickTrigger
+          onClick: this.openModal
         })}
         {open && (
           <Portal closeModal={this.closeModal}>
@@ -76,6 +71,8 @@ Modal.propTypes = {
   hideCloseIcon: PropTypes.bool,
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
 export default Modal;
