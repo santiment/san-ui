@@ -4,8 +4,6 @@ $breakpoint-mobile: 360px;
 $breakpoint-tablet: 760px;
 $breakpoint-desktop: 980px;
 
-
-
 $disabled: #d3d3d3;
 
 // INPUT
@@ -17,103 +15,103 @@ $input-placeholder-color-night: #4b4b4b;
 
 // Basic
 // ---
-$white: #ffffff;
-$dark: #181B2B;
+$white: #fff;
+$dark: #181b2b;
 // ---
 
 // ---
 $black: #15181f;
+
 /* $white */
 // ---
 
 // ---
-$light-gray: #F7F8F9;
+$light-gray: #f7f8f9;
 $light-gray2: #ebeef5;
 $light-gray3: #e0e4ee;
 $dark-gray: #adb6cd;
-$dark-gray2: #7A859E;
+$dark-gray2: #7a859e;
 
-$dark-1: #1E2133;
+$dark-1: #1e2133;
 $dark-2: #212538;
-$dark-3: #2A2F45;
-$dark-4: #4C516C;
-$dark-5: #8B93B6;
+$dark-3: #2a2f45;
+$dark-4: #4c516c;
+$dark-5: #8b93b6;
 // ---
 
 $green: #14c393;
 $green-hover: #07b988;
-$green-light: #DCF6EF;
-$green-light-2: #B9EDDF;
-$green-dark: #17343B;
+$green-light: #dcf6ef;
+$green-light-2: #b9eddf;
+$green-dark: #17343b;
 
 $orange: #ffad4d;
 $orange-hover: #ffa030;
-$orange-light: #FFF3E4;
-$orange-dark: #3B3130;
+$orange-light: #fff3e4;
+$orange-dark: #3b3130;
 
 $red: #ff5b5b;
-$red-hover: #ED4F4F;
-$red-light: #FFE6E6;
-$red-dark: #3B2532;
+$red-hover: #ed4f4f;
+$red-light: #ffe6e6;
+$red-dark: #3b2532;
 
 $blue: #5275ff;
-$blue-hover: #4567ED;
-$blue-light: #E5EAFF;
-$blue-dark: #21284B;
+$blue-hover: #4567ed;
+$blue-light: #e5eaff;
+$blue-dark: #21284b;
 
 $violet: #8358ff;
-$violet-hover: #774EED;
-$violet-light: #F0EEFF;
-$violet-dark: #28244B;
+$violet-hover: #774eed;
+$violet-light: #f0eeff;
+$violet-dark: #28244b;
 
-$cyan: #68DBF4;
+$cyan: #68dbf4;
 
 // new color naming
-$athens: #F7F8F9;
-$porcelain: #E7EAF3;
-$mystic: #D9DCE9;
-$casper: #9FAAC4;
-$waterloo: #7A859E;
-$mirage: #181B2B;
-$shark: #15181F;
-$ebony-clay: #1E2133;
+$athens: #f7f8f9;
+$porcelain: #e7eaf3;
+$mystic: #d9dce9;
+$casper: #9faac4;
+$waterloo: #7a859e;
+$mirage: #181b2b;
+$shark: #15181f;
+$ebony-clay: #1e2133;
 $cloud-burst: #222639;
-$rhino: #2C3147;
-$fiord: #4D526D;
-$bali-hai: #8B93B6;
+$rhino: #2c3147;
+$fiord: #4d526d;
+$bali-hai: #8b93b6;
 
+$jungle-green: #14c393;
+$jungle-green-hover: #07b988;
+$jungle-green-light: #dcf6ef;
+$jungle-green-light-2: #b9eddf;
+$jungle-green-dark: #17343b;
+$jungle-green-dark-2: #174d4a;
 
-$jungle-green: #14C393;
-$jungle-green-hover: #07B988;
-$jungle-green-light: #DCF6EF;
-$jungle-green-light-2: #B9EDDF;
-$jungle-green-dark: #17343B;
-$jungle-green-dark-2: #174D4A;
+$texas-rose: #ffad4d;
+$texas-rose-hover: #ffa030;
+$texas-rose-light: #fff3e4;
+$texas-rose-dark: #3b3130;
 
-$texas-rose: #FFAD4D;
-$texas-rose-hover: #FFA030;
-$texas-rose-light: #FFF3E4;
-$texas-rose-dark: #3B3130;
+$persimmon: #ff5b5b;
+$persimmon-hover: #ed4f4f;
+$persimmon-light: #ffe6e6;
+$persimmon-dark: #3b2532;
 
-$persimmon: #FF5B5B;
-$persimmon-hover: #ED4F4F;
-$persimmon-light: #FFE6E6;
-$persimmon-dark: #3B2532;
+$dodger-blue: #5275ff;
+$dodger-blue-hover: #4567ed;
+$dodger-blue-light: #e5eaff;
+$dodger-blue-dark: #21284b;
 
-$dodger-blue: #5275FF;
-$dodger-blue-hover: #4567ED;
-$dodger-blue-light: #E5EAFF;
-$dodger-blue-dark: #21284B;
+$heliotrope: #8358ff;
+$heliotrope-hover: #774eed;
+$heliotrope-light: #f0eeff;
+$heliotrope-dark: #28244b;
 
-$heliotrope: #8358FF;
-$heliotrope-hover: #774EED;
-$heliotrope-light: #F0EEFF;
-$heliotrope-dark: #28244B;
-
-$malibu: #68DBF4;
-$malibu-hover: #5BCDE5;
-$malibu-light: #E5F9FD;
-$malibu-dark: #253A4B;
+$malibu: #68dbf4;
+$malibu-hover: #5bcde5;
+$malibu-light: #e5f9fd;
+$malibu-dark: #253a4b;
 
 //With names
 $text-grey: #7a859e;
@@ -123,8 +121,8 @@ $btn-background-light-grey: #f6f6f8;
 
 // DECORATORS
 $border-radius: 4px;
-$box-shadow: 0px 1px 2px rgba(21, 24, 31, 0.02),
-  0px 2px 10px rgba(21, 24, 31, 0.04), 0px 4px 24px rgba(21, 24, 31, 0.06);
+$box-shadow: 0 1px 2px rgba(21, 24, 31, 0.02),
+  0 2px 10px rgba(21, 24, 31, 0.04), 0 4px 24px rgba(21, 24, 31, 0.06);
 
 // TEXT
 $font-size-regular: 14px;

@@ -2,148 +2,123 @@
     This file should be included at the top of the target project index.scss
 */
 
-@import "./variables.scss";
-
+@import './variables.scss';
 
 // --CSS VARS--
 :root {
-    --white: #{$white};
+  --white: #{$white};
+  --athens: #{$athens}; // NEW
+  --porcelain: #{$porcelain}; // NEW
+  --mystic: #{$mystic}; // NEW
+  --casper: #{$casper}; // NEW
+  --waterloo: #{$waterloo}; // NEW
+  --mirage: #{$mirage}; // NEW
+  --shark: #{$shark}; // NEW
+  --black: #{$black};
+  --grey-light: #{$light-gray};
+  --grey-light-2: #{$light-gray2};
+  --grey-light-3: #{$light-gray3};
+  --grey-dark: #{$dark-gray};
+  --grey-dark-2: #{$dark-gray2};
+  --green: #{$green};
+  --green-hover: #{$green-hover};
+  --green-light: #{$green-light};
+  --green-light-2: #{$green-light-2};
+  --jungle-green: #{$jungle-green}; // NEW
+  --jungle-green-hover: #{$jungle-green-hover}; // NEW
+  --jungle-green-light: #{$jungle-green-light}; // NEW
+  --jungle-green-light-2: #{$jungle-green-light-2}; // NEW
+  --orange: #{$orange};
+  --orange-hover: #{$orange-hover};
+  --orange-light: #{$orange-light};
+  --texas-rose: #{$texas-rose}; // NEW
+  --texas-rose-hover: #{$texas-rose-hover}; // NEW
+  --texas-rose-light: #{$texas-rose-light}; // NEW
+  --red: #{$red};
+  --red-hover: #{$red-hover};
+  --red-light: #{$red-light};
+  --persimmon: #{$persimmon}; // NEW
+  --persimmon-hover: #{$persimmon-hover}; // NEW
+  --persimmon-light: #{$persimmon-light}; // NEW
+  --blue: #{$blue};
+  --blue-hover: #{$blue-hover};
+  --blue-light: #{$blue-light};
+  --dodger-blue: #{$dodger-blue}; // NEW
+  --dodger-blue-hover: #{$dodger-blue-hover}; // NEW
+  --dodger-blue-light: #{$dodger-blue-light}; // NEW
+  --violet: #{$violet};
+  --violet-hover: #{$violet-hover};
+  --violet-light: #{$violet-light};
+  --heliotrope: #{$heliotrope}; // NEW
+  --heliotrope-hover: #{$heliotrope-hover}; // NEW
+  --heliotrope-light: #{$heliotrope-light}; // NEW
+  --cyan: #{$cyan};
+  --malibu: #{$malibu}; // NEW
+  --malibu-hover: #{$malibu-hover}; // NEW
+  --malibu-light: #{$malibu-light}; // NEW
+}
 
-    --athens: #{$athens}; // NEW
-    --porcelain: #{$porcelain}; // NEW
-    --mystic: #{$mystic}; // NEW
-    --casper: #{$casper}; // NEW
-    --waterloo: #{$waterloo}; // NEW
-    --mirage: #{$mirage}; // NEW
-    --shark: #{$shark}; // NEW
-
-    --black: #{$black};
-
-    --grey-light: #{$light-gray};
-    --grey-light-2: #{$light-gray2};
-    --grey-light-3: #{$light-gray3};
-    --grey-dark: #{$dark-gray};
-    --grey-dark-2: #{$dark-gray2};
-
-    --green: #{$green};
-    --green-hover: #{$green-hover};
-    --green-light: #{$green-light}; 
-    --green-light-2: #{$green-light-2};
-
-    --jungle-green: #{$jungle-green}; // NEW
-    --jungle-green-hover: #{$jungle-green-hover}; // NEW
-    --jungle-green-light: #{$jungle-green-light};  // NEW
-    --jungle-green-light-2: #{$jungle-green-light-2}; // NEW
-
-    --orange: #{$orange};
-    --orange-hover: #{$orange-hover};
-    --orange-light: #{$orange-light};
-
-    --texas-rose: #{$texas-rose}; // NEW
-    --texas-rose-hover: #{$texas-rose-hover}; // NEW
-    --texas-rose-light: #{$texas-rose-light}; // NEW
-
-    --red: #{$red};
-    --red-hover: #{$red-hover};
-    --red-light: #{$red-light};
-
-    --persimmon: #{$persimmon}; // NEW
-    --persimmon-hover: #{$persimmon-hover}; // NEW
-    --persimmon-light: #{$persimmon-light}; // NEW
-
-    --blue: #{$blue};
-    --blue-hover: #{$blue-hover};
-    --blue-light: #{$blue-light};
-
-    --dodger-blue: #{$dodger-blue}; // NEW
-    --dodger-blue-hover: #{$dodger-blue-hover}; // NEW
-    --dodger-blue-light: #{$dodger-blue-light}; // NEW
-
-    --violet: #{$violet};
-    --violet-hover: #{$violet-hover};
-    --violet-light: #{$violet-light};
-
-    --heliotrope: #{$heliotrope}; // NEW
-    --heliotrope-hover: #{$heliotrope-hover}; // NEW
-    --heliotrope-light: #{$heliotrope-light}; // NEW
-
-    --cyan: #{$cyan};
-
-    --malibu: #{$malibu}; // NEW
-    --malibu-hover: #{$malibu-hover}; // NEW
-    --malibu-light: #{$malibu-light}; // NEW
-
-    & :global(.night-mode) {
-        --white: #{$mirage}; // NEW
-
-        --black: #{$white};
-        --mirage: #{$white}; // NEW
-
-        --grey-light: #{$dark-1};
-        --grey-light-2: #{$dark-2};
-        --grey-light-3: #{$dark-3};
-        --grey-dark: #{$dark-4};
-        --grey-dark-2: #{$dark-5};
-
-        --athens: #{$ebony-clay}; // NEW
-        --porcelain: #{$cloud-burst}; // NEW
-        --mystic: #{$rhino}; // NEW
-        --casper: #{$fiord}; // NEW
-        --waterloo: #{$bali-hai}; // NEW
-
-        --green-light: #{$green-dark};
-        --jungle-green-light: #{$jungle-green-dark};  // NEW
-        --jungle-green-light-2: #{$jungle-green-dark-2};  // NEW
-
-        --orange-light: #{$orange-dark};
-        --texas-rose-light: #{$texas-rose-dark}; // NEW
-
-        --red-light: #{$red-dark};
-        --persimmon-light: #{$persimmon-dark}; // NEW
-
-        --blue-light: #{$blue-dark};
-        --dodger-blue-light: #{$dodger-blue-dark}; // NEW
-
-        --violet-light: #{$violet-dark};
-        --heliotrope-light: #{$heliotrope-dark}; // NEW
-
-        --malibu-light: #{$malibu-dark}; // NEW
-    }
+:global(.night-mode) {
+  --white: #{$mirage}; // NEW
+  --black: #{$white};
+  --mirage: #{$white}; // NEW
+  --grey-light: #{$dark-1};
+  --grey-light-2: #{$dark-2};
+  --grey-light-3: #{$dark-3};
+  --grey-dark: #{$dark-4};
+  --grey-dark-2: #{$dark-5};
+  --athens: #{$ebony-clay}; // NEW
+  --porcelain: #{$cloud-burst}; // NEW
+  --mystic: #{$rhino}; // NEW
+  --casper: #{$fiord}; // NEW
+  --waterloo: #{$bali-hai}; // NEW
+  --green-light: #{$green-dark};
+  --jungle-green-light: #{$jungle-green-dark}; // NEW
+  --jungle-green-light-2: #{$jungle-green-dark-2}; // NEW
+  --orange-light: #{$orange-dark};
+  --texas-rose-light: #{$texas-rose-dark}; // NEW
+  --red-light: #{$red-dark};
+  --persimmon-light: #{$persimmon-dark}; // NEW
+  --blue-light: #{$blue-dark};
+  --dodger-blue-light: #{$dodger-blue-dark}; // NEW
+  --violet-light: #{$violet-dark};
+  --heliotrope-light: #{$heliotrope-dark}; // NEW
+  --malibu-light: #{$malibu-dark}; // NEW
 }
 
 body {
-    background-color: var(--white);
+  background-color: var(--white);
 }
 
 // --SCROLLBAR STYLES--
 *::-webkit-scrollbar {
-    background: transparent !important;
-    width: 4px !important;
-}
-
-*::-webkit-scrollbar:horizontal {
-    height: 4px !important;
+  background: transparent !important;
+  width: 4px !important;
 }
 
 *::-webkit-scrollbar-track {
-    border-radius: $border-radius !important;
-    background: var(--porcelain) !important;
+  border-radius: $border-radius !important;
+  background: var(--porcelain) !important;
 }
+
 *::-webkit-scrollbar-thumb {
-    width: 4px !important;
-    border-radius: $border-radius !important;
-    background: var(--casper) !important;
+  width: 4px !important;
+  border-radius: $border-radius !important;
+  background: var(--casper) !important;
+}
+
+*::-webkit-scrollbar:horizontal {
+  height: 4px !important;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    cursor: pointer !important;
-    background: var(--waterloo) !important;
+  cursor: pointer !important;
+  background: var(--waterloo) !important;
 }
 
-
 // --SELECTION STYLES--
-:global(.night-mode) {
-    & ::selection {
-        background-color: #a5a8b1;
-    }
+::selection {
+  :global(.night-mode) & {
+    background-color: #a5a8b1;
+  }
 }
