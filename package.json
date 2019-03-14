@@ -85,7 +85,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn"
+      "pre-commit": "npm precommit"
     }
   }
 }
