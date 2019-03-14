@@ -1,0 +1,112 @@
+$max-width: 1024px;
+$breakpoint-mobile: 360px;
+$breakpoint-tablet: 760px;
+$breakpoint-desktop: 980px;
+$disabled: #d3d3d3;
+
+// INPUT
+$input-color-night: #a0a0a0;
+$input-placeholder-color-day: #999;
+$input-placeholder-color-night: #4b4b4b;
+
+// COLORS - NOTE: DEPRECATED. SHOULD USE CSS VARS AS IN MAIN.SCSS
+
+// Basic
+// ---
+$white: #ffffff;
+$dark: #181b2b;
+// ---
+
+// ---
+$black: #15181f;
+/* $white */
+// ---
+
+// ---
+$light-gray: #f7f8f9;
+$light-gray2: #ebeef5;
+$light-gray3: #e0e4ee;
+$dark-gray: #adb6cd;
+$dark-gray2: #7a859e;
+$dark-1: #1e2133;
+$dark-2: #212538;
+$dark-3: #2a2f45;
+$dark-4: #4c516c;
+$dark-5: #8b93b6;
+// ---
+$green: #14c393;
+$green-hover: #07b988;
+$green-light: #dcf6ef;
+$green-light-2: #b9eddf;
+$green-dark: #17343b;
+$orange: #ffad4d;
+$orange-hover: #ffa030;
+$orange-light: #fff3e4;
+$orange-dark: #3b3130;
+$red: #ff5b5b;
+$red-hover: #ed4f4f;
+$red-light: #ffe6e6;
+$red-dark: #3b2532;
+$blue: #5275ff;
+$blue-hover: #4567ed;
+$blue-light: #e5eaff;
+$blue-dark: #21284b;
+$violet: #8358ff;
+$violet-hover: #774eed;
+$violet-light: #f0eeff;
+$violet-dark: #28244b;
+$cyan: #68dbf4;
+
+// new color naming
+$athens: #f7f8f9;
+$porcelain: #e7eaf3;
+$mystic: #d9dce9;
+$casper: #9faac4;
+$waterloo: #7a859e;
+$mirage: #181b2b;
+$shark: #15181f;
+$ebony-clay: #1e2133;
+$cloud-burst: #222639;
+$rhino: #2c3147;
+$fiord: #4d526d;
+$bali-hai: #8b93b6;
+$jungle-green: #14c393;
+$jungle-green-hover: #07b988;
+$jungle-green-light: #dcf6ef;
+$jungle-green-light-2: #b9eddf;
+$jungle-green-dark: #17343b;
+$jungle-green-dark-2: #174d4a;
+$texas-rose: #ffad4d;
+$texas-rose-hover: #ffa030;
+$texas-rose-light: #fff3e4;
+$texas-rose-dark: #3b3130;
+$persimmon: #ff5b5b;
+$persimmon-hover: #ed4f4f;
+$persimmon-light: #ffe6e6;
+$persimmon-dark: #3b2532;
+$dodger-blue: #5275ff;
+$dodger-blue-hover: #4567ed;
+$dodger-blue-light: #e5eaff;
+$dodger-blue-dark: #21284b;
+$heliotrope: #8358ff;
+$heliotrope-hover: #774eed;
+$heliotrope-light: #f0eeff;
+$heliotrope-dark: #28244b;
+$malibu: #68dbf4;
+$malibu-hover: #5bcde5;
+$malibu-light: #e5f9fd;
+$malibu-dark: #253a4b;
+
+//With names
+$text-grey: #7a859e;
+$text-green: #14c393;
+$btn-background-light-green: #dcf6ef;
+$btn-background-light-grey: #f6f6f8;
+
+// DECORATORS
+$border-radius: 4px;
+$box-shadow: 0px 1px 2px rgba(21, 24, 31, 0.02), 0px 2px 10px rgba(21, 24, 31, 0.04), 0px 4px 24px rgba(21, 24, 31, 0.06);
+
+// TEXT
+$font-size-regular: 14px;
+$line-height-regular: 20px;
