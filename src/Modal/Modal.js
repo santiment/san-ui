@@ -12,24 +12,12 @@ class Modal extends Component {
 
   openModal = () => {
     const { onOpen } = this.props;
-    this.setState({
-      open: true,
-    });
-
-    if (onOpen) {
-      onOpen();
-    }
+    this.setState({ open: true }, onOpen);
   };
 
   closeModal = () => {
     const { onClose } = this.props;
-    this.setState({
-      open: false,
-    });
-
-    if (onClose) {
-      onClose();
-    }
+    this.setState({ open: false }, onClose);
   };
 
   render() {
@@ -73,6 +61,8 @@ class Modal extends Component {
 
 Modal.defaultProps = {
   hideCloseIcon: false,
+  onClose: () => {},
+  onOpen: () => {},
 }
 
 Modal.propTypes = {
