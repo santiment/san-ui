@@ -1,6 +1,6 @@
 {
   "name": "san-ui",
-  "version": "0.3.13",
+  "version": "0.4.28",
   "author": "Santiment",
   "repository": {
     "type": "git",
@@ -57,14 +57,33 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
     "identity-obj-proxy": "^3.0.0",
+    "lint-staged": "^8.1.5",
     "mini-css-extract-plugin": "^0.5.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "stylefmt": "^6.0.3",
     "webpack-cli": "^3.1.2"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
     "moduleNameMapper": {
       "\\.(css|sass|scss)$": "identity-obj-proxy"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "yarn prettier-standart",
+        "git add"
+      ],
+      "*.{sass,scss,css}": [
+        "yarn stylefmt"
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test && yarn lint-staged",
+      "pre-push": "yarn test && yarn lint-staged"
     }
   }
 }
