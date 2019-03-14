@@ -17,7 +17,8 @@
     "build:storybook": "build-storybook -o build",
     "build:lib": "yarn webpack && yarn scripts && cp -r ./README.md lib-build/README.md",
     "build": "yarn clean && yarn build:storybook",
-    "docker-dev": "docker-compose build frontend && docker-compose run --service-ports frontend"
+    "docker-dev": "docker-compose build frontend && docker-compose run --service-ports frontend",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "@babel/cli": "^7.2.0",
@@ -82,7 +83,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn precommit"
     }
   }
 }
