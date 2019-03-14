@@ -78,12 +78,14 @@
       ],
       "*.{sass,scss,css}": [
         "yarn stylefmt"
-      ]
+      ],
+      "*.scss": [
+        "yarn stylefmt"
     }
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn precommit"
+      "pre-commit": "yarn"
     }
   }
 }
