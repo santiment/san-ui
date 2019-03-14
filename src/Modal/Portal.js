@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import cx from 'classnames';
 import Panel from '../Panel/Panel';
 import styles from "./Modal.module.scss";
 
@@ -16,7 +15,7 @@ class Portal extends React.Component {
   }
 
   componentDidMount() {
-    const dimmer = this.mountNode.getElementsByClassName('dimmer')[0];
+    const dimmer = this.mountNode.getElementsByClassName(styles.container)[0];
     dimmer.focus();
   }
 
@@ -40,7 +39,7 @@ class Portal extends React.Component {
         </Panel>
         <div
           tabIndex={0}
-          className={cx('dimmer', styles.container)}
+          className={styles.container}
           onClick={closeModal}
           onKeyUp={this.handleOnKeyUp}
         />
