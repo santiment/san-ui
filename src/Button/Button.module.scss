@@ -2,6 +2,9 @@
 @import '../mixins.scss';
 
 .button {
+  ---btn-accent-color: var(--btn-accent-color, var(--mirage));
+  ---btn-accent-color-hover: var(--btn-accent-color-hover, var(--jungle-green));
+
   @include border-box;
 
   display: inline-flex;
@@ -15,6 +18,14 @@
   line-height: 1;
   border-radius: $border-radius;
   cursor: pointer;
+  background: var(--white);
+  color: var(---btn-accent-color);
+  fill: var(---btn-accent-color);
+
+  &:hover {
+    color: var(---btn-accent-color-hover);
+    fill: var(---btn-accent-color-hover);
+  }
 }
 
 .fluid {
@@ -41,61 +52,57 @@
 }
 
 .fill {
+  background: var(--btn-accent-color);
   color: var(--white);
   fill: var(--white);
-  background: var(--btn-accent-color);
 
   &:hover {
     background: var(--btn-accent-color-hover);
+    color: var(--white);
+    fill: var(--white);
   }
 }
 
 .bordered {
   background: var(--white);
   border: 1px solid var(--btn-accent-color, var(--porcelain));
-  color: var(--btn-accent-color);
-  fill: var(--btn-accent-color);
+  color: var(--btn-accent-color, var(--mirage));
+  fill: var(--btn-accent-color, var(--mirage));
 
   &:hover {
+    color: var(--btn-accent-color, var(--jungle-green));
+    fill: var(--btn-accent-color, var(--jungle-green));
     background: var(--btn-accent-color-light);
   }
 }
 
 .flat {
-  color: var(--mirage);
-  fill: var(--mirage);
-  background: var(--white);
-
   &:hover {
-    color: var(--green);
-    fill: var(--green);
+    color: var(--jungle-green);
+    fill: var(--jungle-green);
   }
 
   &.active {
-    color: var(--green);
-    fill: var(--green);
-    background: var(--green-light);
+    color: var(--jungle-green);
+    fill: var(--jungle-green);
+    background: var(--jungle-green-light);
   }
 }
 
 .ghost {
-  color: var(--mirage);
-  fill: var(--mirage);
-  background: var(--white);
-
   &:hover {
     background: var(--grey-light);
   }
 
   &.active {
-    color: var(--green);
-    fill: var(--green);
+    color: var(--jungle-green);
+    fill: var(--jungle-green);
   }
 }
 
 .disabled {
   color: var(--mystic) !important;
-  background: var(--athens) !important;
+  background: var(--white) !important;
   border-color: var(--porcelain) !important;
   fill: var(--mystic) !important;
   pointer-events: none;
@@ -104,7 +111,9 @@
     color: var(--mystic) !important;
   }
 
-  &.flat {
-    background: var(--white) !important;
+  &.ghost,
+  &.fill,
+  &.bordered {
+    background: var(--athens) !important;
   }
 }

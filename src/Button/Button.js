@@ -48,8 +48,8 @@ Button.defaultProps = {
   fluid: false,
   border: false,
   isActive: false,
-  variant: 'fill',
-  accent: 'grey',
+  variant: undefined,
+  accent: undefined,
   className: ''
 }
 
