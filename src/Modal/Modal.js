@@ -24,7 +24,7 @@ class Modal extends Component {
     window.addEventListener('keyup', this.onKeyUp)
   }
 
-  componentWillUnmout() {
+  componentWillUnmount() {
     window.removeEventListener('keyup', this.onKeyUp)
   }
 
