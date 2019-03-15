@@ -77,11 +77,13 @@
   "lint-staged": {
     "linters": {
       "*.js": [
-        "yarn prettier-standart"
+        "yarn prettier-standart",
+        "git add"
       ],
       "*.{sass,scss,css}": [
         "yarn stylefmt",
-        "yarn stylelint src/*{sass,scss} --syntax scss --fix"
+        "yarn stylelint src/*{sass,scss} --syntax scss --fix",
+        "git add"
       ]
     }
   },
