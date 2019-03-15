@@ -1,6 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Button from '../src/Button/Button'
+import Icon from '../src/Icon/Icon'
 import ColorModeComparison from './ColorModeComparison'
 
 const CustomA = ({ children, className, to }) => (
@@ -25,13 +26,16 @@ storiesOf('Button', module)
         <Button variant='fill' accent='purple'>
           Purple fill
         </Button>
+        <Button variant='fill' accent='purple'>
+          <Icon type='search' /> With Icon
+        </Button>
         <hr />
-        <Button 
-          variant='fill'
-          accent='positive'
-          disabled
-        >
+        <Button variant='fill' accent='positive' disabled>
           Disabled
+        </Button>
+
+        <Button variant='fill' accent='purple' disabled>
+          <Icon type='search' /> With Icon
         </Button>
       </ColorModeComparison>
     </div>
@@ -48,13 +52,15 @@ storiesOf('Button', module)
         <Button border accent='purple'>
           Purple border
         </Button>
+        <Button border accent='purple'>
+          <Icon type='search' /> With Icon
+        </Button>
         <hr />
-        <Button 
-          border
-          accent='positive'
-          disabled
-        >
+        <Button border accent='positive' disabled>
           Disabled
+        </Button>
+        <Button border accent='purple' disabled>
+          <Icon type='search' /> With Icon
         </Button>
       </ColorModeComparison>
     </div>
@@ -77,13 +83,15 @@ storiesOf('Button', module)
         <Button variant='flat' isActive>
           Flat Active Button
         </Button>
+        <Button variant='flat'>
+          <Icon type='search' /> With Icon
+        </Button>
         <hr />
-        <Button 
-          variant='flat'
-          accent='positive'
-          disabled
-        >
+        <Button variant='flat' accent='positive' disabled>
           Disabled
+        </Button>
+        <Button variant='flat' disabled>
+          <Icon type='search' /> With Icon
         </Button>
       </ColorModeComparison>
     </div>
@@ -113,13 +121,15 @@ storiesOf('Button', module)
         <Button variant='ghost' isActive>
           Ghost Active Button
         </Button>
+        <Button variant='ghost'>
+          <Icon type='search' /> With Icon
+        </Button>
         <hr />
-        <Button 
-          variant='ghost'
-          accent='positive'
-          disabled
-        >
+        <Button variant='ghost' accent='positive' disabled>
           Disabled
+        </Button>
+        <Button variant='ghost' disabled>
+          <Icon type='search' /> With Icon
         </Button>
       </ColorModeComparison>
     </div>

@@ -21,7 +21,7 @@ const Button = ({
         [`${className} ${styles.button} ${styles[variant]}`]: true,
         [styles[accent]]: accent,
         [styles.active]: isActive,
-        [styles.border]: border,
+        [styles.bordered]: border,
         [styles.fluid]: fluid,
         [styles.disabled]: disabled
       })}
