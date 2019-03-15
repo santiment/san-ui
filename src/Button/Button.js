@@ -38,7 +38,15 @@ Button.propTypes = {
   isActive: PropTypes.bool,
   border: PropTypes.bool,
   variant: PropTypes.oneOf(['flat', 'ghost', 'fill']),
-  accent: PropTypes.oneOf(['grey', 'positive', 'negative', 'purple']),
+  accent: PropTypes.oneOf([
+    'grey',
+    'positive',
+    'negative',
+    'purple',
+    'orange',
+    'blue',
+    'cyan'
+  ]),
   className: PropTypes.string,
   children: PropTypes.any.isRequired
 }

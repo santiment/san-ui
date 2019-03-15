@@ -10,15 +10,53 @@ const CustomA = ({ children, className, to }) => (
   </a>
 )
 
+const AccentButtons = ({ children, ...props }) =>
+  accents.map(accent => (
+    <React.Fragment key={accent}>
+      <Button accent={accent.toLowerCase()} {...props}>
+        {children(accent)}
+      </Button>
+      <div style={{ padding: 5 }} />
+    </React.Fragment>
+  ))
+
+const accents = [
+  'Grey',
+  'Positive',
+  'Negative',
+  'Orange',
+  'Blue',
+  'Cyan',
+  'Purple'
+]
+
 storiesOf('Button', module)
   .add('default', () => (
     <div>
       <ColorModeComparison>
         <Button>Default button</Button>
-        <Button accent='positive'>Default button</Button>
-        <Button accent='negative'>Default button</Button>
-        <Button accent='purple'>Default button</Button>
+        <AccentButtons>{accent => accent}</AccentButtons>
         <Button disabled>Default disabled button</Button>
+      </ColorModeComparison>
+    </div>
+  ))
+  .add('default (with icons)', () => (
+    <div>
+      <ColorModeComparison>
+        <Button>
+          <Icon type='search' /> Default button
+        </Button>
+        <AccentButtons>
+          {accent => (
+            <>
+              <Icon type='search' /> {accent} button
+            </>
+          )}
+        </AccentButtons>
+        <Button disabled>
+          <Icon type='search' />
+          Default disabled button
+        </Button>
       </ColorModeComparison>
     </div>
   ))
@@ -26,24 +64,9 @@ storiesOf('Button', module)
     <div>
       <ColorModeComparison>
         <Button border>Default</Button>
-        <Button border accent='negative'>
-          Negative border
-        </Button>
-        <Button border accent='positive'>
-          Positive border
-        </Button>
-        <Button border accent='purple'>
-          Purple border
-        </Button>
-        <Button border accent='purple'>
-          <Icon type='search' /> With Icon
-        </Button>
-        <hr />
+        <AccentButtons border>{accent => `${accent} bordered`}</AccentButtons>
         <Button border accent='positive' disabled>
           Disabled
-        </Button>
-        <Button border accent='purple' disabled>
-          <Icon type='search' /> With Icon
         </Button>
       </ColorModeComparison>
     </div>
@@ -59,28 +82,11 @@ storiesOf('Button', module)
   .add('Variant: "fill"', () => (
     <div>
       <ColorModeComparison>
-        <Button variant='fill' accent='grey'>
-          Grey fill
-        </Button>
-        <Button variant='fill' accent='negative'>
-          Negative fill
-        </Button>
-        <Button variant='fill' accent='positive'>
-          Positive fill
-        </Button>
-        <Button variant='fill' accent='purple'>
-          Purple fill
-        </Button>
-        <Button variant='fill' accent='purple'>
-          <Icon type='search' /> With Icon
-        </Button>
-        <hr />
+        <AccentButtons variant='fill'>
+          {accent => `${accent} fill`}
+        </AccentButtons>
         <Button variant='fill' accent='positive' disabled>
           Disabled
-        </Button>
-
-        <Button variant='fill' accent='purple' disabled>
-          <Icon type='search' /> With Icon
         </Button>
       </ColorModeComparison>
     </div>
@@ -95,15 +101,9 @@ storiesOf('Button', module)
         <Button variant='flat' isActive>
           Flat Active Button
         </Button>
-        <Button variant='flat'>
-          <Icon type='search' /> With Icon
-        </Button>
         <hr />
         <Button variant='flat' accent='positive' disabled>
           Disabled
-        </Button>
-        <Button variant='flat' disabled>
-          <Icon type='search' /> With Icon
         </Button>
       </ColorModeComparison>
     </div>
@@ -133,15 +133,9 @@ storiesOf('Button', module)
         <Button variant='ghost' isActive>
           Ghost Active Button
         </Button>
-        <Button variant='ghost'>
-          <Icon type='search' /> With Icon
-        </Button>
         <hr />
         <Button variant='ghost' accent='positive' disabled>
           Disabled
-        </Button>
-        <Button variant='ghost' disabled>
-          <Icon type='search' /> With Icon
         </Button>
       </ColorModeComparison>
     </div>

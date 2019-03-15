@@ -33,24 +33,6 @@
   width: 100%;
 }
 
-.positive {
-  --btn-accent-color: var(--jungle-green);
-  --btn-accent-color-hover: var(--jungle-green-hover);
-  --btn-accent-color-light: var(--jungle-green-light);
-}
-
-.negative {
-  --btn-accent-color: var(--persimmon);
-  --btn-accent-color-hover: var(--persimmon-hover);
-  --btn-accent-color-light: var(--persimmon-light);
-}
-
-.purple {
-  --btn-accent-color: var(--heliotrope);
-  --btn-accent-color-hover: var(--heliotrope-hover);
-  --btn-accent-color-light: var(--heliotrope-light);
-}
-
 .fill {
   background: var(--btn-accent-color);
   color: var(--white);
@@ -98,6 +80,48 @@
     color: var(--jungle-green);
     fill: var(--jungle-green);
   }
+}
+
+.grey {
+  --btn-accent-color: var(--waterloo);
+  --btn-accent-color-hover: var(--waterloo);
+  --btn-accent-color-light: var(--porcelain);
+}
+
+.positive {
+  --btn-accent-color: var(--jungle-green);
+  --btn-accent-color-hover: var(--jungle-green-hover);
+  --btn-accent-color-light: var(--jungle-green-light);
+}
+
+.negative {
+  --btn-accent-color: var(--persimmon);
+  --btn-accent-color-hover: var(--persimmon-hover);
+  --btn-accent-color-light: var(--persimmon-light);
+}
+
+.orange {
+  --btn-accent-color: var(--texas-rose);
+  --btn-accent-color-hover: var(--texas-rose-hover);
+  --btn-accent-color-light: var(--texas-rose-light);
+}
+
+.blue {
+  --btn-accent-color: var(--dodger-blue);
+  --btn-accent-color-hover: var(--dodger-blue-hover);
+  --btn-accent-color-light: var(--dodger-blue-light);
+}
+
+.cyan {
+  --btn-accent-color: var(--malibu);
+  --btn-accent-color-hover: var(--malibu-hover);
+  --btn-accent-color-light: var(--malibu-light);
+}
+
+.purple {
+  --btn-accent-color: var(--heliotrope);
+  --btn-accent-color-hover: var(--heliotrope-hover);
+  --btn-accent-color-light: var(--heliotrope-light);
 }
 
 .disabled {
