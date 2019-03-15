@@ -47,13 +47,16 @@ class Modal extends Component {
     }
   };
 
+  onConfirmClick = e => {
+    this.props.onConfirmClick(e, this.closeModal);
+  }
+
   render() {
     const {
       className,
       trigger,
       hideCloseIcon,
       title,
-      onConfirmClick,
       confirmLabel,
       cancelLabel,
       children,
@@ -76,7 +79,7 @@ class Modal extends Component {
               {children}
               <ModalActions
                 closeModal={this.closeModal}
-                onConfirmClick={onConfirmClick}
+                onConfirmClick={this.onConfirmClick}
                 confirmLabel={confirmLabel}
                 cancelLabel={cancelLabel}
               />

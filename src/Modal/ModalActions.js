@@ -22,7 +22,7 @@ const ModalActions = ({
       <Button
         variant="fill"
         accent="positive"
-        onClick={e => onConfirmClick(e, closeModal)}
+        onClick={onConfirmClick}
       >
         {confirmLabel}
       </Button>
