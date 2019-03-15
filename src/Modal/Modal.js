@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
+import cx from 'classnames';
 
 import ModalHeader from "./ModalHeader";
 import ModalActions from "./ModalActions";
@@ -60,13 +61,13 @@ class Modal extends Component {
     const { open } = this.state;
 
     return (
-      <div className={className}>
+      <React.Fragment>
         {React.cloneElement(trigger, {
           onClick: this.openModal
         })}
         {open && ReactDOM.createPortal(
           <React.Fragment>
-            <Panel variant="modal" className={styles.dialog}>
+            <Panel variant="modal" className={cx(className, styles.dialog)}>
               <ModalHeader
                 onCloseModal={this.closeModal}
                 hideCloseIcon={hideCloseIcon}
@@ -89,7 +90,7 @@ class Modal extends Component {
           </React.Fragment>,
           mountNode,
         )}
-      </div>
+      </React.Fragment>
     );
   }
 }
