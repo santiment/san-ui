@@ -4,6 +4,17 @@ import PropTypes from "prop-types";
 import ModalHeader from "./ModalHeader";
 import ModalActions from "./ModalActions";
 import Portal from "./Portal";
+import styles from './Modal.module.scss';
+
+let mountNode = document.querySelector('#ui-modal');
+
+if (!mountNode) {
+  mountNode = document.createElement('div'),
+  mountNode.id = 'ui-modal',
+  mountNode.className = styles.wrapper;
+  mountNode.style = "visibility:hidden;";
+  document.body.appendChild(mountNode)
+}
 
 class Modal extends Component {
   state = {
@@ -12,11 +23,13 @@ class Modal extends Component {
 
   openModal = () => {
     const { onOpen } = this.props;
+    mountNode.setAttribute('style', 'visibility:visible;');
     this.setState({ open: true }, onOpen);
   };
 
   closeModal = () => {
     const { onClose } = this.props;
+    mountNode.setAttribute('style', 'visibility:hidden;');
     this.setState({ open: false }, onClose);
   };
 

@@ -5,17 +5,8 @@ import Panel from '../Panel/Panel';
 import styles from "./Modal.module.scss";
 
 class Portal extends React.Component {
-  constructor() {
-    super();
-
-    this.mountNode = document.createElement('div');
-    this.mountNode.id = 'ui-modal';
-    this.mountNode.className = styles.wrapper;
-    document.body.appendChild(this.mountNode);
-  }
-
   componentDidMount() {
-    const dimmer = this.mountNode.getElementsByClassName(styles.container)[0];
+    const dimmer = document.querySelector('#ui-modal').getElementsByClassName(styles.container)[0];
     dimmer.focus();
   }
 
@@ -24,10 +15,6 @@ class Portal extends React.Component {
       this.props.closeModal();
     }
   };
-
-  componentWillUnmount() {
-    document.body.removeChild(this.mountNode);
-  }
 
   render() {
     const { children, closeModal } = this.props;
@@ -44,7 +31,7 @@ class Portal extends React.Component {
           onKeyUp={this.handleOnKeyUp}
         />
       </React.Fragment>,
-      this.mountNode
+      document.querySelector('#ui-modal'),
     );
   }
 }
