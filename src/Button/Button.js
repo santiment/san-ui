@@ -11,6 +11,7 @@ const Button = ({
   accent,
   fluid,
   border,
+  disabled,
   className,
   ...props
 }) => {
@@ -21,7 +22,8 @@ const Button = ({
         [styles[accent]]: accent,
         [styles.active]: isActive,
         [styles.border]: border,
-        [styles.fluid]: fluid
+        [styles.fluid]: fluid,
+        [styles.disabled]: disabled
       })}
       {...props}
     >

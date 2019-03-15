@@ -26,20 +26,11 @@ $color-night: #ccc;
   line-height: 1;
   border-radius: $border-radius;
   cursor: pointer;
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    box-shadow: none;
-    cursor: not-allowed;
-    background-color: var(--grey-light-2);
-    color: var(--grey-dark);
-  }
 }
 
 .fluid {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .fill {
@@ -135,34 +126,15 @@ $color-night: #ccc;
       }
     }
   }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: var(--grey-light-2);
-    color: var(--grey-dark);
-    &:hover {
-      background-color: var(--grey-light-2);
-    }
-    :global(.night-mode) & {
-      background-color: var(--grey-light-2);
-      &:hover {
-        background-color:var(--grey-light-2);
-      }
-      &:active {
-        background-color:var(--grey-light-2);
-      }
-    }
-  }
 }
 
 .border {
-    border: 1px solid var(--grey-light-3);
+  border: 1px solid var(--grey-light-3);
 
   &.negative,
   &.positive,
   &.purple {
-      background-color: transparent;
+    background-color: transparent;
   }
 
   &.negative {
@@ -232,87 +204,63 @@ $color-night: #ccc;
       }
     }
   }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: var(--grey-light);
-    border-color: var(--grey-light-3);
-    color: var(--grey-dark);
-
-    &:hover {
-      background-color: var(--grey-light);
-    }
-
-    :global(.night-mode) & {
-      border-color: var(--grey-light-2);
-      &:hover {
-        background-color:var(--grey-light-2);
-      }
-    }
-  }
 }
 
 .flat {
-    color: var(--grey-dark-2);
-    background-color: var(--white);
+  color: var(--grey-dark-2);
+  background-color: var(--white);
 
   & svg {
-      fill: var(--black);
+    fill: var(--black);
   }
 
   &:hover {
-      color: var(--green);
+    color: var(--green);
     & svg {
-        fill: var(--green);
+      fill: var(--green);
     }
   }
 
   &.active {
-      color: var(--green);
-      background-color: var(--green-light);
+    color: var(--green);
+    background-color: var(--green-light);
     & svg {
-        fill: var(--green);
-    }
-  }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: var(--grey-light);
-    border-color: var(--grey-light-3);
-    color: var(--grey-dark);
-    &:hover {
-      background-color: var(--grey-light);
+      fill: var(--green);
     }
   }
 }
 
 .ghost {
-    color: var(--black);
-    background-color: var(--white);
+  color: var(--black);
+  background-color: var(--white);
 
   & svg {
-      fill: var(--black);
+    fill: var(--black);
   }
 
   &:hover {
-      background: var(--grey-light);
+    background: var(--grey-light);
   }
 
   &.active {
-      color: var(--green);
+    color: var(--green);
     & svg {
-        fill: var(--green);
+      fill: var(--green);
     }
   }
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: var(--white);
-    color: var(--grey-dark);
-    &:hover {
-      background-color: var(--white);
-    }
+}
+
+.disabled {
+  color: var(--grey-dark) !important; // --mystic
+  background: var(--grey-light) !important; // --athens
+  border-color: var(--grey-light-2) !important; // --porcelain
+  cursor: not-allowed;
+
+  &:hover {
+    color: var(--grey-dark) !important; // --mystic
+  }
+
+  &.flat {
+    background: transparent !important;
   }
 }
