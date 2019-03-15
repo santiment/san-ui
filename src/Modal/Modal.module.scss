@@ -1,0 +1,51 @@
+@import '../variables.scss';
+
+.dimmed {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dialog {
+  position: fixed;
+  z-index: 1001;
+  max-width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.header {
+  padding: 12px 20px 12px 24px;
+  border-bottom: 1px solid var(--grey-light-3);
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  width: 100%;
+}
+
+.closeIcon {
+  cursor: pointer;
+}
+
+.content {
+  padding: 20px 24px 24px;
+}
+
+.actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnCancel {
+  margin-right: 9px;
+  color: var(--black) !important;
+  border-color: #d9dce9 !important;
+}
