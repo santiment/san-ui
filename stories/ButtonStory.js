@@ -25,6 +25,14 @@ storiesOf('Button', module)
         <Button variant='fill' accent='purple'>
           Purple fill
         </Button>
+        <hr />
+        <Button 
+          variant='fill'
+          accent='positive'
+          disabled
+        >
+          Disabled
+        </Button>
       </ColorModeComparison>
     </div>
   ))
@@ -39,6 +47,14 @@ storiesOf('Button', module)
         </Button>
         <Button border accent='purple'>
           Purple border
+        </Button>
+        <hr />
+        <Button 
+          border
+          accent='positive'
+          disabled
+        >
+          Disabled
         </Button>
       </ColorModeComparison>
     </div>
@@ -60,6 +76,14 @@ storiesOf('Button', module)
         </Button>
         <Button variant='flat' isActive>
           Flat Active Button
+        </Button>
+        <hr />
+        <Button 
+          variant='flat'
+          accent='positive'
+          disabled
+        >
+          Disabled
         </Button>
       </ColorModeComparison>
     </div>
@@ -88,6 +112,14 @@ storiesOf('Button', module)
         </Button>
         <Button variant='ghost' isActive>
           Ghost Active Button
+        </Button>
+        <hr />
+        <Button 
+          variant='ghost'
+          accent='positive'
+          disabled
+        >
+          Disabled
         </Button>
       </ColorModeComparison>
     </div>
