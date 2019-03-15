@@ -1,6 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Button from '../src/Button/Button'
+import Icon from '../src/Icon/Icon'
 import ColorModeComparison from './ColorModeComparison'
 
 const CustomA = ({ children, className, to }) => (
@@ -9,29 +10,52 @@ const CustomA = ({ children, className, to }) => (
   </a>
 )
 
+const AccentButtons = ({ children, ...props }) =>
+  accents.map(accent => (
+    <React.Fragment key={accent}>
+      <Button accent={accent.toLowerCase()} {...props}>
+        {children(accent)}
+      </Button>
+      <div style={{ padding: 5 }} />
+    </React.Fragment>
+  ))
+
+const accents = [
+  'Grey',
+  'Positive',
+  'Negative',
+  'Orange',
+  'Blue',
+  'Cyan',
+  'Purple'
+]
+
 storiesOf('Button', module)
-  .add('Filled', () => (
+  .add('default', () => (
     <div>
       <ColorModeComparison>
-        <Button variant='fill' accent='grey'>
-          Grey fill
+        <Button>Default button</Button>
+        <AccentButtons>{accent => accent}</AccentButtons>
+        <Button disabled>Default disabled button</Button>
+      </ColorModeComparison>
+    </div>
+  ))
+  .add('default (with icons)', () => (
+    <div>
+      <ColorModeComparison>
+        <Button>
+          <Icon type='search' /> Default button
         </Button>
-        <Button variant='fill' accent='negative'>
-          Negative fill
-        </Button>
-        <Button variant='fill' accent='positive'>
-          Positive fill
-        </Button>
-        <Button variant='fill' accent='purple'>
-          Purple fill
-        </Button>
-        <hr />
-        <Button 
-          variant='fill'
-          accent='positive'
-          disabled
-        >
-          Disabled
+        <AccentButtons>
+          {accent => (
+            <>
+              <Icon type='search' /> {accent} button
+            </>
+          )}
+        </AccentButtons>
+        <Button disabled>
+          <Icon type='search' />
+          Default disabled button
         </Button>
       </ColorModeComparison>
     </div>
@@ -39,21 +63,9 @@ storiesOf('Button', module)
   .add('Bordered', () => (
     <div>
       <ColorModeComparison>
-        <Button border accent='negative'>
-          Negative border
-        </Button>
-        <Button border accent='positive'>
-          Positive border
-        </Button>
-        <Button border accent='purple'>
-          Purple border
-        </Button>
-        <hr />
-        <Button 
-          border
-          accent='positive'
-          disabled
-        >
+        <Button border>Default</Button>
+        <AccentButtons border>{accent => `${accent} bordered`}</AccentButtons>
+        <Button border accent='positive' disabled>
           Disabled
         </Button>
       </ColorModeComparison>
@@ -62,12 +74,24 @@ storiesOf('Button', module)
   .add('as Prop', () => (
     <div>
       <ColorModeComparison>
-        <Button as='a'>Specified as a string</Button>
+        <Button as='a'>Specified as "&lt;a /&gt;" string</Button>
         <Button as={CustomA}>Custom React Element</Button>
       </ColorModeComparison>
     </div>
   ))
-  .add('Flated', () => (
+  .add('Variant: "fill"', () => (
+    <div>
+      <ColorModeComparison>
+        <AccentButtons variant='fill'>
+          {accent => `${accent} fill`}
+        </AccentButtons>
+        <Button variant='fill' accent='positive' disabled>
+          Disabled
+        </Button>
+      </ColorModeComparison>
+    </div>
+  ))
+  .add('Variant: "flat"', () => (
     <div>
       <ColorModeComparison>
         <Button variant='flat'>Flat Button</Button>
@@ -78,17 +102,13 @@ storiesOf('Button', module)
           Flat Active Button
         </Button>
         <hr />
-        <Button 
-          variant='flat'
-          accent='positive'
-          disabled
-        >
+        <Button variant='flat' accent='positive' disabled>
           Disabled
         </Button>
       </ColorModeComparison>
     </div>
   ))
-  .add('Flated (Fluid)', () => (
+  .add('Variant: "flat" (fluid)', () => (
     <div>
       <ColorModeComparison>
         <Button fluid variant='flat'>
@@ -103,7 +123,7 @@ storiesOf('Button', module)
       </ColorModeComparison>
     </div>
   ))
-  .add('Ghosted', () => (
+  .add('Variant: "ghost"', () => (
     <div>
       <ColorModeComparison>
         <Button variant='ghost'>Ghost Button</Button>
@@ -114,17 +134,13 @@ storiesOf('Button', module)
           Ghost Active Button
         </Button>
         <hr />
-        <Button 
-          variant='ghost'
-          accent='positive'
-          disabled
-        >
+        <Button variant='ghost' accent='positive' disabled>
           Disabled
         </Button>
       </ColorModeComparison>
     </div>
   ))
-  .add('Ghosted (fluid)', () => (
+  .add('Variant: "ghost" (fluid)', () => (
     <div>
       <ColorModeComparison>
         <Button fluid variant='ghost'>

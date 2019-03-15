@@ -1,20 +1,12 @@
 @import '../variables.scss';
 @import '../mixins.scss';
 
-$button-positive-day: #26a987;
-$button-negative-day: #d22f2f;
-$button-purple-day: #9627ba;
-$button-grey-day: #c7c7c7;
-
-$button-negative-night: #943030;
-$button-positive-night: #1c5e4e;
-$button-purple-night: #872ea5;
-$button-grey-night: #4a4a4a;
-
-$color-night: #ccc;
-
 .button {
+  ---btn-accent-color: var(--btn-accent-color, var(--mirage));
+  ---btn-accent-color-hover: var(--btn-accent-color-hover, var(--jungle-green));
+
   @include border-box;
+
   display: inline-flex;
   align-items: center;
   border: none;
@@ -26,6 +18,14 @@ $color-night: #ccc;
   line-height: 1;
   border-radius: $border-radius;
   cursor: pointer;
+  background: var(--white);
+  color: var(---btn-accent-color);
+  fill: var(---btn-accent-color);
+
+  &:hover {
+    color: var(---btn-accent-color-hover);
+    fill: var(---btn-accent-color-hover);
+  }
 }
 
 .fluid {
@@ -34,233 +34,110 @@ $color-night: #ccc;
 }
 
 .fill {
-  &.negative,
-  &.positive,
-  &.purple {
-    color: #fff;
+  background: var(--btn-accent-color);
+  color: var(--white);
+  fill: var(--white);
 
-    :global(.night-mode) & {
-      color: $color-night;
-    }
-  }
-
-  &.grey {
-    background-color: $button-grey-day;
-    color: #000;
-
-    &:hover {
-      background-color: lighten($button-grey-day, 5%);
-    }
-    &:active {
-      background-color: darken($button-grey-day, 5%);
-    }
-
-    :global(.night-mode) & {
-      background-color: $button-grey-night;
-      color: $color-night;
-
-      &:hover {
-        background-color: lighten($button-grey-night, 3%);
-      }
-      &:active {
-        background-color: darken($button-grey-night, 5%);
-      }
-    }
-  }
-
-  &.negative {
-    background-color: $button-negative-day;
-    &:hover {
-      background-color: lighten($button-negative-day, 5%);
-    }
-    &:active {
-      background-color: darken($button-negative-day, 5%);
-    }
-    :global(.night-mode) & {
-      background-color: $button-negative-night;
-      &:hover {
-        background-color: lighten($button-negative-night, 2%);
-      }
-      &:active {
-        background-color: darken($button-negative-night, 5%);
-      }
-    }
-  }
-
-  &.positive {
-    background-color: $button-positive-day;
-    &:hover {
-      background-color: lighten($button-positive-day, 2%);
-    }
-    &:active {
-      background-color: darken($button-positive-day, 3%);
-    }
-
-    :global(.night-mode) & {
-      background-color: $button-positive-night;
-      &:hover {
-        background-color: lighten($button-positive-night, 2%);
-      }
-      &:active {
-        background-color: darken($button-positive-night, 3%);
-      }
-    }
-  }
-
-  &.purple {
-    background-color: $button-purple-day;
-    &:hover {
-      background-color: lighten($button-purple-day, 4%);
-    }
-    &:active {
-      background-color: darken($button-purple-day, 3%);
-    }
-
-    :global(.night-mode) & {
-      background-color: $button-purple-night;
-      &:hover {
-        background-color: lighten($button-purple-night, 2%);
-      }
-      &:active {
-        background-color: darken($button-purple-night, 3%);
-      }
-    }
+  &:hover {
+    background: var(--btn-accent-color-hover);
+    color: var(--white);
+    fill: var(--white);
   }
 }
 
-.border {
-  border: 1px solid var(--grey-light-3);
+.bordered {
+  background: var(--white);
+  border: 1px solid var(--btn-accent-color, var(--porcelain));
+  color: var(--btn-accent-color, var(--mirage));
+  fill: var(--btn-accent-color, var(--mirage));
 
-  &.negative,
-  &.positive,
-  &.purple {
-    background-color: transparent;
-  }
-
-  &.negative {
-    color: $button-negative-day;
-    border: 1px solid $button-negative-day;
-
-    &:hover {
-      background-color: lighten($button-negative-day, 48%);
-    }
-    &:active {
-      background-color: lighten($button-negative-day, 45%);
-    }
-
-    :global(.night-mode) & {
-      border-color: $button-negative-night;
-
-      &:hover {
-        background-color: darken($button-negative-night, 25%);
-      }
-      &:active {
-        background-color: darken($button-negative-night, 28%);
-      }
-    }
-  }
-
-  &.positive {
-    color: $button-positive-day;
-    border: 1px solid $button-positive-day;
-
-    &:hover {
-      background-color: lighten($button-positive-day, 56%);
-    }
-    &:active {
-      background-color: lighten($button-positive-day, 53%);
-    }
-
-    :global(.night-mode) & {
-      border-color: $button-positive-night;
-
-      &:hover {
-        background-color: darken($button-positive-night, 14%);
-      }
-      &:active {
-        background-color: darken($button-positive-night, 16%);
-      }
-    }
-  }
-
-  &.purple {
-    color: $button-purple-day;
-    border: 1px solid $button-purple-day;
-
-    &:hover {
-      background-color: lighten($button-purple-day, 54%);
-    }
-    &:active {
-      background-color: lighten($button-purple-day, 51%);
-    }
-
-    :global(.night-mode) & {
-      border-color: $button-purple-night;
-      &:hover {
-        background-color: darken($button-purple-night, 29%);
-      }
-      &:active {
-        background-color: darken($button-purple-night, 31%);
-      }
-    }
+  &:hover {
+    color: var(--btn-accent-color, var(--jungle-green));
+    fill: var(--btn-accent-color, var(--jungle-green));
+    background: var(--btn-accent-color-light);
   }
 }
 
 .flat {
-  color: var(--grey-dark-2);
-  background-color: var(--white);
-
-  & svg {
-    fill: var(--black);
-  }
-
   &:hover {
-    color: var(--green);
-    & svg {
-      fill: var(--green);
-    }
+    color: var(--jungle-green);
+    fill: var(--jungle-green);
   }
 
   &.active {
-    color: var(--green);
-    background-color: var(--green-light);
-    & svg {
-      fill: var(--green);
-    }
+    color: var(--jungle-green);
+    fill: var(--jungle-green);
+    background: var(--jungle-green-light);
   }
 }
 
 .ghost {
-  color: var(--black);
-  background-color: var(--white);
-
-  & svg {
-    fill: var(--black);
-  }
-
   &:hover {
     background: var(--grey-light);
   }
 
   &.active {
-    color: var(--green);
-    & svg {
-      fill: var(--green);
-    }
+    color: var(--jungle-green);
+    fill: var(--jungle-green);
   }
 }
 
+.grey {
+  --btn-accent-color: var(--waterloo);
+  --btn-accent-color-hover: var(--waterloo);
+  --btn-accent-color-light: var(--porcelain);
+}
+
+.positive {
+  --btn-accent-color: var(--jungle-green);
+  --btn-accent-color-hover: var(--jungle-green-hover);
+  --btn-accent-color-light: var(--jungle-green-light);
+}
+
+.negative {
+  --btn-accent-color: var(--persimmon);
+  --btn-accent-color-hover: var(--persimmon-hover);
+  --btn-accent-color-light: var(--persimmon-light);
+}
+
+.orange {
+  --btn-accent-color: var(--texas-rose);
+  --btn-accent-color-hover: var(--texas-rose-hover);
+  --btn-accent-color-light: var(--texas-rose-light);
+}
+
+.blue {
+  --btn-accent-color: var(--dodger-blue);
+  --btn-accent-color-hover: var(--dodger-blue-hover);
+  --btn-accent-color-light: var(--dodger-blue-light);
+}
+
+.cyan {
+  --btn-accent-color: var(--malibu);
+  --btn-accent-color-hover: var(--malibu-hover);
+  --btn-accent-color-light: var(--malibu-light);
+}
+
+.purple {
+  --btn-accent-color: var(--heliotrope);
+  --btn-accent-color-hover: var(--heliotrope-hover);
+  --btn-accent-color-light: var(--heliotrope-light);
+}
+
 .disabled {
-  color: var(--grey-dark) !important; // --mystic
-  background: var(--grey-light) !important; // --athens
-  border-color: var(--grey-light-2) !important; // --porcelain
+  color: var(--mystic) !important;
+  background: var(--white) !important;
+  border-color: var(--porcelain) !important;
+  fill: var(--mystic) !important;
   pointer-events: none;
 
   &:hover {
-    color: var(--grey-dark) !important; // --mystic
+    color: var(--mystic) !important;
   }
 
-  &.flat {
-    background: transparent !important;
+  &.ghost,
+  &.fill,
+  &.bordered {
+    background: var(--athens) !important;
   }
 }

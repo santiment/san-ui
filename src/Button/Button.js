@@ -21,7 +21,7 @@ const Button = ({
         [`${className} ${styles.button} ${styles[variant]}`]: true,
         [styles[accent]]: accent,
         [styles.active]: isActive,
-        [styles.border]: border,
+        [styles.bordered]: border,
         [styles.fluid]: fluid,
         [styles.disabled]: disabled
       })}
@@ -38,7 +38,15 @@ Button.propTypes = {
   isActive: PropTypes.bool,
   border: PropTypes.bool,
   variant: PropTypes.oneOf(['flat', 'ghost', 'fill']),
-  accent: PropTypes.oneOf(['grey', 'positive', 'negative', 'purple']),
+  accent: PropTypes.oneOf([
+    'grey',
+    'positive',
+    'negative',
+    'purple',
+    'orange',
+    'blue',
+    'cyan'
+  ]),
   className: PropTypes.string,
   children: PropTypes.any.isRequired
 }
@@ -48,8 +56,8 @@ Button.defaultProps = {
   fluid: false,
   border: false,
   isActive: false,
-  variant: 'fill',
-  accent: 'grey',
+  variant: undefined,
+  accent: undefined,
   className: ''
 }
 
