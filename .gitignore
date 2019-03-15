@@ -3,3 +3,4 @@ build
 lib-build
 storybook-static
 yarn-error.log
+.#
