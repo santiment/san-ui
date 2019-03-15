@@ -1,23 +1,22 @@
-@import "../variables.scss";
+@import '../variables.scss';
 
-.container {
+.dimmed {
   position: fixed;
-  top: 0 ;
-  left: 0 ;
-  width: 100%;
-  height: 100%;
   z-index: 1000;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: rgba(37, 40, 48, 0.8);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .dialog {
-  max-width: 440px;
+  position: fixed;
   z-index: 1001;
+  max-width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 .header {
@@ -40,7 +39,7 @@
 }
 
 .actions {
-  padding: 0px 24px 24px;
+  margin-top: 24px;
   display: flex;
   justify-content: flex-end;
 }
@@ -49,15 +48,4 @@
   margin-right: 9px;
   color: var(--black) !important;
   border-color: #d9dce9 !important;
-}
-
-.wrapper {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }

@@ -1,51 +1,50 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import cx from 'classnames';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import ModalHeader from './ModalHeader'
+import ModalActions from './ModalActions'
+import Panel from '../Panel/Panel'
+import styles from './Modal.module.scss'
 
-import ModalHeader from "./ModalHeader";
-import ModalActions from "./ModalActions";
-import Panel from '../Panel/Panel';
-import styles from './Modal.module.scss';
-
-let mountNode = document.querySelector('#ui-modal');
+let mountNode = document.querySelector('#ui-modal')
 
 if (!mountNode) {
-  mountNode = document.createElement('div'),
-  mountNode.id = 'ui-modal',
-  mountNode.className = styles.wrapper;
-  mountNode.style = "visibility:hidden;";
+  mountNode = document.createElement('div')
+  mountNode.id = 'ui-modal'
   document.body.appendChild(mountNode)
 }
 
 class Modal extends Component {
   state = {
-    open: false,
-  };
+    open: false
+  }
+
+  componentDidMount() {
+    window.addEventListener('keyup', this.onKeyUp)
+  }
+
+  componentWillUnmout() {
+    window.removeEventListener('keyup', this.onKeyUp)
+  }
 
   openModal = () => {
-    const { onOpen } = this.props;
-
-    mountNode.setAttribute('style', 'visibility:visible;');
-    this.setState({ open: true }, () => {
-      onOpen();
-      mountNode
-        .querySelector(`.${styles.container}`)
-        .focus();
-    });
-  };
+    this.setState({ open: true }, this.props.onOpen)
+  }
 
   closeModal = () => {
-    const { onClose } = this.props;
-    mountNode.setAttribute('style', 'visibility:hidden;');
-    this.setState({ open: false }, onClose);
-  };
+    this.setState({ open: false }, this.props.onClose)
+  }
 
-  handleOnKeyUp = e => {
-    if (e.keyCode == 27) {
-      this.closeModal();
+  onKeyUp = ({ code }) => {
+    if (code === 'Escape' && this.state.open) {
+      this.closeModal()
     }
-  };
+  }
+
+  onConfirmClick = () => {
+    this.props.onConfirmClick(this.closeModal)
+  }
 
   render() {
     const {
@@ -53,45 +52,43 @@ class Modal extends Component {
       trigger,
       hideCloseIcon,
       title,
-      onConfirmClick,
       confirmLabel,
       cancelLabel,
-      children,
-    } = this.props;
-    const { open } = this.state;
+      onConfirmClick,
+      children
+    } = this.props
+    const { open } = this.state
 
     return (
-      <React.Fragment>
+      <>
         {React.cloneElement(trigger, {
           onClick: this.openModal
         })}
-        {open && ReactDOM.createPortal(
-          <React.Fragment>
-            <Panel variant="modal" className={cx(className, styles.dialog)}>
-              <ModalHeader
-                onCloseModal={this.closeModal}
-                hideCloseIcon={hideCloseIcon}
-                title={title}
-              />
-              {children}
-              <ModalActions
-                closeModal={this.closeModal}
-                onConfirmClick={onConfirmClick}
-                confirmLabel={confirmLabel}
-                cancelLabel={cancelLabel}
-              />
-            </Panel>
-            <div
-              tabIndex={0}
-              className={styles.container}
-              onClick={this.closeModal}
-              onKeyUp={this.handleOnKeyUp}
-            />
-          </React.Fragment>,
-          mountNode,
-        )}
-      </React.Fragment>
-    );
+        {open &&
+          ReactDOM.createPortal(
+            <>
+              <Panel variant='modal' className={cx(className, styles.dialog)}>
+                <ModalHeader
+                  onCloseModal={this.closeModal}
+                  hideCloseIcon={hideCloseIcon}
+                  title={title}
+                />
+                <div className={styles.content}>
+                  {children}
+                  <ModalActions
+                    closeModal={this.closeModal}
+                    onConfirmClick={onConfirmClick && this.onConfirmClick}
+                    confirmLabel={confirmLabel}
+                    cancelLabel={cancelLabel}
+                  />
+                </div>
+              </Panel>
+              <div className={styles.dimmed} onClick={this.closeModal} />
+            </>,
+            mountNode
+          )}
+      </>
+    )
   }
 }
 
@@ -99,6 +96,7 @@ Modal.defaultProps = {
   hideCloseIcon: false,
   onClose: () => {},
   onOpen: () => {},
+  onConfirmClick: undefined
 }
 
 Modal.propTypes = {
@@ -111,7 +109,7 @@ Modal.propTypes = {
   onClose: PropTypes.func,
   confirmLabel: PropTypes.string,
   cancelLabel: PropTypes.string,
-  onConfirmClick: PropTypes.func,
-};
+  onConfirmClick: PropTypes.func
+}
 
-export default Modal;
+export default Modal
