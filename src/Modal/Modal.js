@@ -46,6 +46,10 @@ class Modal extends Component {
     this.props.onConfirmClick(this.closeModal)
   }
 
+  onConfirmClick = () => {
+    this.props.onConfirmClick(this.closeModal)
+  }
+
   render() {
     const {
       className,
