@@ -46,6 +46,11 @@ storiesOf('Tooltip', module)
       test afisudhfoaidsufh content
     </Example>
   ))
+  .add('align: "top", on: "click"', () => (
+    <Example on='click' align='top' trigger={<span>trigger</span>}>
+      test afisudhfoaidsufh content
+    </Example>
+  ))
   .add('align: "right"', () => (
     <Example align='right' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content

@@ -33,7 +33,7 @@ class Tooltip extends PureComponent {
     align: 'top',
     offsetX: 10,
     offsetY: 10,
-    closeTimeout: 500
+    closeTimeout: 150
   }
 
   static propTypes = {
