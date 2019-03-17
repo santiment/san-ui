@@ -25,7 +25,12 @@ class Tooltip extends PureComponent {
   getTooltipStyles () {
     const { current: trigger } = this.triggerRef
     const { current: tooltip } = this.tooltipRef
-    const { scrollX, scrollY, innerWidth: windowWidth } = window
+    const {
+      scrollX,
+      scrollY,
+      innerWidth: windowWidth,
+      innerHeight: windowHeight
+    } = window
     console.log(trigger, tooltip)
 
     /* const triggerRect = trigger.getBoundingClientRect() */
@@ -46,19 +51,18 @@ class Tooltip extends PureComponent {
 
     const target = 'top'
 
-    /* const left = triggerRect.left */
     let left = triggerLeft + (triggerWidth - tooltipWidth) / 2
-    /* const top = triggerRect.top - clientHeight */
     let top = triggerTop - tooltipHeight
 
     if (left < 10) {
       left = 10
     } else if (left + tooltipWidth > windowWidth - 10) {
       left = windowWidth - 10 - tooltipWidth
-      // ???
     }
     if (top < 10) {
       top = 10
+    } else if (top + tooltipHeight > windowHeight - 10) {
+      top = windowHeight - 10 - tooltipHeight
     }
     console.log({ left, top, clientHeight })
 
