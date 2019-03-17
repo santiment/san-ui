@@ -53,14 +53,15 @@ class Tooltip extends PureComponent {
     } = trigger.getBoundingClientRect()
 
     const sign = getAlignmentSign(align)
-    let top = triggerTop + sign * offsetY
-    let left = triggerLeft + sign * offsetX
+    let top = triggerTop
+    let left = triggerLeft
+
     if (align === 'top' || align === 'bottom') {
       left += (triggerWidth - tooltipWidth) / 2
-      top += align === 'top' ? -tooltipHeight : triggerHeight
+      top += (align === 'top' ? -tooltipHeight : triggerHeight) + sign * offsetY
     } else {
-      top -= (tooltipHeight - triggerHeight) / 2
-      left += align === 'left' ? -tooltipWidth : triggerWidth
+      top += (triggerHeight - tooltipHeight) / 2
+      left += (align === 'left' ? -tooltipWidth : triggerWidth) + sign * offsetX
     }
 
     return { top, left }
