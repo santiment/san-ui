@@ -43,7 +43,9 @@ class Tooltip extends PureComponent {
     offsetX: PropTypes.number,
     offsetY: PropTypes.number,
     closeTimeout: PropTypes.number,
-    viewportOffset: PropTypes.number
+    viewportOffset: PropTypes.number,
+    trigger: PropTypes.any.isRequired,
+    children: PropTypes.any.isRequired
   }
 
   state = {
