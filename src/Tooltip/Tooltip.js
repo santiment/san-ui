@@ -11,9 +11,30 @@ if (!mountNode) {
   document.body.appendChild(mountNode)
 }
 
+const getAlignmentSign = align => {
+  switch (align) {
+    case 'top':
+      return -1
+    case 'left':
+      return -1
+    case 'right':
+      return 1
+    case 'bottom':
+      return 1
+    default:
+      return 0
+  }
+}
+
 // on: [click, hover]
 // position: [top, right, bottom, left]. All centered and offseted to be in the viewport
 class Tooltip extends PureComponent {
+  static defaultProps = {
+    align: 'top',
+    offsetX: 10,
+    offsetY: 10
+  }
+
   state = {
     shown: false
   }
@@ -21,6 +42,29 @@ class Tooltip extends PureComponent {
   tooltipRef = React.createRef()
 
   triggerRef = React.createRef()
+
+  getTooltipPosition (trigger, tooltipHeight, tooltipWidth) {
+    const { align, offsetX, offsetY } = this.props
+    const {
+      width: triggerWidth,
+      height: triggerHeight,
+      left: triggerLeft,
+      top: triggerTop
+    } = trigger.getBoundingClientRect()
+
+    const sign = getAlignmentSign(align)
+    let top = triggerTop + sign * offsetY
+    let left = triggerLeft + sign * offsetX
+    if (align === 'top' || align === 'bottom') {
+      left += (triggerWidth - tooltipWidth) / 2
+      top += align === 'top' ? -tooltipHeight : triggerHeight
+    } else {
+      top -= (tooltipHeight - triggerHeight) / 2
+      left += align === 'left' ? -tooltipWidth : triggerWidth
+    }
+
+    return { top, left }
+  }
 
   getTooltipStyles () {
     const { current: trigger } = this.triggerRef
@@ -31,28 +75,14 @@ class Tooltip extends PureComponent {
       innerWidth: windowWidth,
       innerHeight: windowHeight
     } = window
-    console.log(trigger, tooltip)
 
-    /* const triggerRect = trigger.getBoundingClientRect() */
-    const { clientWidth, clientHeight } = tooltip
+    const { offsetWidth: tooltipWidth, offsetHeight: tooltipHeight } = tooltip
 
-    const {
-      offsetWidth: tooltipWidth,
-      offsetHeight: tooltipHeight,
-      offsetLeft: tooltipLeft,
-      offsetTop: tooltipTop
-    } = tooltip
-    const {
-      width: triggerWidth,
-      height: triggerHeight,
-      left: triggerLeft,
-      top: triggerTop
-    } = trigger.getBoundingClientRect()
-
-    const target = 'top'
-
-    let left = triggerLeft + (triggerWidth - tooltipWidth) / 2
-    let top = triggerTop - tooltipHeight
+    let { top, left } = this.getTooltipPosition(
+      trigger,
+      tooltipHeight,
+      tooltipWidth
+    )
 
     if (left < 10) {
       left = 10
@@ -64,7 +94,6 @@ class Tooltip extends PureComponent {
     } else if (top + tooltipHeight > windowHeight - 10) {
       top = windowHeight - 10 - tooltipHeight
     }
-    console.log({ left, top, clientHeight })
 
     return {
       visibility: 'visible',
