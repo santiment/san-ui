@@ -42,27 +42,27 @@ const Example = props => {
 
 storiesOf('Tooltip', module)
   .add('align: "top", on: "hover"', () => (
-    <Example align='top' trigger={<span>trigger</span>}>
+    <Example position='top' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))
   .add('align: "top", on: "click"', () => (
-    <Example on='click' align='top' trigger={<span>trigger</span>}>
+    <Example on='click' position='top' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))
   .add('align: "right"', () => (
-    <Example align='right' trigger={<span>trigger</span>}>
+    <Example position='right' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))
   .add('align: "bottom"', () => (
-    <Example align='bottom' trigger={<span>trigger</span>}>
+    <Example position='bottom' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))
   .add('align: "left"', () => (
-    <Example align='left' trigger={<span>trigger</span>}>
+    <Example position='left' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))

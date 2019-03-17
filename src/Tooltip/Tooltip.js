@@ -12,8 +12,8 @@ if (!mountNode) {
   document.body.appendChild(mountNode)
 }
 
-const getAlignmentSign = align => {
-  switch (align) {
+const getSignByPosition = position => {
+  switch (position) {
     case 'top':
       return -1
     case 'left':
@@ -30,7 +30,7 @@ const getAlignmentSign = align => {
 class Tooltip extends PureComponent {
   static defaultProps = {
     on: 'hover',
-    align: 'top',
+    position: 'top',
     offsetX: 10,
     offsetY: 10,
     viewportOffset: 5,
@@ -39,7 +39,7 @@ class Tooltip extends PureComponent {
 
   static propTypes = {
     on: PropTypes.oneOf(['click', 'hover']),
-    align: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+    position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
     offsetX: PropTypes.number,
     offsetY: PropTypes.number,
     closeTimeout: PropTypes.number,
@@ -76,8 +76,8 @@ class Tooltip extends PureComponent {
     this.setState({ shown: true })
   }
 
-  getTooltipPosition (trigger, tooltipHeight, tooltipWidth) {
-    const { align, offsetX, offsetY } = this.props
+  getTooltipCoordinates (trigger, tooltipHeight, tooltipWidth) {
+    const { position, offsetX, offsetY } = this.props
     const {
       width: triggerWidth,
       height: triggerHeight,
@@ -85,16 +85,18 @@ class Tooltip extends PureComponent {
       top: triggerTop
     } = trigger.getBoundingClientRect()
 
-    const sign = getAlignmentSign(align)
+    const sign = getSignByPosition(position)
     let top = triggerTop
     let left = triggerLeft
 
-    if (align === 'top' || align === 'bottom') {
-      top += (align === 'top' ? -tooltipHeight : triggerHeight) + sign * offsetY
+    if (position === 'top' || position === 'bottom') {
+      top +=
+        (position === 'top' ? -tooltipHeight : triggerHeight) + sign * offsetY
       left += (triggerWidth - tooltipWidth) / 2
     } else {
       top += (triggerHeight - tooltipHeight) / 2
-      left += (align === 'left' ? -tooltipWidth : triggerWidth) + sign * offsetX
+      left +=
+        (position === 'left' ? -tooltipWidth : triggerWidth) + sign * offsetX
     }
 
     return { top, left }
@@ -113,7 +115,7 @@ class Tooltip extends PureComponent {
 
     const { offsetWidth: tooltipWidth, offsetHeight: tooltipHeight } = tooltip
 
-    let { top, left } = this.getTooltipPosition(
+    let { top, left } = this.getTooltipCoordinates(
       trigger,
       tooltipHeight,
       tooltipWidth
