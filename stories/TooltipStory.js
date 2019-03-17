@@ -2,58 +2,62 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Tooltip from '../src/Tooltip'
 
-storiesOf('Tooltip', module).add('on: "hover"', () => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      height: '100vh'
-    }}
-  >
+const Example = props => {
+  return (
     <div
-      className='top'
-      style={{ display: 'flex', justifyContent: 'space-between' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '100vh'
+      }}
     >
-      <Tooltip trigger={<span>trigger</span>}>
-        test afisudhfoaidsufh content
-      </Tooltip>
-      <Tooltip trigger={<span>trigger</span>}>
-        test afisudhfoaidsufh content
-      </Tooltip>
-      <Tooltip trigger={<span>trigger</span>}>
-        test afisudhfoaidsufh content
-      </Tooltip>
+      <div
+        className='top'
+        style={{ display: 'flex', justifyContent: 'space-between' }}
+      >
+        <Tooltip {...props} />
+        <Tooltip {...props} />
+        <Tooltip {...props} />
+      </div>
+      <div
+        className='mid'
+        style={{ display: 'flex', justifyContent: 'space-between' }}
+      >
+        <Tooltip {...props} />
+        <Tooltip {...props} />
+        <Tooltip {...props} />
+      </div>
+      <div
+        className='bottom'
+        style={{ display: 'flex', justifyContent: 'space-between' }}
+      >
+        <Tooltip {...props} />
+        <Tooltip {...props} />
+        <Tooltip {...props} />
+      </div>
     </div>
+  )
+}
 
-    <div
-      className='mid'
-      style={{ display: 'flex', justifyContent: 'space-between' }}
-    >
-      <Tooltip trigger={<span>trigger</span>}>
-        test afisudhfoaidsufh content
-      </Tooltip>
-      <Tooltip trigger={<span>trigger</span>}>
-        test afisudhfoaidsufh content
-      </Tooltip>
-      <Tooltip trigger={<span>trigger</span>}>
-        test afisudhfoaidsufh content
-      </Tooltip>
-    </div>
-
-    <div
-      className='bottom'
-      style={{ display: 'flex', justifyContent: 'space-between' }}
-    >
-      <Tooltip trigger={<span>trigger</span>}>
-        test afisudhfoaidsufh content
-      </Tooltip>
-      <Tooltip trigger={<span>trigger</span>}>
-        test afisudhfoaidsufh content
-      </Tooltip>
-      <Tooltip trigger={<span>trigger</span>}>
-        test afisudhfoaidsufh content
-      </Tooltip>
-    </div>
-  </div>
-))
+storiesOf('Tooltip', module)
+  .add('align: "top", on: "hover"', () => (
+    <Example align='top' trigger={<span>trigger</span>}>
+      test afisudhfoaidsufh content
+    </Example>
+  ))
+  .add('align: "right"', () => (
+    <Example align='right' trigger={<span>trigger</span>}>
+      test afisudhfoaidsufh content
+    </Example>
+  ))
+  .add('align: "bottom"', () => (
+    <Example align='bottom' trigger={<span>trigger</span>}>
+      test afisudhfoaidsufh content
+    </Example>
+  ))
+  .add('align: "left"', () => (
+    <Example align='left' trigger={<span>trigger</span>}>
+      test afisudhfoaidsufh content
+    </Example>
+  ))
