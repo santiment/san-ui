@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import Panel from '../Panel/Panel'
 import styles from './Tooltip.module.scss'
@@ -26,13 +27,21 @@ const getAlignmentSign = align => {
   }
 }
 
-// on: [click, hover]
-// position: [top, right, bottom, left]. All centered and offseted to be in the viewport
 class Tooltip extends PureComponent {
   static defaultProps = {
+    on: 'hover',
     align: 'top',
     offsetX: 10,
-    offsetY: 10
+    offsetY: 10,
+    closeTimeout: 500
+  }
+
+  static propTypes = {
+    on: PropTypes.oneOf(['click', 'hover']),
+    align: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+    offsetX: PropTypes.number,
+    offsetY: PropTypes.number,
+    closeTimeout: PropTypes.number
   }
 
   state = {
@@ -42,6 +51,30 @@ class Tooltip extends PureComponent {
   tooltipRef = React.createRef()
 
   triggerRef = React.createRef()
+
+  componentWillUnmount () {
+    clearTimeout(this.closeTimer)
+  }
+
+  startCloseTimeout () {
+    this.closeTimer = setTimeout(
+      () => this.setState({ shown: false }),
+      this.props.closeTimeout
+    )
+  }
+
+  stopCloseTimeout () {
+    clearTimeout(this.closeTimer)
+  }
+
+  closeTooltip = () => {
+    this.startCloseTimeout()
+  }
+
+  openTooltip = () => {
+    this.stopCloseTimeout()
+    this.setState({ shown: true })
+  }
 
   getTooltipPosition (trigger, tooltipHeight, tooltipWidth) {
     const { align, offsetX, offsetY } = this.props
@@ -103,25 +136,25 @@ class Tooltip extends PureComponent {
     }
   }
 
-  onMouseEnter = () => {
-    this.setState({ shown: true })
-  }
-
   render () {
     const { shown } = this.state
-    const { trigger, children } = this.props
+    const { on, trigger, children } = this.props
+    const triggerEvent = on === 'click' ? 'onClick' : 'onMouseEnter'
 
     return (
       <>
         {React.cloneElement(trigger, {
           ref: this.triggerRef,
-          onMouseEnter: this.onMouseEnter
+          [triggerEvent]: this.openTooltip,
+          onMouseLeave: this.closeTooltip
         })}
         {ReactDOM.createPortal(
           <Panel
             forwardedRef={this.tooltipRef}
             style={shown ? this.getTooltipStyles() : {}}
             className={styles.tooltip}
+            onMouseEnter={this.openTooltip}
+            onMouseLeave={this.closeTooltip}
           >
             {children}
           </Panel>,
