@@ -3,7 +3,14 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import styles from './Panel.module.scss'
 
-const Panel = ({ variant, children, padding, className, ...props }) => {
+const Panel = ({
+  variant,
+  children,
+  padding,
+  className,
+  forwardedRef,
+  ...props
+}) => {
   return (
     <div
       className={cx({
@@ -11,6 +18,7 @@ const Panel = ({ variant, children, padding, className, ...props }) => {
         [styles.padding]: padding,
         [styles[variant]]: variant
       })}
+      ref={forwardedRef}
       {...props}
     >
       {children}
