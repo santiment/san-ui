@@ -33,6 +33,7 @@ class Tooltip extends PureComponent {
     align: 'top',
     offsetX: 10,
     offsetY: 10,
+    viewportOffset: 5,
     closeTimeout: 150
   }
 
@@ -41,7 +42,8 @@ class Tooltip extends PureComponent {
     align: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
     offsetX: PropTypes.number,
     offsetY: PropTypes.number,
-    closeTimeout: PropTypes.number
+    closeTimeout: PropTypes.number,
+    viewportOffset: PropTypes.number
   }
 
   state = {
@@ -56,23 +58,19 @@ class Tooltip extends PureComponent {
     clearTimeout(this.closeTimer)
   }
 
-  startCloseTimeout () {
+  startCloseTimer = () => {
     this.closeTimer = setTimeout(
       () => this.setState({ shown: false }),
       this.props.closeTimeout
     )
   }
 
-  stopCloseTimeout () {
+  stopCloseTimer () {
     clearTimeout(this.closeTimer)
   }
 
-  closeTooltip = () => {
-    this.startCloseTimeout()
-  }
-
   openTooltip = () => {
-    this.stopCloseTimeout()
+    this.stopCloseTimer()
     this.setState({ shown: true })
   }
 
@@ -90,8 +88,8 @@ class Tooltip extends PureComponent {
     let left = triggerLeft
 
     if (align === 'top' || align === 'bottom') {
-      left += (triggerWidth - tooltipWidth) / 2
       top += (align === 'top' ? -tooltipHeight : triggerHeight) + sign * offsetY
+      left += (triggerWidth - tooltipWidth) / 2
     } else {
       top += (triggerHeight - tooltipHeight) / 2
       left += (align === 'left' ? -tooltipWidth : triggerWidth) + sign * offsetX
@@ -101,6 +99,7 @@ class Tooltip extends PureComponent {
   }
 
   getTooltipStyles () {
+    const { viewportOffset } = this.props
     const { current: trigger } = this.triggerRef
     const { current: tooltip } = this.tooltipRef
     const {
@@ -118,15 +117,15 @@ class Tooltip extends PureComponent {
       tooltipWidth
     )
 
-    if (left < 10) {
-      left = 10
-    } else if (left + tooltipWidth > windowWidth - 10) {
-      left = windowWidth - 10 - tooltipWidth
+    if (left < viewportOffset) {
+      left = viewportOffset
+    } else if (left + tooltipWidth > windowWidth - viewportOffset) {
+      left = windowWidth - viewportOffset - tooltipWidth
     }
-    if (top < 10) {
-      top = 10
-    } else if (top + tooltipHeight > windowHeight - 10) {
-      top = windowHeight - 10 - tooltipHeight
+    if (top < viewportOffset) {
+      top = viewportOffset
+    } else if (top + tooltipHeight > windowHeight - viewportOffset) {
+      top = windowHeight - viewportOffset - tooltipHeight
     }
 
     return {
@@ -146,15 +145,15 @@ class Tooltip extends PureComponent {
         {React.cloneElement(trigger, {
           ref: this.triggerRef,
           [triggerEvent]: this.openTooltip,
-          onMouseLeave: this.closeTooltip
+          onMouseLeave: this.startCloseTimer
         })}
         {ReactDOM.createPortal(
           <Panel
             forwardedRef={this.tooltipRef}
-            style={shown ? this.getTooltipStyles() : {}}
+            style={shown ? this.getTooltipStyles() : undefined}
             className={styles.tooltip}
             onMouseEnter={this.openTooltip}
-            onMouseLeave={this.closeTooltip}
+            onMouseLeave={this.startCloseTimer}
           >
             {children}
           </Panel>,
