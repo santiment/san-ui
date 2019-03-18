@@ -1,0 +1,66 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
+.label {
+  @include text-normal;
+
+  display: inline-block;
+  box-sizing: border-box;
+  color: var(--accent, var(--mirage));
+  fill: var(--accent, var(--mirage));
+}
+
+@each $accent
+  in (
+    casper,
+    waterloo,
+    jungle-green,
+    texas-rose,
+    persimmon,
+    dodger-blue,
+    heliotrope,
+    malibu
+  ) {
+  .#{$accent} {
+    --accent: var(--#{$accent});
+  }
+}
+
+.athens {
+  --accent: var(--athens);
+  --accent-color: var(--mirage);
+}
+
+.fill,
+.border,
+.round {
+  text-align: center;
+  padding: 1px 8px;
+  min-width: 24px;
+  min-height: 24px;
+  border-radius: $border-radius;
+}
+
+.fill {
+  background: var(--accent);
+  color: var(--accent-color, var(--white));
+}
+
+.round {
+  @extend .fill;
+
+  border-radius: 100vw;
+}
+
+.border {
+  border: 1px solid var(--accent);
+  background: var(--white);
+}
+
+.circle {
+  background: var(--white);
+  border: 1.5px solid var(--accent);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
