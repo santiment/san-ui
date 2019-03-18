@@ -60,8 +60,7 @@
 .circle {
   background: var(--white);
   border: 1.5px solid var(--accent);
-  padding: 0;
-  min-width: 8px;
-  min-height: 8px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 }
