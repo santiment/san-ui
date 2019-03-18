@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 import styles from './Label.module.scss'
 
@@ -19,13 +20,22 @@ import styles from './Label.module.scss'
 
    variant=[fill, round]
 */
-const Label = ({ children, round, fill, accent, as: Base }) => {
+const Label = ({
+  children,
+  variant,
+  empty,
+  border,
+  round,
+  fill,
+  accent,
+  as: Base
+}) => {
   return (
     <Base
       className={cx({
-        [`${styles.label} ${styles[accent]}`]: true,
-        [styles.round]: round,
-        [styles.fill]: fill
+        [styles.label]: true,
+        [styles[accent]]: accent,
+        [styles[variant]]: variant
       })}
     >
       {children}
@@ -33,9 +43,12 @@ const Label = ({ children, round, fill, accent, as: Base }) => {
   )
 }
 
+Label.propTypes = {
+  variant: PropTypes.oneOf(['border', 'fill', 'round', 'circle'])
+}
+
 Label.defaultProps = {
-  as: 'span',
-  accent: 'waterloo'
+  as: 'span'
 }
 
 export default Label

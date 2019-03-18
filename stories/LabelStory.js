@@ -17,19 +17,35 @@ const accents = [
 
 const Example = ({ children, ...props }) =>
   accents.map(accent => (
-    <>
-      <Label {...props} accent={accent.toLowerCase()} key={accent}>
+    <React.Fragment key={accent}>
+      <Label {...props} accent={accent.toLowerCase()}>
         {children(accent.replace('-', ' '))}
       </Label>
       <div style={{ padding: 5 }} />
-    </>
+    </React.Fragment>
   ))
 
 storiesOf('Label', module)
   .add('default', () => (
     <ColorModeComparison>
       <div>
-        <Example fill>{acc => acc}</Example>
+        <Label>No accent</Label>
+        <br />
+        <Example>{acc => acc}</Example>
+      </div>
+    </ColorModeComparison>
+  ))
+  .add('bordered', () => (
+    <ColorModeComparison>
+      <div>
+        <Example variant='border'>{acc => acc}</Example>
+      </div>
+    </ColorModeComparison>
+  ))
+  .add('fill', () => (
+    <ColorModeComparison>
+      <div>
+        <Example variant='fill'>{acc => acc}</Example>
       </div>
     </ColorModeComparison>
   ))
@@ -37,12 +53,16 @@ storiesOf('Label', module)
   .add('round', () => (
     <ColorModeComparison>
       <div>
-        <Example round fill>
-          {acc => '5'}
-        </Example>
-        <Example round fill>
-          {acc => acc}
-        </Example>
+        <Example variant='round'>{acc => '5'}</Example>
+        <Example variant='round'>{acc => acc}</Example>
+      </div>
+    </ColorModeComparison>
+  ))
+
+  .add('circle', () => (
+    <ColorModeComparison>
+      <div>
+        <Example variant='circle'>{acc => ''}</Example>
       </div>
     </ColorModeComparison>
   ))
