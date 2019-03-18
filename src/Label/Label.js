@@ -44,11 +44,25 @@ const Label = ({
 }
 
 Label.propTypes = {
-  variant: PropTypes.oneOf(['border', 'fill', 'round', 'circle'])
+  as: PropTypes.any,
+  variant: PropTypes.oneOf(['border', 'fill', 'round', 'circle']),
+  accent: PropTypes.oneOf([
+    'athens',
+    'casper',
+    'waterloo',
+    'jungle-green',
+    'texas-rose',
+    'persimmon',
+    'dodger-blue',
+    'heliotrope',
+    'malibu'
+  ])
 }
 
 Label.defaultProps = {
-  as: 'span'
+  as: 'span',
+  variant: undefined,
+  accent: undefined
 }
 
 export default Label
