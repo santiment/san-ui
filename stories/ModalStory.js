@@ -22,6 +22,44 @@ storiesOf('Modal', module)
       voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
     </Modal>
   ))
+  .add('without actions', () => (
+    <Modal
+      trigger={<Button>Show</Button>}
+      showDefaultActions={false}
+      title='Lorem Ipsum'
+      hideCloseIcon
+    >
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat? A
+      quos ab pariatur fugiat blanditiis, esse eum odit eligendi exercitationem
+      voluptatem quod maiores nesciunt sapiente modi dolorem nisi accusamus
+      architecto eius ipsa facere soluta? Magni nisi fuga voluptate, velit
+      voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
+    </Modal>
+  ))
+  .add('with custom logic', () => (
+    <Modal
+      trigger={<Button>Show</Button>}
+      showDefaultActions={false}
+      title='Lorem Ipsum'
+      hideCloseIcon
+    >
+      {({ closeModal, onConfirmClick }) => (
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
+          quaerat? A quos ab pariatur fugiat blanditiis, esse eum odit eligendi
+          exercitationem
+          <br />
+          <br />
+          <Button variant={'fill'} border accent={'grey'} onClick={closeModal}>
+            Extended Close
+          </Button>{' '}
+          <Button variant={'fill'} accent={'positive'} onClick={onConfirmClick}>
+            Extended Confirm
+          </Button>
+        </div>
+      )}
+    </Modal>
+  ))
   .add('with custom labels and titles', () => (
     <Modal
       trigger={<Button>Show</Button>}

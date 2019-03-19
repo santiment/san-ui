@@ -20,11 +20,11 @@ class Modal extends Component {
     open: false
   }
 
-  componentDidMount() {
+  componentDidMount () {
     window.addEventListener('keyup', this.onKeyUp)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     window.removeEventListener('keyup', this.onKeyUp)
   }
 
@@ -43,12 +43,13 @@ class Modal extends Component {
   }
 
   onConfirmClick = () => {
-    this.props.onConfirmClick(this.closeModal)
+    this.props.onConfirmClick && this.props.onConfirmClick(this.closeModal)
   }
 
-  render() {
+  render () {
     const {
       className,
+      showDefaultActions,
       trigger,
       hideCloseIcon,
       title,
@@ -58,6 +59,23 @@ class Modal extends Component {
       children
     } = this.props
     const { open } = this.state
+
+    const renderChildren =
+      typeof children === 'function'
+        ? children({
+            closeModal: this.closeModal,
+            onConfirmClick: this.onConfirmClick
+          })
+        : children
+
+    const renderActions = showDefaultActions && (
+      <ModalActions
+        closeModal={this.closeModal}
+        onConfirmClick={onConfirmClick && this.onConfirmClick}
+        confirmLabel={confirmLabel}
+        cancelLabel={cancelLabel}
+      />
+    )
 
     return (
       <>
@@ -74,13 +92,8 @@ class Modal extends Component {
                   title={title}
                 />
                 <div className={styles.content}>
-                  {children}
-                  <ModalActions
-                    closeModal={this.closeModal}
-                    onConfirmClick={onConfirmClick && this.onConfirmClick}
-                    confirmLabel={confirmLabel}
-                    cancelLabel={cancelLabel}
-                  />
+                  {renderChildren}
+                  {renderActions}
                 </div>
               </Panel>
               <div className={styles.dimmed} onClick={this.closeModal} />
@@ -96,15 +109,17 @@ Modal.defaultProps = {
   hideCloseIcon: false,
   onClose: () => {},
   onOpen: () => {},
-  onConfirmClick: undefined
+  onConfirmClick: undefined,
+  showDefaultActions: true
 }
 
 Modal.propTypes = {
   className: PropTypes.string,
   trigger: PropTypes.node.isRequired,
   hideCloseIcon: PropTypes.bool,
+  showDefaultActions: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
   confirmLabel: PropTypes.string,

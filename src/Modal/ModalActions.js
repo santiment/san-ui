@@ -8,28 +8,22 @@ const ModalActions = ({
   confirmLabel,
   closeModal,
   cancelLabel
-}) => {
-  if (!onConfirmClick) {
-    return null
-  }
+}) => (
+  <div className={styles.actions}>
+    <Button
+      border
+      className={styles.btnCancel}
+      accent='negative'
+      onClick={closeModal}
+    >
+      {cancelLabel}
+    </Button>
 
-  return (
-    <div className={styles.actions}>
-      <Button
-        border
-        className={styles.btnCancel}
-        accent='negative'
-        onClick={closeModal}
-      >
-        {cancelLabel}
-      </Button>
-
-      <Button variant='fill' accent='positive' onClick={onConfirmClick}>
-        {confirmLabel}
-      </Button>
-    </div>
-  )
-}
+    <Button variant='fill' accent='positive' onClick={onConfirmClick}>
+      {confirmLabel}
+    </Button>
+  </div>
+)
 
 ModalActions.defaultProps = {
   confirmLabel: 'Confirm',

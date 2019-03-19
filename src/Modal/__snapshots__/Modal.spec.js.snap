@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component smoke 1`] = `
+<Modal
+  hideCloseIcon={false}
+  onClose={[Function]}
+  onConfirmClick={[MockFunction]}
+  onOpen={[Function]}
+  showDefaultActions={true}
+  title="Any title"
+  trigger={
+    <Button
+      as="button"
+      border={false}
+      className=""
+      fluid={false}
+      isActive={false}
+    >
+      Check
+    </Button>
+  }
+>
+  <Button
+    as="button"
+    border={false}
+    className=""
+    fluid={false}
+    isActive={false}
+    onClick={[Function]}
+  >
+    <button
+      className=" button undefined"
+      onClick={[Function]}
+    >
+      Check
+    </button>
+  </Button>
+  <Portal
+    containerInfo={
+      <div
+        id="ui-modal"
+      >
+        <div
+          class="dialog panel modal"
+        >
+          <div
+            class="header"
+          >
+            <div
+              class="title"
+            >
+              Any title
+            </div>
+            <svg
+              class="closeIcon"
+              height="12"
+              viewBox="0 0 12 12"
+              width="12"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.7803 1.28033C12.0732 0.987437 12.0732 0.512563 11.7803 0.21967C11.4874 -0.0732233 11.0126 -0.0732233 10.7197 0.21967L6 4.93934L1.28033 0.21967C0.987437 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987437 0.21967 1.28033L4.93934 6L0.21967 10.7197C-0.0732233 11.0126 -0.0732233 11.4874 0.21967 11.7803C0.512563 12.0732 0.987437 12.0732 1.28033 11.7803L6 7.06066L10.7197 11.7803C11.0126 12.0732 11.4874 12.0732 11.7803 11.7803C12.0732 11.4874 12.0732 11.0126 11.7803 10.7197L7.06066 6L11.7803 1.28033Z"
+              />
+            </svg>
+          </div>
+          <div
+            class="content"
+          >
+            Any internal modal text
+            <div
+              class="actions"
+            >
+              <button
+                class="btnCancel button undefined negative bordered"
+              >
+                Cancel
+              </button>
+              <button
+                class=" button fill positive"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="dimmed"
+        />
+      </div>
+    }
+  >
+    <Panel
+      className="dialog"
+      padding={false}
+      variant="modal"
+    >
+      <div
+        className="dialog panel modal"
+      >
+        <ModalHeader
+          hideCloseIcon={false}
+          onCloseModal={[Function]}
+          title="Any title"
+        >
+          <div
+            className="header"
+          >
+            <div
+              className="title"
+            >
+              Any title
+            </div>
+            <Icon
+              className="closeIcon"
+              onClick={[Function]}
+              type="close"
+            >
+              <IconClose
+                className="closeIcon"
+                onClick={[Function]}
+              >
+                <svg
+                  className="closeIcon"
+                  height="12"
+                  onClick={[Function]}
+                  viewBox="0 0 12 12"
+                  width="12"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.7803 1.28033C12.0732 0.987437 12.0732 0.512563 11.7803 0.21967C11.4874 -0.0732233 11.0126 -0.0732233 10.7197 0.21967L6 4.93934L1.28033 0.21967C0.987437 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987437 0.21967 1.28033L4.93934 6L0.21967 10.7197C-0.0732233 11.0126 -0.0732233 11.4874 0.21967 11.7803C0.512563 12.0732 0.987437 12.0732 1.28033 11.7803L6 7.06066L10.7197 11.7803C11.0126 12.0732 11.4874 12.0732 11.7803 11.7803C12.0732 11.4874 12.0732 11.0126 11.7803 10.7197L7.06066 6L11.7803 1.28033Z"
+                  />
+                </svg>
+              </IconClose>
+            </Icon>
+          </div>
+        </ModalHeader>
+        <div
+          className="content"
+        >
+          Any internal modal text
+          <ModalActions
+            cancelLabel="Cancel"
+            closeModal={[Function]}
+            confirmLabel="Confirm"
+            onConfirmClick={[Function]}
+          >
+            <div
+              className="actions"
+            >
+              <Button
+                accent="negative"
+                as="button"
+                border={true}
+                className="btnCancel"
+                fluid={false}
+                isActive={false}
+                onClick={[Function]}
+              >
+                <button
+                  className="btnCancel button undefined negative bordered"
+                  onClick={[Function]}
+                >
+                  Cancel
+                </button>
+              </Button>
+              <Button
+                accent="positive"
+                as="button"
+                border={false}
+                className=""
+                fluid={false}
+                isActive={false}
+                onClick={[Function]}
+                variant="fill"
+              >
+                <button
+                  className=" button fill positive"
+                  onClick={[Function]}
+                >
+                  Confirm
+                </button>
+              </Button>
+            </div>
+          </ModalActions>
+        </div>
+      </div>
+    </Panel>
+    <div
+      className="dimmed"
+      onClick={[Function]}
+    />
+  </Portal>
+</Modal>
+`;
