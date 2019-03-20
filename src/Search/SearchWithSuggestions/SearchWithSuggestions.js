@@ -24,6 +24,7 @@ class SearchWithSuggestions extends PureComponent {
     debounceTime: PropTypes.number,
     inputProps: PropTypes.object,
     suggestionsProps: PropTypes.object,
+    dontResetStateAfterSelection: PropTypes.bool,
     className: PropTypes.string
   }
 
@@ -35,6 +36,7 @@ class SearchWithSuggestions extends PureComponent {
     inputProps: {},
     suggestionsProps: {},
     debounceTime: 200,
+    dontResetStateAfterSelection: false,
     className: ''
   }
 
@@ -46,7 +48,7 @@ class SearchWithSuggestions extends PureComponent {
     isSearching: false
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearTimeout(debounceTimer)
   }
 
@@ -88,7 +90,7 @@ class SearchWithSuggestions extends PureComponent {
 
   onKeyDown = evt => {
     const { suggestions, cursor } = this.state
-    const { key } = evt
+    const { key, currentTarget } = evt
     let newCursor = cursor
     let selectedSuggestion
 
@@ -103,6 +105,7 @@ class SearchWithSuggestions extends PureComponent {
         break
       case 'Enter':
         selectedSuggestion = suggestions[cursor]
+        currentTarget.blur()
         return selectedSuggestion && this.onSuggestionSelect(selectedSuggestion)
       default:
         return
@@ -117,19 +120,21 @@ class SearchWithSuggestions extends PureComponent {
     this.setState({ cursor: newCursor < 0 ? maxCursor - 1 : newCursor })
   }
 
-  resetForm(clb) {
+  resetForm (clb) {
     this.setState(
-      {
-        isSearching: false,
-        searchTerm: '',
-        suggestions: [],
-        cursor: 0
-      },
+      this.props.dontResetStateAfterSelection
+        ? { isSearching: false }
+        : {
+            isSearching: false,
+            searchTerm: '',
+            suggestions: [],
+            cursor: 0
+          },
       clb
     )
   }
 
-  render() {
+  render () {
     const { suggestions, searchTerm, isFocused, isSearching } = this.state
     const {
       maxSuggestions,

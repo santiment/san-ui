@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import styles from './Label.module.scss'
 
-const Label = ({ variant, accent, as: Base, ...props }) => {
+const Label = ({ className, variant, accent, as: Base, ...props }) => {
   return (
     <Base
       {...props}
       className={cx({
-        [styles.label]: true,
+        [`${styles.label} ${className}`]: true,
         [styles[accent]]: accent,
         [styles[variant]]: variant
       })}
@@ -29,13 +29,15 @@ Label.propTypes = {
     'dodger-blue',
     'heliotrope',
     'malibu'
-  ])
+  ]),
+  className: PropTypes.string
 }
 
 Label.defaultProps = {
   as: 'span',
   variant: undefined,
-  accent: undefined
+  accent: undefined,
+  className: ''
 }
 
 export default Label
