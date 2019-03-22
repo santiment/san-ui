@@ -15,7 +15,8 @@ const notifications = [
     id: 1,
     description: 'This is a simple text description',
     title: 'Error',
-    variant: 'error'
+    variant: 'error',
+    actions: []
   },
   {
     id: 2,
@@ -38,20 +39,21 @@ const notifications = [
   {
     id: 5,
     description: 'This is a simple text description',
-    title: 'A really long notification title that will let the text go down to the next line',
-    variant: 'error',
+    title:
+      'A really long notification title that will let the text go down to the next line',
+    variant: 'error'
   },
   {
     id: 7,
     description: 'Simple Notification with a custom icon ',
     title: 'Processing',
     variant: 'info',
-    titleIconName: 'clock',
+    titleIconName: 'clock'
   },
   {
     id: 8,
     title: 'Notification without a description',
-    variant: 'info',
+    variant: 'info'
   },
   {
     id: 9,
@@ -59,9 +61,16 @@ const notifications = [
     variant: 'info',
     description: <Description />
   },
-];
+  {
+    id: 10,
+    description: 'This is a simple text description',
+    title: 'Any',
+    actions: []
+  }
+]
 
-const showNotificationAlert = notification => alert(`Action button on notification ${notification.id} clicked`);
+const showNotificationAlert = notification =>
+  alert(`Action button on notification ${notification.id} clicked`)
 
 const notificationsWithActionButtons = [
   {
@@ -72,7 +81,7 @@ const notificationsWithActionButtons = [
     actions: [
       {
         label: 'Button',
-        onClick: showNotificationAlert,
+        onClick: showNotificationAlert
       }
     ]
   },
@@ -84,7 +93,7 @@ const notificationsWithActionButtons = [
     actions: [
       {
         label: 'Button',
-        onClick: showNotificationAlert,
+        onClick: showNotificationAlert
       }
     ]
   },
@@ -96,18 +105,18 @@ const notificationsWithActionButtons = [
     actions: [
       {
         label: 'Button 1',
-        onClick: showNotificationAlert,
+        onClick: showNotificationAlert
       },
       {
         label: 'Button 2',
-        onClick: showNotificationAlert,
+        onClick: showNotificationAlert
       }
     ]
   }
 ]
 
 class NotificationExample extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -121,18 +130,15 @@ class NotificationExample extends Component {
     }))
   }
 
-  render() {
-    return (
-      this.state.notifications.map(
-        notification => (
-          <Notification
-            className={styles.notification}
-            key={notification.id}
-            onClose={() => this.closeNotification(notification.id)}
-            {...notification}
-          />
-        ))
-    )
+  render () {
+    return this.state.notifications.map(notification => (
+      <Notification
+        className={styles.notification}
+        key={notification.id}
+        onClose={() => this.closeNotification(notification.id)}
+        {...notification}
+      />
+    ))
   }
 }
 
@@ -145,7 +151,10 @@ storiesOf('Notifications', module)
   .add('With solid fills', () => (
     <ColorModeComparison>
       <NotificationExample
-        notifications={notifications.map(notification => ({ ...notification, solidFill: true }))}
+        notifications={notifications.map(notification => ({
+          ...notification,
+          solidFill: true
+        }))}
       />
     </ColorModeComparison>
   ))
@@ -160,9 +169,10 @@ storiesOf('Notifications', module)
     return (
       <ColorModeComparison>
         <NotificationExample
-          notifications={notificationsWithActionButtons.map(
-            notification => ({ ...notification, solidFill: true })
-          )}
+          notifications={notificationsWithActionButtons.map(notification => ({
+            ...notification,
+            solidFill: true
+          }))}
         />
       </ColorModeComparison>
     )
