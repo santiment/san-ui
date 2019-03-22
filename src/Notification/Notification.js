@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
-import Icon from '../Icon';
-import Panel from '../Panel/Panel';
+import Icon from '../Icon'
+import Panel from '../Panel/Panel'
 import styles from './Notification.module.scss'
 
 const titleIcons = {
   error: 'error',
   info: 'info-round',
   warning: 'alert',
-  success: 'checkmark-round',
+  success: 'checkmark-round'
 }
 
 const Notification = ({
@@ -20,10 +20,10 @@ const Notification = ({
   description,
   variant,
   onClose,
-  actions,
+  actions
 }) => (
   <Panel
-    variant="modal"
+    variant='modal'
     className={cx(
       className,
       styles.wrapper,
@@ -37,28 +37,14 @@ const Notification = ({
         width={22}
         height={22}
       />
-      <div className={styles.title}>
-        {title}
-      </div>
-      <Icon
-        type="close"
-        onClick={onClose}
-        className={styles.closeIcon}
-      />
+      <div className={styles.title}>{title}</div>
+      <Icon type='close' onClick={onClose} className={styles.closeIcon} />
     </div>
-    {description && (
-      <div className={styles.content}>
-        {description}
-      </div>
-    )}
-    {(actions && actions.length) && (
+    {description && <div className={styles.content}>{description}</div>}
+    {actions && actions.length > 0 && (
       <div className={styles.content}>
         {actions.map(({ label, onClick }) => (
-          <div
-            key={label}
-            className={styles.action}
-            onClick={onClick}
-          >
+          <div key={label} className={styles.action} onClick={onClick}>
             {label}
           </div>
         ))}
@@ -78,13 +64,14 @@ Notification.propTypes = {
   actions: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      onClick: PropTypes.func.isRequired,
+      onClick: PropTypes.func.isRequired
     })
   )
 }
 
 Notification.defaultProps = {
-  onClose: () => {}
+  onClose: () => {},
+  variant: 'info'
 }
 
 export default Notification
