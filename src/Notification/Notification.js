@@ -72,7 +72,8 @@ Notification.propTypes = {
 }
 
 Notification.defaultProps = {
-  onClose: () => {}
+  onClose: () => {},
+  variant: 'info'
 }
 
 export default Notification
