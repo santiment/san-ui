@@ -20,9 +20,11 @@ const Notification = ({
   description,
   variant,
   onClose,
-  actions
+  actions,
+  ...rest
 }) => (
   <Panel
+    {...rest}
     variant='modal'
     className={cx(
       className,
@@ -41,7 +43,7 @@ const Notification = ({
       <Icon type='close' onClick={onClose} className={styles.closeIcon} />
     </div>
     {description && <div className={styles.content}>{description}</div>}
-    {actions && actions.length > 0 && (
+    {actions && (
       <div className={styles.content}>
         {actions.map(({ label, onClick }) => (
           <div key={label} className={styles.action} onClick={onClick}>
