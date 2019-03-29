@@ -5,6 +5,7 @@ import cx from 'classnames'
 import ModalHeader from './ModalHeader'
 import ModalActions from './ModalActions'
 import Panel from '../Panel/Panel'
+import { useKeyOnly } from './../utils'
 import styles from './Modal.module.scss'
 
 let mountNode = document.querySelector('#ui-modal')
@@ -56,6 +57,7 @@ class Modal extends Component {
       confirmLabel,
       cancelLabel,
       onConfirmClick,
+      isScrolling,
       children
     } = this.props
     const { open } = this.state
@@ -85,7 +87,14 @@ class Modal extends Component {
         {open &&
           ReactDOM.createPortal(
             <>
-              <Panel variant='modal' className={cx(className, styles.dialog)}>
+              <Panel
+                variant='modal'
+                className={cx(
+                  className,
+                  styles.dialog,
+                  useKeyOnly(isScrolling, styles.isScrolling)
+                )}
+              >
                 <ModalHeader
                   onCloseModal={this.closeModal}
                   hideCloseIcon={hideCloseIcon}
@@ -110,7 +119,8 @@ Modal.defaultProps = {
   onClose: () => {},
   onOpen: () => {},
   onConfirmClick: undefined,
-  showDefaultActions: true
+  showDefaultActions: true,
+  isScrolling: false
 }
 
 Modal.propTypes = {
@@ -124,7 +134,8 @@ Modal.propTypes = {
   onClose: PropTypes.func,
   confirmLabel: PropTypes.string,
   cancelLabel: PropTypes.string,
-  onConfirmClick: PropTypes.func
+  onConfirmClick: PropTypes.func,
+  isScrolling: PropTypes.bool
 }
 
 export default Modal

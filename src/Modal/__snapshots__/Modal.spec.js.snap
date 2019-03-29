@@ -3,6 +3,7 @@
 exports[`Modal component smoke 1`] = `
 <Modal
   hideCloseIcon={false}
+  isScrolling={false}
   onClose={[Function]}
   onConfirmClick={[MockFunction]}
   onOpen={[Function]}

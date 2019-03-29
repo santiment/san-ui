@@ -8,17 +8,24 @@
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 .dialog {
   position: fixed;
   z-index: 1001;
-  max-width: 100%;
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
+  max-width: 100%;
   max-height: 100%;
   will-change: top, left, margin, transform, opacity;
+  animation: moveDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.isScrolling {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .header {
@@ -50,4 +57,26 @@
   margin-right: 9px;
   color: var(--black) !important;
   border-color: #d9dce9 !important;
+}
+
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(-1000px) translateX(-50%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3d(-50%, -50%, 0);
+    opacity: 1;
+  }
 }
