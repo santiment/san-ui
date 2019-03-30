@@ -1,59 +1,57 @@
 @import '../variables.scss';
 
 .tabs {
-    display: inline-block;
-    border-bottom: 1px solid var(--grey-light-2);
+  display: inline-block;
+  border-bottom: 1px solid var(--grey-light-2);
 }
 
 .tab {
-    position: relative;
-    box-sizing: border-box;
-    cursor: pointer;
-    background: transparent;
-    color: var(--grey-dark-2);
-    padding-bottom: 16px;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: transparent;
+  color: var(--grey-dark-2);
+  padding-bottom: 16px;
+  margin: 0 16px;
 
-    margin: 0 16px;
+  &:first-child {
+    margin-left: 0;
+  }
 
-    &:first-child {
-        margin-left: 0;
-    }
+  &:last-child {
+    margin-right: 0;
+  }
 
-    &:last-child {
-        margin-right: 0;
-    }
-
-    &:hover {
-        color: var(--green);
-    }
+  &:hover {
+    color: var(--green);
+  }
 }
 
 .selected {
-    color: var(--green);
+  color: var(--green);
 
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            bottom: -1px;
-            height: 2px;
-            left:0;
-            right: 0;
-            border-radius: 1px;
-            background: var(--green);
-        }
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    height: 2px;
+    left: 0;
+    right: 0;
+    border-radius: 1px;
+    background: var(--green);
+  }
 }
 
 .disabled {
-        cursor: not-allowed;
-        color: var(--grey-light-3);
+  cursor: not-allowed;
+  color: var(--grey-light-3);
 
-        &::after {
-            background: var(--grey-light-3);
-        }
+  &::after {
+    background: var(--grey-light-3);
+  }
 
-        &:hover {
-            color: var(--grey-light-3);
-        }
-
+  &:hover {
+    color: var(--grey-light-3);
+  }
 }

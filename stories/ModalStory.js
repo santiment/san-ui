@@ -80,3 +80,23 @@ storiesOf('Modal', module)
       voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
     </Modal>
   ))
+  .add('Scrolling modal', () => (
+    <Modal
+      trigger={<Button>Show</Button>}
+      showDefaultActions={false}
+      isScrolling
+      title='Lorem Ipsum'
+      hideCloseIcon
+    >
+      {[...Array(20).keys()].map(index => (
+        <p key={index}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
+          quaerat? A quos ab pariatur fugiat blanditiis, esse eum odit eligendi
+          exercitationem voluptatem quod maiores nesciunt sapiente modi dolorem
+          nisi accusamus architecto eius ipsa facere soluta? Magni nisi fuga
+          voluptate, velit voluptas, eaque nobis cum deserunt eligendi
+          reiciendis unde sit nesciunt.
+        </p>
+      ))}
+    </Modal>
+  ))
