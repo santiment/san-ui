@@ -17,15 +17,11 @@
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  max-width: 100%;
-  max-height: 100%;
-  will-change: top, left, margin, transform, opacity;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  will-change: transform, opacity;
   animation: moveDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-
-.isScrolling {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .header {
@@ -61,11 +57,11 @@
 
 @keyframes fadeIn {
   0% {
-    background: rgba(0, 0, 0, 0);
+    opacity: 0;
   }
 
   100% {
-    background: rgba(0, 0, 0, 0.7);
+    opacity: 0.7;
   }
 }
 
@@ -76,7 +72,7 @@
   }
 
   100% {
-    transform: translate3d(-50%, -50%, 0);
+    transform: translateY(-50%) translateX(-50%);
     opacity: 1;
   }
 }
