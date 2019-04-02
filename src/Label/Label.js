@@ -3,10 +3,18 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import styles from './Label.module.scss'
 
-const Label = ({ className, variant, accent, as: Base, ...props }) => {
+const Label = ({
+  className,
+  variant,
+  accent,
+  as: Base,
+  forwardedRef,
+  ...props
+}) => {
   return (
     <Base
       {...props}
+      ref={forwardedRef}
       className={cx({
         [`${styles.label} ${className}`]: true,
         [styles[accent]]: accent,

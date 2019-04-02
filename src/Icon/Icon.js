@@ -30,14 +30,14 @@ export const icons = context
     return acc
   }, {})
 
-const Icon = ({ type, ...props }) => {
+const Icon = ({ type, forwardedRef, ...props }) => {
   if (process.NODE_ENV === 'development') {
     if (!type || icons[type]) {
       throw new Error('Unknow icon type -> ', type)
     }
   }
   const SelectedIcon = icons[type]
-  return <SelectedIcon {...props} />
+  return <SelectedIcon ref={forwardedRef} {...props} />
 }
 
 Icon.propTypes = {
