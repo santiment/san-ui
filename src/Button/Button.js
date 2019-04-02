@@ -13,6 +13,7 @@ const Button = ({
   border,
   disabled,
   className,
+  forwardedRef,
   ...props
 }) => {
   return (
@@ -25,6 +26,7 @@ const Button = ({
         [styles.fluid]: fluid,
         [styles.disabled]: disabled
       })}
+      ref={forwardedRef}
       {...props}
     >
       {children}
@@ -47,6 +49,7 @@ Button.propTypes = {
     'blue',
     'cyan'
   ]),
+  /** test */
   className: PropTypes.string,
   children: PropTypes.any.isRequired
 }

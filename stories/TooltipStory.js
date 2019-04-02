@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import Tooltip from '../src/Tooltip'
 import Button from '../src/Button'
 import Panel from '../src/Panel/Panel'
+import Label from '../src/Label'
 
 const Example = props => {
   return (
@@ -42,11 +43,20 @@ const Example = props => {
   )
 }
 
-Example.propTypes = Tooltip.propTypes
-Example.defaultProps = Tooltip.defaultProps
-Example.displayName = 'Tooltip'
-
 storiesOf('Tooltip', module)
+  .addParameters({
+    info: {
+      propTables: [Tooltip],
+      text: `
+In order for \`Tooltip\` to work, component hierarchy should look like this:
+
+   **OK**: Trigger(Custom Component) -> DOM Element
+
+   **WRONG**: Trigger(Custom Component) -> Custom Component -> DOM Element
+      `,
+      propTablesExclude: [Example]
+    }
+  })
   .add('align: "top", on: "hover"', () => (
     <Example position='top' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
@@ -73,13 +83,21 @@ storiesOf('Tooltip', module)
     </Example>
   ))
   .add('Custom Component trigger: Button, align: "left"', () => (
-    <Example position='left' trigger={<Button>trigger</Button>}>
+    <Example
+      forwardedRefName='innerRef'
+      position='left'
+      trigger={<Button as='span'>trigger</Button>}
+    >
       test afisudhfoaidsufh content
     </Example>
   ))
-
   .add('Custom Component trigger: Panel, align: "left"', () => (
     <Example position='left' trigger={<Panel>123</Panel>}>
+      test afisudhfoaidsufh content
+    </Example>
+  ))
+  .add('Custom Component trigger: Label, align: "left"', () => (
+    <Example position='left' trigger={<Label>123</Label>}>
       test afisudhfoaidsufh content
     </Example>
   ))

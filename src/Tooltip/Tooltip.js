@@ -35,7 +35,7 @@ class Tooltip extends PureComponent {
     offsetY: 10,
     viewportOffset: 5,
     closeTimeout: 150,
-    forwardedRefName: 'forwardedRef'
+    forwardedRefPropName: 'forwardedRef'
   }
 
   static propTypes = {
@@ -47,7 +47,9 @@ class Tooltip extends PureComponent {
     viewportOffset: PropTypes.number,
     trigger: PropTypes.any.isRequired,
     children: PropTypes.any.isRequired,
-    forwardedRefName: PropTypes.string
+    /** Used for passing the `ref` when `trigger` has custom `forwardingRef` prop.
+     E.g. <Link/> from `react-router-dom` has `innerRef` for forwarding refs*/
+    forwardedRefPropName: PropTypes.string
   }
 
   state = {
@@ -143,9 +145,9 @@ class Tooltip extends PureComponent {
 
   render () {
     const { shown } = this.state
-    const { on, trigger, children, forwardedRefName } = this.props
+    const { on, trigger, children, forwardedRefPropName } = this.props
     const triggerEvent = on === 'click' ? 'onClick' : 'onMouseEnter'
-    const ref = typeof trigger.type !== 'string' ? forwardedRefName : 'ref'
+    const ref = typeof trigger.type !== 'string' ? forwardedRefPropName : 'ref'
 
     return (
       <>
