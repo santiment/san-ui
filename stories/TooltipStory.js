@@ -50,6 +50,8 @@ storiesOf('Tooltip', module)
       text: `
 In order for \`Tooltip\` to work, component hierarchy should look like this:
 
+   **OK**: Trigger(DOM Element)
+
    **OK**: Trigger(Custom Component) -> DOM Element
 
    **WRONG**: Trigger(Custom Component) -> Custom Component -> DOM Element

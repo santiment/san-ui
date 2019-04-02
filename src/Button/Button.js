@@ -49,7 +49,6 @@ Button.propTypes = {
     'blue',
     'cyan'
   ]),
-  /** test */
   className: PropTypes.string,
   children: PropTypes.any.isRequired
 }
