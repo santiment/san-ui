@@ -1,6 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Tooltip from '../src/Tooltip'
+import Button from '../src/Button'
+import Panel from '../src/Panel/Panel'
 
 const Example = props => {
   return (
@@ -40,6 +42,10 @@ const Example = props => {
   )
 }
 
+Example.propTypes = Tooltip.propTypes
+Example.defaultProps = Tooltip.defaultProps
+Example.displayName = 'Tooltip'
+
 storiesOf('Tooltip', module)
   .add('align: "top", on: "hover"', () => (
     <Example position='top' trigger={<span>trigger</span>}>
@@ -63,6 +69,17 @@ storiesOf('Tooltip', module)
   ))
   .add('align: "left"', () => (
     <Example position='left' trigger={<span>trigger</span>}>
+      test afisudhfoaidsufh content
+    </Example>
+  ))
+  .add('Custom Component trigger: Button, align: "left"', () => (
+    <Example position='left' trigger={<Button>trigger</Button>}>
+      test afisudhfoaidsufh content
+    </Example>
+  ))
+
+  .add('Custom Component trigger: Panel, align: "left"', () => (
+    <Example position='left' trigger={<Panel>123</Panel>}>
       test afisudhfoaidsufh content
     </Example>
   ))

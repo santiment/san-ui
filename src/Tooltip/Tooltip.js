@@ -34,7 +34,8 @@ class Tooltip extends PureComponent {
     offsetX: 10,
     offsetY: 10,
     viewportOffset: 5,
-    closeTimeout: 150
+    closeTimeout: 150,
+    forwardedRefName: 'forwardedRef'
   }
 
   static propTypes = {
@@ -45,7 +46,8 @@ class Tooltip extends PureComponent {
     closeTimeout: PropTypes.number,
     viewportOffset: PropTypes.number,
     trigger: PropTypes.any.isRequired,
-    children: PropTypes.any.isRequired
+    children: PropTypes.any.isRequired,
+    forwardedRefName: PropTypes.string
   }
 
   state = {
@@ -141,13 +143,14 @@ class Tooltip extends PureComponent {
 
   render () {
     const { shown } = this.state
-    const { on, trigger, children } = this.props
+    const { on, trigger, children, forwardedRefName } = this.props
     const triggerEvent = on === 'click' ? 'onClick' : 'onMouseEnter'
+    const ref = typeof trigger.type !== 'string' ? forwardedRefName : 'ref'
 
     return (
       <>
         {React.cloneElement(trigger, {
-          ref: this.triggerRef,
+          [ref]: this.triggerRef,
           [triggerEvent]: this.openTooltip,
           onMouseLeave: this.startCloseTimer
         })}
