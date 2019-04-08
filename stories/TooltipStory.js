@@ -104,7 +104,7 @@ In order for \`Tooltip\` to work, component hierarchy should look like this:
       test afisudhfoaidsufh content
     </Example>
   ))
-  .add('Custom Component trigger: Label, align: "left"', () => (
+  .add('Custom Component trigger: Icon, align: "left"', () => (
     <Example position='left' trigger={<Icon type='cloud-big' />}>
       test afisudhfoaidsufh content
     </Example>
