@@ -36,8 +36,11 @@ const Icon = ({ type, forwardedRef, ...props }) => {
       throw new Error('Unknow icon type -> ', type)
     }
   }
-  const SelectedIcon = icons[type]
-  return <SelectedIcon ref={forwardedRef} {...props} />
+
+  return React.cloneElement(
+    icons[type],
+    Object.assign({ ref: forwardedRef }, props)
+  )
 }
 
 Icon.propTypes = {

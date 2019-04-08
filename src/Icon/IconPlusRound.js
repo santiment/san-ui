@@ -1,7 +1,7 @@
 import React from 'react'
 
-const IconPlusRound = props => (
-  <svg width='17' height='17' xmlns='http://www.w3.org/2000/svg' {...props}>
+export default (
+  <svg width='17' height='17' xmlns='http://www.w3.org/2000/svg'>
     <path
       fillRule='evenodd'
       clipRule='evenodd'
@@ -11,5 +11,3 @@ const IconPlusRound = props => (
     <path d='M8.5 4c.41 0 .75.34.75.75v3h3a.75.75 0 0 1 0 1.5h-3v3a.75.75 0 0 1-1.5 0v-3h-3a.75.75 0 0 1 0-1.5h3v-3c0-.41.34-.75.75-.75z' />
   </svg>
 )
-
-export default IconPlusRound

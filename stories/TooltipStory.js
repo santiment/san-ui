@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import Tooltip from '../src/Tooltip'
 import Button from '../src/Button'
 import Panel from '../src/Panel/Panel'
+import Icon from '../src/Icon'
 import Label from '../src/Label'
 
 const Example = props => {
@@ -100,6 +101,11 @@ In order for \`Tooltip\` to work, component hierarchy should look like this:
   ))
   .add('Custom Component trigger: Label, align: "left"', () => (
     <Example position='left' trigger={<Label>123</Label>}>
+      test afisudhfoaidsufh content
+    </Example>
+  ))
+  .add('Custom Component trigger: Icon, align: "left"', () => (
+    <Example position='left' trigger={<Icon type='cloud-big' />}>
       test afisudhfoaidsufh content
     </Example>
   ))

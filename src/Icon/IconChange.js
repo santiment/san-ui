@@ -1,12 +1,11 @@
 import React from 'react'
 
-export default props => (
+export default (
   <svg
     width='18'
     height='18'
     viewBox='0 0 18 18'
     xmlns='http://www.w3.org/2000/svg'
-    {...props}
   >
     <path
       fillRule='evenodd'
