@@ -1,12 +1,11 @@
 import React from 'react'
 
-export default props => (
+export default (
   <svg
     width='17'
     height='18'
     viewBox='0 0 17 18'
     xmlns='http://www.w3.org/2000/svg'
-    {...props}
   >
     <path d='M8.5 0.75C8.91421 0.75 9.25 1.08579 9.25 1.5L9.25 16.5C9.25 16.9142 8.91421 17.25 8.5 17.25C8.08579 17.25 7.75 16.9142 7.75 16.5L7.75 1.5C7.75 1.08579 8.08579 0.75 8.5 0.75Z' />
     <path

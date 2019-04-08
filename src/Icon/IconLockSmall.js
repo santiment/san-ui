@@ -1,12 +1,11 @@
 import React from 'react'
 
-const IconLock = props => (
+export default (
   <svg
     width='12'
     height='14'
     viewBox='0 0 12 14'
     xmlns='http://www.w3.org/2000/svg'
-    {...props}
   >
     <path d='M7 9C7 9.55229 6.55228 10 6 10C5.44772 10 5 9.55229 5 9C5 8.44772 5.44772 8 6 8C6.55228 8 7 8.44772 7 9Z' />
     <path
@@ -16,5 +15,3 @@ const IconLock = props => (
     />
   </svg>
 )
-
-export default IconLock
