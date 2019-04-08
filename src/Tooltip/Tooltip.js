@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
+import cx from 'classnames'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
-import Panel from '../Panel/Panel'
 import styles from './Tooltip.module.scss'
 
 let mountNode = document.getElementById('ui-tooltips')
@@ -49,7 +49,11 @@ class Tooltip extends PureComponent {
     children: PropTypes.any.isRequired,
     /** Used for passing the `ref` when `trigger` has custom `forwardingRef` prop.
      E.g. <Link/> from `react-router-dom` has `innerRef` for forwarding refs*/
-    forwardedRefPropName: PropTypes.string
+    forwardedRefPropName: PropTypes.string,
+    /**
+       Class will be applied to the tooltip wrapper
+    */
+    className: PropTypes.string
   }
 
   state = {
@@ -145,7 +149,13 @@ class Tooltip extends PureComponent {
 
   render () {
     const { shown } = this.state
-    const { on, trigger, children, forwardedRefPropName } = this.props
+    const {
+      on,
+      trigger,
+      children,
+      forwardedRefPropName,
+      className
+    } = this.props
     const triggerEvent = on === 'click' ? 'onClick' : 'onMouseEnter'
     const ref = typeof trigger.type !== 'string' ? forwardedRefPropName : 'ref'
 
@@ -157,15 +167,15 @@ class Tooltip extends PureComponent {
           onMouseLeave: this.startCloseTimer
         })}
         {ReactDOM.createPortal(
-          <Panel
-            forwardedRef={this.tooltipRef}
+          <div
+            ref={this.tooltipRef}
             style={shown ? this.getTooltipStyles() : undefined}
-            className={styles.tooltip}
+            className={cx(styles.tooltip, className)}
             onMouseEnter={this.openTooltip}
             onMouseLeave={this.startCloseTimer}
           >
             {children}
-          </Panel>,
+          </div>,
           mountNode
         )}
       </>
