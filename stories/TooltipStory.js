@@ -6,7 +6,7 @@ import Panel from '../src/Panel/Panel'
 import Icon from '../src/Icon'
 import Label from '../src/Label'
 
-const Example = props => {
+const Example = ({ children, ...props }) => {
   return (
     <div
       style={{
@@ -20,25 +20,43 @@ const Example = props => {
         className='top'
         style={{ display: 'flex', justifyContent: 'space-between' }}
       >
-        <Tooltip {...props} />
-        <Tooltip {...props} />
-        <Tooltip {...props} />
+        <Tooltip {...props}>
+          <Panel padding>{children}</Panel>
+        </Tooltip>
+        <Tooltip {...props}>
+          <Panel padding>{children}</Panel>
+        </Tooltip>
+        <Tooltip {...props}>
+          <Panel padding>{children}</Panel>
+        </Tooltip>
       </div>
       <div
         className='mid'
         style={{ display: 'flex', justifyContent: 'space-between' }}
       >
-        <Tooltip {...props} />
-        <Tooltip {...props} />
-        <Tooltip {...props} />
+        <Tooltip {...props}>
+          <Panel padding>{children}</Panel>
+        </Tooltip>
+        <Tooltip {...props}>
+          <Panel padding>{children}</Panel>
+        </Tooltip>
+        <Tooltip {...props}>
+          <Panel padding>{children}</Panel>
+        </Tooltip>
       </div>
       <div
         className='bottom'
         style={{ display: 'flex', justifyContent: 'space-between' }}
       >
-        <Tooltip {...props} />
-        <Tooltip {...props} />
-        <Tooltip {...props} />
+        <Tooltip {...props}>
+          <Panel padding>{children}</Panel>
+        </Tooltip>
+        <Tooltip {...props}>
+          <Panel padding>{children}</Panel>
+        </Tooltip>
+        <Tooltip {...props}>
+          <Panel padding>{children}</Panel>
+        </Tooltip>
       </div>
     </div>
   )
