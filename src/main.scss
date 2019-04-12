@@ -75,6 +75,7 @@
 :global(.night-mode) {
   --white: #{$mirage}; // NEW
   --black: #{$white};
+  --shark: #{$white}; // NEW
   --mirage: #{$white}; // NEW
   --grey-light: #{$dark-1};
   --grey-light-2: #{$dark-2};
