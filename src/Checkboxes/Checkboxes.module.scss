@@ -1,62 +1,66 @@
 @import '../variables.scss';
 
 .btn {
-    box-sizing: border-box;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    cursor: pointer;
-    width: 16px;
-    height: 16px;
-    border-radius: 2px;
-    border: 1px solid var(--grey-light-3);
-    background: var(--white);
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid var(--grey-light-3);
+  background: var(--white);
 
-    &:hover {
-        border-color: var(--green);
-    }
+  &:hover {
+    border-color: var(--green);
+  }
 }
 
 .checkmark {
-    display: none;
+  display: none;
 }
 
 .selected {
-    & .btn {
-        background: var(--green);
-        border-color: var(--green);
+  & .btn {
+    background: var(--green);
+    border-color: var(--green);
 
-        &:hover {
-            background: var(--green-hover);
-            border-color: var(--green-hover);
-        }
+    &:hover {
+      background: var(--green-hover);
+      border-color: var(--green-hover);
     }
+  }
 
-    & .checkmark {
-        display: block;
-        fill: var(--white);
-    }
+  & .checkmark {
+    display: block;
+    fill: var(--white);
+  }
 }
 
 .disabled {
-    & .btn {
-        cursor: not-allowed;
-        background: var(--grey-light);
-        border-color: var(--grey-light-3);
+  & .btn {
+    cursor: not-allowed;
+    background: var(--grey-light);
+    border-color: var(--grey-light-3);
 
-        &:hover {
-            border-color: var(--grey-light-3);
-        }
+    &:hover {
+      border-color: var(--grey-light-3);
     }
+  }
 
-    &.selected .btn {
-        background: var(--grey-light-2);
-        border-color: var(--grey-light-2);
+  &.selected .btn {
+    background: var(--grey-light-2);
+    border-color: var(--grey-light-2);
 
-        &:hover {
-            background: var(--grey-light-2);
-            border-color: var(--grey-light-2);
-        }
+    &:hover {
+      background: var(--grey-light-2);
+      border-color: var(--grey-light-2);
     }
+  }
+}
+
+.checkbox {
+  display: inline-flex;
 }

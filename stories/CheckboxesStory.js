@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import Checkboxes from '../src/Checkboxes'
+import Checkboxes, { Checkbox } from '../src/Checkboxes'
 import Button from '../src/Button'
 import ColorModeComparison from './ColorModeComparison'
 
@@ -14,7 +14,7 @@ class Example extends React.Component {
     this.setState({ selectedOptions: state.selectedIndexes })
   }
 
-  render() {
+  render () {
     const { selectedOptions } = this.state
     return (
       <div>
@@ -204,3 +204,11 @@ storiesOf('Checkboxes', module)
     </div>
   ))
   .add('Usage example', () => <Example />)
+  .add('Simple Checkbox', () => (
+    <ColorModeComparison>
+      <Checkbox />
+      <Checkbox isActive />
+      <Checkbox disabled />
+      <Checkbox isActive disabled />
+    </ColorModeComparison>
+  ))
