@@ -107,7 +107,12 @@ In order for \`Tooltip\` to work, component hierarchy should look like this:
     <Example
       forwardedRefName='innerRef'
       position='left'
-      trigger={<Button as='span'>trigger</Button>}
+      passOpenStateAs='isActive'
+      trigger={
+        <Button variant='flat' as='span'>
+          trigger
+        </Button>
+      }
     >
       test afisudhfoaidsufh content
     </Example>
