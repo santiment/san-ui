@@ -34,8 +34,12 @@ class Tooltip extends PureComponent {
      E.g. <Link/> from `react-router-dom` has `innerRef` for forwarding refs*/
     forwardedRefPropName: PropTypes.string,
     /**
+       Name of the prop, which will be passed to a trigger, containing tooltip shown state
+       */
+    passOpenStateAs: PropTypes.string,
+    /**
        Class will be applied to the tooltip wrapper
-    */
+     */
     className: PropTypes.string
   }
 
@@ -67,7 +71,13 @@ class Tooltip extends PureComponent {
 
   render () {
     const { shown } = this.state
-    const { on, trigger, forwardedRefPropName, ...props } = this.props
+    const {
+      on,
+      trigger,
+      forwardedRefPropName,
+      passOpenStateAs,
+      ...props
+    } = this.props
     const triggerEvent = on === 'click' ? 'onClick' : 'onMouseEnter'
     const ref = typeof trigger.type !== 'string' ? forwardedRefPropName : 'ref'
 
@@ -76,7 +86,8 @@ class Tooltip extends PureComponent {
         {React.cloneElement(trigger, {
           [ref]: this.triggerRef,
           [triggerEvent]: this.openTooltip,
-          onMouseLeave: this.startCloseTimer
+          onMouseLeave: this.startCloseTimer,
+          [passOpenStateAs]: passOpenStateAs ? shown : undefined
         })}
         {shown && (
           <TooltipContent
