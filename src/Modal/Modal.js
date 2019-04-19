@@ -41,19 +41,23 @@ class Modal extends Component {
       showCloseIcon,
       closeClassName,
       classes,
-      as: El
+      as: El,
+      open
     } = this.props
-    const { open } = this.state
+
+    const isControlled = open !== undefined
+    const shouldOpen = isControlled ? open : this.state.open
 
     const render =
       typeof children === 'function' ? children(this.closeModal) : children
 
     return (
       <>
-        {React.cloneElement(trigger, {
-          onClick: this.openModal
-        })}
-        {open &&
+        {!isControlled &&
+          React.cloneElement(trigger, {
+            onClick: this.openModal
+          })}
+        {shouldOpen &&
           ReactDOM.createPortal(
             <div className={cx(styles.wrapper, classes.wrapper)}>
               <El className={cx(styles.modal, classes.modal)}>{render}</El>
@@ -70,19 +74,20 @@ class Modal extends Component {
 }
 
 Modal.defaultProps = {
-  hideCloseIcon: false,
   onClose: () => {},
   onOpen: () => {},
   as: 'div',
-  classes: {}
+  classes: { wrapper: '', modal: '', bg: '' },
+  open: undefined
 }
 
 Modal.propTypes = {
-  className: PropTypes.string,
-  trigger: PropTypes.node.isRequired,
-  hideCloseIcon: PropTypes.bool,
+  trigger: PropTypes.node,
   onOpen: PropTypes.func,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+
+  /** Used for controlling modal from outside*/
+  open: PropTypes.bool
 }
 
 export default Modal
