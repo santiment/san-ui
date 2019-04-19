@@ -1,102 +1,29 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 import Modal from '../src/Modal'
 import Button from '../src/Button'
+import Panel from '../src/Panel/Panel'
 
 storiesOf('Modal', module)
   .add('default', () => (
-    <Modal trigger={<Button>Show</Button>} title='Lorem Ipsum'>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat? A
-      quos ab pariatur fugiat blanditiis, esse eum odit eligendi exercitationem
-      voluptatem quod maiores nesciunt sapiente modi dolorem nisi accusamus
-      architecto eius ipsa facere soluta? Magni nisi fuga voluptate, velit
-      voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
-    </Modal>
-  ))
-  .add('without close icon', () => (
-    <Modal trigger={<Button>Show</Button>} title='Lorem Ipsum' hideCloseIcon>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat? A
-      quos ab pariatur fugiat blanditiis, esse eum odit eligendi exercitationem
-      voluptatem quod maiores nesciunt sapiente modi dolorem nisi accusamus
-      architecto eius ipsa facere soluta? Magni nisi fuga voluptate, velit
-      voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
-    </Modal>
-  ))
-  .add('without actions', () => (
     <Modal
+      title='test'
       trigger={<Button>Show</Button>}
-      showDefaultActions={false}
-      title='Lorem Ipsum'
-      hideCloseIcon
+      onClose={action('onClose')}
+      onOpen={action('onOpen')}
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat? A
-      quos ab pariatur fugiat blanditiis, esse eum odit eligendi exercitationem
-      voluptatem quod maiores nesciunt sapiente modi dolorem nisi accusamus
-      architecto eius ipsa facere soluta? Magni nisi fuga voluptate, velit
-      voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
     </Modal>
   ))
-  .add('with custom logic', () => (
+  .add('rendered "as" element', () => (
     <Modal
+      title='test'
       trigger={<Button>Show</Button>}
-      showDefaultActions={false}
-      title='Lorem Ipsum'
-      hideCloseIcon
+      onClose={action('onClose')}
+      onOpen={action('onOpen')}
+      as={Panel}
     >
-      {({ closeModal, onConfirmClick }) => (
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-          quaerat? A quos ab pariatur fugiat blanditiis, esse eum odit eligendi
-          exercitationem
-          <br />
-          <br />
-          <Button variant={'fill'} border accent={'grey'} onClick={closeModal}>
-            Extended Close
-          </Button>{' '}
-          <Button variant={'fill'} accent={'positive'} onClick={onConfirmClick}>
-            Extended Confirm
-          </Button>
-        </div>
-      )}
-    </Modal>
-  ))
-  .add('with custom labels and titles', () => (
-    <Modal
-      trigger={<Button>Show</Button>}
-      title='Lorem Ipsum'
-      onConfirmClick={closeModal => {
-        alert(
-          "You've clicked on Confirm button\n Model will be closed when you click okay!"
-        )
-        closeModal()
-      }}
-      confirmLabel='Say confirm'
-      cancelLabel='Get Cancel'
-    >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat? A
-      quos ab pariatur fugiat blanditiis, esse eum odit eligendi exercitationem
-      voluptatem quod maiores nesciunt sapiente modi dolorem nisi accusamus
-      architecto eius ipsa facere soluta? Magni nisi fuga voluptate, velit
-      voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
-    </Modal>
-  ))
-  .add('Scrolling modal', () => (
-    <Modal
-      trigger={<Button>Show</Button>}
-      showDefaultActions={false}
-      isScrolling
-      title='Lorem Ipsum'
-      hideCloseIcon
-    >
-      {[...Array(20).keys()].map(index => (
-        <p key={index}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-          quaerat? A quos ab pariatur fugiat blanditiis, esse eum odit eligendi
-          exercitationem voluptatem quod maiores nesciunt sapiente modi dolorem
-          nisi accusamus architecto eius ipsa facere soluta? Magni nisi fuga
-          voluptate, velit voluptas, eaque nobis cum deserunt eligendi
-          reiciendis unde sit nesciunt.
-        </p>
-      ))}
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
     </Modal>
   ))
