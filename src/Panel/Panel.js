@@ -26,6 +26,20 @@ const Panel = ({
   )
 }
 
+Panel.Title = ({ className, withPadding, ...props }) => (
+  <div
+    {...props}
+    className={cx(styles.header, className, withPadding && styles.padding)}
+  />
+)
+
+Panel.Content = ({ className, withPadding, ...props }) => (
+  <div
+    {...props}
+    className={cx(styles.content, className, withPadding && styles.padding)}
+  />
+)
+
 Panel.propTypes = {
   variant: PropTypes.oneOf(['tooltip-small', 'tooltip', 'modal']),
   padding: PropTypes.bool,

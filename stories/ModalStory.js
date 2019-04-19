@@ -1,102 +1,99 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 import Modal from '../src/Modal'
 import Button from '../src/Button'
+import Panel from '../src/Panel/Panel'
+import styles from './ModalStory.module.scss'
+
+class ControlledModal extends React.PureComponent {
+  state = {
+    open: false
+  }
+
+  closeModal = () => {
+    this.setState({ open: false })
+  }
+
+  openModal = () => {
+    this.setState({ open: true })
+  }
+
+  render () {
+    return (
+      <>
+        <Button onClick={this.openModal}>Open modal</Button>
+        <Modal
+          as={Panel}
+          open={this.state.open}
+          onClose={this.closeModal}
+          classes={styles}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
+          quaerat?
+          <br />
+          <Button onClick={this.closeModal}>Close</Button>
+          <Button onClick={this.closeModal}>Publish</Button>
+        </Modal>
+      </>
+    )
+  }
+}
 
 storiesOf('Modal', module)
   .add('default', () => (
-    <Modal trigger={<Button>Show</Button>} title='Lorem Ipsum'>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat? A
-      quos ab pariatur fugiat blanditiis, esse eum odit eligendi exercitationem
-      voluptatem quod maiores nesciunt sapiente modi dolorem nisi accusamus
-      architecto eius ipsa facere soluta? Magni nisi fuga voluptate, velit
-      voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
-    </Modal>
-  ))
-  .add('without close icon', () => (
-    <Modal trigger={<Button>Show</Button>} title='Lorem Ipsum' hideCloseIcon>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat? A
-      quos ab pariatur fugiat blanditiis, esse eum odit eligendi exercitationem
-      voluptatem quod maiores nesciunt sapiente modi dolorem nisi accusamus
-      architecto eius ipsa facere soluta? Magni nisi fuga voluptate, velit
-      voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
-    </Modal>
-  ))
-  .add('without actions', () => (
     <Modal
       trigger={<Button>Show</Button>}
-      showDefaultActions={false}
-      title='Lorem Ipsum'
-      hideCloseIcon
+      onClose={action('onClose')}
+      onOpen={action('onOpen')}
+      classes={styles}
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat? A
-      quos ab pariatur fugiat blanditiis, esse eum odit eligendi exercitationem
-      voluptatem quod maiores nesciunt sapiente modi dolorem nisi accusamus
-      architecto eius ipsa facere soluta? Magni nisi fuga voluptate, velit
-      voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
     </Modal>
   ))
-  .add('with custom logic', () => (
+  .add('rendered "as" element', () => (
     <Modal
       trigger={<Button>Show</Button>}
-      showDefaultActions={false}
-      title='Lorem Ipsum'
-      hideCloseIcon
+      onClose={action('onClose')}
+      onOpen={action('onOpen')}
+      as={Panel}
+      classes={styles}
     >
-      {({ closeModal, onConfirmClick }) => (
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-          quaerat? A quos ab pariatur fugiat blanditiis, esse eum odit eligendi
-          exercitationem
-          <br />
-          <br />
-          <Button variant={'fill'} border accent={'grey'} onClick={closeModal}>
-            Extended Close
-          </Button>{' '}
-          <Button variant={'fill'} accent={'positive'} onClick={onConfirmClick}>
-            Extended Confirm
-          </Button>
-        </div>
-      )}
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
     </Modal>
   ))
-  .add('with custom labels and titles', () => (
+  .add('opened by default', () => (
     <Modal
       trigger={<Button>Show</Button>}
-      title='Lorem Ipsum'
-      onConfirmClick={closeModal => {
-        alert(
-          "You've clicked on Confirm button\n Model will be closed when you click okay!"
-        )
-        closeModal()
-      }}
-      confirmLabel='Say confirm'
-      cancelLabel='Get Cancel'
+      onClose={action('onClose')}
+      onOpen={action('onOpen')}
+      as={Panel}
+      classes={styles}
+      defaultOpen
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat? A
-      quos ab pariatur fugiat blanditiis, esse eum odit eligendi exercitationem
-      voluptatem quod maiores nesciunt sapiente modi dolorem nisi accusamus
-      architecto eius ipsa facere soluta? Magni nisi fuga voluptate, velit
-      voluptas, eaque nobis cum deserunt eligendi reiciendis unde sit nesciunt.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
     </Modal>
   ))
-  .add('Scrolling modal', () => (
-    <Modal
-      trigger={<Button>Show</Button>}
-      showDefaultActions={false}
-      isScrolling
-      title='Lorem Ipsum'
-      hideCloseIcon
-    >
-      {[...Array(20).keys()].map(index => (
-        <p key={index}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-          quaerat? A quos ab pariatur fugiat blanditiis, esse eum odit eligendi
-          exercitationem voluptatem quod maiores nesciunt sapiente modi dolorem
-          nisi accusamus architecto eius ipsa facere soluta? Magni nisi fuga
-          voluptate, velit voluptas, eaque nobis cum deserunt eligendi
-          reiciendis unde sit nesciunt.
-        </p>
-      ))}
-    </Modal>
-  ))
+  .add('Controlled modal', () => <ControlledModal />)
+  .add('Nested modals', () => {
+    return (
+      <Modal
+        trigger={<Button>Show</Button>}
+        onClose={action('onClose')}
+        onOpen={action('onOpen')}
+        as={Panel}
+        classes={styles}
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
+        <Modal
+          trigger={<Button>Show</Button>}
+          onClose={action('onClose')}
+          onOpen={action('onOpen')}
+          as={Panel}
+          classes={styles}
+        >
+          nested one
+        </Modal>
+      </Modal>
+    )
+  })

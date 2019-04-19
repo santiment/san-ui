@@ -2,22 +2,13 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
-import ModalHeader from './ModalHeader'
-import ModalActions from './ModalActions'
-import Panel from '../Panel/Panel'
 import styles from './Modal.module.scss'
-
-let mountNode = document.querySelector('#ui-modal')
-
-if (!mountNode) {
-  mountNode = document.createElement('div')
-  mountNode.id = 'ui-modal'
-  document.body.appendChild(mountNode)
-}
-
+/**
+ * "Modal" is a primitive for building higher level abstractions like "Dialog".
+ */
 class Modal extends Component {
   state = {
-    open: false
+    open: this.props.defaultOpen
   }
 
   componentDidMount () {
@@ -37,68 +28,45 @@ class Modal extends Component {
   }
 
   onKeyUp = ({ code }) => {
-    if (code === 'Escape' && this.state.open) {
+    if (code === 'Escape') {
       this.closeModal()
     }
-  }
-
-  onConfirmClick = () => {
-    this.props.onConfirmClick && this.props.onConfirmClick(this.closeModal)
   }
 
   render () {
     const {
       className,
-      showDefaultActions,
       trigger,
-      hideCloseIcon,
-      title,
-      confirmLabel,
-      cancelLabel,
-      onConfirmClick,
-      children
+      children,
+      showCloseIcon,
+      closeClassName,
+      classes,
+      as: El,
+      open
     } = this.props
-    const { open } = this.state
 
-    const renderChildren =
-      typeof children === 'function'
-        ? children({
-            closeModal: this.closeModal,
-            onConfirmClick: this.onConfirmClick
-          })
-        : children
+    const isControlled = open !== undefined
+    const shouldOpen = isControlled ? open : this.state.open
 
-    const renderActions = showDefaultActions && (
-      <ModalActions
-        closeModal={this.closeModal}
-        onConfirmClick={onConfirmClick && this.onConfirmClick}
-        confirmLabel={confirmLabel}
-        cancelLabel={cancelLabel}
-      />
-    )
+    const render =
+      typeof children === 'function' ? children(this.closeModal) : children
 
     return (
       <>
-        {React.cloneElement(trigger, {
-          onClick: this.openModal
-        })}
-        {open &&
+        {!isControlled &&
+          React.cloneElement(trigger, {
+            onClick: this.openModal
+          })}
+        {shouldOpen &&
           ReactDOM.createPortal(
-            <>
-              <Panel variant='modal' className={cx(className, styles.dialog)}>
-                <ModalHeader
-                  onCloseModal={this.closeModal}
-                  hideCloseIcon={hideCloseIcon}
-                  title={title}
-                />
-                <div className={styles.content}>
-                  {renderChildren}
-                  {renderActions}
-                </div>
-              </Panel>
-              <div className={styles.dimmed} onClick={this.closeModal} />
-            </>,
-            mountNode
+            <div className={cx(styles.wrapper, classes.wrapper)}>
+              <El className={cx(styles.modal, classes.modal)}>{render}</El>
+              <div
+                className={cx(styles.dimmed, classes.bg)}
+                onClick={this.closeModal}
+              />
+            </div>,
+            document.body
           )}
       </>
     )
@@ -106,25 +74,22 @@ class Modal extends Component {
 }
 
 Modal.defaultProps = {
-  hideCloseIcon: false,
   onClose: () => {},
   onOpen: () => {},
-  onConfirmClick: undefined,
-  showDefaultActions: true
+  as: 'div',
+  classes: { wrapper: '', modal: '', bg: '' },
+  open: undefined,
+  defaultOpen: false
 }
 
 Modal.propTypes = {
-  className: PropTypes.string,
-  trigger: PropTypes.node.isRequired,
-  hideCloseIcon: PropTypes.bool,
-  showDefaultActions: PropTypes.bool,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  trigger: PropTypes.node,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
-  confirmLabel: PropTypes.string,
-  cancelLabel: PropTypes.string,
-  onConfirmClick: PropTypes.func
+
+  /** Used for controlling modal from outside*/
+  open: PropTypes.bool,
+  defaultOpen: PropTypes.bool
 }
 
 export default Modal
