@@ -10,6 +10,7 @@ exports[`Modal component smoke 1`] = `
       "wrapper": "",
     }
   }
+  defaultOpen={false}
   onClose={[Function]}
   onOpen={[Function]}
   trigger={

@@ -43,7 +43,6 @@ class ControlledModal extends React.PureComponent {
 storiesOf('Modal', module)
   .add('default', () => (
     <Modal
-      title='test'
       trigger={<Button>Show</Button>}
       onClose={action('onClose')}
       onOpen={action('onOpen')}
@@ -54,7 +53,6 @@ storiesOf('Modal', module)
   ))
   .add('rendered "as" element', () => (
     <Modal
-      title='test'
       trigger={<Button>Show</Button>}
       onClose={action('onClose')}
       onOpen={action('onOpen')}
@@ -64,11 +62,22 @@ storiesOf('Modal', module)
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
     </Modal>
   ))
+  .add('opened by default', () => (
+    <Modal
+      trigger={<Button>Show</Button>}
+      onClose={action('onClose')}
+      onOpen={action('onOpen')}
+      as={Panel}
+      classes={styles}
+      defaultOpen
+    >
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
+    </Modal>
+  ))
   .add('Controlled modal', () => <ControlledModal />)
   .add('Nested modals', () => {
     return (
       <Modal
-        title='test'
         trigger={<Button>Show</Button>}
         onClose={action('onClose')}
         onOpen={action('onOpen')}
@@ -77,7 +86,6 @@ storiesOf('Modal', module)
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
         <Modal
-          title='test'
           trigger={<Button>Show</Button>}
           onClose={action('onClose')}
           onOpen={action('onOpen')}
