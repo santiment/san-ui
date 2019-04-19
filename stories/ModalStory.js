@@ -24,7 +24,6 @@ class ControlledModal extends React.PureComponent {
       <>
         <Button onClick={this.openModal}>Open modal</Button>
         <Modal
-          title='test'
           as={Panel}
           open={this.state.open}
           onClose={this.closeModal}

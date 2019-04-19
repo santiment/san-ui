@@ -8,7 +8,7 @@ import styles from './Modal.module.scss'
  */
 class Modal extends Component {
   state = {
-    open: false
+    open: this.props.defaultOpen
   }
 
   componentDidMount () {
@@ -78,7 +78,8 @@ Modal.defaultProps = {
   onOpen: () => {},
   as: 'div',
   classes: { wrapper: '', modal: '', bg: '' },
-  open: undefined
+  open: undefined,
+  defaultOpen: false
 }
 
 Modal.propTypes = {
@@ -87,7 +88,8 @@ Modal.propTypes = {
   onClose: PropTypes.func,
 
   /** Used for controlling modal from outside*/
-  open: PropTypes.bool
+  open: PropTypes.bool,
+  defaultOpen: PropTypes.bool
 }
 
 export default Modal

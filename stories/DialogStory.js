@@ -8,6 +8,45 @@ Dialog.Actions.displayName = 'Dialog.Actions'
 Dialog.Cancel.displayName = 'Dialog.Cancel'
 Dialog.Approve.displayName = 'Dialog.Approve'
 
+class ControlledDialog extends React.PureComponent {
+  state = {
+    open: false
+  }
+
+  closeModal = () => {
+    this.setState({ open: false })
+  }
+
+  openModal = () => {
+    this.setState({ open: true })
+  }
+
+  render () {
+    return (
+      <>
+        <Button onClick={this.openModal}>Open modal</Button>
+        <Dialog title='test' open={this.state.open} onClose={this.closeModal}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
+          quaerat?
+          <Dialog.Actions>
+            <Dialog.Cancel onClick={this.closeModal}>Close</Dialog.Cancel>
+            <Dialog.Approve onClick={this.closeModal}>Publish</Dialog.Approve>
+          </Dialog.Actions>
+        </Dialog>
+      </>
+    )
+  }
+}
+
+const LongText = () =>
+  Array(40)
+    .fill()
+    .map(
+      () =>
+        `Dictum fusce ut placerat orci. Dolor, sed viverra ipsum nunc aliquet bibendum enim, facilisis gravida neque convallis a cras semper auctor neque, vitae tempus quam pellentesque nec nam aliquam sem.
+      `
+    )
+
 storiesOf('Dialog', module)
   .addParameters({
     info: {
@@ -38,13 +77,7 @@ storiesOf('Dialog', module)
   .add('Scrollable content', () => (
     <Dialog title='test' trigger={<Button>Show</Button>}>
       <Dialog.ScrollContent withPadding>
-        {Array(10)
-          .fill()
-          .map(
-            () =>
-              `Dictum fusce ut placerat orci. Dolor, sed viverra ipsum nunc aliquet bibendum enim, facilisis gravida neque convallis a cras semper auctor neque, vitae tempus quam pellentesque nec nam aliquam sem.
-`
-          )}
+        <LongText />
       </Dialog.ScrollContent>
       <div
         style={{
@@ -58,13 +91,7 @@ storiesOf('Dialog', module)
   .add('Scrollable content with actions', () => (
     <Dialog title='test' trigger={<Button>Show</Button>}>
       <Dialog.ScrollContent withPadding>
-        {Array(10)
-          .fill()
-          .map(
-            () =>
-              `Dictum fusce ut placerat orci. Dolor, sed viverra ipsum nunc aliquet bibendum enim, facilisis gravida neque convallis a cras semper auctor neque, vitae tempus quam pellentesque nec nam aliquam sem.
-              `
-          )}
+        <LongText />
       </Dialog.ScrollContent>
       <Dialog.Actions>
         <Dialog.Cancel>Cancel</Dialog.Cancel>
@@ -72,3 +99,4 @@ storiesOf('Dialog', module)
       </Dialog.Actions>
     </Dialog>
   ))
+  .add('Controlled Dialog', () => <ControlledDialog />)
