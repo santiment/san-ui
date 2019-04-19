@@ -14,50 +14,14 @@ describe('Modal component', () => {
 
   it('smoke', () => {
     const wrapper = mount(
-      <Modal
-        trigger={<Button>Check</Button>}
-        title='Any title'
-        onConfirmClick={mockCb}
-      >
-        Any internal modal text
+      <Modal trigger={<Button>Check</Button>}>
+        {' '}
+        <span>Any internal modal text</span>{' '}
       </Modal>
     )
     wrapper.find('button').simulate('click')
-    const actions = wrapper.find('ModalActions')
-    expect(actions.exists()).toBe(true)
+    const mountedText = wrapper.find('span')
+    expect(mountedText.exists()).toBe(true)
     expect(toJson(wrapper)).toMatchSnapshot()
-  })
-
-  it('should have right title', () => {
-    const wrapper = mount(
-      <Modal
-        trigger={<Button>Check</Button>}
-        title='Any title'
-        showDefaultActions={false}
-        onConfirmClick={mockCb}
-      >
-        Any internal modal text
-      </Modal>
-    )
-
-    wrapper.find('button').simulate('click')
-    const title = wrapper.find('.title').text()
-    expect(title).toBe('Any title')
-  })
-
-  it("should don't have default actions, if pass showDefaultActions = false", () => {
-    const wrapper = mount(
-      <Modal
-        trigger={<Button>Check</Button>}
-        title='Any title'
-        showDefaultActions={false}
-      >
-        Any internal modal text
-      </Modal>
-    )
-
-    wrapper.find('button').simulate('click')
-    const actions = wrapper.find('ModalActions')
-    expect(actions.exists()).toBe(false)
   })
 })
