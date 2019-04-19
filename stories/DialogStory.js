@@ -1,6 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Dialog from '../src/Dialog'
+import Modal from '../src/Modal'
 import Button from '../src/Button'
 
 Dialog.ScrollContent.displayName = 'Dialog.ScrollContent'
@@ -9,9 +10,7 @@ Dialog.Cancel.displayName = 'Dialog.Cancel'
 Dialog.Approve.displayName = 'Dialog.Approve'
 
 class ControlledDialog extends React.PureComponent {
-  state = {
-    open: false
-  }
+  state = { open: false }
 
   closeModal = () => {
     this.setState({ open: false })
@@ -52,6 +51,7 @@ storiesOf('Dialog', module)
     info: {
       propTables: [
         Dialog,
+        Modal,
         Dialog.ScrollContent,
         Dialog.Actions,
         Dialog.Cancel,
