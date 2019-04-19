@@ -18,6 +18,17 @@ const getSignByPosition = position => {
   }
 }
 
+const calculateAlignment = (triggerProp, tooltipProp, align) => {
+  switch (align) {
+    case 'start':
+      return 0
+    case 'center':
+      return (triggerProp - tooltipProp) / 2
+    case 'end':
+      return triggerProp - tooltipProp
+  }
+}
+
 class TooltipContent extends PureComponent {
   tooltipRef = React.createRef()
 
@@ -26,7 +37,7 @@ class TooltipContent extends PureComponent {
   }
 
   getTooltipCoordinates (trigger, tooltipHeight, tooltipWidth) {
-    const { position, offsetX, offsetY } = this.props
+    const { position, offsetX, offsetY, align } = this.props
     const {
       width: triggerWidth,
       height: triggerHeight,
@@ -41,9 +52,9 @@ class TooltipContent extends PureComponent {
     if (position === 'top' || position === 'bottom') {
       top +=
         (position === 'top' ? -tooltipHeight : triggerHeight) + sign * offsetY
-      left += (triggerWidth - tooltipWidth) / 2
+      left += calculateAlignment(triggerWidth, tooltipWidth, align)
     } else {
-      top += (triggerHeight - tooltipHeight) / 2
+      top += calculateAlignment(triggerHeight, tooltipHeight, align)
       left +=
         (position === 'left' ? -tooltipWidth : triggerWidth) + sign * offsetX
     }
