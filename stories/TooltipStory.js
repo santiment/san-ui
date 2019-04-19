@@ -62,6 +62,24 @@ const Example = ({ children, ...props }) => {
   )
 }
 
+const ExampleAlign = props => (
+  <div style={{ padding: 200 }}>
+    <Tooltip {...props} align='start'>
+      <Panel padding>align="start"</Panel>
+    </Tooltip>
+    <br />
+    <br />
+    <Tooltip {...props}>
+      <Panel padding>align="center" (default)</Panel>
+    </Tooltip>
+    <br />
+    <br />
+    <Tooltip {...props} align='end'>
+      <Panel padding>align="end"</Panel>
+    </Tooltip>
+  </div>
+)
+
 storiesOf('Tooltip', module)
   .addParameters({
     info: {
@@ -78,32 +96,51 @@ In order for \`Tooltip\` to work, component hierarchy should look like this:
       propTablesExclude: [Example]
     }
   })
-  .add('align: "top", on: "hover"', () => (
+  .add('position: "top", on: "hover"', () => (
     <Example position='top' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))
-  .add('align: "top", on: "click"', () => (
+  .add('position: "top", on: "click"', () => (
     <Example on='click' position='top' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))
-  .add('align: "right"', () => (
+
+  .add('position: "top", "align" changed', () => (
+    <ExampleAlign position='top' trigger={<span>trigger</span>} />
+  ))
+
+  .add('position: "right"', () => (
     <Example position='right' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))
-  .add('align: "bottom"', () => (
+
+  .add('position: "right", "align" changed', () => (
+    <ExampleAlign position='right' trigger={<span>trigger</span>} />
+  ))
+  .add('position: "bottom"', () => (
     <Example position='bottom' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))
-  .add('align: "left"', () => (
+
+  .add('position: "bottom", "align" changed', () => (
+    <ExampleAlign position='bottom' trigger={<span>trigger</span>} />
+  ))
+
+  .add('position: "left"', () => (
     <Example position='left' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content
     </Example>
   ))
-  .add('Custom Component trigger: Button, align: "left"', () => (
+
+  .add('position: "left", "align" changed', () => (
+    <ExampleAlign position='left' trigger={<span>trigger</span>} />
+  ))
+
+  .add('Custom Component trigger: Button, position: "left"', () => (
     <Example
       forwardedRefName='innerRef'
       position='left'
@@ -117,17 +154,17 @@ In order for \`Tooltip\` to work, component hierarchy should look like this:
       test afisudhfoaidsufh content
     </Example>
   ))
-  .add('Custom Component trigger: Panel, align: "left"', () => (
+  .add('Custom Component trigger: Panel, position: "left"', () => (
     <Example position='left' trigger={<Panel>123</Panel>}>
       test afisudhfoaidsufh content
     </Example>
   ))
-  .add('Custom Component trigger: Label, align: "left"', () => (
+  .add('Custom Component trigger: Label, position: "left"', () => (
     <Example position='left' trigger={<Label>123</Label>}>
       test afisudhfoaidsufh content
     </Example>
   ))
-  .add('Custom Component trigger: Icon, align: "left"', () => (
+  .add('Custom Component trigger: Icon, position: "left"', () => (
     <Example position='left' trigger={<Icon type='cloud-big' />}>
       test afisudhfoaidsufh content
     </Example>

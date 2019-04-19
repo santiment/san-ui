@@ -18,12 +18,14 @@ class Tooltip extends PureComponent {
     offsetY: 10,
     viewportOffset: 5,
     closeTimeout: 150,
-    forwardedRefPropName: 'forwardedRef'
+    forwardedRefPropName: 'forwardedRef',
+    align: 'center'
   }
 
   static propTypes = {
     on: PropTypes.oneOf(['click', 'hover']),
     position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+    align: PropTypes.oneOf(['start', 'end', 'center']),
     offsetX: PropTypes.number,
     offsetY: PropTypes.number,
     closeTimeout: PropTypes.number,
