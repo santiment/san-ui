@@ -56,7 +56,8 @@ storiesOf('Dialog', module)
         Dialog.Actions,
         Dialog.Cancel,
         Dialog.Approve
-      ]
+      ],
+      propTablesExclude: [LongText]
     }
   })
   .add('default', () => (
