@@ -6,6 +6,9 @@ import Icon from '../Icon'
 import Button from '../Button'
 import styles from './Dialog.module.scss'
 
+/**
+ * "Dialog" is based on the "Modal" component and inherits all of its possible props
+ */
 const Dialog = ({ classes, title, children, showCloseBtn, ...props }) => (
   <Modal
     {...props}
