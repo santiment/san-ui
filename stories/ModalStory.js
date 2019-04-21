@@ -22,8 +22,8 @@ class ControlledModal extends React.PureComponent {
   render () {
     return (
       <>
-        <Button onClick={this.openModal}>Open modal</Button>
         <Modal
+          trigger={<Button onClick={this.openModal}>Open modal</Button>}
           as={Panel}
           open={this.state.open}
           onClose={this.closeModal}
@@ -85,6 +85,7 @@ storiesOf('Modal', module)
         classes={styles}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
+        <br />
         <Modal
           trigger={<Button>Show</Button>}
           onClose={action('onClose')}

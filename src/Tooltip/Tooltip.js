@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import TooltipContent from './TooltipContent'
 
@@ -30,8 +31,8 @@ class Tooltip extends PureComponent {
     offsetY: PropTypes.number,
     closeTimeout: PropTypes.number,
     viewportOffset: PropTypes.number,
-    trigger: PropTypes.any.isRequired,
-    children: PropTypes.any.isRequired,
+    trigger: PropTypes.node.isRequired,
+    children: PropTypes.node.isRequired,
     /** Used for passing the `ref` when `trigger` has custom `forwardingRef` prop.
      E.g. <Link/> from `react-router-dom` has `innerRef` for forwarding refs*/
     forwardedRefPropName: PropTypes.string,
@@ -91,15 +92,17 @@ class Tooltip extends PureComponent {
           onMouseLeave: this.startCloseTimer,
           [passOpenStateAs]: passOpenStateAs ? shown : undefined
         })}
-        {shown && (
-          <TooltipContent
-            triggerRef={this.triggerRef}
-            mountNode={mountNode}
-            onMouseEnter={this.openTooltip}
-            onMouseLeave={this.startCloseTimer}
-            {...props}
-          />
-        )}
+        {shown &&
+          ReactDOM.createPortal(
+            <TooltipContent
+              triggerRef={this.triggerRef}
+              mountNode={mountNode}
+              onMouseEnter={this.openTooltip}
+              onMouseLeave={this.startCloseTimer}
+              {...props}
+            />,
+            document.body
+          )}
       </>
     )
   }

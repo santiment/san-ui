@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import ReactDOM from 'react-dom'
 import cx from 'classnames'
 import styles from './Tooltip.module.scss'
 
@@ -113,7 +112,8 @@ class TooltipContent extends PureComponent {
       onMouseLeave,
       children
     } = this.props
-    return ReactDOM.createPortal(
+
+    return (
       <div
         ref={this.tooltipRef}
         style={this.getTooltipStyles()}
@@ -122,8 +122,7 @@ class TooltipContent extends PureComponent {
         onMouseLeave={onMouseLeave}
       >
         {children}
-      </div>,
-      mountNode
+      </div>
     )
   }
 }
