@@ -27,19 +27,19 @@ const ContextMenu = ({
       trigger={React.cloneElement(trigger, {
         [ref]: triggerRef
       })}
+      passOpenStateAs={passOpenStateAs}
+      open={open}
+      defaultOpen={defaultOpen}
+      as={TooltipContent}
+      modalProps={{
+        triggerRef,
+        ...props
+      }}
       classes={{
         ...classes,
         wrapper: cx(styles.wrapper, classes.wrapper),
         modal: cx(styles.tooltip, classes.tooltip),
         bg: cx(styles.bg, classes.bg)
-      }}
-      open={open}
-      defaultOpen={defaultOpen}
-      as={TooltipContent}
-      modalProps={{
-        classes,
-        triggerRef,
-        ...props
       }}
     >
       {children}
