@@ -46,13 +46,12 @@ class Modal extends Component {
   render () {
     const { open } = this.state
     const {
-      className,
       trigger,
       children,
-      showCloseIcon,
-      closeClassName,
       classes,
-      as: El
+      as: El,
+      passOpenStateAs,
+      modalProps = {}
     } = this.props
 
     const render =
@@ -61,12 +60,15 @@ class Modal extends Component {
     return (
       <>
         {React.cloneElement(trigger, {
-          onClick: trigger.props.onClick || this.openModal
+          onClick: trigger.props.onClick || this.openModal,
+          [passOpenStateAs]: passOpenStateAs ? open : undefined
         })}
         {open &&
           ReactDOM.createPortal(
             <div className={cx(styles.wrapper, classes.wrapper)}>
-              <El className={cx(styles.modal, classes.modal)}>{render}</El>
+              <El className={cx(styles.modal, classes.modal)} {...modalProps}>
+                {render}
+              </El>
               <div
                 className={cx(styles.dimmed, classes.bg)}
                 onClick={this.closeModal}

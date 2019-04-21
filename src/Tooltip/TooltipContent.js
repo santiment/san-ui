@@ -105,13 +105,7 @@ class TooltipContent extends PureComponent {
   }
 
   render () {
-    const {
-      className,
-      mountNode,
-      onMouseEnter,
-      onMouseLeave,
-      children
-    } = this.props
+    const { className, onMouseEnter, onMouseLeave, children } = this.props
 
     return (
       <div
