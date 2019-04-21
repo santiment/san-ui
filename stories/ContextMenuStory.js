@@ -70,5 +70,19 @@ storiesOf('ContextMenu', module)
       </ContextMenu>
     </div>
   ))
+  .add('opened by default', () => (
+    <ContextMenu
+      trigger={<button>Show</button>}
+      onClose={action('onClose')}
+      onOpen={action('onOpen')}
+      position='bottom'
+      defaultOpen
+      classes={styles}
+    >
+      <Panel padding>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
+      </Panel>
+    </ContextMenu>
+  ))
 
   .add('controlled', () => <ControlledContextMenu />)

@@ -29,6 +29,7 @@ const ContextMenu = ({
       })}
       classes={{
         ...classes,
+        wrapper: cx(styles.wrapper, classes.wrapper),
         modal: cx(styles.tooltip, classes.tooltip),
         bg: cx(styles.bg, classes.bg)
       }}
