@@ -7,6 +7,16 @@ import styles from './Modal.module.scss'
  * "Modal" is a primitive for building higher level abstractions like "Dialog".
  */
 class Modal extends Component {
+  static getDerivedStateFromProps ({ open }) {
+    if (typeof open === 'undefined') {
+      return null
+    }
+
+    return {
+      open
+    }
+  }
+
   state = {
     open: this.props.defaultOpen
   }
@@ -28,39 +38,37 @@ class Modal extends Component {
   }
 
   onKeyUp = ({ code }) => {
-    if (code === 'Escape') {
+    if (code === 'Escape' && this.state.open) {
       this.closeModal()
     }
   }
 
   render () {
+    const { open } = this.state
     const {
-      className,
       trigger,
       children,
-      showCloseIcon,
-      closeClassName,
       classes,
       as: El,
-      open
+      passOpenStateAs,
+      modalProps = {}
     } = this.props
-
-    const isControlled = open !== undefined
-    const shouldOpen = isControlled ? open : this.state.open
 
     const render =
       typeof children === 'function' ? children(this.closeModal) : children
 
     return (
       <>
-        {!isControlled &&
-          React.cloneElement(trigger, {
-            onClick: this.openModal
-          })}
-        {shouldOpen &&
+        {React.cloneElement(trigger, {
+          onClick: trigger.props.onClick || this.openModal,
+          [passOpenStateAs]: passOpenStateAs ? open : undefined
+        })}
+        {open &&
           ReactDOM.createPortal(
             <div className={cx(styles.wrapper, classes.wrapper)}>
-              <El className={cx(styles.modal, classes.modal)}>{render}</El>
+              <El className={cx(styles.modal, classes.modal)} {...modalProps}>
+                {render}
+              </El>
               <div
                 className={cx(styles.dimmed, classes.bg)}
                 onClick={this.closeModal}
