@@ -44,6 +44,7 @@ $block-box-shadow: 0 6px 32px rgba(21, 24, 31, 0.03);
 
 .content {
   &.padding {
-    padding: 12px 20px;
+    padding: 12px 20px 0;
+    margin-bottom: 12px;
   }
 }

@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin border-box {
   box-sizing: border-box;
 }
@@ -8,4 +10,44 @@
   font-weight: normal;
   line-height: 22px;
   font-size: 14px;
+}
+
+@mixin _responsive($device) {
+  @if $device == 'desktop' {
+    @media only screen and (min-width: $desktopMinWidth) {
+      @content;
+    }
+  }
+
+  @if $device == 'laptop' {
+    @media only screen and (min-width: $laptopMinWidth) and (max-width: ($desktopMinWidth - 1px)) {
+      @content;
+    }
+  }
+
+  @if $device == 'tablet' {
+    @media only screen and (min-width: $tabletMinWidth) and (max-width: ($laptopMinWidth - 1px)) {
+      @content;
+    }
+  }
+
+  @if $device == 'phone' {
+    @media only screen and (min-width: $phoneMinWidth) and (max-width: ($tabletMinWidth - 1px)) {
+      @content;
+    }
+  }
+
+  @if $device == 'phone-xs' {
+    @media only screen and (max-width: ($phoneMinWidth - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin responsive($devices...) {
+  @each $device in $devices {
+    @include _responsive($device) {
+      @content;
+    }
+  }
 }
