@@ -1,12 +1,24 @@
-.wrapper {
-  position: absolute;
-  overflow: initial;
-}
+@import '../mixins.scss';
 
-.tooltip {
-  transform: none;
+.wrapper {
+  @include responsive('desktop', 'laptop', 'tablet') {
+    position: absolute;
+    overflow: initial;
+  }
 }
 
 .bg {
-  background: none;
+  @include responsive('desktop', 'laptop', 'tablet') {
+    background: none;
+  }
+}
+
+.menu {
+  @include responsive('phone-xs', 'phone') {
+    bottom: 2%;
+    top: initial !important;
+    max-width: 90%;
+    width: 90%;
+    left: 5% !important;
+  }
 }

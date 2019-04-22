@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions'
 import ContextMenu from '../src/ContextMenu'
 import Button from '../src/Button'
 import Panel from '../src/Panel/Panel'
-import styles from './ModalStory.module.scss'
 
 class ControlledContextMenu extends React.PureComponent {
   state = {
@@ -27,7 +26,6 @@ class ControlledContextMenu extends React.PureComponent {
           onClose={this.closeContextMenu}
           trigger={<button onClick={this.openContextMenu}>Show</button>}
           position='bottom'
-          classes={styles}
 
           // classes={styles}
         >
@@ -50,7 +48,6 @@ storiesOf('ContextMenu', module)
         onClose={action('onClose')}
         onOpen={action('onOpen')}
         position='bottom'
-        classes={styles}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
       </ContextMenu>
@@ -60,7 +57,6 @@ storiesOf('ContextMenu', module)
         onClose={action('onClose')}
         onOpen={action('onOpen')}
         position='bottom'
-        classes={styles}
       >
         <Panel>
           <Panel.Title>test</Panel.Title>
@@ -77,7 +73,6 @@ storiesOf('ContextMenu', module)
       onOpen={action('onOpen')}
       position='bottom'
       defaultOpen
-      classes={styles}
     >
       <Panel padding>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?

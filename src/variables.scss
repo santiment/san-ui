@@ -1,9 +1,5 @@
 $max-width: 1024px;
 
-$breakpoint-mobile: 360px;
-$breakpoint-tablet: 760px;
-$breakpoint-desktop: 980px;
-
 $disabled: #d3d3d3;
 
 // INPUT
@@ -127,3 +123,20 @@ $box-shadow: 0 1px 2px rgba(21, 24, 31, 0.02), 0 2px 10px rgba(21, 24, 31, 0.04)
 // TEXT
 $font-size-regular: 14px;
 $line-height-regular: 20px;
+
+// RESPONSIVE BREAKPOINTS
+// Most common screen sizes
+// https://uiux.cc/blog/the-most-used-responsive-breakpoints-in-2017-of-mine/
+$desktopMinWidth: 1200px;
+$laptopMinWidth: 992px;
+$tabletMinWidth: 768px;
+$phoneMinWidth: 480px;
+
+/* stylelint-disable */
+:export {
+  desktopminwidth: $desktopMinWidth;
+  laptopminwidth: $laptopMinWidth;
+  tabletminwidth: $tabletMinWidth;
+  phoneminwidth: $phoneMinWidth;
+}
+/* stylelint-enabled */
