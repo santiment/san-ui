@@ -24,7 +24,8 @@ class ControlledContextMenu extends React.PureComponent {
         <ContextMenu
           open={this.state.open}
           onClose={this.closeContextMenu}
-          trigger={<button onClick={this.openContextMenu}>Show</button>}
+          onOpen={this.openContextMenu}
+          trigger={<Button border>Show</Button>}
           position='bottom'
 
           // classes={styles}
