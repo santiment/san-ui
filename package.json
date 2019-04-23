@@ -15,9 +15,9 @@
     "scripts": "node scripts/copy-files && node scripts/update-version",
     "lib-publish": "yarn publish lib-build --patch --no-git-tag-version",
     "build:storybook": "build-storybook -o build",
-    "build:lib": "yarn webpack && yarn scripts && cp -r ./README.md lib-build/README.md",
+    "copy-readme": "cp -r ./README.md lib-build/README.md",
     "build:babel": "NODE_ENV=production babel ./src --out-dir ./lib-build --ignore \"**/*.spec.js\"",
-    "build:new": "yarn clean && yarn scripts && yarn build:babel",
+    "build:lib": "yarn clean && yarn scripts && yarn build:babel && yarn copy-readme",
     "build": "yarn clean && yarn build:storybook",
     "docker-dev": "docker-compose build frontend && docker-compose run --service-ports frontend"
   },
