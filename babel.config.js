@@ -13,10 +13,6 @@ module.exports = function (api) {
     ]
   ]
 
-  if (api.env('test')) {
-    plugins.push('require-context-hook')
-  }
-
   api.cache(false)
 
   return {
