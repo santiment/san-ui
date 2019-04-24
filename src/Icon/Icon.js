@@ -8,11 +8,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-if (process.NODE_ENV === 'test') {
-  // Hack. IDK why, but without it jest can't mock 'require.content' and crashes
-}
-
-const context = require.context('./', false, /\.js$/)
+const context =
+  process.env.NODE_ENV === 'test'
+    ? { keys: () => [] }
+    : require.context('./', false, /\.js$/)
 
 export const icons = context
   .keys()
