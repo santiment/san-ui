@@ -63,6 +63,30 @@ stories.add('Suggestions (Keep state after suggestion)', () => (
   </ColorModeComparison>
 ))
 
+stories.add('Suggestions (Sorting by length)', () => (
+  <ColorModeComparison>
+    <SearchWithSuggestions
+      data={[
+        'Bibox Token',
+        'Bigbom',
+        'Binance Coin',
+        'BioCoin',
+        'BitBay',
+        'bitcoin',
+        'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+      ]}
+      onSuggestionSelect={action('selected')}
+      iconPosition='left'
+      suggestionContent={suggestion => suggestion}
+      predicate={searchTerm => item =>
+        item.toUpperCase().includes(searchTerm.toUpperCase())}
+      maxSuggestions={5}
+      dontResetStateAfterSelection
+      sorter={(itemA, itemB) => itemA.length - itemB.length}
+    />
+  </ColorModeComparison>
+))
+
 stories.add(
   'Suggestions (usage info)',
   () => (

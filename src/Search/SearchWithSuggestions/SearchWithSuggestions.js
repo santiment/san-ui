@@ -17,6 +17,7 @@ class SearchWithSuggestions extends PureComponent {
     data: PropTypes.array.isRequired,
     suggestionContent: PropTypes.func.isRequired,
     predicate: PropTypes.func.isRequired,
+    sorter: PropTypes.func,
     onSuggestionSelect: PropTypes.func,
     onSuggestionsUpdate: PropTypes.func,
     maxSuggestions: PropTypes.number,
@@ -32,6 +33,7 @@ class SearchWithSuggestions extends PureComponent {
     maxSuggestions: 5,
     iconPosition: undefined,
     onSuggestionSelect: () => {},
+    sorter: () => {},
     onSuggestionsUpdate: () => {},
     inputProps: {},
     suggestionsProps: {},
@@ -68,11 +70,11 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   filterData = debounce(() => {
-    const { data, predicate, onSuggestionsUpdate } = this.props
+    const { data, predicate, sorter, onSuggestionsUpdate } = this.props
     this.setState(
       prevState => ({
         ...prevState,
-        suggestions: data.filter(predicate(prevState.searchTerm)),
+        suggestions: data.filter(predicate(prevState.searchTerm)).sort(sorter),
         cursor: 0,
         isSearching: false
       }),
