@@ -76,6 +76,10 @@
   @if $columns == 4 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 
+    @include responsive('tablet') {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
     @include responsive('phone') {
       grid-template-columns: 1fr 1fr;
     }
