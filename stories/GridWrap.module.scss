@@ -1,25 +1,13 @@
 @import '../src/mixins.scss';
 
 .two {
-  max-width: 1140px;
-
   @include grid-wrap(2);
 }
 
 .three {
-  max-width: 1140px;
-
   @include grid-wrap(3);
 }
 
 .four {
-  max-width: 1140px;
-
   @include grid-wrap(4);
-}
-
-.item {
-  background: #ede7f6;
-  padding: 10px;
-  border-radius: 10px;
 }
