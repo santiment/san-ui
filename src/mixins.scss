@@ -1,4 +1,4 @@
-@import './variables';
+@import "./variables";
 
 @mixin border-box {
   box-sizing: border-box;
@@ -13,31 +13,31 @@
 }
 
 @mixin _responsive($device) {
-  @if $device == 'desktop' {
+  @if $device == "desktop" {
     @media only screen and (min-width: $desktopMinWidth) {
       @content;
     }
   }
 
-  @if $device == 'laptop' {
+  @if $device == "laptop" {
     @media only screen and (min-width: $laptopMinWidth) and (max-width: ($desktopMinWidth - 1px)) {
       @content;
     }
   }
 
-  @if $device == 'tablet' {
+  @if $device == "tablet" {
     @media only screen and (min-width: $tabletMinWidth) and (max-width: ($laptopMinWidth - 1px)) {
       @content;
     }
   }
 
-  @if $device == 'phone' {
+  @if $device == "phone" {
     @media only screen and (min-width: $phoneMinWidth) and (max-width: ($tabletMinWidth - 1px)) {
       @content;
     }
   }
 
-  @if $device == 'phone-xs' {
+  @if $device == "phone-xs" {
     @media only screen and (max-width: ($phoneMinWidth - 1px)) {
       @content;
     }
@@ -57,11 +57,11 @@
   display: grid;
   grid-gap: 24px;
 
-  @include responsive('tablet') {
+  @include responsive("tablet") {
     grid-template-columns: 1fr 1fr;
   }
 
-  @include responsive('phone-xs', 'phone') {
+  @include responsive("phone-xs", "phone") {
     grid-template-columns: 1fr;
   }
 
@@ -76,12 +76,96 @@
   @if $columns == 4 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 
-    @include responsive('tablet') {
+    @include responsive("tablet") {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
-    @include responsive('phone') {
+    @include responsive("phone") {
       grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@mixin text($type, $mod) {
+  font-family: Rubik, sans-serif;
+  font-size: 400;
+
+  @if $type == "h1" {
+    font-size: 52px;
+    line-height: 66px;
+
+    @if $mod == "m" {
+      font-weight: bold;
+    }
+  }
+
+  @if $type == "h2" {
+    font-size: 38px;
+    line-height: 44px;
+
+    @if $mod == "m" {
+      font-weight: bold;
+    }
+  }
+
+  @if $type == "h3" {
+    font-size: 28px;
+    line-height: 40px;
+
+    @if $mod == "m" {
+      font-weight: bold;
+    }
+  }
+
+  @if $type == "h4" {
+    font-size: 22px;
+    line-height: 30px;
+
+    @if $mod == "m" {
+      font-weight: bold;
+    }
+  }
+
+  @if $type == "body-1" {
+    font-size: 18px;
+
+    @if $mod == "t" {
+      line-height: 28px;
+    }
+
+    @else {
+      line-height: 26px;
+
+      @if $mod == "m" {
+        font-weight: bold;
+      }
+    }
+  }
+
+  @if $type == "body-2" {
+    font-size: 16px;
+    line-height: 24px;
+
+    @if $mod == "m" {
+      font-weight: bold;
+    }
+  }
+
+  @if $type == "body-3" {
+    font-size: 14px;
+    line-height: 20px;
+
+    @if $mod == "m" {
+      font-weight: bold;
+    }
+  }
+
+  @if $type == "caption" {
+    font-size: 12px;
+    line-height: 18px;
+
+    @if $mod == "m" {
+      font-weight: bold;
     }
   }
 }
