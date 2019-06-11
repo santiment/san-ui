@@ -2,7 +2,7 @@
     This file should be included at the top of the target project index.scss
 */
 
-@import './variables.scss';
+@import "./variables.scss";
 
 // --CSS VARS--
 :root {
@@ -32,6 +32,11 @@
   --jungle-green-hover: #{$jungle-green-hover}; // NEW
   --jungle-green-light: #{$jungle-green-light}; // NEW
   --jungle-green-light-2: #{$jungle-green-light-2}; // NEW
+
+  // orange
+  --texas-rose: #{$lima}; // NEW
+  --texas-rose-hover: #{$lima-hover}; // NEW
+  --texas-rose-light: #{$lima-light}; // NEW
 
   // orange
   --orange: #{$orange};
@@ -93,6 +98,8 @@
   // orange
   --orange-light: #{$orange-dark};
   --texas-rose-light: #{$texas-rose-dark}; // NEW
+  // lima
+  --lima-light: #{$lima-dark}; // NEW
   // red
   --red-light: #{$red-dark};
   --persimmon-light: #{$persimmon-dark}; // NEW
