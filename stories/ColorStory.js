@@ -46,7 +46,7 @@ storiesOf('Colors', module).add('List of all colors', () => (
             style={{
               width: 120,
               height: 120,
-              background: vars[name],
+              background: `var(--${name}, ${vars[name]})`,
               borderRadius: 4
             }}
           />
