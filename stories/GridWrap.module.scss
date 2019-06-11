@@ -1,0 +1,13 @@
+@import '../src/mixins.scss';
+
+.two {
+  @include grid-wrap(2);
+}
+
+.three {
+  @include grid-wrap(3);
+}
+
+.four {
+  @include grid-wrap(4);
+}
