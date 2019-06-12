@@ -86,7 +86,7 @@
   }
 }
 
-@mixin text($type, $mod) {
+@mixin text($type, $mod: null) {
   font-family: Rubik, sans-serif;
   font-weight: 400;
 
