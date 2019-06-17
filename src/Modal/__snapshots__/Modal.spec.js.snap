@@ -18,6 +18,11 @@ exports[`Modal component smoke 1`] = `
       as="button"
       border={false}
       className=""
+      classes={
+        Object {
+          "active": "",
+        }
+      }
       fluid={false}
       isActive={false}
     >
@@ -29,6 +34,11 @@ exports[`Modal component smoke 1`] = `
     as="button"
     border={false}
     className=""
+    classes={
+      Object {
+        "active": "",
+      }
+    }
     fluid={false}
     isActive={false}
     onClick={[Function]}
