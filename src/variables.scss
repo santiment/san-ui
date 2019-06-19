@@ -66,7 +66,7 @@ $cyan: #68dbf4;
 // new color naming
 $athens: #f9fafc;
 $porcelain: #e7eaf3;
-$mystic: #d2d6e7;
+$mystic: #d2d6e6;
 $casper: #9faac4;
 $waterloo: #7a859e;
 $mirage: #181b2b;
@@ -90,6 +90,11 @@ $texas-rose-hover: #ffa030;
 $texas-rose-light: #fff3e4;
 $texas-rose-dark: #3b3130;
 
+$lima: #26c953;
+$lima-hover: #24c050;
+$lima-light: #e3fbe3;
+$lima-dark: #1a3424;
+
 $persimmon: #ff5b5b;
 $persimmon-hover: #ed4f4f;
 $persimmon-light: #ffe6e6;
@@ -108,6 +113,7 @@ $heliotrope-dark: #28244b;
 $malibu: #68dbf4;
 $malibu-hover: #5bcde5;
 $malibu-light: #e5f9fd;
+$malibu-accent: #72ffff;
 $malibu-dark: #253a4b;
 
 //With names
@@ -135,9 +141,47 @@ $phoneMinWidth: 480px;
 
 /* stylelint-disable */
 :export {
-  desktopminwidth: $desktopMinWidth;
-  laptopminwidth: $laptopMinWidth;
-  tabletminwidth: $tabletMinWidth;
-  phoneminwidth: $phoneMinWidth;
+  athens: $athens;
+  porcelain: $porcelain;
+  mystic: $mystic;
+  casper: $casper;
+  waterloo: $waterloo;
+  mirage: $mirage;
+  shark: $shark;
+  ebony-clay: $ebony-clay;
+  cloud-burst: $cloud-burst;
+  rhino: $rhino;
+  fiord: $fiord;
+  bali-hai: $bali-hai;
+  jungle-green: $jungle-green;
+  jungle-green-hover: $jungle-green-hover;
+  jungle-green-light: $jungle-green-light;
+  jungle-green-light-2: $jungle-green-light-2;
+  jungle-green-dark: $jungle-green-dark;
+  jungle-green-dark-2: $jungle-green-dark-2;
+  texas-rose: $texas-rose;
+  texas-rose-hover: $texas-rose-hover;
+  texas-rose-light: $texas-rose-light;
+  texas-rose-dark: $texas-rose-dark;
+  persimmon: $persimmon;
+  persimmon-hover: $persimmon-hover;
+  persimmon-light: $persimmon-light;
+  persimmon-dark: $persimmon-dark;
+  lima: $lima;
+  lima-hover: $lima-hover;
+  lima-light: $lima-light;
+  lima-dark: $lima-dark;
+  dodger-blue: $dodger-blue;
+  dodger-blue-hover: $dodger-blue-hover;
+  dodger-blue-light: $dodger-blue-light;
+  dodger-blue-dark: $dodger-blue-dark;
+  heliotrope: $heliotrope;
+  heliotrope-hover: $heliotrope-hover;
+  heliotrope-light: $heliotrope-light;
+  heliotrope-dark: $heliotrope-dark;
+  malibu: $malibu;
+  malibu-hover: $malibu-hover;
+  malibu-light: $malibu-light;
+  malibu-accent: $malibu-accent;
+  malibu-dark: $malibu-dark;
 }
-/* stylelint-enabled */

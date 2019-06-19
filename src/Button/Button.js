@@ -14,6 +14,7 @@ const Button = ({
   disabled,
   className,
   forwardedRef,
+  classes,
   ...props
 }) => {
   return (
@@ -21,7 +22,7 @@ const Button = ({
       className={cx({
         [`${className} ${styles.button} ${styles[variant]}`]: true,
         [styles[accent]]: accent,
-        [styles.active]: isActive,
+        [`${styles.active} ${classes.active}`]: isActive,
         [styles.bordered]: border,
         [styles.fluid]: fluid,
         [styles.disabled]: disabled
@@ -60,7 +61,10 @@ Button.defaultProps = {
   isActive: false,
   variant: undefined,
   accent: undefined,
-  className: ''
+  className: '',
+  classes: {
+    active: ''
+  }
 }
 
 export default Button
