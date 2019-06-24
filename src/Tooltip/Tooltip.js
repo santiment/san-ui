@@ -7,12 +7,12 @@ let mountNode
 
 if (typeof window !== 'undefined') {
   mountNode = document.getElementById('ui-tooltips')
-}
 
-if (!mountNode) {
-  mountNode = document.createElement('div')
-  mountNode.id = 'ui-tooltips'
-  document.body.appendChild(mountNode)
+  if (!mountNode) {
+    mountNode = document.createElement('div')
+    mountNode.id = 'ui-tooltips'
+    document.body.appendChild(mountNode)
+  }
 }
 
 class Tooltip extends PureComponent {
