@@ -92,7 +92,7 @@ Modal.defaultProps = {
 }
 
 Modal.propTypes = {
-  trigger: PropTypes.node.isRequired,
+  trigger: PropTypes.node,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
 
