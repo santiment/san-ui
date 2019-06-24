@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import TooltipContent from './TooltipContent'
 
-let mountNode = document.getElementById('ui-tooltips')
+let mountNode
+
+if (typeof window !== 'undefined') {
+  mountNode = document.getElementById('ui-tooltips')
+}
 
 if (!mountNode) {
   mountNode = document.createElement('div')
