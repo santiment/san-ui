@@ -59,10 +59,11 @@ class Modal extends Component {
 
     return (
       <>
-        {React.cloneElement(trigger, {
-          onClick: trigger.props.onClick || this.openModal,
-          [passOpenStateAs]: passOpenStateAs ? open : undefined
-        })}
+        {trigger &&
+          React.cloneElement(trigger, {
+            onClick: trigger.props.onClick || this.openModal,
+            [passOpenStateAs]: passOpenStateAs ? open : undefined
+          })}
         {open &&
           ReactDOM.createPortal(
             <div className={cx(styles.wrapper, classes.wrapper)}>
