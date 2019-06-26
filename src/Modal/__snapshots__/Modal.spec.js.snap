@@ -52,7 +52,9 @@ exports[`Modal component smoke 1`] = `
   </Button>
   <Portal
     containerInfo={
-      <body>
+      <body
+        class="opened"
+      >
         <div
           class="wrapper"
         >
