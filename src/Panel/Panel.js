@@ -9,10 +9,11 @@ const Panel = ({
   padding,
   className,
   forwardedRef,
+  as: El,
   ...props
 }) => {
   return (
-    <div
+    <El
       className={cx({
         [`${className} ${styles.panel}`]: true,
         [styles.padding]: padding,
@@ -22,7 +23,7 @@ const Panel = ({
       {...props}
     >
       {children}
-    </div>
+    </El>
   )
 }
 
@@ -50,7 +51,8 @@ Panel.propTypes = {
 Panel.defaultProps = {
   variant: undefined,
   padding: false,
-  className: ''
+  className: '',
+  as: 'div'
 }
 
 export default Panel
