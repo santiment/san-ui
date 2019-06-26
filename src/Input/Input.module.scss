@@ -1,57 +1,45 @@
 @import '../mixins.scss';
 @import '../variables.scss';
 
-$input-border-day: $light-gray3;
-$input-border-night: #2d3239;
-
-$input-border-focus-day: $green;
-$input-border-focus-night: #1b3f58;
-
-$input-color-night: #a0a0a0;
-
-$input-placeholder-color-day: $dark-gray;
-$input-placeholder-color-night: #4b4b4b;
-
-$input-error-color-day: $red;
-
 .input {
-    @include border-box;
-    @include text-normal;
-    line-height: 20px;
+  @include border-box;
+  @include text('body-3');
+
+  line-height: 20px;
   width: 100%;
   outline: none;
   background-color: var(--white);
-  border: 1px solid var(--grey-light-3);
+  border: 1px solid var(--porcelain);
   padding: 6px 10px;
   border-radius: 4px;
   height: 32px;
-  color: var(--black);
+  color: var(--mirage);
 
   &::placeholder {
-      color: var(--grey-dark);
+    color: var(--casper);
   }
 
   &[disabled] {
-      color: var(--grey-light-3);
+    color: var(--mystic);
   }
 
   &:focus {
-      border-color: var(--green);
+    border-color: var(--jungle-green);
   }
 
   &:hover {
-      border-color: var(--green);
+    border-color: var(--jungle-green);
   }
 
   &.inplace {
-      color: var(--grey-dark);
+    color: var(--casper);
 
     &:focus {
-        color: var(--black);
+      color: var(--mirage);
     }
   }
 
   &.error {
-      border-color: var(--red);
+    border-color: var(--persimmon);
   }
 }

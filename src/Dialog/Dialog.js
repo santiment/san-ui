@@ -11,12 +11,12 @@ import styles from './Dialog.module.scss'
  */
 const Dialog = ({ classes, title, children, showCloseBtn, ...props }) => (
   <Modal
+    as={Panel}
     {...props}
     classes={{
       wrapper: styles.wrapper,
       modal: cx(styles.modal, classes.dialog)
     }}
-    as={Panel}
   >
     {closeModal => (
       <>
