@@ -7,6 +7,7 @@ export { default as Select } from './Search/Select/Select'
 export {
   default as SearchWithSuggestions
 } from './Search/SearchWithSuggestions/SearchWithSuggestions'
+export { default as Loader } from './Loader/Loader'
 
 export { default as Icon } from './Icon'
 export { default as Toggle } from './Toggle'

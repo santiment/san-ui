@@ -141,3 +141,17 @@
     background: var(--athens) !important;
   }
 }
+
+.loading {
+  pointer-events: none;
+  color: transparent;
+  fill: transparent;
+  position: relative;
+}
+
+.loader {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  margin-left: -7.5px;
+}

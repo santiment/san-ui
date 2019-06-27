@@ -37,6 +37,7 @@ storiesOf('Button', module)
         <Button>Default button</Button>
         <AccentButtons>{accent => accent}</AccentButtons>
         <Button disabled>Default disabled button</Button>
+        <Button isLoading>Default loading button</Button>
       </ColorModeComparison>
     </div>
   ))
@@ -57,6 +58,10 @@ storiesOf('Button', module)
           <Icon type='search' />
           Default disabled button
         </Button>
+        <Button isLoading>
+          <Icon type='search' />
+          Default loading button
+        </Button>
       </ColorModeComparison>
     </div>
   ))
@@ -67,6 +72,9 @@ storiesOf('Button', module)
         <AccentButtons border>{accent => `${accent} bordered`}</AccentButtons>
         <Button border accent='positive' disabled>
           Disabled
+        </Button>
+        <Button border accent='positive' isLoading>
+          Loading
         </Button>
       </ColorModeComparison>
     </div>
@@ -88,6 +96,9 @@ storiesOf('Button', module)
         <Button variant='fill' accent='positive' disabled>
           Disabled
         </Button>
+        <Button variant='fill' accent='positive' isLoading>
+          Loading
+        </Button>
       </ColorModeComparison>
     </div>
   ))
@@ -104,6 +115,9 @@ storiesOf('Button', module)
         <hr />
         <Button variant='flat' accent='positive' disabled>
           Disabled
+        </Button>
+        <Button variant='flat' accent='positive' isLoading>
+          Loading
         </Button>
       </ColorModeComparison>
     </div>
@@ -137,20 +151,8 @@ storiesOf('Button', module)
         <Button variant='ghost' accent='positive' disabled>
           Disabled
         </Button>
-      </ColorModeComparison>
-    </div>
-  ))
-  .add('Variant: "ghost" (fluid)', () => (
-    <div>
-      <ColorModeComparison>
-        <Button fluid variant='ghost'>
-          Ghost Button
-        </Button>
-        <Button fluid border variant='ghost'>
-          Ghost Border Button
-        </Button>
-        <Button fluid variant='ghost' isActive>
-          Ghost Active Button
+        <Button variant='ghost' accent='positive' isLoading>
+          Loading
         </Button>
       </ColorModeComparison>
     </div>
