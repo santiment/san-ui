@@ -16,12 +16,4 @@ const RadioBtns = ({ defaultSelectedIndex, ...props }) => (
   />
 )
 
-RadioBtns.propTypes = {
-  defaultSelectedIndex: PropTypes.string
-}
-
-RadioBtns.defaultProps = {
-  defaultSelectedIndex: undefined
-}
-
 export default RadioBtns

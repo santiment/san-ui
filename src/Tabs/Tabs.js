@@ -17,13 +17,11 @@ const Tabs = ({ className, defaultSelectedIndex, ...props }) => (
 )
 
 Tabs.propTypes = {
-  className: PropTypes.string,
-  defaultSelectedIndex: PropTypes.string
+  className: PropTypes.string
 }
 
 Tabs.defaultProps = {
-  className: '',
-  defaultSelectedIndex: undefined
+  className: ''
 }
 
 export default Tabs
