@@ -3,23 +3,17 @@ import cx from 'classnames'
 import PropTypes from 'prop-types'
 import styles from './Loader.module.scss'
 
-const Loader = ({ className, variant }) => (
+const Loader = ({ className }) => (
   <div className={cx(styles.loader, className)}>
-    <span className={cx(styles.dot, { [styles[variant]]: variant })} />
-    <span className={cx(styles.dot, { [styles[variant]]: variant })} />
-    <span className={cx(styles.dot, { [styles[variant]]: variant })} />
-    <span className={cx(styles.dot, { [styles[variant]]: variant })} />
+    <span className={styles.dot} />
+    <span className={styles.dot} />
+    <span className={styles.dot} />
+    <span className={styles.dot} />
   </div>
 )
 
-Loader.propTypes = {
-  variant: PropTypes.oneOf(['dark', 'light']),
-  className: PropTypes.string
-}
+Loader.propTypes = { className: PropTypes.string }
 
-Loader.defaultProps = {
-  className: '',
-  variant: 'dark'
-}
+Loader.defaultProps = { className: '' }
 
 export default Loader

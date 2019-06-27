@@ -38,6 +38,8 @@
   color: var(--white);
   fill: var(--white);
 
+  --dot-bg: var(--white);
+
   &:hover {
     background: var(--btn-accent-color-hover);
     color: var(--white);
@@ -144,14 +146,22 @@
 
 .loading {
   pointer-events: none;
-  color: transparent;
-  fill: transparent;
   position: relative;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: inherit;
+    border-radius: inherit;
+  }
 }
 
 .loader {
   position: absolute;
-  top: 14px;
   left: 50%;
   margin-left: -7.5px;
 }

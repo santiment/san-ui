@@ -34,12 +34,7 @@ const Button = ({
       {...props}
     >
       {children}
-      {isLoading && (
-        <Loader
-          variant={variant === 'fill' ? 'light' : 'dark'}
-          className={styles.loader}
-        />
-      )}
+      {isLoading && <Loader className={styles.loader} />}
     </BaseButton>
   )
 }
