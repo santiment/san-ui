@@ -14,7 +14,7 @@ class Example extends React.Component {
     this.setState({ selectedOption: option })
   }
 
-  render() {
+  render () {
     const { selectedOption } = this.state
     return (
       <div>
@@ -202,5 +202,17 @@ storiesOf('Radio Buttons', module)
         />
       </ColorModeComparison>
     </div>
+  ))
+  .add('Custom index and content', () => (
+    <RadioBtns
+      labelOnRight
+      options={[
+        { index: 1, content: 'This is the content of the first option' },
+        { index: 2, content: 'Second option' }
+      ]}
+      defaultSelectedIndex={1}
+      as={props => <Button variant='ghost' {...props} />}
+      onSelect={action('Selected')}
+    />
   ))
   .add('Usage example', () => <Example />)

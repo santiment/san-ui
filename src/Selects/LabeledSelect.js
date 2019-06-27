@@ -12,15 +12,22 @@ const LabeledSelect = ({
   ...props
 }) => (
   <BaseSelect
-    options={options.map(label => ({
-      index: label,
-      content: (
-        <>
-          <span className={`${styles.label} ${labelClassName}`}>{label}</span>
-          {selectElement}
-        </>
-      )
-    }))}
+    options={options.map(option => {
+      const content = option.content || option
+      const index = option.index || option
+
+      return {
+        index,
+        content: (
+          <>
+            <span className={`${styles.label} ${labelClassName}`}>
+              {content}
+            </span>
+            {selectElement}
+          </>
+        )
+      }
+    })}
     className={`${className} ${labelOnRight ? styles.right : ''}`}
     {...props}
   />
