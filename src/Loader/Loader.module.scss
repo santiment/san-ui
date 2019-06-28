@@ -3,18 +3,16 @@
 }
 
 .dot {
-  --size: var(--loading-dot-size, 5px);
-
   display: block;
-  width: var(--size);
-  height: var(--size);
+  width: 1em;
+  height: 1em;
   border-radius: 50%;
-  margin-right: calc(var(--size) * 2);
+  margin-right: 2em;
   animation: slide ease 0.7s infinite;
   background: var(--dot-bg, var(--mirage));
 
   &:first-child {
-    margin-right: calc(0 - var(--size));
+    margin-right: -1em;
     animation-name: reveal;
   }
 
@@ -22,6 +20,7 @@
     margin: 0;
     animation-name: reveal;
     animation-direction: reverse;
+    animation-delay: 0.6s;
   }
 }
 
@@ -37,6 +36,6 @@
 
 @keyframes slide {
   to {
-    transform: translateX(calc(var(--size) * 3));
+    transform: translateX(3em);
   }
 }
