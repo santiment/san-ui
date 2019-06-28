@@ -73,7 +73,24 @@ storiesOf('Button', module)
         <Button border accent='positive' disabled>
           Disabled
         </Button>
+
+        <Button
+          border
+          accent='positive'
+          isLoading
+          style={{ '--loading-dot-size': '3px' }}
+        >
+          Loading
+        </Button>
         <Button border accent='positive' isLoading>
+          Loading
+        </Button>
+        <Button
+          border
+          accent='positive'
+          isLoading
+          style={{ '--loading-dot-size': '8px' }}
+        >
           Loading
         </Button>
       </ColorModeComparison>

@@ -1,5 +1,5 @@
-@import "../variables.scss";
-@import "../mixins.scss";
+@import '../variables.scss';
+@import '../mixins.scss';
 
 .button {
   ---btn-accent-color: var(--btn-accent-color, var(--mirage));
@@ -147,6 +147,7 @@
 .loading {
   pointer-events: none;
   position: relative;
+  justify-content: center;
 
   &::before {
     content: '';
@@ -162,6 +163,5 @@
 
 .loader {
   position: absolute;
-  left: 50%;
-  margin-left: -7.5px;
+  font-size: var(--loading-dot-size, 5px);
 }
