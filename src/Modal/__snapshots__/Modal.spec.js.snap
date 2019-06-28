@@ -25,6 +25,7 @@ exports[`Modal component smoke 1`] = `
       }
       fluid={false}
       isActive={false}
+      isLoading={false}
     >
       Check
     </Button>
@@ -41,6 +42,7 @@ exports[`Modal component smoke 1`] = `
     }
     fluid={false}
     isActive={false}
+    isLoading={false}
     onClick={[Function]}
   >
     <button
