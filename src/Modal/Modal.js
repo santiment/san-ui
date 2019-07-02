@@ -57,8 +57,6 @@ class Modal extends Component {
     const render =
       typeof children === 'function' ? children(this.closeModal) : children
 
-    document.body.classList.toggle(styles.opened, open)
-
     return (
       <>
         {trigger &&

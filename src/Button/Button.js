@@ -27,7 +27,7 @@ const Button = ({
         [`${styles.active} ${classes.active}`]: isActive,
         [styles.bordered]: border,
         [styles.fluid]: fluid,
-        [styles.disabled]: disabled,
+        [`${styles.disabled} ${classes.disabled}`]: disabled,
         [styles.loading]: isLoading
       })}
       ref={forwardedRef}
@@ -69,7 +69,8 @@ Button.defaultProps = {
   accent: undefined,
   className: '',
   classes: {
-    active: ''
+    active: '',
+    disabled: ''
   }
 }
 
