@@ -21,6 +21,7 @@ exports[`Modal component smoke 1`] = `
       classes={
         Object {
           "active": "",
+          "disabled": "",
         }
       }
       fluid={false}
@@ -38,6 +39,7 @@ exports[`Modal component smoke 1`] = `
     classes={
       Object {
         "active": "",
+        "disabled": "",
       }
     }
     fluid={false}
@@ -54,9 +56,7 @@ exports[`Modal component smoke 1`] = `
   </Button>
   <Portal
     containerInfo={
-      <body
-        class="opened"
-      >
+      <body>
         <div
           class="wrapper"
         >
