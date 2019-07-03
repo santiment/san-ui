@@ -43,13 +43,20 @@ export class Selector extends Component {
     variant: PropTypes.oneOf(['border'])
   }
 
+  componentDidUpdate (prevProps) {
+    console.log(prevProps, this.props)
+    if (this.props.defaultSelected !== prevProps.defaultSelected) {
+      this.setState({ topic: this.props.defaultSelected })
+    }
+  }
+
   onSelectOption = newOption => {
     this.setState({ selected: newOption }, () => {
       this.props.onSelectOption(newOption)
     })
   }
 
-  render() {
+  render () {
     const { selected } = this.state
     const {
       variant,
