@@ -61,6 +61,7 @@
     "react-dom": "^16.8.6",
     "react-scripts": "^2.1.1",
     "react-virtualized-select": "^3.1.3",
+    "react-window": "^1.8.5",
     "stylefmt": "^6.0.3",
     "stylelint": "^9.10.1",
     "stylelint-config-recommended-scss": "^3.2.0",
