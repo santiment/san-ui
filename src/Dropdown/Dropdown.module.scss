@@ -41,6 +41,8 @@
   border: 1px solid var(--porcelain);
   left: 0;
   right: 0;
+  z-index: 5;
+  background: var(--white);
 
   &_custom {
     padding-right: 4px;
