@@ -12,7 +12,9 @@ const accents = [
   'Persimmon',
   'Dodger-Blue',
   'Heliotrope',
-  'Malibu'
+  'Malibu',
+  'Mirage',
+  'Mystic'
 ]
 
 const Example = ({ children, ...props }) =>

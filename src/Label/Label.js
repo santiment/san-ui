@@ -36,7 +36,9 @@ Label.propTypes = {
     'persimmon',
     'dodger-blue',
     'heliotrope',
-    'malibu'
+    'mystic',
+    'malibu',
+    'mirage'
   ]),
   className: PropTypes.string
 }
