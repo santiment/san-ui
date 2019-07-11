@@ -45,7 +45,7 @@ export class Selector extends Component {
 
   componentDidUpdate (prevProps) {
     if (this.props.defaultSelected !== prevProps.defaultSelected) {
-      this.setState({ topic: this.props.defaultSelected })
+      this.setState({ selected: this.props.defaultSelected })
     }
   }
 
