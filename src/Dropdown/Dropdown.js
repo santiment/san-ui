@@ -65,7 +65,7 @@ const Dropdown = ({
               return (
                 <DropdownItem
                   key={index}
-                  isActive={selected === option}
+                  isActive={selected === index}
                   option={option}
                   onSelect={onSelect}
                   className={classes.option}
