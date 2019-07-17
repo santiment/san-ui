@@ -14,7 +14,8 @@ const accents = [
   'Heliotrope',
   'Malibu',
   'Mirage',
-  'Mystic'
+  'Mystic',
+  'Lima'
 ]
 
 const Example = ({ children, ...props }) =>
