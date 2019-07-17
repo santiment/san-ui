@@ -38,7 +38,8 @@ Label.propTypes = {
     'heliotrope',
     'mystic',
     'malibu',
-    'mirage'
+    'mirage',
+    'lima'
   ]),
   className: PropTypes.string
 }
