@@ -1,4 +1,4 @@
-@import "./variables";
+@import './variables';
 
 @mixin border-box {
   box-sizing: border-box;
@@ -13,31 +13,31 @@
 }
 
 @mixin _responsive($device) {
-  @if $device == "desktop" {
+  @if $device == 'desktop' {
     @media only screen and (min-width: $desktopMinWidth) {
       @content;
     }
   }
 
-  @if $device == "laptop" {
+  @if $device == 'laptop' {
     @media only screen and (min-width: $laptopMinWidth) and (max-width: ($desktopMinWidth - 1px)) {
       @content;
     }
   }
 
-  @if $device == "tablet" {
+  @if $device == 'tablet' {
     @media only screen and (min-width: $tabletMinWidth) and (max-width: ($laptopMinWidth - 1px)) {
       @content;
     }
   }
 
-  @if $device == "phone" {
+  @if $device == 'phone' {
     @media only screen and (min-width: $phoneMinWidth) and (max-width: ($tabletMinWidth - 1px)) {
       @content;
     }
   }
 
-  @if $device == "phone-xs" {
+  @if $device == 'phone-xs' {
     @media only screen and (max-width: ($phoneMinWidth - 1px)) {
       @content;
     }
@@ -57,11 +57,11 @@
   display: grid;
   grid-gap: 24px;
 
-  @include responsive("tablet") {
+  @include responsive('tablet') {
     grid-template-columns: 1fr 1fr;
   }
 
-  @include responsive("phone-xs", "phone") {
+  @include responsive('phone-xs', 'phone') {
     grid-template-columns: 1fr;
   }
 
@@ -76,11 +76,11 @@
   @if $columns == 4 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 
-    @include responsive("tablet") {
+    @include responsive('tablet') {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
-    @include responsive("phone") {
+    @include responsive('phone') {
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -90,82 +90,151 @@
   font-family: Rubik, sans-serif;
   font-weight: 400;
 
-  @if $type == "h1" {
+  @if $type == 'h1' {
     font-size: 52px;
     line-height: 66px;
 
-    @if $mod == "m" {
+    @if $mod == 'm' {
       font-weight: bold;
     }
   }
 
-  @if $type == "h2" {
+  @if $type == 'h2' {
     font-size: 38px;
     line-height: 44px;
 
-    @if $mod == "m" {
+    @if $mod == 'm' {
       font-weight: bold;
     }
   }
 
-  @if $type == "h3" {
+  @if $type == 'h3' {
     font-size: 28px;
     line-height: 40px;
 
-    @if $mod == "m" {
+    @if $mod == 'm' {
       font-weight: bold;
     }
   }
 
-  @if $type == "h4" {
+  @if $type == 'h4' {
     font-size: 22px;
     line-height: 30px;
 
-    @if $mod == "m" {
+    @if $mod == 'm' {
       font-weight: bold;
     }
   }
 
-  @if $type == "body-1" {
+  @if $type == 'body-1' {
     font-size: 18px;
 
-    @if $mod == "t" {
+    @if $mod == 't' {
       line-height: 28px;
     }
 
     @else {
       line-height: 26px;
 
-      @if $mod == "m" {
+      @if $mod == 'm' {
         font-weight: bold;
       }
     }
   }
 
-  @if $type == "body-2" {
+  @if $type == 'body-2' {
     font-size: 16px;
     line-height: 24px;
 
-    @if $mod == "m" {
+    @if $mod == 'm' {
       font-weight: bold;
     }
   }
 
-  @if $type == "body-3" {
+  @if $type == 'body-3' {
     font-size: 14px;
     line-height: 20px;
 
-    @if $mod == "m" {
+    @if $mod == 'm' {
       font-weight: bold;
     }
   }
 
-  @if $type == "caption" {
+  @if $type == 'caption' {
     font-size: 12px;
     line-height: 18px;
 
-    @if $mod == "m" {
+    @if $mod == 'm' {
       font-weight: bold;
     }
+  }
+}
+
+@mixin explanation($text, $position: 'bottom', $align: 'center') {
+  position: relative;
+
+  &:hover::before {
+    content: $text;
+  }
+
+  &::before {
+    font-size: 12px;
+    line-height: 18px;
+    position: absolute;
+    background: $fiord;
+    color: $white;
+    border-radius: 4px;
+    padding: 5px 12px;
+    box-shadow: 0 2px 2px rgba(24, 27, 43, 0.04),
+      0 2px 6px rgba(24, 27, 43, 0.08),
+ 0 4px 12px rgba(24, 27, 43, 0.08);
+
+    @if $position == 'bottom' {
+      top: 100%;
+    }
+
+    @if $position == 'top' {
+      bottom: 100%;
+    }
+
+    @if $position == 'left' {
+      right: 100%;
+    }
+
+    @if $position == 'right' {
+      left: 100%;
+    }
+
+    @if $position == 'top' or $position == 'bottom' {
+      @if $align == 'center' {
+        transform: translateX(-50%);
+        left: 50%;
+      }
+
+      @if $align == 'start' {
+        left: 0;
+      }
+
+      @if $align == 'end' {
+        right: 0;
+      }
+    }
+
+    @else {
+      @if $align == 'center' {
+        transform: translateY(-50%);
+        top: 50%;
+      }
+
+      @if $align == 'start' {
+        top: 0;
+      }
+
+      @if $align == 'end' {
+        bottom: 0;
+      }
+    }
+
+    @content;
   }
 }
