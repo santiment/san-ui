@@ -24,10 +24,10 @@ const darks = [
 const breaksAfter = [
   'shark',
   'bali-hai',
-  'jungle-green-dark-2',
+  'jungle-green-accent',
   'texas-rose-dark',
   'persimmon-dark',
-  'lima-dark',
+  'sheets',
   'dodger-blue-dark',
   'heliotrope-dark'
 ]
