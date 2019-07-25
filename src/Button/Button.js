@@ -53,7 +53,8 @@ Button.propTypes = {
     'purple',
     'orange',
     'blue',
-    'cyan'
+    'cyan',
+    'sheets'
   ]),
   className: PropTypes.string,
   children: PropTypes.any.isRequired

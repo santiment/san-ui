@@ -2,7 +2,7 @@
     This file should be included at the top of the target project index.scss
 */
 
-@import "./variables.scss";
+@import './variables.scss';
 
 // --CSS VARS--
 :root {
@@ -39,6 +39,7 @@
   --lima-hover: #{$lima-hover}; // NEW
   --lima-light: #{$lima-light}; // NEW
   --sheets: #{$sheets}; // NEW
+  --sheets-hover: #{$sheets-hover}; // NEW
 
   // orange
   --orange: #{$orange};

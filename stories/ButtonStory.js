@@ -27,7 +27,8 @@ const accents = [
   'Orange',
   'Blue',
   'Cyan',
-  'Purple'
+  'Purple',
+  'Sheets'
 ]
 
 storiesOf('Button', module)
