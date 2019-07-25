@@ -54,9 +54,9 @@
   fill: var(--btn-accent-color, var(--mirage));
 
   &:hover {
-    color: var(--btn-accent-color, var(--jungle-green));
-    fill: var(--btn-accent-color, var(--jungle-green));
-    background: var(--btn-accent-color-light);
+    color: var(--btn-accent-color-hover, var(--jungle-green-hover));
+    fill: var(--btn-accent-color-hover, var(--jungle-green-hover));
+    border-color: var(--btn-accent-color-hover, var(--porcelain));
   }
 }
 
@@ -124,6 +124,12 @@
   --btn-accent-color: var(--heliotrope);
   --btn-accent-color-hover: var(--heliotrope-hover);
   --btn-accent-color-light: var(--heliotrope-light);
+}
+
+.sheets {
+  --btn-accent-color: var(--sheets);
+  --btn-accent-color-hover: var(--sheets-hover);
+  --btn-accent-color-light: var(--white);
 }
 
 .disabled {
