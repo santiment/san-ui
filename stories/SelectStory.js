@@ -15,30 +15,32 @@ const stories = storiesOf('VirtualizedSelect', module)
 stories.add('Simple', () => (
   <ColorModeComparison>
     <Select options={options} />
+    <Select options={options} disabled />
+    <Select options={options} value={options[0]} />
+    <Select options={options} value={options[0]} multi />
   </ColorModeComparison>
 ))
 
 class SelectExample extends React.Component {
-
   state = {
-    selected: '' 
+    selected: ''
   }
 
   render () {
-    return(
+    return (
       <Select
         autofocus
         options={options}
         multi={true}
         value={this.state.selected}
-        onChange={selected => this.setState({ selected})} 
+        onChange={selected => this.setState({ selected })}
       />
-    ) 
+    )
   }
 }
 
 stories.add('Open options menu', () => (
   <ColorModeComparison>
-    <SelectExample /> 
+    <SelectExample />
   </ColorModeComparison>
 ))
