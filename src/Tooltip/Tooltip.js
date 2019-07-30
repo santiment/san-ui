@@ -50,6 +50,16 @@ class Tooltip extends PureComponent {
     className: PropTypes.string
   }
 
+  static getDerivedStateFromProps ({ shown }) {
+    if (typeof shown === 'undefined') {
+      return null
+    }
+
+    return {
+      shown
+    }
+  }
+
   state = {
     shown: false
   }
