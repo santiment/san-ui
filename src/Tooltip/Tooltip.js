@@ -28,7 +28,9 @@ class Tooltip extends PureComponent {
     forwardedRefPropName: 'forwardedRef',
     align: 'center',
     classes: {},
-    as: Fragment
+    as: Fragment,
+    onOpen: () => {},
+    onClose: () => {}
   }
 
   static propTypes = {
@@ -75,19 +77,23 @@ class Tooltip extends PureComponent {
   }
 
   startCloseTimer = () => {
-    this.closeTimer = setTimeout(
-      () => this.setState({ shown: false }),
-      this.props.closeTimeout
-    )
+    this.closeTimer = setTimeout(this.closeTooltip, this.props.closeTimeout)
   }
 
   stopCloseTimer () {
     clearTimeout(this.closeTimer)
   }
 
+  closeTooltip = () => {
+    this.setState({ shown: false }, this.props.onClose)
+  }
+
   openTooltip = () => {
     this.stopCloseTimer()
-    this.setState({ shown: true })
+    this.setState(
+      { shown: true },
+      this.state.shown ? undefined : this.props.onOpen
+    )
   }
 
   render () {
