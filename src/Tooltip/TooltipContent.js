@@ -98,20 +98,48 @@ class TooltipContent extends PureComponent {
     }
 
     return {
-      visibility: 'visible',
       top: `${top + scrollY}px`,
       left: `${left + scrollX}px`
     }
   }
 
   render () {
-    const { className, onMouseEnter, onMouseLeave, children } = this.props
+    const {
+      position,
+      align,
+      className,
+      onMouseEnter,
+      onMouseLeave,
+      children,
+      offsetX,
+      offsetY,
+      withCss
+    } = this.props
+
+    let style
+    let classes
+
+    if (withCss) {
+      const sign = getSignByPosition(position)
+      const isVerticalPosition = position === 'top' || position === 'bottom'
+
+      style = {
+        [`margin${sign > 0 ? 'Left' : 'Right'}`]:
+          isVerticalPosition || `${offsetX}px`,
+        [`margin${sign > 0 ? 'Top' : 'Bottom'}`]:
+          isVerticalPosition && `${offsetY}px`
+      }
+      classes = [styles.withCss, styles[position], styles[align]]
+    } else {
+      style = this.getTooltipStyles()
+      classes = []
+    }
 
     return (
       <div
         ref={this.tooltipRef}
-        style={this.getTooltipStyles()}
-        className={cx(styles.tooltip, className)}
+        style={style}
+        className={cx(styles.tooltip, className, ...classes)}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >

@@ -169,3 +169,13 @@ In order for \`Tooltip\` to work, component hierarchy should look like this:
       test afisudhfoaidsufh content
     </Example>
   ))
+  .add('Tooltip with CSS rendering', () => (
+    <Example
+      as='div'
+      shown={true}
+      position='right'
+      trigger={<Icon type='cloud-big' />}
+    >
+      test afisudhfoaidsufh content
+    </Example>
+  ))

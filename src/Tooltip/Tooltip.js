@@ -1,7 +1,9 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
+import cx from 'classnames'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import TooltipContent from './TooltipContent'
+import styles from './Tooltip.module.scss'
 
 let mountNode
 
@@ -24,7 +26,9 @@ class Tooltip extends PureComponent {
     viewportOffset: 5,
     closeTimeout: 150,
     forwardedRefPropName: 'forwardedRef',
-    align: 'center'
+    align: 'center',
+    classes: {},
+    as: Fragment
   }
 
   static propTypes = {
@@ -93,31 +97,44 @@ class Tooltip extends PureComponent {
       trigger,
       forwardedRefPropName,
       passOpenStateAs,
+      classes,
+      as: El,
       ...props
     } = this.props
     const triggerEvent = on === 'click' ? 'onClick' : 'onMouseEnter'
     const ref = typeof trigger.type !== 'string' ? forwardedRefPropName : 'ref'
 
+    const isFragment = El === Fragment
+
+    const tooltip = (
+      <TooltipContent
+        triggerRef={this.triggerRef}
+        mountNode={mountNode}
+        onMouseEnter={this.openTooltip}
+        onMouseLeave={this.startCloseTimer}
+        withCss={!isFragment}
+        {...props}
+      />
+    )
+
+    const wrapperProps = isFragment
+      ? undefined
+      : { className: cx(styles.wrapper, classes.wrapper) }
+
     return (
-      <>
+      <El {...wrapperProps}>
         {React.cloneElement(trigger, {
           [ref]: this.triggerRef,
           [triggerEvent]: this.openTooltip,
           onMouseLeave: this.startCloseTimer,
           [passOpenStateAs]: passOpenStateAs ? shown : undefined
         })}
-        {shown &&
-          ReactDOM.createPortal(
-            <TooltipContent
-              triggerRef={this.triggerRef}
-              mountNode={mountNode}
-              onMouseEnter={this.openTooltip}
-              onMouseLeave={this.startCloseTimer}
-              {...props}
-            />,
-            document.body
-          )}
-      </>
+        {shown
+          ? isFragment
+            ? ReactDOM.createPortal(tooltip, document.body)
+            : tooltip
+          : null}
+      </El>
     )
   }
 }
