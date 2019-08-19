@@ -20,6 +20,7 @@ class SearchWithSuggestions extends PureComponent {
     sorter: PropTypes.func,
     onSuggestionSelect: PropTypes.func,
     onSuggestionsUpdate: PropTypes.func,
+    transformValueAfterSelection: PropTypes.func,
     maxSuggestions: PropTypes.number,
     iconPosition: PropTypes.oneOf(['left', 'right']),
     debounceTime: PropTypes.number,
@@ -35,16 +36,18 @@ class SearchWithSuggestions extends PureComponent {
     onSuggestionSelect: () => {},
     sorter: () => {},
     onSuggestionsUpdate: () => {},
+    transformValueAfterSelection: (_, input) => input,
     inputProps: {},
     suggestionsProps: {},
     debounceTime: 200,
     dontResetStateAfterSelection: false,
+    defaultValue: '',
     className: ''
   }
 
   state = {
     suggestions: [],
-    searchTerm: '',
+    searchTerm: this.props.defaultValue,
     isFocused: false,
     cursor: 0,
     isSearching: false
@@ -66,7 +69,29 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   onSuggestionSelect = suggestion => {
-    this.resetForm(() => this.props.onSuggestionSelect(suggestion))
+    const {
+      dontResetStateAfterSelection,
+      onSuggestionSelect,
+      transformValueAfterSelection
+    } = this.props
+
+    this.setState(
+      dontResetStateAfterSelection
+        ? {
+            isSearching: false,
+            searchTerm: transformValueAfterSelection(
+              suggestion,
+              this.state.searchTerm
+            )
+          }
+        : {
+            isSearching: false,
+            searchTerm: '',
+            suggestions: [],
+            cursor: 0
+          },
+      () => onSuggestionSelect(suggestion)
+    )
   }
 
   filterData = debounce(() => {
@@ -120,20 +145,6 @@ class SearchWithSuggestions extends PureComponent {
     newCursor = newCursor % maxCursor
 
     this.setState({ cursor: newCursor < 0 ? maxCursor - 1 : newCursor })
-  }
-
-  resetForm (clb) {
-    this.setState(
-      this.props.dontResetStateAfterSelection
-        ? { isSearching: false }
-        : {
-            isSearching: false,
-            searchTerm: '',
-            suggestions: [],
-            cursor: 0
-          },
-      clb
-    )
   }
 
   render () {
