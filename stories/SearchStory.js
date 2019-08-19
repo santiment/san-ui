@@ -60,6 +60,27 @@ stories.add('Suggestions (Keep state after suggestion)', () => (
       maxSuggestions={5}
       dontResetStateAfterSelection
     />
+    <br />
+    <div>Setting input value after suggestion selection</div>
+    <SearchWithSuggestions
+      data={[
+        'Bibox Token',
+        'Bigbom',
+        'Binance Coin',
+        'BioCoin',
+        'BitBay',
+        'bitcoin',
+        'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+      ]}
+      onSuggestionSelect={action('selected')}
+      iconPosition='left'
+      suggestionContent={suggestion => suggestion}
+      predicate={searchTerm => item =>
+        item.toUpperCase().includes(searchTerm.toUpperCase())}
+      maxSuggestions={5}
+      dontResetStateAfterSelection
+      transformValueAfterSelection={suggestion => suggestion}
+    />
   </ColorModeComparison>
 ))
 
