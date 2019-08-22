@@ -20,7 +20,6 @@ class SearchWithSuggestions extends PureComponent {
     sorter: PropTypes.func,
     onSuggestionSelect: PropTypes.func,
     onSuggestionsUpdate: PropTypes.func,
-    transformValueAfterSelection: PropTypes.func,
     maxSuggestions: PropTypes.number,
     iconPosition: PropTypes.oneOf(['left', 'right']),
     debounceTime: PropTypes.number,
@@ -36,18 +35,29 @@ class SearchWithSuggestions extends PureComponent {
     onSuggestionSelect: () => {},
     sorter: () => {},
     onSuggestionsUpdate: () => {},
-    transformValueAfterSelection: (_, input) => input,
     inputProps: {},
     suggestionsProps: {},
     debounceTime: 200,
     dontResetStateAfterSelection: false,
-    defaultValue: '',
+    value: '',
     className: ''
+  }
+
+  static getDerivedStateFromProps ({ value }, { lastValue }) {
+    if (lastValue !== value) {
+      return {
+        searchTerm: value,
+        lastValue: value
+      }
+    }
+
+    return null
   }
 
   state = {
     suggestions: [],
-    searchTerm: this.props.defaultValue,
+    searchTerm: this.props.value,
+    lastValue: this.props.value,
     isFocused: false,
     cursor: 0,
     isSearching: false
@@ -69,20 +79,12 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   onSuggestionSelect = suggestion => {
-    const {
-      dontResetStateAfterSelection,
-      onSuggestionSelect,
-      transformValueAfterSelection
-    } = this.props
+    const { dontResetStateAfterSelection, onSuggestionSelect } = this.props
 
     this.setState(
       dontResetStateAfterSelection
         ? {
-            isSearching: false,
-            searchTerm: transformValueAfterSelection(
-              suggestion,
-              this.state.searchTerm
-            )
+            isSearching: false
           }
         : {
             isSearching: false,
