@@ -40,6 +40,7 @@ class SearchWithSuggestions extends PureComponent {
     debounceTime: 200,
     dontResetStateAfterSelection: false,
     value: '',
+    defaultValue: '',
     className: ''
   }
 
@@ -56,7 +57,7 @@ class SearchWithSuggestions extends PureComponent {
 
   state = {
     suggestions: [],
-    searchTerm: this.props.value,
+    searchTerm: this.props.defaultValue,
     lastValue: this.props.value,
     isFocused: false,
     cursor: 0,
