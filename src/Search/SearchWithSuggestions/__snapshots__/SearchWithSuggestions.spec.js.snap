@@ -24,7 +24,7 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
   sorter={[Function]}
   suggestionContent={[Function]}
   suggestionsProps={Object {}}
-  transformValueAfterSelection={[Function]}
+  value=""
 >
   <div
     className="wrapper "
