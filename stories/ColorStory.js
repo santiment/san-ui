@@ -27,7 +27,8 @@ const breaksAfter = [
   'jungle-green-accent',
   'texas-rose-dark',
   'persimmon-dark',
-  'sheets',
+  'lima-dark',
+  'sheets-hover',
   'dodger-blue-dark',
   'heliotrope-dark'
 ]

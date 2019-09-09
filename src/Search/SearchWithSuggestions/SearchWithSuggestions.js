@@ -39,12 +39,26 @@ class SearchWithSuggestions extends PureComponent {
     suggestionsProps: {},
     debounceTime: 200,
     dontResetStateAfterSelection: false,
+    value: '',
+    defaultValue: '',
     className: ''
+  }
+
+  static getDerivedStateFromProps ({ value }, { lastValue }) {
+    if (lastValue !== value) {
+      return {
+        searchTerm: value,
+        lastValue: value
+      }
+    }
+
+    return null
   }
 
   state = {
     suggestions: [],
-    searchTerm: '',
+    searchTerm: this.props.defaultValue,
+    lastValue: this.props.value,
     isFocused: false,
     cursor: 0,
     isSearching: false
@@ -66,7 +80,21 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   onSuggestionSelect = suggestion => {
-    this.resetForm(() => this.props.onSuggestionSelect(suggestion))
+    const { dontResetStateAfterSelection, onSuggestionSelect } = this.props
+
+    this.setState(
+      dontResetStateAfterSelection
+        ? {
+            isSearching: false
+          }
+        : {
+            isSearching: false,
+            searchTerm: '',
+            suggestions: [],
+            cursor: 0
+          },
+      () => onSuggestionSelect(suggestion)
+    )
   }
 
   filterData = debounce(() => {
@@ -120,20 +148,6 @@ class SearchWithSuggestions extends PureComponent {
     newCursor = newCursor % maxCursor
 
     this.setState({ cursor: newCursor < 0 ? maxCursor - 1 : newCursor })
-  }
-
-  resetForm (clb) {
-    this.setState(
-      this.props.dontResetStateAfterSelection
-        ? { isSearching: false }
-        : {
-            isSearching: false,
-            searchTerm: '',
-            suggestions: [],
-            cursor: 0
-          },
-      clb
-    )
   }
 
   render () {

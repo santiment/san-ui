@@ -7,6 +7,39 @@ import ColorModeComparison from './ColorModeComparison'
 
 const stories = storiesOf('Search', module)
 
+class Test extends React.PureComponent {
+  state = {
+    value: 'Bibox Token'
+  }
+
+  render () {
+    return (
+      <SearchWithSuggestions
+        data={[
+          'Bibox Token',
+          'Bigbom',
+          'Binance Coin',
+          'BioCoin',
+          'BitBay',
+          'bitcoin',
+          'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+        ]}
+        onSuggestionSelect={suggestion => {
+          this.setState({ value: suggestion })
+          action('selected')(suggestion)
+        }}
+        iconPosition='left'
+        suggestionContent={suggestion => suggestion}
+        predicate={searchTerm => item =>
+          item.toUpperCase().includes(searchTerm.toUpperCase())}
+        maxSuggestions={5}
+        dontResetStateAfterSelection
+        value={'000=' + this.state.value}
+      />
+    )
+  }
+}
+
 stories.add('Simple', () => (
   <ColorModeComparison>
     <Search defaultValue='No icon' />
@@ -60,6 +93,26 @@ stories.add('Suggestions (Keep state after suggestion)', () => (
       maxSuggestions={5}
       dontResetStateAfterSelection
     />
+    <br />
+    <div>Setting input value after suggestion selection</div>
+    <SearchWithSuggestions
+      data={[
+        'Bibox Token',
+        'Bigbom',
+        'Binance Coin',
+        'BioCoin',
+        'BitBay',
+        'bitcoin',
+        'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+      ]}
+      onSuggestionSelect={action('selected')}
+      iconPosition='left'
+      suggestionContent={suggestion => suggestion}
+      predicate={searchTerm => item =>
+        item.toUpperCase().includes(searchTerm.toUpperCase())}
+      maxSuggestions={5}
+      dontResetStateAfterSelection
+    />
   </ColorModeComparison>
 ))
 
@@ -84,6 +137,12 @@ stories.add('Suggestions (Sorting by length)', () => (
       dontResetStateAfterSelection
       sorter={(itemA, itemB) => itemA.length - itemB.length}
     />
+  </ColorModeComparison>
+))
+
+stories.add('Suggestions derived value', () => (
+  <ColorModeComparison>
+    <Test />
   </ColorModeComparison>
 ))
 
