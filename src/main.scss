@@ -17,6 +17,7 @@
   --waterloo: #{$waterloo}; // NEW
   --mirage: #{$mirage}; // NEW
   --shark: #{$shark}; // NEW
+  --rhino: #{$rhino}; // NEW
   --grey-light: #{$light-gray};
   --grey-light-2: #{$light-gray2};
   --grey-light-3: #{$light-gray3};
@@ -94,10 +95,12 @@
   --mystic: #{$rhino}; // NEW
   --casper: #{$fiord}; // NEW
   --waterloo: #{$bali-hai}; // NEW
+  --rhino: #{$mystic}; // NEW
   // green
   --green-light: #{$green-dark};
   --jungle-green-light: #{$jungle-green-dark}; // NEW
   --jungle-green-light-2: #{$jungle-green-dark-2}; // NEW
+  --jungle-green-accent: #{$jungle-green-a-dark}; // NEW
   // orange
   --orange-light: #{$orange-dark};
   --texas-rose-light: #{$texas-rose-dark}; // NEW
