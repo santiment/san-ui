@@ -8,11 +8,11 @@ const darks = [
   'ebony-clay',
   'ebony-clay',
   'cloud-burst',
-  'rhino',
   'fiord',
   'bali-hai',
   'jungle-green-dark',
   'jungle-green-dark-2',
+  'jungle-green-a-dark',
   'persimmom-dark',
   'lima-dark',
   'texas-rose-dark',
@@ -22,9 +22,9 @@ const darks = [
 ]
 
 const breaksAfter = [
-  'shark',
+  'rhino',
   'bali-hai',
-  'jungle-green-accent',
+  'jungle-green-a-dark',
   'texas-rose-dark',
   'persimmon-dark',
   'lima-dark',
