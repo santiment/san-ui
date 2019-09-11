@@ -36,6 +36,7 @@
     background-color: var(--athens);
     border-radius: 15px 15px 0 0;
     color: var(--waterloo);
+    padding: 16px 20px;
 
     @include text('caption', 'm');
   }
@@ -44,6 +45,10 @@
 .content {
   overflow-y: auto;
   overflow-x: hidden;
+
+  @include responsive('phone-xs', 'phone') {
+    margin-bottom: 0 !important;
+  }
 }
 
 .actions {
@@ -90,6 +95,8 @@
     border: none;
     width: 50%;
     display: block;
+    height: auto;
+    padding: 16px 12px;
   }
 }
 
