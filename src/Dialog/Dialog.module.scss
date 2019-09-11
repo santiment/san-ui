@@ -53,7 +53,6 @@
   padding: 0 20px 20px;
 
   @include responsive('phone-xs', 'phone') {
-    justify-content: space-between;
     padding: 0;
   }
 }
