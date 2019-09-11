@@ -40,9 +40,18 @@ Dialog.Actions = ({ className, ...props }) => (
   <div className={cx(styles.actions, className)} {...props} />
 )
 
-Dialog.Cancel = props => <Button border {...props} />
+Dialog.Cancel = ({ className, ...props }) => (
+  <Button border className={cx(styles.cancel, className)} {...props} />
+)
 
-Dialog.Approve = props => <Button variant='fill' accent='positive' {...props} />
+Dialog.Approve = ({ className, ...props }) => (
+  <Button
+    variant='fill'
+    accent='positive'
+    className={cx(styles.approve, className)}
+    {...props}
+  />
+)
 
 Dialog.defaultProps = {
   showCloseBtn: true,

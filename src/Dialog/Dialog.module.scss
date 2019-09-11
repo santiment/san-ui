@@ -17,9 +17,10 @@
   flex-direction: column;
 
   @include responsive('phone-xs', 'phone') {
-    max-width: 90%;
     width: 100%;
-    margin: 0 0 4%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
   }
 }
 
@@ -27,6 +28,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include responsive('phone-xs', 'phone') {
+    background-color: var(--athens);
+    border-radius: 10px 10px 0 0;
+    color: var(--waterloo);
+
+    @include text('caption', 'm'); }
 }
 
 .content {
@@ -39,9 +47,54 @@
   align-items: center;
   justify-content: flex-end;
   padding: 0 20px 20px;
+
+  @include responsive('phone-xs', 'phone') {
+    justify-content: space-between;
+    padding: 0;
+  }
+}
+
+.approve {
+  @include responsive('phone-xs', 'phone') {
+    color: var(--jungle-green);
+    border: none;
+    background: none;
+
+    &:hover {
+      color: var(--jungle-green) !important;
+      border: none;
+      background: none !important;
+    }
+  }
+}
+
+.cancel {
+  @include responsive('phone-xs', 'phone') {
+    color: var(--waterloo);
+
+    &:hover {
+      color: var(--waterloo);
+      border: none;
+      background: none;
+    }
+  }
+}
+
+.cancel,
+.approve {
+  @include responsive('phone-xs', 'phone') {
+    background: none;
+    border: none;
+    width: 50%;
+    display: block;
+  }
 }
 
 .close {
   cursor: pointer;
   fill: var(--waterloo);
+
+  @include responsive('phone-xs', 'phone') {
+    display: none;
+  }
 }
