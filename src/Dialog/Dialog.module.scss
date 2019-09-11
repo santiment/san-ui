@@ -7,6 +7,7 @@
 
   @include responsive('phone-xs', 'phone') {
     align-items: flex-end;
+    overflow-y: hidden;
   }
 }
 
@@ -20,7 +21,9 @@
     width: 100%;
     max-width: 100%;
     margin: 0;
-    border-radius: 10px 10px 0 0;
+    border-radius: 15px 15px 0 0;
+    animation-name: appearing;
+    animation-duration: 0.3s;
   }
 }
 
@@ -31,10 +34,11 @@
 
   @include responsive('phone-xs', 'phone') {
     background-color: var(--athens);
-    border-radius: 10px 10px 0 0;
+    border-radius: 15px 15px 0 0;
     color: var(--waterloo);
 
-    @include text('caption', 'm'); }
+    @include text('caption', 'm');
+  }
 }
 
 .content {
@@ -96,5 +100,15 @@
 
   @include responsive('phone-xs', 'phone') {
     display: none;
+  }
+}
+
+@keyframes appearing {
+  0% {
+    transform: translateY(70vh);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }
