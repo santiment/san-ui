@@ -15,10 +15,25 @@
 
 .menu {
   @include responsive('phone-xs', 'phone') {
-    bottom: 2%;
+    bottom: 0;
     top: initial !important;
-    max-width: 90%;
-    width: 90%;
-    left: 5% !important;
+    max-width: 100%;
+    width: 100%;
+    left: 0 !important;
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    background: var(--white);
+    animation-name: appearing;
+    animation-duration: 0.3s;
+  }
+}
+
+@keyframes appearing {
+  0% {
+    transform: translateY(70vh);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }
