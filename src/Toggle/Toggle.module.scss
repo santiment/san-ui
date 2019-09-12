@@ -17,27 +17,34 @@
     height: 14px;
     background: $white;
     border-radius: 10px;
-
     left: 3px;
     top: 3px;
-  }
-
-  & rect {
-      fill: var(--grey-dark);
-  }
-
-  &.active {
-    & rect {
-        fill: var(--green);
-    }
-
-    &::before {
-        left: calc(100% - 14px - 3px);
-    }
   }
 
   & rect,
   &::before {
     transition: 200ms;
+  }
+
+  & rect {
+    fill: var(--casper);
+
+    &:hover {
+      fill: var(--waterloo);
+    }
+  }
+
+  &.active {
+    & rect {
+      fill: var(--jungle-green);
+
+      &:hover {
+        fill: var(--jungle-green-hover);
+      }
+    }
+
+    &::before {
+      left: calc(100% - 14px - 3px);
+    }
   }
 }
