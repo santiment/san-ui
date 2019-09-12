@@ -1,0 +1,9 @@
+.toggle {
+  rect {
+    fill: var(--persimmon) !important;
+
+    &:hover {
+      fill: var(--persimmon-hover) !important;
+    }
+  }
+}
