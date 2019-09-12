@@ -7,6 +7,7 @@
 
   @include responsive('phone-xs', 'phone') {
     align-items: flex-end;
+    overflow-y: hidden;
   }
 }
 
@@ -17,9 +18,12 @@
   flex-direction: column;
 
   @include responsive('phone-xs', 'phone') {
-    max-width: 90%;
     width: 100%;
-    margin: 0 0 4%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 15px 15px 0 0;
+    animation-name: appearing;
+    animation-duration: 0.3s;
   }
 }
 
@@ -27,11 +31,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include responsive('phone-xs', 'phone') {
+    background-color: var(--athens);
+    border-radius: 15px 15px 0 0;
+    color: var(--waterloo);
+    padding: 16px 20px;
+
+    @include text('caption', 'm');
+  }
 }
 
 .content {
   overflow-y: auto;
   overflow-x: hidden;
+
+  @include responsive('phone-xs', 'phone') {
+    margin-bottom: 0 !important;
+  }
 }
 
 .actions {
@@ -39,9 +56,65 @@
   align-items: center;
   justify-content: flex-end;
   padding: 0 20px 20px;
+
+  @include responsive('phone-xs', 'phone') {
+    padding: 0;
+  }
+}
+
+.approve {
+  @include responsive('phone-xs', 'phone') {
+    color: var(--jungle-green);
+    border: none;
+    background: none;
+
+    &:hover {
+      color: var(--jungle-green) !important;
+      border: none;
+      background: none !important;
+    }
+  }
+}
+
+.cancel {
+  @include responsive('phone-xs', 'phone') {
+    color: var(--waterloo);
+
+    &:hover {
+      color: var(--waterloo);
+      border: none;
+      background: none;
+    }
+  }
+}
+
+.cancel,
+.approve {
+  @include responsive('phone-xs', 'phone') {
+    background: none;
+    border: none;
+    width: 50%;
+    display: block;
+    height: auto;
+    padding: 16px 12px;
+  }
 }
 
 .close {
   cursor: pointer;
   fill: var(--waterloo);
+
+  @include responsive('phone-xs', 'phone') {
+    display: none;
+  }
+}
+
+@keyframes appearing {
+  0% {
+    transform: translateY(70vh);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
