@@ -103,10 +103,6 @@
 .close {
   cursor: pointer;
   fill: var(--waterloo);
-
-  @include responsive('phone-xs', 'phone') {
-    display: none;
-  }
 }
 
 @keyframes appearing {
