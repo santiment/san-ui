@@ -66,12 +66,22 @@
   @include responsive('phone-xs', 'phone') {
     color: var(--jungle-green);
     border: none;
-    background: none;
+    background: none !important;
 
     &:hover {
       color: var(--jungle-green) !important;
       border: none;
       background: none !important;
+    }
+  }
+
+  &.disabled {
+    @include responsive('phone-xs', 'phone') {
+      background: none !important;
+
+      &:hover {
+        background: none !important;
+      }
     }
   }
 }

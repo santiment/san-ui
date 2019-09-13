@@ -31,7 +31,9 @@ class ControlledDialog extends React.PureComponent {
           </Dialog.ScrollContent>
           <Dialog.Actions>
             <Dialog.Cancel onClick={this.closeModal}>Close</Dialog.Cancel>
-            <Dialog.Approve onClick={this.closeModal}>Publish</Dialog.Approve>
+            <Dialog.Approve disabled onClick={this.closeModal}>
+              Publish
+            </Dialog.Approve>
           </Dialog.Actions>
         </Dialog>
       </>

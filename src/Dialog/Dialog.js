@@ -44,11 +44,12 @@ Dialog.Cancel = ({ className, ...props }) => (
   <Button border className={cx(styles.cancel, className)} {...props} />
 )
 
-Dialog.Approve = ({ className, ...props }) => (
+Dialog.Approve = ({ className, disabled, ...props }) => (
   <Button
     variant='fill'
     accent='positive'
-    className={cx(styles.approve, className)}
+    disabled={disabled}
+    className={cx(styles.approve, className, disabled && styles.disabled)}
     {...props}
   />
 )
