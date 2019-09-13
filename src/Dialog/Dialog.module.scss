@@ -26,8 +26,10 @@
 }
 
 .animation {
-  animation-name: appearing;
-  animation-duration: 0.3s;
+  @include responsive('phone-xs', 'phone') {
+    animation-name: appearing;
+    animation-duration: 0.3s;
+  }
 }
 
 .title {
