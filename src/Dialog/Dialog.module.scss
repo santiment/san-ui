@@ -22,9 +22,12 @@
     max-width: 100%;
     margin: 0;
     border-radius: 15px 15px 0 0;
-    animation-name: appearing;
-    animation-duration: 0.3s;
   }
+}
+
+.animation {
+  animation-name: appearing;
+  animation-duration: 0.3s;
 }
 
 .title {
