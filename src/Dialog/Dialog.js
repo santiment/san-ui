@@ -9,13 +9,20 @@ import styles from './Dialog.module.scss'
 /**
  * "Dialog" is based on the "Modal" component and inherits all of its possible props
  */
-const Dialog = ({ classes, title, children, showCloseBtn, ...props }) => (
+const Dialog = ({
+  classes,
+  title,
+  children,
+  autoFocus,
+  showCloseBtn,
+  ...props
+}) => (
   <Modal
     as={Panel}
     {...props}
     classes={{
       wrapper: styles.wrapper,
-      modal: cx(styles.modal, classes.dialog)
+      modal: cx(styles.modal, classes.dialog, !autoFocus && styles.animation)
     }}
   >
     {closeModal => (
