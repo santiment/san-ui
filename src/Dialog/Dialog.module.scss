@@ -84,6 +84,16 @@
       }
     }
   }
+
+  &.loading {
+    color: var(--white) !important;
+
+    @include responsive('phone-xs', 'phone') {
+      display: flex;
+
+      --dot-bg: var(--mirage);
+    }
+  }
 }
 
 .cancel {
