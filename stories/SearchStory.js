@@ -194,3 +194,54 @@ stories.add(
     }
   }
 )
+
+stories.add('Suggestions by groups', () => (
+  <ColorModeComparison>
+    <SearchWithSuggestions
+      data={{
+        assets: {
+          label: 'Assets',
+          options: [
+            'Bibox Token',
+            'Bigbom',
+            'Binance Coin',
+            'BioCoin',
+            'BitBay',
+            'bitcoin',
+            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+          ]
+        },
+        words: {
+          label: 'Trending words',
+          options: [
+            'Bibox Token',
+            'Bigbom',
+            'Binance Coin',
+            'BioCoin',
+            'BitBay',
+            'bitcoin',
+            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+          ]
+        },
+        watchlists: {
+          label: 'Watchlists',
+          options: [
+            'Bibox Token',
+            'Bigbom',
+            'Binance Coin',
+            'BioCoin',
+            'BitBay',
+            'bitcoin',
+            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+          ]
+        }
+      }}
+      onSuggestionSelect={action('selected')}
+      iconPosition='left'
+      suggestionContent={suggestion => suggestion}
+      predicate={searchTerm => item =>
+        item.toUpperCase().includes(searchTerm.toUpperCase())}
+      maxSuggestions={5}
+    />
+  </ColorModeComparison>
+))

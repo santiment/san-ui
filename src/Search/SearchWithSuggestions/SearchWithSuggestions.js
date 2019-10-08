@@ -14,7 +14,7 @@ const debounce = (clb, time) => clbArgs => {
 
 class SearchWithSuggestions extends PureComponent {
   static propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.any.isRequired,
     suggestionContent: PropTypes.func.isRequired,
     predicate: PropTypes.func.isRequired,
     sorter: PropTypes.func,
@@ -64,6 +64,10 @@ class SearchWithSuggestions extends PureComponent {
     isSearching: false
   }
 
+  isGroups (data) {
+    return !Array.isArray(data)
+  }
+
   componentWillUnmount () {
     clearTimeout(debounceTimer)
   }
@@ -97,12 +101,36 @@ class SearchWithSuggestions extends PureComponent {
     )
   }
 
+  filter (options, searchTerm) {
+    const { predicate, sorter } = this.props
+    return options.filter(predicate(searchTerm)).sort(sorter)
+  }
+
+  getFilteredSuggestions (searchTerm) {
+    const { data } = this.props
+
+    if (this.isGroups(data)) {
+      const newData = {}
+      for (const key in data) {
+        const value = data[key]
+        newData[key] = {
+          label: value.label,
+          options: this.filter(value.options, searchTerm)
+        }
+      }
+
+      return newData
+    } else {
+      return this.filter(data, searchTerm)
+    }
+  }
+
   filterData = debounce(() => {
-    const { data, predicate, sorter, onSuggestionsUpdate } = this.props
+    const { onSuggestionsUpdate } = this.props
     this.setState(
       prevState => ({
         ...prevState,
-        suggestions: data.filter(predicate(prevState.searchTerm)).sort(sorter),
+        suggestions: this.getFilteredSuggestions(prevState.searchTerm),
         cursor: 0,
         isSearching: false
       }),
@@ -134,6 +162,7 @@ class SearchWithSuggestions extends PureComponent {
         newCursor = cursor + 1
         break
       case 'Enter':
+        debugger
         selectedSuggestion = suggestions[cursor]
         currentTarget.blur()
         return selectedSuggestion && this.onSuggestionSelect(selectedSuggestion)
@@ -177,31 +206,50 @@ class SearchWithSuggestions extends PureComponent {
             className={styles.suggestions}
             {...suggestionsProps}
           >
-            {suggestions.length > 0 ? (
-              suggestions.slice(0, maxSuggestions).map((suggestion, index) => (
-                <Button
-                  key={index}
-                  fluid
-                  variant='ghost'
-                  className={cx(
-                    styles.suggestion,
-                    index === this.state.cursor && styles.cursored
-                  )}
-                  onMouseDown={() => this.onSuggestionSelect(suggestion)}
-                >
-                  {suggestionContent(suggestion)}
-                </Button>
-              ))
-            ) : (
-              <div className={styles.suggestion + ' ' + styles.noresults}>
-                {!isSearching ? 'No results found' : 'Searching...'}
-              </div>
-            )}
+            <SuggestionItems
+              suggestions={suggestions}
+              cursor={this.state.cursor}
+              onSuggestionSelect={this.onSuggestionSelect}
+              suggestionContent={suggestionContent}
+              maxSuggestions={maxSuggestions}
+              isSearching={isSearching}
+            />
           </Panel>
         )}
       </div>
     )
   }
+}
+
+const SuggestionItems = ({
+  suggestions,
+  cursor,
+  onSuggestionSelect,
+  suggestionContent,
+  isSearching,
+  maxSuggestions
+}) => {
+  console.log(suggestions)
+
+  return suggestions.length > 0 ? (
+    suggestions.slice(0, maxSuggestions).map((suggestion, index) => {
+      return (
+        <Button
+          key={index}
+          fluid
+          variant='ghost'
+          className={cx(styles.suggestion, index === cursor && styles.cursored)}
+          onMouseDown={() => onSuggestionSelect(suggestion)}
+        >
+          {suggestionContent(suggestion)}
+        </Button>
+      )
+    })
+  ) : (
+    <div className={styles.suggestion + ' ' + styles.noresults}>
+      {!isSearching ? 'No results found' : 'Searching...'}
+    </div>
+  )
 }
 
 export default SearchWithSuggestions
