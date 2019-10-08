@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react'
+import React, { Fragment, PureComponent, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 import Panel from '../../Panel/Panel'
@@ -182,12 +182,8 @@ class SearchWithSuggestions extends PureComponent {
         return
     }
 
-    // debugger
-
     const maxCursor = getLengthOfSuggestions(suggestions)
-
     newCursor = newCursor % maxCursor
-
     this.setState({ cursor: newCursor < 0 ? maxCursor - 1 : newCursor })
   }
 
@@ -267,7 +263,6 @@ const SuggestionItems = ({
               <div className={styles.groupLabel}>{label}</div>
               <SuggestionItemsList
                 fromCounter={fromCounter - options.length}
-                groupKey={key}
                 suggestions={options}
                 cursor={cursor}
                 onSuggestionSelect={onSuggestionSelect}
@@ -295,7 +290,6 @@ const SuggestionItems = ({
 }
 
 const SuggestionItemsList = ({
-  groupKey,
   suggestions,
   cursor,
   onSuggestionSelect,
@@ -304,18 +298,45 @@ const SuggestionItemsList = ({
 }) => {
   return suggestions.map((suggestion, index) => {
     const isActive = index + fromCounter === cursor
+
     return (
-      <Button
+      <SuggestionItem
         key={index}
-        fluid
-        variant='ghost'
-        className={cx(styles.suggestion, isActive && styles.cursored)}
-        onMouseDown={() => onSuggestionSelect(suggestion, groupKey)}
-      >
-        {suggestionContent(suggestion)}
-      </Button>
+        isActive={isActive}
+        onSuggestionSelect={onSuggestionSelect}
+        suggestionContent={suggestionContent}
+        suggestion={suggestion}
+      />
     )
   })
+}
+
+const SuggestionItem = ({
+  isActive,
+  onSuggestionSelect,
+  suggestionContent,
+  suggestion
+}) => {
+  const myRef = useRef(null)
+
+  useEffect(() => {
+    isActive &&
+      myRef &&
+      myRef.current &&
+      myRef.current.scrollIntoView({ behavior: 'smooth' })
+  }, [isActive, myRef])
+
+  return (
+    <Button
+      fluid
+      forwardedRef={isActive ? myRef : undefined}
+      variant='ghost'
+      className={cx(styles.suggestion, isActive && styles.cursored)}
+      onMouseDown={() => onSuggestionSelect(suggestion)}
+    >
+      {suggestionContent(suggestion)}
+    </Button>
+  )
 }
 
 export default SearchWithSuggestions
