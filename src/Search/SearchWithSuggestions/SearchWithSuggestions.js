@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Fragment, PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 import Panel from '../../Panel/Panel'
@@ -16,6 +16,20 @@ const isGroups = data => {
   return !Array.isArray(data)
 }
 
+const getLengthOfSuggestions = data => {
+  if (isGroups(data)) {
+    let length = 0
+    for (const key in data) {
+      const { options } = data[key]
+      length += options.length
+    }
+
+    return length
+  } else {
+    return data.length
+  }
+}
+
 class SearchWithSuggestions extends PureComponent {
   static propTypes = {
     data: PropTypes.any.isRequired,
@@ -24,7 +38,6 @@ class SearchWithSuggestions extends PureComponent {
     sorter: PropTypes.func,
     onSuggestionSelect: PropTypes.func,
     onSuggestionsUpdate: PropTypes.func,
-    maxSuggestions: PropTypes.number,
     iconPosition: PropTypes.oneOf(['left', 'right']),
     debounceTime: PropTypes.number,
     inputProps: PropTypes.object,
@@ -34,7 +47,6 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   static defaultProps = {
-    maxSuggestions: 5,
     iconPosition: undefined,
     onSuggestionSelect: () => {},
     sorter: () => {},
@@ -83,7 +95,7 @@ class SearchWithSuggestions extends PureComponent {
     )
   }
 
-  onSuggestionSelect = suggestion => {
+  onSuggestionSelect = (suggestion, key) => {
     const { dontResetStateAfterSelection, onSuggestionSelect } = this.props
 
     this.setState(
@@ -97,7 +109,7 @@ class SearchWithSuggestions extends PureComponent {
             suggestions: [],
             cursor: 0
           },
-      () => onSuggestionSelect(suggestion)
+      () => onSuggestionSelect(suggestion, key)
     )
   }
 
@@ -162,7 +174,7 @@ class SearchWithSuggestions extends PureComponent {
         newCursor = cursor + 1
         break
       case 'Enter':
-        debugger
+        // debugger
         selectedSuggestion = suggestions[cursor]
         currentTarget.blur()
         return selectedSuggestion && this.onSuggestionSelect(selectedSuggestion)
@@ -170,8 +182,9 @@ class SearchWithSuggestions extends PureComponent {
         return
     }
 
-    const { maxSuggestions } = this.props
-    const maxCursor = Math.min(maxSuggestions, suggestions.length)
+    // debugger
+
+    const maxCursor = getLengthOfSuggestions(suggestions)
 
     newCursor = newCursor % maxCursor
 
@@ -187,7 +200,6 @@ class SearchWithSuggestions extends PureComponent {
       cursor
     } = this.state
     const {
-      maxSuggestions,
       suggestionContent,
       iconPosition,
       inputProps = {},
@@ -208,7 +220,10 @@ class SearchWithSuggestions extends PureComponent {
         {isFocused && searchTerm !== '' && (
           <Panel
             variant='modal'
-            className={styles.suggestions}
+            className={cx(
+              styles.suggestions,
+              isGroups(suggestions) && styles.groupSuggestions
+            )}
             {...suggestionsProps}
           >
             <SuggestionItems
@@ -216,7 +231,6 @@ class SearchWithSuggestions extends PureComponent {
               cursor={cursor}
               onSuggestionSelect={this.onSuggestionSelect}
               suggestionContent={suggestionContent}
-              maxSuggestions={maxSuggestions}
               isSearching={isSearching}
             />
           </Panel>
@@ -231,32 +245,39 @@ const SuggestionItems = ({
   cursor,
   onSuggestionSelect,
   suggestionContent,
-  isSearching,
-  maxSuggestions
+  isSearching
 }) => {
-  console.log(cursor)
+  let fromCounter = 0
 
   if (isGroups(suggestions)) {
-    return Object.keys(suggestions).map(key => {
-      const { label, options } = suggestions[key]
+    return (
+      <>
+        {Object.keys(suggestions).map((key, index) => {
+          const { label, options } = suggestions[key]
 
-      if (!options.length) {
-        return null
-      }
+          if (!options.length) {
+            return null
+          }
 
-      return (
-        <div>
-          <div>{label}</div>
-          <SuggestionItemsList
-            suggestions={options}
-            cursor={cursor}
-            onSuggestionSelect={onSuggestionSelect}
-            suggestionContent={suggestionContent}
-            maxSuggestions={maxSuggestions}
-          />
-        </div>
-      )
-    })
+          fromCounter += options.length
+
+          return (
+            <Fragment key={key}>
+              {index !== 0 && <div className={styles.divider} />}
+              <div className={styles.groupLabel}>{label}</div>
+              <SuggestionItemsList
+                fromCounter={fromCounter - options.length}
+                groupKey={key}
+                suggestions={options}
+                cursor={cursor}
+                onSuggestionSelect={onSuggestionSelect}
+                suggestionContent={suggestionContent}
+              />
+            </Fragment>
+          )
+        })}
+      </>
+    )
   } else {
     return suggestions.length > 0 ? (
       <SuggestionItemsList
@@ -264,7 +285,6 @@ const SuggestionItems = ({
         cursor={cursor}
         onSuggestionSelect={onSuggestionSelect}
         suggestionContent={suggestionContent}
-        maxSuggestions={maxSuggestions}
       />
     ) : (
       <div className={styles.suggestion + ' ' + styles.noresults}>
@@ -275,20 +295,22 @@ const SuggestionItems = ({
 }
 
 const SuggestionItemsList = ({
+  groupKey,
   suggestions,
   cursor,
   onSuggestionSelect,
   suggestionContent,
-  maxSuggestions
+  fromCounter = 0
 }) => {
-  return suggestions.slice(0, maxSuggestions).map((suggestion, index) => {
+  return suggestions.map((suggestion, index) => {
+    const isActive = index + fromCounter === cursor
     return (
       <Button
         key={index}
         fluid
         variant='ghost'
-        className={cx(styles.suggestion, index === cursor && styles.cursored)}
-        onMouseDown={() => onSuggestionSelect(suggestion)}
+        className={cx(styles.suggestion, isActive && styles.cursored)}
+        onMouseDown={() => onSuggestionSelect(suggestion, groupKey)}
       >
         {suggestionContent(suggestion)}
       </Button>

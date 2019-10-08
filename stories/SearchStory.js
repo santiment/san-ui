@@ -201,15 +201,7 @@ stories.add('Suggestions by groups', () => (
       data={{
         assets: {
           label: 'Assets',
-          options: [
-            'Bibox Token',
-            'Bigbom',
-            'Binance Coin',
-            'BioCoin',
-            'BitBay',
-            'bitcoin',
-            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
-          ]
+          options: ['Bibox Token', 'Bigbom', 'Binance Coin', 'BioCoin']
         },
         words: {
           label: 'Trending words',
@@ -220,7 +212,20 @@ stories.add('Suggestions by groups', () => (
             'BioCoin',
             'BitBay',
             'bitcoin',
-            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj',
+            'Bibox Token',
+            'Bigbom',
+            'Binance Coin',
+            'BioCoin',
+            'BitBay',
+            'bitcoin',
+            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj',
+            'Bibox Token',
+            'Bigbom',
+            'Binance Coin',
+            'BioCoin',
+            'BitBay',
+            'bitcoin'
           ]
         },
         watchlists: {
@@ -232,7 +237,20 @@ stories.add('Suggestions by groups', () => (
             'BioCoin',
             'BitBay',
             'bitcoin',
-            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj',
+            'Bibox Token',
+            'Bigbom',
+            'Binance Coin',
+            'BioCoin',
+            'BitBay',
+            'bitcoin',
+            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj',
+            'Bibox Token',
+            'Bigbom',
+            'Binance Coin',
+            'BioCoin',
+            'BitBay',
+            'bitcoin'
           ]
         }
       }}

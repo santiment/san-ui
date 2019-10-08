@@ -13,6 +13,8 @@ $border-color-night: #4a4a4a;
   margin-top: 4px;
   padding: 8px;
   z-index: 5;
+  overflow: auto;
+  max-height: 175px;
 }
 
 .suggestion {
@@ -43,4 +45,24 @@ $border-color-night: #4a4a4a;
   &:focus {
     background-color: inherit !important;
   }
+}
+
+.groupSuggestions {
+  max-height: 420px;
+}
+
+.groupLabel {
+  @include text('caption');
+
+  margin-bottom: 16px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  color: var(--waterloo);
+}
+
+.divider {
+  width: 100%;
+  border-top: 1px solid var(--porcelain);
+  margin: 14px -8px 12px -8px;
 }
