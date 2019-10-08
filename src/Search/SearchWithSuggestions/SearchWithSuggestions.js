@@ -12,6 +12,10 @@ const debounce = (clb, time) => clbArgs => {
   debounceTimer = setTimeout(() => clb(clbArgs), time)
 }
 
+const isGroups = data => {
+  return !Array.isArray(data)
+}
+
 class SearchWithSuggestions extends PureComponent {
   static propTypes = {
     data: PropTypes.any.isRequired,
@@ -64,10 +68,6 @@ class SearchWithSuggestions extends PureComponent {
     isSearching: false
   }
 
-  isGroups (data) {
-    return !Array.isArray(data)
-  }
-
   componentWillUnmount () {
     clearTimeout(debounceTimer)
   }
@@ -109,7 +109,7 @@ class SearchWithSuggestions extends PureComponent {
   getFilteredSuggestions (searchTerm) {
     const { data } = this.props
 
-    if (this.isGroups(data)) {
+    if (isGroups(data)) {
       const newData = {}
       for (const key in data) {
         const value = data[key]
@@ -171,8 +171,7 @@ class SearchWithSuggestions extends PureComponent {
     }
 
     const { maxSuggestions } = this.props
-    const maxCursor =
-      suggestions.length > maxSuggestions ? maxSuggestions : suggestions.length
+    const maxCursor = Math.min(maxSuggestions, suggestions.length)
 
     newCursor = newCursor % maxCursor
 
@@ -180,7 +179,13 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   render () {
-    const { suggestions, searchTerm, isFocused, isSearching } = this.state
+    const {
+      suggestions,
+      searchTerm,
+      isFocused,
+      isSearching,
+      cursor
+    } = this.state
     const {
       maxSuggestions,
       suggestionContent,
@@ -208,7 +213,7 @@ class SearchWithSuggestions extends PureComponent {
           >
             <SuggestionItems
               suggestions={suggestions}
-              cursor={this.state.cursor}
+              cursor={cursor}
               onSuggestionSelect={this.onSuggestionSelect}
               suggestionContent={suggestionContent}
               maxSuggestions={maxSuggestions}
@@ -229,27 +234,66 @@ const SuggestionItems = ({
   isSearching,
   maxSuggestions
 }) => {
-  console.log(suggestions)
+  console.log(cursor)
 
-  return suggestions.length > 0 ? (
-    suggestions.slice(0, maxSuggestions).map((suggestion, index) => {
+  if (isGroups(suggestions)) {
+    return Object.keys(suggestions).map(key => {
+      const { label, options } = suggestions[key]
+
+      if (!options.length) {
+        return null
+      }
+
       return (
-        <Button
-          key={index}
-          fluid
-          variant='ghost'
-          className={cx(styles.suggestion, index === cursor && styles.cursored)}
-          onMouseDown={() => onSuggestionSelect(suggestion)}
-        >
-          {suggestionContent(suggestion)}
-        </Button>
+        <div>
+          <div>{label}</div>
+          <SuggestionItemsList
+            suggestions={options}
+            cursor={cursor}
+            onSuggestionSelect={onSuggestionSelect}
+            suggestionContent={suggestionContent}
+            maxSuggestions={maxSuggestions}
+          />
+        </div>
       )
     })
-  ) : (
-    <div className={styles.suggestion + ' ' + styles.noresults}>
-      {!isSearching ? 'No results found' : 'Searching...'}
-    </div>
-  )
+  } else {
+    return suggestions.length > 0 ? (
+      <SuggestionItemsList
+        suggestions={suggestions}
+        cursor={cursor}
+        onSuggestionSelect={onSuggestionSelect}
+        suggestionContent={suggestionContent}
+        maxSuggestions={maxSuggestions}
+      />
+    ) : (
+      <div className={styles.suggestion + ' ' + styles.noresults}>
+        {!isSearching ? 'No results found' : 'Searching...'}
+      </div>
+    )
+  }
+}
+
+const SuggestionItemsList = ({
+  suggestions,
+  cursor,
+  onSuggestionSelect,
+  suggestionContent,
+  maxSuggestions
+}) => {
+  return suggestions.slice(0, maxSuggestions).map((suggestion, index) => {
+    return (
+      <Button
+        key={index}
+        fluid
+        variant='ghost'
+        className={cx(styles.suggestion, index === cursor && styles.cursored)}
+        onMouseDown={() => onSuggestionSelect(suggestion)}
+      >
+        {suggestionContent(suggestion)}
+      </Button>
+    )
+  })
 }
 
 export default SearchWithSuggestions
