@@ -30,6 +30,23 @@ const getLengthOfSuggestions = data => {
   }
 }
 
+const getSuggestionByCursor = (data, cursor) => {
+  if (isGroups(data)) {
+    let counter = 0
+    for (const key in data) {
+      const { options } = data[key]
+
+      for (let index = 0; index < options.length; index++, counter++) {
+        if (counter === cursor) {
+          return [key, options[index]]
+        }
+      }
+    }
+  } else {
+    return data[cursor]
+  }
+}
+
 class SearchWithSuggestions extends PureComponent {
   static propTypes = {
     data: PropTypes.any.isRequired,
@@ -43,7 +60,8 @@ class SearchWithSuggestions extends PureComponent {
     inputProps: PropTypes.object,
     suggestionsProps: PropTypes.object,
     dontResetStateAfterSelection: PropTypes.bool,
-    className: PropTypes.string
+    className: PropTypes.string,
+    classes: PropTypes.object
   }
 
   static defaultProps = {
@@ -57,10 +75,12 @@ class SearchWithSuggestions extends PureComponent {
     dontResetStateAfterSelection: false,
     value: '',
     defaultValue: '',
-    className: ''
+    className: '',
+    classes: {}
   }
 
-  static getDerivedStateFromProps ({ value }, { lastValue }) {
+  static getDerivedStateFromProps ({ value, data }, state) {
+    const { lastValue } = state
     if (lastValue !== value) {
       return {
         searchTerm: value,
@@ -72,7 +92,7 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   state = {
-    suggestions: [],
+    suggestions: isGroups(this.props.data) ? this.props.data : [],
     searchTerm: this.props.defaultValue,
     lastValue: this.props.value,
     isFocused: false,
@@ -95,7 +115,7 @@ class SearchWithSuggestions extends PureComponent {
     )
   }
 
-  onSuggestionSelect = (suggestion, key) => {
+  onSuggestionSelect = suggestion => {
     const { dontResetStateAfterSelection, onSuggestionSelect } = this.props
 
     this.setState(
@@ -109,13 +129,24 @@ class SearchWithSuggestions extends PureComponent {
             suggestions: [],
             cursor: 0
           },
-      () => onSuggestionSelect(suggestion, key)
+      () => onSuggestionSelect(suggestion)
     )
   }
 
-  filter (options, searchTerm) {
+  filter (options, searchTerm, groupKey) {
     const { predicate, sorter } = this.props
-    return options.filter(predicate(searchTerm)).sort(sorter)
+
+    const filtered = searchTerm
+      ? options.filter(predicate(searchTerm))
+      : options
+
+    return filtered
+      .sort(sorter)
+      .map(item =>
+        !item.groupKey && typeof item === 'object'
+          ? { ...item, groupKey }
+          : item
+      )
   }
 
   getFilteredSuggestions (searchTerm) {
@@ -127,7 +158,7 @@ class SearchWithSuggestions extends PureComponent {
         const value = data[key]
         newData[key] = {
           label: value.label,
-          options: this.filter(value.options, searchTerm)
+          options: this.filter(value.options, searchTerm, key)
         }
       }
 
@@ -162,7 +193,6 @@ class SearchWithSuggestions extends PureComponent {
     const { suggestions, cursor } = this.state
     const { key, currentTarget } = evt
     let newCursor = cursor
-    let selectedSuggestion
 
     switch (key) {
       case 'ArrowUp':
@@ -174,8 +204,7 @@ class SearchWithSuggestions extends PureComponent {
         newCursor = cursor + 1
         break
       case 'Enter':
-        // debugger
-        selectedSuggestion = suggestions[cursor]
+        const selectedSuggestion = getSuggestionByCursor(suggestions, cursor)
         currentTarget.blur()
         return selectedSuggestion && this.onSuggestionSelect(selectedSuggestion)
       default:
@@ -200,8 +229,13 @@ class SearchWithSuggestions extends PureComponent {
       iconPosition,
       inputProps = {},
       suggestionsProps = {},
-      className
+      className,
+      classes = {},
+      data
     } = this.props
+
+    const isByGroups = isGroups(data)
+
     return (
       <div className={`${styles.wrapper} ${className}`}>
         <Search
@@ -213,12 +247,13 @@ class SearchWithSuggestions extends PureComponent {
           onKeyDown={this.onKeyDown}
           {...inputProps}
         />
-        {isFocused && searchTerm !== '' && (
+        {isFocused && (isByGroups || searchTerm !== '') && (
           <Panel
             variant='modal'
             className={cx(
               styles.suggestions,
-              isGroups(suggestions) && styles.groupSuggestions
+              isGroups(suggestions) && styles.groupSuggestions,
+              classes.suggestionPanel
             )}
             {...suggestionsProps}
           >
@@ -246,31 +281,41 @@ const SuggestionItems = ({
   let fromCounter = 0
 
   if (isGroups(suggestions)) {
+    const noData = getLengthOfSuggestions(suggestions) === 0
+
+    const types = Object.keys(suggestions)
+
     return (
       <>
-        {Object.keys(suggestions).map((key, index) => {
-          const { label, options } = suggestions[key]
+        {!noData &&
+          types.map((key, index) => {
+            const { label, options } = suggestions[key]
 
-          if (!options.length) {
-            return null
-          }
+            if (!options.length) {
+              return null
+            }
 
-          fromCounter += options.length
+            fromCounter += options.length
 
-          return (
-            <Fragment key={key}>
-              {index !== 0 && <div className={styles.divider} />}
-              <div className={styles.groupLabel}>{label}</div>
-              <SuggestionItemsList
-                fromCounter={fromCounter - options.length}
-                suggestions={options}
-                cursor={cursor}
-                onSuggestionSelect={onSuggestionSelect}
-                suggestionContent={suggestionContent}
-              />
-            </Fragment>
-          )
-        })}
+            return (
+              <Fragment key={key}>
+                {label && <div className={styles.groupLabel}>{label}</div>}
+                <SuggestionItemsList
+                  fromCounter={fromCounter - options.length}
+                  suggestions={options}
+                  cursor={cursor}
+                  onSuggestionSelect={selected =>
+                    onSuggestionSelect([key, selected])
+                  }
+                  suggestionContent={suggestionContent}
+                />
+                {index !== types.length - 1 && (
+                  <div className={styles.divider} />
+                )}
+              </Fragment>
+            )
+          })}
+        {noData && <NoResults isSearching={isSearching} />}
       </>
     )
   } else {
@@ -282,12 +327,16 @@ const SuggestionItems = ({
         suggestionContent={suggestionContent}
       />
     ) : (
-      <div className={styles.suggestion + ' ' + styles.noresults}>
-        {!isSearching ? 'No results found' : 'Searching...'}
-      </div>
+      <NoResults isSearching={isSearching} />
     )
   }
 }
+
+const NoResults = ({ isSearching }) => (
+  <div className={styles.suggestion + ' ' + styles.noresults}>
+    {!isSearching ? 'No results found' : 'Searching...'}
+  </div>
+)
 
 const SuggestionItemsList = ({
   suggestions,
@@ -320,10 +369,7 @@ const SuggestionItem = ({
   const myRef = useRef(null)
 
   useEffect(() => {
-    isActive &&
-      myRef &&
-      myRef.current &&
-      myRef.current.scrollIntoView({ behavior: 'smooth' })
+    isActive && myRef && myRef.current && myRef.current.scrollIntoView(false)
   }, [isActive, myRef])
 
   return (

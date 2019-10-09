@@ -7,6 +7,50 @@ import ColorModeComparison from './ColorModeComparison'
 
 const stories = storiesOf('Search', module)
 
+const SUGGESTION_GROUPS = {
+  assets: {
+    label: 'Assets',
+    options: ['Bibox Token', 'Bigbom', 'Binance Coin', 'BioCoin']
+  },
+  words: {
+    label: 'Trending words',
+    options: [
+      'Bibox Token Words',
+      'Bigbom Words',
+      'Binance Coin Words',
+      'BioCoin Words',
+      'BitBay Words',
+      'bitcoin Words',
+      'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj Words',
+      'Bibox Token Words',
+      'Bigbom Words',
+      'Binance Coin Words',
+      'BioCoin Words',
+      'BitBay Words',
+      'bitcoin Words',
+      'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj Words',
+      'Bibox Token Words',
+      'Bigbom Words',
+      'Binance Coin Words',
+      'BioCoin Words',
+      'BitBay Words',
+      'bitcoin Words'
+    ]
+  },
+  watchlists: {
+    label: 'Watchlists',
+    options: [
+      'Bibox Token Watchlist',
+      'Bigbom Watchlist',
+      'Binance Coin Watchlist',
+      'BioCoin Watchlist',
+      'BitBay Watchlist',
+      'bitcoin Watchlist',
+      'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj Watchlist'
+    ]
+  }
+}
+
 class Test extends React.PureComponent {
   state = {
     value: 'Bibox Token'
@@ -32,9 +76,7 @@ class Test extends React.PureComponent {
         suggestionContent={suggestion => suggestion}
         predicate={searchTerm => item =>
           item.toUpperCase().includes(searchTerm.toUpperCase())}
-        maxSuggestions={5}
         dontResetStateAfterSelection
-        value={'000=' + this.state.value}
       />
     )
   }
@@ -68,7 +110,6 @@ stories.add('Suggestions', () => (
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
-      maxSuggestions={5}
     />
   </ColorModeComparison>
 ))
@@ -90,7 +131,6 @@ stories.add('Suggestions (Keep state after suggestion)', () => (
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
-      maxSuggestions={5}
       dontResetStateAfterSelection
     />
     <br />
@@ -110,7 +150,6 @@ stories.add('Suggestions (Keep state after suggestion)', () => (
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
-      maxSuggestions={5}
       dontResetStateAfterSelection
     />
   </ColorModeComparison>
@@ -133,7 +172,6 @@ stories.add('Suggestions (Sorting by length)', () => (
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
-      maxSuggestions={5}
       dontResetStateAfterSelection
       sorter={(itemA, itemB) => itemA.length - itemB.length}
     />
@@ -143,6 +181,32 @@ stories.add('Suggestions (Sorting by length)', () => (
 stories.add('Suggestions derived value', () => (
   <ColorModeComparison>
     <Test />
+  </ColorModeComparison>
+))
+
+stories.add('Suggestions by groups', () => (
+  <ColorModeComparison>
+    <SearchWithSuggestions
+      data={SUGGESTION_GROUPS}
+      onSuggestionSelect={action('selected')}
+      iconPosition='left'
+      suggestionContent={suggestion => suggestion}
+      predicate={searchTerm => item =>
+        item.toUpperCase().includes(searchTerm.toUpperCase())}
+    />
+
+    <div>Don't reset state after selection:</div>
+    <SearchWithSuggestions
+      data={SUGGESTION_GROUPS}
+      onSuggestionSelect={suggestion => {
+        action('selected')(suggestion)
+      }}
+      iconPosition='left'
+      suggestionContent={suggestion => suggestion}
+      predicate={searchTerm => item =>
+        item.toUpperCase().includes(searchTerm.toUpperCase())}
+      dontResetStateAfterSelection
+    />
   </ColorModeComparison>
 ))
 
@@ -162,7 +226,6 @@ stories.add(
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
-      maxSuggestions={5}
     />
   ),
   {
@@ -173,19 +236,32 @@ stories.add(
     ~~~js
       <SearchWithSuggestions
         iconPosition='none'
-        data={[
-          'Bibox Token',
-          'Bigbom',
-          'Binance Coin',
-          'BioCoin',
-          'BitBay',
-          'bitcoin'
-        ]}
+        data={}
         onSuggestionSelect={suggestion = console.log(suggestion)}
         suggestionContent={suggestion => suggestion}
         predicate={searchTerm => item =>
           item.toUpperCase().includes(searchTerm.toUpperCase())}
-          maxSuggestions={5}
+        />
+    ~~~
+    
+    ~~~js
+      <SearchWithSuggestions
+        iconPosition='none'
+        data={{
+            assets: {
+                label: 'Assets',
+                options: ['Bibox Token', 'Bigbom', 'Binance Coin', 'BioCoin']
+            },
+            
+            words: {
+                label: 'Words',
+                options: ['Bibox Token', 'Bigbom', 'Binance Coin', 'BioCoin']
+            },
+        }}
+        onSuggestionSelect={suggestion = console.log(suggestion)}
+        suggestionContent={suggestion => suggestion}
+        predicate={searchTerm => item =>
+          item.toUpperCase().includes(searchTerm.toUpperCase())}
         />
     ~~~
   `,
@@ -194,72 +270,3 @@ stories.add(
     }
   }
 )
-
-stories.add('Suggestions by groups', () => (
-  <ColorModeComparison>
-    <SearchWithSuggestions
-      data={{
-        assets: {
-          label: 'Assets',
-          options: ['Bibox Token', 'Bigbom', 'Binance Coin', 'BioCoin']
-        },
-        words: {
-          label: 'Trending words',
-          options: [
-            'Bibox Token',
-            'Bigbom',
-            'Binance Coin',
-            'BioCoin',
-            'BitBay',
-            'bitcoin',
-            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj',
-            'Bibox Token',
-            'Bigbom',
-            'Binance Coin',
-            'BioCoin',
-            'BitBay',
-            'bitcoin',
-            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj',
-            'Bibox Token',
-            'Bigbom',
-            'Binance Coin',
-            'BioCoin',
-            'BitBay',
-            'bitcoin'
-          ]
-        },
-        watchlists: {
-          label: 'Watchlists',
-          options: [
-            'Bibox Token',
-            'Bigbom',
-            'Binance Coin',
-            'BioCoin',
-            'BitBay',
-            'bitcoin',
-            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj',
-            'Bibox Token',
-            'Bigbom',
-            'Binance Coin',
-            'BioCoin',
-            'BitBay',
-            'bitcoin',
-            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj',
-            'Bibox Token',
-            'Bigbom',
-            'Binance Coin',
-            'BioCoin',
-            'BitBay',
-            'bitcoin'
-          ]
-        }
-      }}
-      onSuggestionSelect={action('selected')}
-      iconPosition='left'
-      suggestionContent={suggestion => suggestion}
-      predicate={searchTerm => item =>
-        item.toUpperCase().includes(searchTerm.toUpperCase())}
-      maxSuggestions={5}
-    />
-  </ColorModeComparison>
-))

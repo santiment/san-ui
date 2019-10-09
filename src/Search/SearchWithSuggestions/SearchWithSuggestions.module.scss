@@ -19,7 +19,7 @@ $border-color-night: #4a4a4a;
 
 .suggestion {
   padding: 6px 8px;
-  color: var(--waterloo);
+  color: var(--mirage);
   height: auto;
   min-height: 32px;
   text-align: left;
@@ -31,7 +31,7 @@ $border-color-night: #4a4a4a;
 }
 
 .cursored {
-  background: var(--porcelain);
+  background: var(--athens);
 }
 
 .noresults {
@@ -54,15 +54,16 @@ $border-color-night: #4a4a4a;
 .groupLabel {
   @include text('caption');
 
-  margin-bottom: 16px;
+  margin-top: 12px;
+  margin-bottom: 10px;
   margin-left: 8px;
   display: flex;
   align-items: center;
   color: var(--waterloo);
+  font-weight: 600;
 }
 
 .divider {
-  width: 100%;
   border-top: 1px solid var(--porcelain);
-  margin: 14px -8px 12px -8px;
+  margin: 14px -8px 0 -8px;
 }
