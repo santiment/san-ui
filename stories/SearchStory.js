@@ -214,7 +214,7 @@ stories.add('Suggestions by groups', () => (
         item.toUpperCase().includes(searchTerm.toUpperCase())}
     />
 
-    <div>Don't reset state after selection:</div>
+    <div>Don't reset state after selection with maxSuggestions = 5:</div>
     <SearchWithSuggestions
       data={SUGGESTION_GROUPS}
       onSuggestionSelect={suggestion => {
@@ -225,6 +225,7 @@ stories.add('Suggestions by groups', () => (
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
       dontResetStateAfterSelection
+      maxSuggestions={5}
     />
   </ColorModeComparison>
 ))

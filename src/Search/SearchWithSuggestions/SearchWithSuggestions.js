@@ -16,17 +16,22 @@ const isGroups = data => {
   return !Array.isArray(data)
 }
 
-const getLengthOfSuggestions = data => {
+const getLengthOfSuggestions = (data, maxSuggestions) => {
   if (isGroups(data)) {
     let length = 0
     for (const key in data) {
       const { options } = data[key]
-      length += options.length
+
+      const maxOptionsLength = maxSuggestions
+        ? Math.min(maxSuggestions, options.length)
+        : options.length
+
+      length += maxOptionsLength
     }
 
     return length
   } else {
-    return data.length
+    return maxSuggestions ? Math.min(maxSuggestions, data.length) : data.length
   }
 }
 
@@ -192,6 +197,7 @@ class SearchWithSuggestions extends PureComponent {
 
   onKeyDown = evt => {
     const { suggestions, cursor } = this.state
+    const { maxSuggestions } = this.props
     const { key, currentTarget } = evt
     let newCursor = cursor
 
@@ -212,7 +218,7 @@ class SearchWithSuggestions extends PureComponent {
         return
     }
 
-    const maxCursor = getLengthOfSuggestions(suggestions)
+    const maxCursor = getLengthOfSuggestions(suggestions, maxSuggestions)
     newCursor = newCursor % maxCursor
     this.setState({ cursor: newCursor < 0 ? maxCursor - 1 : newCursor })
   }
@@ -286,7 +292,7 @@ const SuggestionItems = ({
     maxSuggestions ? data.slice(0, maxSuggestions) : data
 
   if (isGroups(suggestions)) {
-    const noData = getLengthOfSuggestions(suggestions) === 0
+    const noData = getLengthOfSuggestions(suggestions, maxSuggestions) === 0
     const types = Object.keys(suggestions)
 
     let fromCounter = 0
