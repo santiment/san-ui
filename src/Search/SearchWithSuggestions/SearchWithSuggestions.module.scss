@@ -11,7 +11,7 @@ $border-color-night: #4a4a4a;
   top: 100%;
   width: 100%;
   margin-top: 4px;
-  padding: 14px 8px;
+  padding: 8px;
   z-index: 5;
   overflow: auto;
   max-height: 180px;
@@ -56,7 +56,7 @@ $border-color-night: #4a4a4a;
 .groupLabel {
   @include text('caption');
 
-  margin: 12px 0 10px 8px;
+  margin: 0 0 10px 8px;
   display: flex;
   align-items: center;
   color: var(--waterloo);
@@ -65,12 +65,12 @@ $border-color-night: #4a4a4a;
 
 .divider {
   border-top: 1px solid var(--porcelain);
-  margin: 14px -8px 0 -8px;
+  margin: 14px -8px 12px -8px;
 }
 
 .viewAllResults {
   cursor: pointer;
-  margin-left: 8px;
+  margin: 6px 8px 14px 8px;
   color: var(--mirage);
 
   @include text('body-3');

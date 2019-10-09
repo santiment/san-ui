@@ -20,6 +20,7 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
   inputProps={Object {}}
   onSuggestionSelect={[Function]}
   onSuggestionsUpdate={[Function]}
+  openOnFocus={false}
   predicate={[Function]}
   sorter={[Function]}
   suggestionContent={[Function]}

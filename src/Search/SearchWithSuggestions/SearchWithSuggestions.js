@@ -68,7 +68,8 @@ class SearchWithSuggestions extends PureComponent {
     className: PropTypes.string,
     classes: PropTypes.object,
     maxSuggestions: PropTypes.number,
-    onViewAllResults: PropTypes.func
+    onViewAllResults: PropTypes.func,
+    openOnFocus: PropTypes.bool
   }
 
   static defaultProps = {
@@ -83,7 +84,8 @@ class SearchWithSuggestions extends PureComponent {
     value: '',
     defaultValue: '',
     className: '',
-    classes: {}
+    classes: {},
+    openOnFocus: false
   }
 
   static getDerivedStateFromProps ({ value, data }, state) {
@@ -104,7 +106,8 @@ class SearchWithSuggestions extends PureComponent {
     lastValue: this.props.value,
     isFocused: false,
     cursor: 0,
-    isSearching: false
+    isSearching: false,
+    onViewAllResults: this.props.onViewAllResults
   }
 
   componentWillUnmount () {
@@ -230,7 +233,8 @@ class SearchWithSuggestions extends PureComponent {
       searchTerm,
       isFocused,
       isSearching,
-      cursor
+      cursor,
+      onViewAllResults
     } = this.state
     const {
       suggestionContent,
@@ -239,12 +243,11 @@ class SearchWithSuggestions extends PureComponent {
       suggestionsProps = {},
       className,
       classes = {},
-      data,
       maxSuggestions,
-      onViewAllResults
+      openOnFocus
     } = this.props
 
-    const isByGroups = isGroups(data)
+    console.log(openOnFocus)
 
     return (
       <div className={`${styles.wrapper} ${className}`}>
@@ -257,7 +260,7 @@ class SearchWithSuggestions extends PureComponent {
           onKeyDown={this.onKeyDown}
           {...inputProps}
         />
-        {isFocused && (isByGroups || searchTerm !== '') && (
+        {isFocused && (openOnFocus || searchTerm !== '') && (
           <Panel
             variant='modal'
             className={cx(
@@ -349,13 +352,11 @@ const SuggestionItems = ({
     const sliced = getSliced(suggestions)
     return sliced.length > 0 ? (
       <>
-        {onViewAllResults && (
-          <ViewAllResults
-            searchTerm={searchTerm}
-            onViewAllResults={onViewAllResults}
-            suggestions={suggestions}
-          />
-        )}
+        <ViewAllResults
+          searchTerm={searchTerm}
+          onViewAllResults={onViewAllResults}
+          suggestions={suggestions}
+        />
         <SuggestionItemsList
           suggestions={sliced}
           cursor={cursor}
@@ -378,7 +379,9 @@ const ViewAllResults = ({ searchTerm, onViewAllResults, suggestions }) => {
     <>
       <div
         className={styles.viewAllResults}
-        onClick={() => onViewAllResults(searchTerm, suggestions)}
+        onMouseDown={() => {
+          onViewAllResults(searchTerm, suggestions)
+        }}
       >
         View all results for “{searchTerm}”
       </div>

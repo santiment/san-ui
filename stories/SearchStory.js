@@ -212,6 +212,7 @@ stories.add('Suggestions by groups', () => (
       suggestionContent={suggestion => suggestion}
       predicate={searchTerm => item =>
         item.toUpperCase().includes(searchTerm.toUpperCase())}
+      openOnFocus
     />
 
     <div>Don't reset state after selection with maxSuggestions = 5:</div>
@@ -227,6 +228,7 @@ stories.add('Suggestions by groups', () => (
       dontResetStateAfterSelection
       maxSuggestions={5}
       onViewAllResults={console.log}
+      openOnFocus
     />
   </ColorModeComparison>
 ))
