@@ -61,7 +61,8 @@ class SearchWithSuggestions extends PureComponent {
     suggestionsProps: PropTypes.object,
     dontResetStateAfterSelection: PropTypes.bool,
     className: PropTypes.string,
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    maxSuggestions: PropTypes.number
   }
 
   static defaultProps = {
@@ -231,7 +232,8 @@ class SearchWithSuggestions extends PureComponent {
       suggestionsProps = {},
       className,
       classes = {},
-      data
+      data,
+      maxSuggestions
     } = this.props
 
     const isByGroups = isGroups(data)
@@ -263,6 +265,7 @@ class SearchWithSuggestions extends PureComponent {
               onSuggestionSelect={this.onSuggestionSelect}
               suggestionContent={suggestionContent}
               isSearching={isSearching}
+              maxSuggestions={maxSuggestions}
             />
           </Panel>
         )}
@@ -276,14 +279,17 @@ const SuggestionItems = ({
   cursor,
   onSuggestionSelect,
   suggestionContent,
-  isSearching
+  isSearching,
+  maxSuggestions
 }) => {
-  let fromCounter = 0
+  const getSliced = data =>
+    maxSuggestions ? data.slice(0, maxSuggestions) : data
 
   if (isGroups(suggestions)) {
     const noData = getLengthOfSuggestions(suggestions) === 0
-
     const types = Object.keys(suggestions)
+
+    let fromCounter = 0
 
     return (
       <>
@@ -291,18 +297,20 @@ const SuggestionItems = ({
           types.map((key, index) => {
             const { label, options } = suggestions[key]
 
-            if (!options.length) {
+            const formattedOptions = getSliced(options)
+
+            if (!formattedOptions.length) {
               return null
             }
 
-            fromCounter += options.length
+            fromCounter += formattedOptions.length
 
             return (
               <Fragment key={key}>
                 {label && <div className={styles.groupLabel}>{label}</div>}
                 <SuggestionItemsList
-                  fromCounter={fromCounter - options.length}
-                  suggestions={options}
+                  fromCounter={fromCounter - formattedOptions.length}
+                  suggestions={formattedOptions}
                   cursor={cursor}
                   onSuggestionSelect={selected =>
                     onSuggestionSelect([key, selected])
@@ -319,9 +327,10 @@ const SuggestionItems = ({
       </>
     )
   } else {
-    return suggestions.length > 0 ? (
+    const sliced = getSliced(suggestions)
+    return sliced.length > 0 ? (
       <SuggestionItemsList
-        suggestions={suggestions}
+        suggestions={sliced}
         cursor={cursor}
         onSuggestionSelect={onSuggestionSelect}
         suggestionContent={suggestionContent}
