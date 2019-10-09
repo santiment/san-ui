@@ -11,7 +11,7 @@
     "start": "PORT=3000 node server/index.js",
     "clean": "rimraf lib-build",
     "test:js": "jest",
-    "test": "yarn test:js",
+    "test": "NODE_ENV=test && yarn test:js",
     "scripts": "node scripts/copy-files && node scripts/update-version",
     "lib-publish": "yarn publish lib-build --patch --no-git-tag-version",
     "build:storybook": "build-storybook -o build",
