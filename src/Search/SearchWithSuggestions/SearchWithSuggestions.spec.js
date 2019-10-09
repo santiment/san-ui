@@ -19,7 +19,6 @@ describe('SearchWithSuggestions', () => {
         suggestionContent={suggestion => suggestion}
         predicate={searchTerm => item =>
           item.toUpperCase().includes(searchTerm.toUpperCase())}
-        maxSuggestions={5}
       />
     )
     expect(shallowToJson(output)).toMatchSnapshot()
@@ -40,7 +39,6 @@ describe('SearchWithSuggestions', () => {
         suggestionContent={suggestion => suggestion}
         predicate={searchTerm => item =>
           item.toUpperCase().includes(searchTerm.toUpperCase())}
-        maxSuggestions={5}
       />
     )
     const searchInput = output.find('Input')

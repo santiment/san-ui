@@ -3,6 +3,7 @@
 exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
 <SearchWithSuggestions
   className=""
+  classes={Object {}}
   data={
     Array [
       "Bibox Token",
@@ -17,7 +18,6 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
   defaultValue=""
   dontResetStateAfterSelection={false}
   inputProps={Object {}}
-  maxSuggestions={5}
   onSuggestionSelect={[Function]}
   onSuggestionsUpdate={[Function]}
   predicate={[Function]}
