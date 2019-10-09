@@ -11,7 +11,7 @@ $border-color-night: #4a4a4a;
   top: 100%;
   width: 100%;
   margin-top: 4px;
-  padding: 8px;
+  padding: 14px 8px;
   z-index: 5;
   overflow: auto;
   max-height: 180px;
@@ -23,6 +23,8 @@ $border-color-night: #4a4a4a;
   height: auto;
   min-height: 32px;
   text-align: left;
+
+  @include text('body-3');
 
   &:hover,
   &:focus {
@@ -54,9 +56,7 @@ $border-color-night: #4a4a4a;
 .groupLabel {
   @include text('caption');
 
-  margin-top: 12px;
-  margin-bottom: 10px;
-  margin-left: 8px;
+  margin: 12px 0 10px 8px;
   display: flex;
   align-items: center;
   color: var(--waterloo);
@@ -66,4 +66,16 @@ $border-color-night: #4a4a4a;
 .divider {
   border-top: 1px solid var(--porcelain);
   margin: 14px -8px 0 -8px;
+}
+
+.viewAllResults {
+  cursor: pointer;
+  margin-left: 8px;
+  color: var(--mirage);
+
+  @include text('body-3');
+
+  &:hover {
+    color: var(--jungle-green);
+  }
 }

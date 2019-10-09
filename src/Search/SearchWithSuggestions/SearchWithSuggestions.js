@@ -67,7 +67,8 @@ class SearchWithSuggestions extends PureComponent {
     dontResetStateAfterSelection: PropTypes.bool,
     className: PropTypes.string,
     classes: PropTypes.object,
-    maxSuggestions: PropTypes.number
+    maxSuggestions: PropTypes.number,
+    onViewAllResults: PropTypes.func
   }
 
   static defaultProps = {
@@ -239,7 +240,8 @@ class SearchWithSuggestions extends PureComponent {
       className,
       classes = {},
       data,
-      maxSuggestions
+      maxSuggestions,
+      onViewAllResults
     } = this.props
 
     const isByGroups = isGroups(data)
@@ -266,6 +268,8 @@ class SearchWithSuggestions extends PureComponent {
             {...suggestionsProps}
           >
             <SuggestionItems
+              searchTerm={searchTerm}
+              onViewAllResults={onViewAllResults}
               suggestions={suggestions}
               cursor={cursor}
               onSuggestionSelect={this.onSuggestionSelect}
@@ -286,7 +290,9 @@ const SuggestionItems = ({
   onSuggestionSelect,
   suggestionContent,
   isSearching,
-  maxSuggestions
+  maxSuggestions,
+  onViewAllResults,
+  searchTerm
 }) => {
   const getSliced = data =>
     maxSuggestions ? data.slice(0, maxSuggestions) : data
@@ -299,6 +305,13 @@ const SuggestionItems = ({
 
     return (
       <>
+        {!noData && (
+          <ViewAllResults
+            searchTerm={searchTerm}
+            onViewAllResults={onViewAllResults}
+            suggestions={suggestions}
+          />
+        )}
         {!noData &&
           types.map((key, index) => {
             const { label, options } = suggestions[key]
@@ -335,16 +348,43 @@ const SuggestionItems = ({
   } else {
     const sliced = getSliced(suggestions)
     return sliced.length > 0 ? (
-      <SuggestionItemsList
-        suggestions={sliced}
-        cursor={cursor}
-        onSuggestionSelect={onSuggestionSelect}
-        suggestionContent={suggestionContent}
-      />
+      <>
+        {onViewAllResults && (
+          <ViewAllResults
+            searchTerm={searchTerm}
+            onViewAllResults={onViewAllResults}
+            suggestions={suggestions}
+          />
+        )}
+        <SuggestionItemsList
+          suggestions={sliced}
+          cursor={cursor}
+          onSuggestionSelect={onSuggestionSelect}
+          suggestionContent={suggestionContent}
+        />
+      </>
     ) : (
       <NoResults isSearching={isSearching} />
     )
   }
+}
+
+const ViewAllResults = ({ searchTerm, onViewAllResults, suggestions }) => {
+  if (!searchTerm || !onViewAllResults) {
+    return null
+  }
+
+  return (
+    <>
+      <div
+        className={styles.viewAllResults}
+        onClick={() => onViewAllResults(searchTerm, suggestions)}
+      >
+        View all results for “{searchTerm}”
+      </div>
+      <div className={styles.divider} />
+    </>
+  )
 }
 
 const NoResults = ({ isSearching }) => (

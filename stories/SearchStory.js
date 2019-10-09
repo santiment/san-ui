@@ -226,6 +226,7 @@ stories.add('Suggestions by groups', () => (
         item.toUpperCase().includes(searchTerm.toUpperCase())}
       dontResetStateAfterSelection
       maxSuggestions={5}
+      onViewAllResults={console.log}
     />
   </ColorModeComparison>
 ))
