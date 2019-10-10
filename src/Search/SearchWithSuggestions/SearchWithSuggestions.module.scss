@@ -17,50 +17,8 @@ $border-color-night: #4a4a4a;
   max-height: 180px;
 }
 
-.suggestion {
-  padding: 6px 8px;
-  color: var(--mirage);
-  height: auto;
-  min-height: 32px;
-  text-align: left;
-
-  @include text('body-3');
-
-  &:hover,
-  &:focus {
-    color: var(--jungle-green);
-  }
-}
-
-.cursored {
-  background: var(--athens);
-}
-
-.noresults {
-  @include text-normal;
-
-  cursor: initial;
-  min-height: auto;
-  text-align: center;
-
-  &:hover,
-  &:focus {
-    background-color: inherit !important;
-  }
-}
-
 .groupSuggestions {
   max-height: 420px;
-}
-
-.groupLabel {
-  @include text('caption');
-
-  margin: 0 0 10px 8px;
-  display: flex;
-  align-items: center;
-  color: var(--waterloo);
-  font-weight: 600;
 }
 
 .divider {

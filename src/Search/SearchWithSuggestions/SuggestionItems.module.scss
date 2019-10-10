@@ -1,0 +1,11 @@
+@import '../../mixins';
+
+.groupLabel {
+  @include text('caption');
+
+  margin: 0 0 10px 8px;
+  display: flex;
+  align-items: center;
+  color: var(--waterloo);
+  font-weight: 600;
+}

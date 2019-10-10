@@ -1,0 +1,14 @@
+@import '../../mixins';
+
+.noresults {
+  @include text-normal;
+
+  cursor: initial;
+  min-height: auto;
+  text-align: center;
+
+  &:hover,
+  &:focus {
+    background-color: inherit !important;
+  }
+}

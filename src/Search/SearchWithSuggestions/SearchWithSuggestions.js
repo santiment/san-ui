@@ -1,9 +1,9 @@
-import React, { Fragment, PureComponent, useEffect, useRef } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 import Panel from '../../Panel/Panel'
 import Search from '../Search'
-import Button from '../../Button'
+import SuggestionItems from './SuggestionItems'
 import styles from './SearchWithSuggestions.module.scss'
 
 let debounceTimer
@@ -12,32 +12,25 @@ const debounce = (clb, time) => clbArgs => {
   debounceTimer = setTimeout(() => clb(clbArgs), time)
 }
 
-const isGroups = data => {
-  return !Array.isArray(data)
-}
+export const isGroups = data => !Array.isArray(data)
 
-const getLengthOfSuggestions = (data, maxSuggestions) => {
+export const getLengthOfSuggestions = (data, maxSuggestions) => {
   if (isGroups(data)) {
-    let length = 0
-    for (const key in data) {
-      const { options } = data[key]
-
+    return Object.values(data).reduce((counter, { options }) => {
       const maxOptionsLength = maxSuggestions
         ? Math.min(maxSuggestions, options.length)
         : options.length
-
-      length += maxOptionsLength
-    }
-
-    return length
+      return counter + maxOptionsLength
+    }, 0)
   } else {
     return maxSuggestions ? Math.min(maxSuggestions, data.length) : data.length
   }
 }
 
-const getSuggestionByCursor = (data, cursor) => {
+export const getSuggestionByCursor = (data, cursor) => {
   if (isGroups(data)) {
     let counter = 0
+
     for (const key in data) {
       const { options } = data[key]
 
@@ -247,8 +240,6 @@ class SearchWithSuggestions extends PureComponent {
       openOnFocus
     } = this.props
 
-    console.log(openOnFocus)
-
     return (
       <div className={`${styles.wrapper} ${className}`}>
         <Search
@@ -285,162 +276,6 @@ class SearchWithSuggestions extends PureComponent {
       </div>
     )
   }
-}
-
-const SuggestionItems = ({
-  suggestions,
-  cursor,
-  onSuggestionSelect,
-  suggestionContent,
-  isSearching,
-  maxSuggestions,
-  onViewAllResults,
-  searchTerm
-}) => {
-  const getSliced = data =>
-    maxSuggestions ? data.slice(0, maxSuggestions) : data
-
-  if (isGroups(suggestions)) {
-    const noData = getLengthOfSuggestions(suggestions, maxSuggestions) === 0
-    const types = Object.keys(suggestions)
-
-    let fromCounter = 0
-
-    return (
-      <>
-        {!noData && (
-          <ViewAllResults
-            searchTerm={searchTerm}
-            onViewAllResults={onViewAllResults}
-            suggestions={suggestions}
-          />
-        )}
-        {!noData &&
-          types.map((key, index) => {
-            const { label, options } = suggestions[key]
-
-            const formattedOptions = getSliced(options)
-
-            if (!formattedOptions.length) {
-              return null
-            }
-
-            fromCounter += formattedOptions.length
-
-            return (
-              <Fragment key={key}>
-                {label && <div className={styles.groupLabel}>{label}</div>}
-                <SuggestionItemsList
-                  fromCounter={fromCounter - formattedOptions.length}
-                  suggestions={formattedOptions}
-                  cursor={cursor}
-                  onSuggestionSelect={selected =>
-                    onSuggestionSelect([key, selected])
-                  }
-                  suggestionContent={suggestionContent}
-                />
-                {index !== types.length - 1 && (
-                  <div className={styles.divider} />
-                )}
-              </Fragment>
-            )
-          })}
-        {noData && <NoResults isSearching={isSearching} />}
-      </>
-    )
-  } else {
-    const sliced = getSliced(suggestions)
-    return sliced.length > 0 ? (
-      <>
-        <ViewAllResults
-          searchTerm={searchTerm}
-          onViewAllResults={onViewAllResults}
-          suggestions={suggestions}
-        />
-        <SuggestionItemsList
-          suggestions={sliced}
-          cursor={cursor}
-          onSuggestionSelect={onSuggestionSelect}
-          suggestionContent={suggestionContent}
-        />
-      </>
-    ) : (
-      <NoResults isSearching={isSearching} />
-    )
-  }
-}
-
-const ViewAllResults = ({ searchTerm, onViewAllResults, suggestions }) => {
-  if (!searchTerm || !onViewAllResults) {
-    return null
-  }
-
-  return (
-    <>
-      <div
-        className={styles.viewAllResults}
-        onMouseDown={() => {
-          onViewAllResults(searchTerm, suggestions)
-        }}
-      >
-        View all results for “{searchTerm}”
-      </div>
-      <div className={styles.divider} />
-    </>
-  )
-}
-
-const NoResults = ({ isSearching }) => (
-  <div className={styles.suggestion + ' ' + styles.noresults}>
-    {!isSearching ? 'No results found' : 'Searching...'}
-  </div>
-)
-
-const SuggestionItemsList = ({
-  suggestions,
-  cursor,
-  onSuggestionSelect,
-  suggestionContent,
-  fromCounter = 0
-}) => {
-  return suggestions.map((suggestion, index) => {
-    const isActive = index + fromCounter === cursor
-
-    return (
-      <SuggestionItem
-        key={index}
-        isActive={isActive}
-        onSuggestionSelect={onSuggestionSelect}
-        suggestionContent={suggestionContent}
-        suggestion={suggestion}
-      />
-    )
-  })
-}
-
-const SuggestionItem = ({
-  isActive,
-  onSuggestionSelect,
-  suggestionContent,
-  suggestion
-}) => {
-  const myRef = useRef(null)
-
-  useEffect(() => {
-    isActive && myRef && myRef.current && myRef.current.scrollIntoView(false)
-  }, [isActive, myRef])
-
-  return (
-    <Button
-      fluid
-      forwardedRef={isActive ? myRef : undefined}
-      variant='ghost'
-      className={cx(styles.suggestion, isActive && styles.cursored)}
-      onMouseDown={() => onSuggestionSelect(suggestion)}
-    >
-      {suggestionContent(suggestion)}
-    </Button>
-  )
 }
 
 export default SearchWithSuggestions
