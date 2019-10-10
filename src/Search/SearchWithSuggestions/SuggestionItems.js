@@ -48,7 +48,14 @@ const SuggestionItems = ({
               fromCounter += formattedOptions.length
 
               return (
-                <Fragment key={key}>
+                <div
+                  key={key}
+                  className={
+                    index !== types.length - 1
+                      ? commonStyles.divider
+                      : undefined
+                  }
+                >
                   {label && <div className={styles.groupLabel}>{label}</div>}
                   <SuggestionItemsList
                     fromCounter={fromCounter - formattedOptions.length}
@@ -59,10 +66,7 @@ const SuggestionItems = ({
                     }
                     suggestionContent={suggestionContent}
                   />
-                  {index !== types.length - 1 && (
-                    <div className={commonStyles.divider} />
-                  )}
-                </Fragment>
+                </div>
               )
             })}
           </>

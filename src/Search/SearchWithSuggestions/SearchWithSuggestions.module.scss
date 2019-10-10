@@ -11,7 +11,6 @@ $border-color-night: #4a4a4a;
   top: 100%;
   width: 100%;
   margin-top: 4px;
-  padding: 8px;
   z-index: 5;
   overflow: auto;
   max-height: 180px;
@@ -22,13 +21,14 @@ $border-color-night: #4a4a4a;
 }
 
 .divider {
-  border-top: 1px solid var(--porcelain);
-  margin: 14px -8px 12px -8px;
+  border-bottom: 1px solid var(--porcelain);
+  margin-bottom: 14px;
 }
 
 .viewAllResults {
   cursor: pointer;
-  margin: 6px 8px 14px 8px;
+  margin: 0 -8px 14px -8px;
+  padding: 14px 0 14px 24px;
   color: var(--mirage);
 
   @include text('body-3');
