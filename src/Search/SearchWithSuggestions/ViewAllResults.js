@@ -8,16 +8,14 @@ const ViewAllResults = ({ searchTerm, onViewAllResults, suggestions }) => {
   }
 
   return (
-    <>
-      <div
-        className={cx(styles.divider, styles.viewAllResults)}
-        onMouseDown={() => {
-          onViewAllResults(searchTerm, suggestions)
-        }}
-      >
-        View all results for “{searchTerm}”
-      </div>
-    </>
+    <div
+      className={cx(styles.divider, styles.viewAllResults)}
+      onMouseDown={() => {
+        onViewAllResults(searchTerm, suggestions)
+      }}
+    >
+      View all results for “{searchTerm}”
+    </div>
   )
 }
 
