@@ -3,7 +3,7 @@
 .groupLabel {
   @include text('caption');
 
-  margin: 0 0 2px 16px;
+  margin: 10px 0 2px 16px;
   display: flex;
   align-items: center;
   color: var(--waterloo);
