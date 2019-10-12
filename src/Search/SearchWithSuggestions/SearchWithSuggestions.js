@@ -1,9 +1,8 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
-import Panel from '../../Panel/Panel'
+import Suggestions from './Suggestions'
+import Panel from '../../Panel'
 import Search from '../Search'
-import Button from '../../Button'
 import styles from './SearchWithSuggestions.module.scss'
 
 export const SUGGESTION_MORE = 'SUGGESTION_MORE'
@@ -13,15 +12,6 @@ const debounce = (clb, time) => clbArgs => {
   clearTimeout(debounceTimer)
   debounceTimer = setTimeout(() => clb(clbArgs), time)
 }
-
-const Suggestion = ({ isActive, className, ...props }) => (
-  <Button
-    fluid
-    variant='ghost'
-    className={cx(styles.suggestion, className, isActive && styles.cursored)}
-    {...props}
-  />
-)
 
 class SearchWithSuggestions extends PureComponent {
   static propTypes = {
@@ -235,39 +225,12 @@ class SearchWithSuggestions extends PureComponent {
             className={styles.suggestions}
             {...suggestionsProps}
           >
-            {suggestedCategories.length > 0 ? (
-              <>
-                <Suggestion
-                  isActive={SUGGESTION_MORE === cursorItem}
-                  onMouseDown={() => this.onSuggestionSelect(SUGGESTION_MORE)}
-                  className={styles.more}
-                >
-                  View all results for "{searchTerm}"
-                </Suggestion>
-                {suggestedCategories.map(
-                  ({ title, items, suggestionContent }) => (
-                    <Fragment key={title}>
-                      <h3 className={styles.title}>{title}</h3>
-                      {items.map((suggestion, index) => (
-                        <Suggestion
-                          key={title + index}
-                          isActive={suggestion === cursorItem}
-                          onMouseDown={() =>
-                            this.onSuggestionSelect(suggestion)
-                          }
-                        >
-                          {suggestionContent(suggestion)}
-                        </Suggestion>
-                      ))}
-                    </Fragment>
-                  )
-                )}
-              </>
-            ) : (
-              <div className={styles.suggestion + ' ' + styles.noresults}>
-                {!isSearching ? 'No results found' : 'Searching...'}
-              </div>
-            )}
+            <Suggestions
+              cursorItem={cursorItem}
+              suggestedCategories={suggestedCategories}
+              isSearching={isSearching}
+              searchTerm={searchTerm}
+            />
           </Panel>
         )}
       </div>
