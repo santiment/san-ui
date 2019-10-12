@@ -125,17 +125,27 @@ class SearchWithSuggestions extends PureComponent {
     this.setState(
       prevState => {
         const suggestedCategories = data
-          .map(({ items, predicate, sorter, ...rest }) => {
-            return {
-              ...rest,
-              items: items.filter(predicate(prevState.searchTerm)).sort(sorter)
+          .map(
+            ({
+              items,
+              predicate,
+              sorter,
+              maxSuggestions = commonMaxSuggestions,
+              ...rest
+            }) => {
+              return {
+                ...rest,
+                items: items
+                  .filter(predicate(prevState.searchTerm))
+                  .sort(sorter)
+                  .slice(0, maxSuggestions)
+              }
             }
-          })
+          )
           .filter(({ items }) => items.length)
 
         const suggestions = suggestedCategories.reduce(
-          (acc, { items, maxSuggestions = commonMaxSuggestions }) =>
-            acc.concat(items.slice(0, maxSuggestions)),
+          (acc, { items }) => acc.concat(items),
           [SUGGESTION_MORE]
         )
 
@@ -203,7 +213,6 @@ class SearchWithSuggestions extends PureComponent {
       cursorItem
     } = this.state
     const {
-      maxSuggestions: commonMaxSuggestions,
       iconPosition,
       inputProps = {},
       suggestionsProps = {},
@@ -236,27 +245,20 @@ class SearchWithSuggestions extends PureComponent {
                   View all results for "{searchTerm}"
                 </Suggestion>
                 {suggestedCategories.map(
-                  ({
-                    title,
-                    items,
-                    suggestionContent,
-                    maxSuggestions = commonMaxSuggestions
-                  }) => (
+                  ({ title, items, suggestionContent }) => (
                     <Fragment key={title}>
                       <h3 className={styles.title}>{title}</h3>
-                      {items
-                        .slice(0, maxSuggestions)
-                        .map((suggestion, index) => (
-                          <Suggestion
-                            key={title + index}
-                            isActive={suggestion === cursorItem}
-                            onMouseDown={() =>
-                              this.onSuggestionSelect(suggestion)
-                            }
-                          >
-                            {suggestionContent(suggestion)}
-                          </Suggestion>
-                        ))}
+                      {items.map((suggestion, index) => (
+                        <Suggestion
+                          key={title + index}
+                          isActive={suggestion === cursorItem}
+                          onMouseDown={() =>
+                            this.onSuggestionSelect(suggestion)
+                          }
+                        >
+                          {suggestionContent(suggestion)}
+                        </Suggestion>
+                      ))}
                     </Fragment>
                   )
                 )}

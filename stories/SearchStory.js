@@ -163,20 +163,23 @@ stories.add(
     ~~~js
       <SearchWithSuggestions
         iconPosition='none'
-        data={[
+        data={[{
+          title: 'Assets',
+          items: [
           'Bibox Token',
           'Bigbom',
           'Binance Coin',
           'BioCoin',
-          'BitBay',
-          'bitcoin'
-        ]}
+          'BitBay,
+          'bitcin'
+         ],
+         predicate: searchTerm => item => item.toUpperCase().includes(searchTerm.toUpperCase()) ,
+         suggestionContent: suggestion => suggestion,
+         maxSuggestions: 5
+        }]}
         onSuggestionSelect={suggestion = console.log(suggestion)}
-        suggestionContent={suggestion => suggestion}
-        predicate={searchTerm => item =>
-          item.toUpperCase().includes(searchTerm.toUpperCase())}
-          maxSuggestions={5}
-        />
+        maxSuggestions={5}
+      />
     ~~~
   `,
       inline: true,
