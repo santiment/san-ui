@@ -7,6 +7,19 @@ import ColorModeComparison from './ColorModeComparison'
 
 const stories = storiesOf('Search', module)
 
+const assets = [
+  'Bibox Token',
+  'Bigbom',
+  'Binance Coin',
+  'BioCoin',
+  'BitBay',
+  'bitcoin',
+  'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+]
+
+const simplePredicate = searchTerm => item =>
+  item.toUpperCase().includes(searchTerm.toUpperCase())
+
 class Test extends React.PureComponent {
   state = {
     value: 'Bibox Token'
@@ -16,22 +29,18 @@ class Test extends React.PureComponent {
     return (
       <SearchWithSuggestions
         data={[
-          'Bibox Token',
-          'Bigbom',
-          'Binance Coin',
-          'BioCoin',
-          'BitBay',
-          'bitcoin',
-          'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+          {
+            title: 'Assets',
+            items: assets,
+            predicate: simplePredicate,
+            suggestionContent: suggestion => suggestion
+          }
         ]}
         onSuggestionSelect={suggestion => {
           this.setState({ value: suggestion })
           action('selected')(suggestion)
         }}
         iconPosition='left'
-        suggestionContent={suggestion => suggestion}
-        predicate={searchTerm => item =>
-          item.toUpperCase().includes(searchTerm.toUpperCase())}
         maxSuggestions={5}
         dontResetStateAfterSelection
         value={'000=' + this.state.value}
@@ -57,17 +66,8 @@ stories.add('Suggestions', () => (
       data={[
         {
           title: 'Assets',
-          items: [
-            'Bibox Token',
-            'Bigbom',
-            'Binance Coin',
-            'BioCoin',
-            'BitBay',
-            'bitcoin',
-            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
-          ],
-          predicate: searchTerm => item =>
-            item.toUpperCase().includes(searchTerm.toUpperCase()),
+          items: assets,
+          predicate: simplePredicate,
           suggestionContent: suggestion => suggestion
         }
       ]}
@@ -82,19 +82,15 @@ stories.add('Suggestions (Keep state after suggestion)', () => (
   <ColorModeComparison>
     <SearchWithSuggestions
       data={[
-        'Bibox Token',
-        'Bigbom',
-        'Binance Coin',
-        'BioCoin',
-        'BitBay',
-        'bitcoin',
-        'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+        {
+          title: 'Assets',
+          items: assets,
+          predicate: simplePredicate,
+          suggestionContent: suggestion => suggestion
+        }
       ]}
       onSuggestionSelect={action('selected')}
       iconPosition='left'
-      suggestionContent={suggestion => suggestion}
-      predicate={searchTerm => item =>
-        item.toUpperCase().includes(searchTerm.toUpperCase())}
       maxSuggestions={5}
       dontResetStateAfterSelection
     />
@@ -102,19 +98,15 @@ stories.add('Suggestions (Keep state after suggestion)', () => (
     <div>Setting input value after suggestion selection</div>
     <SearchWithSuggestions
       data={[
-        'Bibox Token',
-        'Bigbom',
-        'Binance Coin',
-        'BioCoin',
-        'BitBay',
-        'bitcoin',
-        'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+        {
+          title: 'Assets',
+          items: assets,
+          predicate: simplePredicate,
+          suggestionContent: suggestion => suggestion
+        }
       ]}
       onSuggestionSelect={action('selected')}
       iconPosition='left'
-      suggestionContent={suggestion => suggestion}
-      predicate={searchTerm => item =>
-        item.toUpperCase().includes(searchTerm.toUpperCase())}
       maxSuggestions={5}
       dontResetStateAfterSelection
     />
@@ -125,22 +117,18 @@ stories.add('Suggestions (Sorting by length)', () => (
   <ColorModeComparison>
     <SearchWithSuggestions
       data={[
-        'Bibox Token',
-        'Bigbom',
-        'Binance Coin',
-        'BioCoin',
-        'BitBay',
-        'bitcoin',
-        'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+        {
+          title: 'Assets',
+          items: assets,
+          predicate: simplePredicate,
+          suggestionContent: suggestion => suggestion,
+          sorter: (itemA, itemB) => itemA.length - itemB.length
+        }
       ]}
       onSuggestionSelect={action('selected')}
       iconPosition='left'
-      suggestionContent={suggestion => suggestion}
-      predicate={searchTerm => item =>
-        item.toUpperCase().includes(searchTerm.toUpperCase())}
       maxSuggestions={5}
       dontResetStateAfterSelection
-      sorter={(itemA, itemB) => itemA.length - itemB.length}
     />
   </ColorModeComparison>
 ))
@@ -156,18 +144,15 @@ stories.add(
   () => (
     <SearchWithSuggestions
       data={[
-        'Bibox Token',
-        'Bigbom',
-        'Binance Coin',
-        'BioCoin',
-        'BitBay',
-        'bitcoin'
+        {
+          title: 'Assets',
+          items: assets,
+          predicate: simplePredicate,
+          suggestionContent: suggestion => suggestion,
+          maxSuggestions: 5
+        }
       ]}
       onSuggestionSelect={action('selected')}
-      suggestionContent={suggestion => suggestion}
-      predicate={searchTerm => item =>
-        item.toUpperCase().includes(searchTerm.toUpperCase())}
-      maxSuggestions={5}
     />
   ),
   {
