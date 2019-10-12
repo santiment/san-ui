@@ -1,8 +1,9 @@
 @import '../variables.scss';
+@import '../mixins.scss';
 
 .tabs {
   display: inline-block;
-  border-bottom: 1px solid var(--grey-light-2);
+  border-bottom: 1px solid var(--porcelain);
 }
 
 .tab {
@@ -10,7 +11,7 @@
   box-sizing: border-box;
   cursor: pointer;
   background: transparent;
-  color: var(--grey-dark-2);
+  color: var(--waterloo);
   padding-bottom: 16px;
   margin: 0 16px;
 
@@ -23,12 +24,18 @@
   }
 
   &:hover {
-    color: var(--green);
+    color: var(--jungle-green);
   }
+
+  @include responsive('phone-xs', 'phone') {
+    padding: 0 16px 8px;
+    margin: 0;
+
+    @include text('body-2'); }
 }
 
 .selected {
-  color: var(--green);
+  color: var(--jungle-green);
 
   &::after {
     content: '';
@@ -39,19 +46,19 @@
     left: 0;
     right: 0;
     border-radius: 1px;
-    background: var(--green);
+    background: var(--jungle-green);
   }
 }
 
 .disabled {
   cursor: not-allowed;
-  color: var(--grey-light-3);
+  color: var(--mystic);
 
   &::after {
-    background: var(--grey-light-3);
+    background: var(--mystic);
   }
 
   &:hover {
-    color: var(--grey-light-3);
+    color: var(--mystic);
   }
 }
