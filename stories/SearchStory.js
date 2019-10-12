@@ -55,13 +55,18 @@ stories.add('Suggestions', () => (
   <ColorModeComparison>
     <SearchWithSuggestions
       data={[
-        'Bibox Token',
-        'Bigbom',
-        'Binance Coin',
-        'BioCoin',
-        'BitBay',
-        'bitcoin',
-        'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+        {
+          title: 'Assets',
+          items: [
+            'Bibox Token',
+            'Bigbom',
+            'Binance Coin',
+            'BioCoin',
+            'BitBay',
+            'bitcoin',
+            'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
+          ]
+        }
       ]}
       onSuggestionSelect={action('selected')}
       iconPosition='left'

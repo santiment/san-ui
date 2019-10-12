@@ -91,6 +91,7 @@ class SearchWithSuggestions extends PureComponent {
             isSearching: false,
             searchTerm: '',
             suggestions: [],
+            suggestedCategories: [],
             cursor: 0
           },
       () => onSuggestionSelect(suggestion)
@@ -98,14 +99,38 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   filterData = debounce(() => {
-    const { data, predicate, sorter, onSuggestionsUpdate } = this.props
+    const {
+      data,
+      predicate,
+      sorter,
+      onSuggestionsUpdate,
+      maxSuggestions
+    } = this.props
+
     this.setState(
-      prevState => ({
-        ...prevState,
-        suggestions: data.filter(predicate(prevState.searchTerm)).sort(sorter),
-        cursor: 0,
-        isSearching: false
-      }),
+      prevState => {
+        const suggestedCategories = data
+          .map(({ items, ...rest }) => {
+            return {
+              ...rest,
+              items: items.filter(predicate(prevState.searchTerm)).sort(sorter)
+            }
+          })
+          .filter(({ items }) => items.length)
+
+        const suggestions = suggestedCategories.reduce(
+          (acc, { items }) => acc.concat(items.slice(0, maxSuggestions)),
+          ['more']
+        )
+
+        return {
+          ...prevState,
+          suggestedCategories,
+          suggestions,
+          cursor: 0,
+          isSearching: false
+        }
+      },
       () => onSuggestionsUpdate(this.state.suggestions)
     )
   }, this.props.debounceTime)
@@ -141,17 +166,23 @@ class SearchWithSuggestions extends PureComponent {
         return
     }
 
-    const { maxSuggestions } = this.props
-    const maxCursor =
-      suggestions.length > maxSuggestions ? maxSuggestions : suggestions.length
+    const maxCursor = suggestions.length
 
     newCursor = newCursor % maxCursor
 
-    this.setState({ cursor: newCursor < 0 ? maxCursor - 1 : newCursor })
+    const nextCursor = newCursor < 0 ? maxCursor - 1 : newCursor
+    this.setState({ cursor: nextCursor, cursorItem: suggestions[nextCursor] })
   }
 
   render () {
-    const { suggestions, searchTerm, isFocused, isSearching } = this.state
+    const {
+      suggestedCategories = [],
+      searchTerm,
+      isFocused,
+      isSearching,
+      cursor,
+      cursorItem
+    } = this.state
     const {
       maxSuggestions,
       suggestionContent,
@@ -177,21 +208,39 @@ class SearchWithSuggestions extends PureComponent {
             className={styles.suggestions}
             {...suggestionsProps}
           >
-            {suggestions.length > 0 ? (
-              suggestions.slice(0, maxSuggestions).map((suggestion, index) => (
+            {suggestedCategories.length > 0 ? (
+              <>
                 <Button
-                  key={index}
                   fluid
                   variant='ghost'
                   className={cx(
                     styles.suggestion,
-                    index === this.state.cursor && styles.cursored
+                    'more' === cursorItem && styles.cursored
                   )}
-                  onMouseDown={() => this.onSuggestionSelect(suggestion)}
+                  onMouseDown={() => this.onSuggestionSelect('more')}
                 >
-                  {suggestionContent(suggestion)}
+                  More
                 </Button>
-              ))
+                {suggestedCategories.map(({ title, items }) => (
+                  <>
+                    <h3 key={title}>{title}</h3>
+                    {items.slice(0, maxSuggestions).map((suggestion, index) => (
+                      <Button
+                        key={index}
+                        fluid
+                        variant='ghost'
+                        className={cx(
+                          styles.suggestion,
+                          suggestion === cursorItem && styles.cursored
+                        )}
+                        onMouseDown={() => this.onSuggestionSelect(suggestion)}
+                      >
+                        {suggestionContent(suggestion)}
+                      </Button>
+                    ))}
+                  </>
+                ))}
+              </>
             ) : (
               <div className={styles.suggestion + ' ' + styles.noresults}>
                 {!isSearching ? 'No results found' : 'Searching...'}
