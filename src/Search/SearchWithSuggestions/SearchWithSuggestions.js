@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 import Panel from '../../Panel/Panel'
@@ -6,11 +6,23 @@ import Search from '../Search'
 import Button from '../../Button'
 import styles from './SearchWithSuggestions.module.scss'
 
+export const SUGGESTION_MORE = 'SUGGESTION_MORE'
+
 let debounceTimer
 const debounce = (clb, time) => clbArgs => {
   clearTimeout(debounceTimer)
   debounceTimer = setTimeout(() => clb(clbArgs), time)
 }
+
+const Suggestion = ({ isActive, suggestion, ...props }) => (
+  <Button
+    fluid
+    variant='ghost'
+    className={cx(styles.suggestion, isActive && styles.cursored)}
+    onMouseDown={() => this.onSuggestionSelect(suggestion)}
+    {...props}
+  />
+)
 
 class SearchWithSuggestions extends PureComponent {
   static propTypes = {
@@ -61,7 +73,7 @@ class SearchWithSuggestions extends PureComponent {
     lastValue: this.props.value,
     isFocused: false,
     cursor: 0,
-    cursorItem: 'more',
+    cursorItem: SUGGESTION_MORE,
     isSearching: false
   }
 
@@ -121,7 +133,7 @@ class SearchWithSuggestions extends PureComponent {
 
         const suggestions = suggestedCategories.reduce(
           (acc, { items }) => acc.concat(items.slice(0, maxSuggestions)),
-          ['more']
+          [SUGGESTION_MORE]
         )
 
         return {
@@ -211,37 +223,25 @@ class SearchWithSuggestions extends PureComponent {
           >
             {suggestedCategories.length > 0 ? (
               <>
-                <Button
-                  fluid
-                  variant='ghost'
-                  className={cx(
-                    styles.suggestion,
-                    'more' === cursorItem && styles.cursored
-                  )}
-                  onMouseDown={() => this.onSuggestionSelect('more')}
+                <Suggestion
+                  isActive={SUGGESTION_MORE === cursorItem}
+                  suggestion={SUGGESTION_MORE}
                 >
                   View all results for "{searchTerm}"
-                </Button>
+                </Suggestion>
                 {suggestedCategories.map(({ title, items }) => (
-                  <>
-                    <h3 key={title} className={styles.title}>
-                      {title}
-                    </h3>
+                  <Fragment key={title}>
+                    <h3 className={styles.title}>{title}</h3>
                     {items.slice(0, maxSuggestions).map((suggestion, index) => (
-                      <Button
+                      <Suggestion
                         key={title + index}
-                        fluid
-                        variant='ghost'
-                        className={cx(
-                          styles.suggestion,
-                          suggestion === cursorItem && styles.cursored
-                        )}
-                        onMouseDown={() => this.onSuggestionSelect(suggestion)}
+                        isActive={suggestion === cursorItem}
+                        suggestion={suggestion}
                       >
                         {suggestionContent(suggestion)}
-                      </Button>
+                      </Suggestion>
                     ))}
-                  </>
+                  </Fragment>
                 ))}
               </>
             ) : (
