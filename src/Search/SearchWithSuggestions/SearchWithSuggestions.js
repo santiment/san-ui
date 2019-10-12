@@ -14,12 +14,11 @@ const debounce = (clb, time) => clbArgs => {
   debounceTimer = setTimeout(() => clb(clbArgs), time)
 }
 
-const Suggestion = ({ isActive, suggestion, ...props }) => (
+const Suggestion = ({ isActive, ...props }) => (
   <Button
     fluid
     variant='ghost'
     className={cx(styles.suggestion, isActive && styles.cursored)}
-    onMouseDown={() => this.onSuggestionSelect(suggestion)}
     {...props}
   />
 )
@@ -136,11 +135,14 @@ class SearchWithSuggestions extends PureComponent {
           [SUGGESTION_MORE]
         )
 
+        const cursor = +Boolean(suggestions.length)
+
         return {
           ...prevState,
           suggestedCategories,
           suggestions,
-          cursor: 0,
+          cursor,
+          cursorItem: suggestions[cursor],
           isSearching: false
         }
       },
@@ -225,7 +227,7 @@ class SearchWithSuggestions extends PureComponent {
               <>
                 <Suggestion
                   isActive={SUGGESTION_MORE === cursorItem}
-                  suggestion={SUGGESTION_MORE}
+                  onMouseDown={() => this.onSuggestionSelect(SUGGESTION_MORE)}
                 >
                   View all results for "{searchTerm}"
                 </Suggestion>
@@ -236,7 +238,7 @@ class SearchWithSuggestions extends PureComponent {
                       <Suggestion
                         key={title + index}
                         isActive={suggestion === cursorItem}
-                        suggestion={suggestion}
+                        onMouseDown={() => this.onSuggestionSelect(suggestion)}
                       >
                         {suggestionContent(suggestion)}
                       </Suggestion>
