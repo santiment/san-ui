@@ -5,12 +5,19 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
   className=""
   data={
     Array [
-      "Bibox Token",
-      "Bigbom",
-      "Binance Coin",
-      "BioCoin",
-      "BitBay",
-      "bitcoin",
+      Object {
+        "items": Array [
+          "Bibox Token",
+          "Bigbom",
+          "Binance Coin",
+          "BioCoin",
+          "BitBay",
+          "bitcoin",
+        ],
+        "predicate": [Function],
+        "suggestionContent": [Function],
+        "title": "Assets",
+      },
     ]
   }
   debounceTime={200}
@@ -20,8 +27,6 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
   maxSuggestions={5}
   onSuggestionSelect={[Function]}
   onSuggestionsUpdate={[Function]}
-  predicate={[Function]}
-  suggestionContent={[Function]}
   suggestionsProps={Object {}}
   value=""
 >
