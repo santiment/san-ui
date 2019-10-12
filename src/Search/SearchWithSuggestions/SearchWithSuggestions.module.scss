@@ -44,3 +44,12 @@ $border-color-night: #4a4a4a;
     background-color: inherit !important;
   }
 }
+
+.title {
+  @include text('caption', 'm');
+
+  color: var(--waterloo);
+  padding: 12px 16px 0;
+  margin: 8px -8px;
+  border-top: 1px solid var(--porcelain);
+}

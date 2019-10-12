@@ -61,6 +61,7 @@ class SearchWithSuggestions extends PureComponent {
     lastValue: this.props.value,
     isFocused: false,
     cursor: 0,
+    cursorItem: 'more',
     isSearching: false
   }
 
@@ -202,7 +203,7 @@ class SearchWithSuggestions extends PureComponent {
           onKeyDown={this.onKeyDown}
           {...inputProps}
         />
-        {isFocused && searchTerm !== '' && (
+        {(true || isFocused) && searchTerm !== '' && (
           <Panel
             variant='modal'
             className={styles.suggestions}
@@ -219,14 +220,16 @@ class SearchWithSuggestions extends PureComponent {
                   )}
                   onMouseDown={() => this.onSuggestionSelect('more')}
                 >
-                  More
+                  View all results for "{searchTerm}"
                 </Button>
                 {suggestedCategories.map(({ title, items }) => (
                   <>
-                    <h3 key={title}>{title}</h3>
+                    <h3 key={title} className={styles.title}>
+                      {title}
+                    </h3>
                     {items.slice(0, maxSuggestions).map((suggestion, index) => (
                       <Button
-                        key={index}
+                        key={title + index}
                         fluid
                         variant='ghost'
                         className={cx(
