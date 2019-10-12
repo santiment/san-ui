@@ -25,10 +25,16 @@ const Suggestion = ({ isActive, ...props }) => (
 
 class SearchWithSuggestions extends PureComponent {
   static propTypes = {
-    data: PropTypes.array.isRequired,
-    suggestionContent: PropTypes.func.isRequired,
-    predicate: PropTypes.func.isRequired,
-    sorter: PropTypes.func,
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        items: PropTypes.array.isRequired,
+        suggestionContent: PropTypes.func.isRequired,
+        predicate: PropTypes.func.isRequired,
+        sorter: PropTypes.func,
+        maxSuggestions: PropTypes.number
+      })
+    ).isRequired,
     onSuggestionSelect: PropTypes.func,
     onSuggestionsUpdate: PropTypes.func,
     maxSuggestions: PropTypes.number,
@@ -113,16 +119,14 @@ class SearchWithSuggestions extends PureComponent {
   filterData = debounce(() => {
     const {
       data,
-      predicate,
-      sorter,
       onSuggestionsUpdate,
-      maxSuggestions
+      maxSuggestions: commonMaxSuggestions
     } = this.props
 
     this.setState(
       prevState => {
         const suggestedCategories = data
-          .map(({ items, ...rest }) => {
+          .map(({ items, predicate, sorter, ...rest }) => {
             return {
               ...rest,
               items: items.filter(predicate(prevState.searchTerm)).sort(sorter)
@@ -131,7 +135,8 @@ class SearchWithSuggestions extends PureComponent {
           .filter(({ items }) => items.length)
 
         const suggestions = suggestedCategories.reduce(
-          (acc, { items }) => acc.concat(items.slice(0, maxSuggestions)),
+          (acc, { items, maxSuggestions = commonMaxSuggestions }) =>
+            acc.concat(items.slice(0, maxSuggestions)),
           [SUGGESTION_MORE]
         )
 
@@ -199,8 +204,7 @@ class SearchWithSuggestions extends PureComponent {
       cursorItem
     } = this.state
     const {
-      maxSuggestions,
-      suggestionContent,
+      maxSuggestions: commonMaxSuggestions,
       iconPosition,
       inputProps = {},
       suggestionsProps = {},
@@ -217,7 +221,7 @@ class SearchWithSuggestions extends PureComponent {
           onKeyDown={this.onKeyDown}
           {...inputProps}
         />
-        {(true || isFocused) && searchTerm !== '' && (
+        {isFocused && searchTerm !== '' && (
           <Panel
             variant='modal'
             className={styles.suggestions}
@@ -231,20 +235,31 @@ class SearchWithSuggestions extends PureComponent {
                 >
                   View all results for "{searchTerm}"
                 </Suggestion>
-                {suggestedCategories.map(({ title, items }) => (
-                  <Fragment key={title}>
-                    <h3 className={styles.title}>{title}</h3>
-                    {items.slice(0, maxSuggestions).map((suggestion, index) => (
-                      <Suggestion
-                        key={title + index}
-                        isActive={suggestion === cursorItem}
-                        onMouseDown={() => this.onSuggestionSelect(suggestion)}
-                      >
-                        {suggestionContent(suggestion)}
-                      </Suggestion>
-                    ))}
-                  </Fragment>
-                ))}
+                {suggestedCategories.map(
+                  ({
+                    title,
+                    items,
+                    suggestionContent,
+                    maxSuggestions = commonMaxSuggestions
+                  }) => (
+                    <Fragment key={title}>
+                      <h3 className={styles.title}>{title}</h3>
+                      {items
+                        .slice(0, maxSuggestions)
+                        .map((suggestion, index) => (
+                          <Suggestion
+                            key={title + index}
+                            isActive={suggestion === cursorItem}
+                            onMouseDown={() =>
+                              this.onSuggestionSelect(suggestion)
+                            }
+                          >
+                            {suggestionContent(suggestion)}
+                          </Suggestion>
+                        ))}
+                    </Fragment>
+                  )
+                )}
               </>
             ) : (
               <div className={styles.suggestion + ' ' + styles.noresults}>

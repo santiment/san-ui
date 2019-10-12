@@ -65,14 +65,14 @@ stories.add('Suggestions', () => (
             'BitBay',
             'bitcoin',
             'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
-          ]
+          ],
+          predicate: searchTerm => item =>
+            item.toUpperCase().includes(searchTerm.toUpperCase()),
+          suggestionContent: suggestion => suggestion
         }
       ]}
       onSuggestionSelect={action('selected')}
       iconPosition='left'
-      suggestionContent={suggestion => suggestion}
-      predicate={searchTerm => item =>
-        item.toUpperCase().includes(searchTerm.toUpperCase())}
       maxSuggestions={5}
     />
   </ColorModeComparison>
