@@ -17,6 +17,8 @@ const assets = [
   'Very large title asdbgjhasb jkgdsbfkgjsdbfg gdfj'
 ]
 
+const watchlists = ['Easy money', 'Test portfolio', 'Test 123', 'Money money']
+
 const simplePredicate = searchTerm => item =>
   item.toUpperCase().includes(searchTerm.toUpperCase())
 
@@ -67,6 +69,30 @@ stories.add('Suggestions', () => (
         {
           title: 'Assets',
           items: assets,
+          predicate: simplePredicate,
+          suggestionContent: suggestion => suggestion
+        }
+      ]}
+      onSuggestionSelect={action('selected')}
+      iconPosition='left'
+      maxSuggestions={5}
+    />
+  </ColorModeComparison>
+))
+
+stories.add('Suggestions (multiple categories)', () => (
+  <ColorModeComparison>
+    <SearchWithSuggestions
+      data={[
+        {
+          title: 'Assets',
+          items: assets,
+          predicate: simplePredicate,
+          suggestionContent: suggestion => suggestion
+        },
+        {
+          title: 'Watchlists',
+          items: watchlists,
           predicate: simplePredicate,
           suggestionContent: suggestion => suggestion
         }
