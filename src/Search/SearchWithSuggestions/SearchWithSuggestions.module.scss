@@ -13,6 +13,8 @@ $border-color-night: #4a4a4a;
   margin-top: 4px;
   padding: 8px;
   z-index: 5;
+  max-height: 250px;
+  overflow: auto;
 }
 
 .suggestion {

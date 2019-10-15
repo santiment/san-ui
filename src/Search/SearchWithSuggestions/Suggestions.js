@@ -1,17 +1,28 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef, useLayoutEffect } from 'react'
 import cx from 'classnames'
 import { SUGGESTION_MORE } from './SearchWithSuggestions'
 import Button from '../../Button'
 import styles from './SearchWithSuggestions.module.scss'
 
-const Suggestion = ({ isActive, className, ...props }) => (
-  <Button
-    fluid
-    variant='ghost'
-    className={cx(styles.suggestion, className, isActive && styles.cursored)}
-    {...props}
-  />
-)
+const Suggestion = ({ isActive, className, ...props }) => {
+  const btnRef = useRef()
+
+  useLayoutEffect(() => {
+    if (isActive && btnRef.current) {
+      btnRef.current.scrollIntoView({ block: 'center' })
+    }
+  }, [isActive])
+
+  return (
+    <Button
+      forwardedRef={btnRef}
+      fluid
+      variant='ghost'
+      className={cx(styles.suggestion, className, isActive && styles.cursored)}
+      {...props}
+    />
+  )
+}
 
 const Suggestions = ({
   searchTerm,
@@ -30,7 +41,7 @@ const Suggestions = ({
       </Suggestion>
       {suggestedCategories.map(({ title, items, suggestionContent }) => (
         <Fragment key={title}>
-          <h3 className={styles.title}>{title}</h3>
+          {title && <h3 className={styles.title}>{title}</h3>}
           {items.map((suggestion, index) => (
             <Suggestion
               key={title + index}
