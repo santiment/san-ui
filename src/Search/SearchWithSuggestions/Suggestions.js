@@ -24,12 +24,38 @@ const Suggestion = ({ isActive, className, ...props }) => {
   )
 }
 
+const Category = ({ title, items, suggestionContent, cursorItem }) => (
+  <>
+    {title && <h3 className={styles.title}>{title}</h3>}
+    {items.map((suggestion, index) => (
+      <Suggestion
+        key={index}
+        isActive={suggestion === cursorItem}
+        onMouseDown={() => this.onSuggestionSelect(suggestion)}
+      >
+        {suggestionContent(suggestion)}
+      </Suggestion>
+    ))}
+  </>
+)
+
 const Suggestions = ({
   searchTerm,
   isSearching,
   suggestedCategories,
-  cursorItem
+  cursorItem,
+  emptySuggestions
 }) => {
+  if (!searchTerm && emptySuggestions) {
+    return emptySuggestions.map((category, index) => (
+      <Category
+        key={category.title + index}
+        {...category}
+        cursorItem={cursorItem}
+      />
+    ))
+  }
+
   return suggestedCategories.length > 0 ? (
     <>
       <Suggestion
@@ -39,19 +65,12 @@ const Suggestions = ({
       >
         View all results for "{searchTerm}"
       </Suggestion>
-      {suggestedCategories.map(({ title, items, suggestionContent }) => (
-        <Fragment key={title}>
-          {title && <h3 className={styles.title}>{title}</h3>}
-          {items.map((suggestion, index) => (
-            <Suggestion
-              key={title + index}
-              isActive={suggestion === cursorItem}
-              onMouseDown={() => this.onSuggestionSelect(suggestion)}
-            >
-              {suggestionContent(suggestion)}
-            </Suggestion>
-          ))}
-        </Fragment>
+      {suggestedCategories.map((category, index) => (
+        <Category
+          key={category.title + index}
+          {...category}
+          cursorItem={cursorItem}
+        />
       ))}
     </>
   ) : (

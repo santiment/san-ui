@@ -54,6 +54,11 @@ $border-color-night: #4a4a4a;
   padding: 12px 16px 0;
   margin: 8px -8px;
   border-top: 1px solid var(--porcelain);
+
+  &:first-child {
+    border: none;
+    padding-top: 0;
+  }
 }
 
 .more {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Suggestions from './Suggestions'
 import Panel from '../../Panel'
 import Search from '../Search'
+import { flatCategories } from './utils'
 import styles from './SearchWithSuggestions.module.scss'
 
 export const SUGGESTION_MORE = 'SUGGESTION_MORE'
@@ -33,7 +34,8 @@ class SearchWithSuggestions extends PureComponent {
     inputProps: PropTypes.object,
     suggestionsProps: PropTypes.object,
     dontResetStateAfterSelection: PropTypes.bool,
-    className: PropTypes.string
+    className: PropTypes.string,
+    emptySuggestions: PropTypes.array
   }
 
   static defaultProps = {
@@ -69,6 +71,17 @@ class SearchWithSuggestions extends PureComponent {
     cursor: 0,
     cursorItem: SUGGESTION_MORE,
     isSearching: false
+  }
+
+  componentDidMount () {
+    const { emptySuggestions, defaultValue } = this.props
+    if (emptySuggestions && !defaultValue) {
+      const suggestions = flatCategories(emptySuggestions, [])
+      this.setState({
+        suggestions,
+        cursorItem: suggestions[0]
+      })
+    }
   }
 
   componentWillUnmount () {
@@ -108,35 +121,38 @@ class SearchWithSuggestions extends PureComponent {
   filterData = debounce(() => {
     const {
       data,
+      emptySuggestions,
       onSuggestionsUpdate,
       maxSuggestions: commonMaxSuggestions
     } = this.props
 
     this.setState(
       prevState => {
-        const suggestedCategories = data
-          .map(
-            ({
-              items,
-              predicate,
-              sorter,
-              maxSuggestions = commonMaxSuggestions,
-              ...rest
-            }) => {
-              return {
-                ...rest,
-                items: items
-                  .filter(predicate(prevState.searchTerm))
-                  .sort(sorter)
-                  .slice(0, maxSuggestions)
-              }
-            }
-          )
-          .filter(({ items }) => items.length)
+        const suggestedCategories = prevState.searchTerm
+          ? data
+              .map(
+                ({
+                  items,
+                  predicate,
+                  sorter,
+                  maxSuggestions = commonMaxSuggestions,
+                  ...rest
+                }) => {
+                  return {
+                    ...rest,
+                    items: items
+                      .filter(predicate(prevState.searchTerm))
+                      .sort(sorter)
+                      .slice(0, maxSuggestions)
+                  }
+                }
+              )
+              .filter(({ items }) => items.length)
+          : emptySuggestions
 
-        const suggestions = suggestedCategories.reduce(
-          (acc, { items }) => acc.concat(items),
-          [SUGGESTION_MORE]
+        const suggestions = flatCategories(
+          suggestedCategories,
+          prevState.searchTerm ? [SUGGESTION_MORE] : []
         )
 
         const cursor = +Boolean(suggestions.length)
@@ -163,8 +179,9 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   onKeyDown = evt => {
-    const { suggestions, cursor } = this.state
+    const { suggestions, cursor, searchTerm } = this.state
     const { key, currentTarget } = evt
+
     let newCursor = cursor
     let selectedSuggestion
 
@@ -206,7 +223,8 @@ class SearchWithSuggestions extends PureComponent {
       iconPosition,
       inputProps = {},
       suggestionsProps = {},
-      className
+      className,
+      emptySuggestions
     } = this.props
     return (
       <div className={`${styles.wrapper} ${className}`}>
@@ -219,7 +237,7 @@ class SearchWithSuggestions extends PureComponent {
           onKeyDown={this.onKeyDown}
           {...inputProps}
         />
-        {isFocused && searchTerm !== '' && (
+        {isFocused && (
           <Panel
             variant='modal'
             className={styles.suggestions}
@@ -230,6 +248,7 @@ class SearchWithSuggestions extends PureComponent {
               suggestedCategories={suggestedCategories}
               isSearching={isSearching}
               searchTerm={searchTerm}
+              emptySuggestions={emptySuggestions}
             />
           </Panel>
         )}

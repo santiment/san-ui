@@ -80,6 +80,31 @@ stories.add('Suggestions', () => (
   </ColorModeComparison>
 ))
 
+stories.add('Suggestions (With suggestions on empty input)', () => (
+  <ColorModeComparison>
+    <SearchWithSuggestions
+      data={[
+        {
+          title: 'Assets',
+          items: assets,
+          predicate: simplePredicate,
+          suggestionContent: suggestion => suggestion
+        }
+      ]}
+      onSuggestionSelect={action('selected')}
+      iconPosition='left'
+      maxSuggestions={5}
+      emptySuggestions={[
+        {
+          title: 'Recently searched',
+          items: ['bitcoin', 'test recent'],
+          suggestionContent: suggestion => suggestion
+        }
+      ]}
+    />
+  </ColorModeComparison>
+))
+
 stories.add('Suggestions (multiple categories)', () => (
   <ColorModeComparison>
     <SearchWithSuggestions
