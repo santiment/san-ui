@@ -35,7 +35,8 @@ class SearchWithSuggestions extends PureComponent {
     suggestionsProps: PropTypes.object,
     dontResetStateAfterSelection: PropTypes.bool,
     className: PropTypes.string,
-    emptySuggestions: PropTypes.array
+    emptySuggestions: PropTypes.array,
+    withMoreSuggestions: PropTypes.bool
   }
 
   static defaultProps = {
@@ -47,6 +48,7 @@ class SearchWithSuggestions extends PureComponent {
     suggestionsProps: {},
     debounceTime: 200,
     dontResetStateAfterSelection: false,
+    withMoreSuggestions: true,
     value: '',
     defaultValue: '',
     className: ''
@@ -121,8 +123,9 @@ class SearchWithSuggestions extends PureComponent {
   filterData = debounce(() => {
     const {
       data,
-      emptySuggestions,
+      emptySuggestions = [],
       onSuggestionsUpdate,
+      withMoreSuggestions,
       maxSuggestions: commonMaxSuggestions
     } = this.props
 
@@ -152,7 +155,7 @@ class SearchWithSuggestions extends PureComponent {
 
         const suggestions = flatCategories(
           suggestedCategories,
-          prevState.searchTerm ? [SUGGESTION_MORE] : []
+          withMoreSuggestions && prevState.searchTerm ? [SUGGESTION_MORE] : []
         )
 
         const cursor = +Boolean(suggestions.length)
@@ -237,7 +240,7 @@ class SearchWithSuggestions extends PureComponent {
           onKeyDown={this.onKeyDown}
           {...inputProps}
         />
-        {isFocused && (
+        {isFocused && (emptySuggestions || searchTerm) && (
           <Panel
             variant='modal'
             className={styles.suggestions}
