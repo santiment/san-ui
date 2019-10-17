@@ -29,6 +29,7 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
   onSuggestionsUpdate={[Function]}
   suggestionsProps={Object {}}
   value=""
+  withMoreSuggestions={true}
 >
   <div
     className="wrapper "
