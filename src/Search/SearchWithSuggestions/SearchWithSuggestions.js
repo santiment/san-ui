@@ -87,6 +87,7 @@ class SearchWithSuggestions extends PureComponent {
 
   componentWillUnmount () {
     clearTimeout(debounceTimer)
+    window.removeEventListener('keydown', this.onKeyDown)
   }
 
   onInputChange = ({ currentTarget }) => {
