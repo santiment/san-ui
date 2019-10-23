@@ -37,7 +37,7 @@ const Category = ({
       <Suggestion
         key={index}
         isActive={suggestion === cursorItem}
-        onMouseDown={() => onSuggestionSelect(suggestion)}
+        onClick={() => onSuggestionSelect(suggestion)}
       >
         {suggestionContent(suggestion)}
       </Suggestion>
@@ -70,7 +70,7 @@ const Suggestions = ({
       {withMoreSuggestions && (
         <Suggestion
           isActive={SUGGESTION_MORE === cursorItem}
-          onMouseDown={() => this.onSuggestionSelect(SUGGESTION_MORE)}
+          onClick={() => this.onSuggestionSelect(SUGGESTION_MORE)}
           className={styles.more}
         >
           View all results for "{searchTerm}"
