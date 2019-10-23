@@ -32,13 +32,11 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
   withMoreSuggestions={true}
 >
   <div
-    className="wrapper "
+    className="wrapper"
   >
     <Search
-      onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      onKeyDown={[Function]}
       value="Big"
     >
       <InputWithIcon
@@ -46,10 +44,8 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
         icon="search-small"
         iconClassName="icon"
         inputClassName=""
-        onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        onKeyDown={[Function]}
         placeholder="Type to search..."
         value="Big"
       >
@@ -58,19 +54,15 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
         >
           <Input
             className=" input undefined"
-            onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            onKeyDown={[Function]}
             placeholder="Type to search..."
             value="Big"
           >
             <input
               className="input    input undefined"
-              onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              onKeyDown={[Function]}
               placeholder="Type to search..."
               type="text"
               value="Big"
@@ -85,13 +77,11 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
 
 exports[`SearchWithSuggestions should render correctly 1`] = `
 <div
-  className="wrapper "
+  className="wrapper"
 >
   <Search
-    onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
-    onKeyDown={[Function]}
     value=""
   />
 </div>
