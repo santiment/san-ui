@@ -24,14 +24,20 @@ const Suggestion = ({ isActive, className, ...props }) => {
   )
 }
 
-const Category = ({ title, items, suggestionContent, cursorItem }) => (
+const Category = ({
+  title,
+  items,
+  suggestionContent,
+  cursorItem,
+  onSuggestionSelect
+}) => (
   <>
     {title && <h3 className={styles.title}>{title}</h3>}
     {items.map((suggestion, index) => (
       <Suggestion
         key={index}
         isActive={suggestion === cursorItem}
-        onMouseDown={() => this.onSuggestionSelect(suggestion)}
+        onMouseDown={() => onSuggestionSelect(suggestion)}
       >
         {suggestionContent(suggestion)}
       </Suggestion>
@@ -45,7 +51,8 @@ const Suggestions = ({
   suggestedCategories,
   cursorItem,
   emptySuggestions,
-  withMoreSuggestions
+  withMoreSuggestions,
+  onSuggestionSelect
 }) => {
   if (!searchTerm && emptySuggestions) {
     return emptySuggestions.map((category, index) => (
@@ -53,6 +60,7 @@ const Suggestions = ({
         key={category.title + index}
         {...category}
         cursorItem={cursorItem}
+        onSuggestionSelect={onSuggestionSelect}
       />
     ))
   }
@@ -73,6 +81,7 @@ const Suggestions = ({
           key={category.title + index}
           {...category}
           cursorItem={cursorItem}
+          onSuggestionSelect={onSuggestionSelect}
         />
       ))}
     </>

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import cx from 'classnames'
 import PropTypes from 'prop-types'
 import Suggestions from './Suggestions'
 import Panel from '../../Panel'
@@ -71,7 +72,6 @@ class SearchWithSuggestions extends PureComponent {
     lastValue: this.props.value,
     isFocused: false,
     cursor: 0,
-    cursorItem: SUGGESTION_MORE,
     isSearching: false
   }
 
@@ -80,8 +80,7 @@ class SearchWithSuggestions extends PureComponent {
     if (emptySuggestions && !defaultValue) {
       const suggestions = flatCategories(emptySuggestions, [])
       this.setState({
-        suggestions,
-        cursorItem: suggestions[0]
+        suggestions
       })
     }
   }
@@ -102,8 +101,13 @@ class SearchWithSuggestions extends PureComponent {
   }
 
   onSuggestionSelect = suggestion => {
-    const { dontResetStateAfterSelection, onSuggestionSelect } = this.props
+    const {
+      dontResetStateAfterSelection,
+      onSuggestionSelect,
+      emptySuggestions
+    } = this.props
 
+    this.onBlur()
     this.setState(
       dontResetStateAfterSelection
         ? {
@@ -112,8 +116,8 @@ class SearchWithSuggestions extends PureComponent {
         : {
             isSearching: false,
             searchTerm: '',
-            suggestions: [],
-            suggestedCategories: [],
+            suggestions: flatCategories(emptySuggestions, []) || [],
+            suggestedCategories: emptySuggestions || [],
             cursor: 0
           },
       () => onSuggestionSelect(suggestion)
@@ -165,7 +169,6 @@ class SearchWithSuggestions extends PureComponent {
           suggestedCategories,
           suggestions,
           cursor,
-          cursorItem: suggestions[cursor],
           isSearching: false
         }
       },
@@ -174,10 +177,12 @@ class SearchWithSuggestions extends PureComponent {
   }, this.props.debounceTime)
 
   onFocus = () => {
+    window.addEventListener('keydown', this.onKeyDown)
     this.setState({ isFocused: true })
   }
 
   onBlur = () => {
+    window.removeEventListener('keydown', this.onKeyDown)
     this.setState({ isFocused: false })
   }
 
@@ -198,8 +203,8 @@ class SearchWithSuggestions extends PureComponent {
         newCursor = cursor + 1
         break
       case 'Enter':
+        evt.target.blur()
         selectedSuggestion = suggestions[cursor]
-        currentTarget.blur()
         return selectedSuggestion && this.onSuggestionSelect(selectedSuggestion)
       default:
         return
@@ -210,7 +215,7 @@ class SearchWithSuggestions extends PureComponent {
     newCursor = newCursor % maxCursor
 
     const nextCursor = newCursor < 0 ? maxCursor - 1 : newCursor
-    this.setState({ cursor: nextCursor, cursorItem: suggestions[nextCursor] })
+    this.setState({ cursor: nextCursor })
   }
 
   render () {
@@ -220,7 +225,7 @@ class SearchWithSuggestions extends PureComponent {
       isFocused,
       isSearching,
       cursor,
-      cursorItem
+      suggestions
     } = this.state
     const {
       iconPosition,
@@ -230,32 +235,35 @@ class SearchWithSuggestions extends PureComponent {
       emptySuggestions,
       withMoreSuggestions
     } = this.props
+    const cursorItem = suggestions[cursor]
     return (
-      <div className={`${styles.wrapper} ${className}`}>
+      <div className={cx(styles.wrapper, className)}>
         <Search
           iconPosition={iconPosition}
           value={searchTerm}
           onFocus={this.onFocus}
-          onBlur={this.onBlur}
           onChange={this.onInputChange}
-          onKeyDown={this.onKeyDown}
           {...inputProps}
         />
         {isFocused && (emptySuggestions || searchTerm) && (
-          <Panel
-            variant='modal'
-            className={styles.suggestions}
-            {...suggestionsProps}
-          >
-            <Suggestions
-              cursorItem={cursorItem}
-              suggestedCategories={suggestedCategories}
-              isSearching={isSearching}
-              searchTerm={searchTerm}
-              emptySuggestions={emptySuggestions}
-              withMoreSuggestions={withMoreSuggestions}
-            />
-          </Panel>
+          <>
+            <Panel
+              variant='modal'
+              className={styles.suggestions}
+              {...suggestionsProps}
+            >
+              <Suggestions
+                cursorItem={cursorItem}
+                suggestedCategories={suggestedCategories}
+                isSearching={isSearching}
+                searchTerm={searchTerm}
+                emptySuggestions={emptySuggestions}
+                withMoreSuggestions={withMoreSuggestions}
+                onSuggestionSelect={this.onSuggestionSelect}
+              />
+            </Panel>
+            <div className={styles.blur} onClick={this.onBlur} />
+          </>
         )}
       </div>
     )
