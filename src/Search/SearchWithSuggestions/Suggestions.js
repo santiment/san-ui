@@ -44,7 +44,8 @@ const Suggestions = ({
   isSearching,
   suggestedCategories,
   cursorItem,
-  emptySuggestions
+  emptySuggestions,
+  withMoreSuggestions
 }) => {
   if (!searchTerm && emptySuggestions) {
     return emptySuggestions.map((category, index) => (
@@ -58,13 +59,15 @@ const Suggestions = ({
 
   return suggestedCategories.length > 0 ? (
     <>
-      <Suggestion
-        isActive={SUGGESTION_MORE === cursorItem}
-        onMouseDown={() => this.onSuggestionSelect(SUGGESTION_MORE)}
-        className={styles.more}
-      >
-        View all results for "{searchTerm}"
-      </Suggestion>
+      {withMoreSuggestions && (
+        <Suggestion
+          isActive={SUGGESTION_MORE === cursorItem}
+          onMouseDown={() => this.onSuggestionSelect(SUGGESTION_MORE)}
+          className={styles.more}
+        >
+          View all results for "{searchTerm}"
+        </Suggestion>
+      )}
       {suggestedCategories.map((category, index) => (
         <Category
           key={category.title + index}

@@ -227,7 +227,8 @@ class SearchWithSuggestions extends PureComponent {
       inputProps = {},
       suggestionsProps = {},
       className,
-      emptySuggestions
+      emptySuggestions,
+      withMoreSuggestions
     } = this.props
     return (
       <div className={`${styles.wrapper} ${className}`}>
@@ -252,6 +253,7 @@ class SearchWithSuggestions extends PureComponent {
               isSearching={isSearching}
               searchTerm={searchTerm}
               emptySuggestions={emptySuggestions}
+              withMoreSuggestions={withMoreSuggestions}
             />
           </Panel>
         )}

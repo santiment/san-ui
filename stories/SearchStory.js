@@ -80,6 +80,25 @@ stories.add('Suggestions', () => (
   </ColorModeComparison>
 ))
 
+stories.add('Suggestions (no "more" option) ', () => (
+  <ColorModeComparison>
+    <SearchWithSuggestions
+      data={[
+        {
+          title: 'Assets',
+          items: assets,
+          predicate: simplePredicate,
+          suggestionContent: suggestion => suggestion
+        }
+      ]}
+      onSuggestionSelect={action('selected')}
+      iconPosition='left'
+      maxSuggestions={5}
+      withMoreSuggestions={false}
+    />
+  </ColorModeComparison>
+))
+
 stories.add('Suggestions (With suggestions on empty input)', () => (
   <ColorModeComparison>
     <SearchWithSuggestions
