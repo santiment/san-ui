@@ -3,22 +3,33 @@ import { shallow, mount } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 import SearchWithSuggestions from './SearchWithSuggestions'
 
+const assets = [
+  'Bibox Token',
+  'Bigbom',
+  'Binance Coin',
+  'BioCoin',
+  'BitBay',
+  'bitcoin'
+]
+
+const simplePredicate = searchTerm => item =>
+  item.toUpperCase().includes(searchTerm.toUpperCase())
+
+const data = [
+  {
+    title: 'Assets',
+    items: assets,
+    predicate: simplePredicate,
+    suggestionContent: suggestion => suggestion
+  }
+]
+
 describe('SearchWithSuggestions', () => {
   it('should render correctly', () => {
     const output = shallow(
       <SearchWithSuggestions
-        data={[
-          'Bibox Token',
-          'Bigbom',
-          'Binance Coin',
-          'BioCoin',
-          'BitBay',
-          'bitcoin'
-        ]}
+        data={data}
         onSuggestionSelect={() => console.log('check')}
-        suggestionContent={suggestion => suggestion}
-        predicate={searchTerm => item =>
-          item.toUpperCase().includes(searchTerm.toUpperCase())}
         maxSuggestions={5}
       />
     )
@@ -28,18 +39,8 @@ describe('SearchWithSuggestions', () => {
   it('should render Bigbom as a child', () => {
     const output = mount(
       <SearchWithSuggestions
-        data={[
-          'Bibox Token',
-          'Bigbom',
-          'Binance Coin',
-          'BioCoin',
-          'BitBay',
-          'bitcoin'
-        ]}
+        data={data}
         onSuggestionSelect={() => console.log('check')}
-        suggestionContent={suggestion => suggestion}
-        predicate={searchTerm => item =>
-          item.toUpperCase().includes(searchTerm.toUpperCase())}
         maxSuggestions={5}
       />
     )
