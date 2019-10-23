@@ -158,7 +158,7 @@ class SearchWithSuggestions extends PureComponent {
           withMoreSuggestions && prevState.searchTerm ? [SUGGESTION_MORE] : []
         )
 
-        const cursor = +Boolean(suggestions.length)
+        const cursor = +Boolean(withMoreSuggestions && suggestions.length)
 
         return {
           ...prevState,
