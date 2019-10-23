@@ -117,7 +117,9 @@ class SearchWithSuggestions extends PureComponent {
         : {
             isSearching: false,
             searchTerm: '',
-            suggestions: flatCategories(emptySuggestions, []) || [],
+            suggestions: emptySuggestions
+              ? flatCategories(emptySuggestions, [])
+              : [],
             suggestedCategories: emptySuggestions || [],
             cursor: 0
           },
