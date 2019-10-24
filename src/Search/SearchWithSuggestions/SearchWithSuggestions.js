@@ -8,6 +8,10 @@ import { flatCategories } from './utils'
 import styles from './SearchWithSuggestions.module.scss'
 
 export const SUGGESTION_MORE = 'SUGGESTION_MORE'
+const MORE = {
+  category: 'more',
+  item: SUGGESTION_MORE
+}
 
 let debounceTimer
 const debounce = (clb, time) => clbArgs => {
@@ -55,7 +59,22 @@ class SearchWithSuggestions extends PureComponent {
     className: ''
   }
 
-  static getDerivedStateFromProps ({ value }, { lastValue }) {
+  static getDerivedStateFromProps (
+    { value, emptySuggestions },
+    { lastValue, searchTerm, suggestedCategories, isSearching }
+  ) {
+    if (
+      emptySuggestions &&
+      !searchTerm &&
+      !isSearching &&
+      emptySuggestions !== suggestedCategories
+    ) {
+      return {
+        suggestions: flatCategories(emptySuggestions, []),
+        suggestedCategories: emptySuggestions
+      }
+    }
+
     if (lastValue !== value) {
       return {
         searchTerm: value,
@@ -80,7 +99,8 @@ class SearchWithSuggestions extends PureComponent {
     if (emptySuggestions && !defaultValue) {
       const suggestions = flatCategories(emptySuggestions, [])
       this.setState({
-        suggestions
+        suggestions,
+        suggestedCategories: emptySuggestions
       })
     }
   }
@@ -162,7 +182,7 @@ class SearchWithSuggestions extends PureComponent {
 
         const suggestions = flatCategories(
           suggestedCategories,
-          withMoreSuggestions && prevState.searchTerm ? [SUGGESTION_MORE] : []
+          withMoreSuggestions && prevState.searchTerm ? [MORE] : []
         )
 
         const cursor = +Boolean(withMoreSuggestions && suggestions.length)
@@ -238,7 +258,7 @@ class SearchWithSuggestions extends PureComponent {
       emptySuggestions,
       withMoreSuggestions
     } = this.props
-    const cursorItem = suggestions[cursor]
+    const cursorSuggestion = suggestions[cursor]
     return (
       <div className={cx(styles.wrapper, className)}>
         <Search
@@ -256,11 +276,10 @@ class SearchWithSuggestions extends PureComponent {
               {...suggestionsProps}
             >
               <Suggestions
-                cursorItem={cursorItem}
+                cursorItem={cursorSuggestion && cursorSuggestion.item}
                 suggestedCategories={suggestedCategories}
                 isSearching={isSearching}
                 searchTerm={searchTerm}
-                emptySuggestions={emptySuggestions}
                 withMoreSuggestions={withMoreSuggestions}
                 onSuggestionSelect={this.onSuggestionSelect}
               />
