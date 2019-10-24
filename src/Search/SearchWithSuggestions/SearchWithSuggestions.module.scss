@@ -29,7 +29,7 @@ $border-color-night: #4a4a4a;
 
 .suggestion {
   padding: 6px 8px;
-  color: var(--waterloo);
+  color: var(--mirage);
   height: auto;
   min-height: 32px;
   text-align: left;
@@ -69,8 +69,4 @@ $border-color-night: #4a4a4a;
     border: none;
     padding-top: 0;
   }
-}
-
-.more {
-  color: var(--mirage);
 }

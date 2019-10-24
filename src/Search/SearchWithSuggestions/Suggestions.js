@@ -30,15 +30,17 @@ const Category = ({
   items,
   suggestionContent,
   cursorItem,
-  onSuggestionSelect
+  onSuggestionSelect,
+  classes = {}
 }) => (
   <>
-    {title && <h3 className={styles.title}>{title}</h3>}
+    {title && <h3 className={cx(styles.title, classes.title)}>{title}</h3>}
     {items.map((suggestion, index) => (
       <Suggestion
         key={index}
         isActive={suggestion === cursorItem}
         onClick={() => onSuggestionSelect({ category: id, item: suggestion })}
+        className={classes.suggestion}
       >
         {suggestionContent(suggestion)}
       </Suggestion>
@@ -60,7 +62,6 @@ const Suggestions = ({
         <Suggestion
           isActive={SUGGESTION_MORE_ITEM === cursorItem}
           onClick={() => onSuggestionSelect(MORE)}
-          className={styles.more}
         >
           View all results for "{searchTerm}"
         </Suggestion>

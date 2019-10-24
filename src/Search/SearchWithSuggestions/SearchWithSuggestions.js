@@ -158,12 +158,17 @@ class SearchWithSuggestions extends PureComponent {
                   maxSuggestions = commonMaxSuggestions,
                   ...rest
                 }) => {
+                  const filteredItems = items.filter(
+                    predicate(prevState.searchTerm)
+                  )
+
+                  if (sorter) {
+                    filteredItems.sort(sorter)
+                  }
+
                   return {
                     ...rest,
-                    items: items
-                      .filter(predicate(prevState.searchTerm))
-                      .sort(sorter)
-                      .slice(0, maxSuggestions)
+                    items: filteredItems.slice(0, maxSuggestions)
                   }
                 }
               )
