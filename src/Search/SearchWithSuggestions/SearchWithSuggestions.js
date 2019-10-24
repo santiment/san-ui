@@ -94,17 +94,6 @@ class SearchWithSuggestions extends PureComponent {
     isSearching: false
   }
 
-  componentDidMount () {
-    const { emptySuggestions, defaultValue } = this.props
-    if (emptySuggestions && !defaultValue) {
-      const suggestions = flatCategories(emptySuggestions, [])
-      this.setState({
-        suggestions,
-        suggestedCategories: emptySuggestions
-      })
-    }
-  }
-
   componentWillUnmount () {
     clearTimeout(debounceTimer)
     window.removeEventListener('keydown', this.onKeyDown)
