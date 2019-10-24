@@ -1,6 +1,6 @@
 import React, { Fragment, useRef, useLayoutEffect } from 'react'
 import cx from 'classnames'
-import { SUGGESTION_MORE } from './SearchWithSuggestions'
+import { MORE, SUGGESTION_MORE_ITEM } from './SearchWithSuggestions'
 import Button from '../../Button'
 import styles from './SearchWithSuggestions.module.scss'
 
@@ -26,6 +26,7 @@ const Suggestion = ({ isActive, className, ...props }) => {
 
 const Category = ({
   title,
+  id = title,
   items,
   suggestionContent,
   cursorItem,
@@ -37,7 +38,7 @@ const Category = ({
       <Suggestion
         key={index}
         isActive={suggestion === cursorItem}
-        onClick={() => onSuggestionSelect(suggestion)}
+        onClick={() => onSuggestionSelect({ category: id, item: suggestion })}
       >
         {suggestionContent(suggestion)}
       </Suggestion>
@@ -57,8 +58,8 @@ const Suggestions = ({
     <>
       {searchTerm && withMoreSuggestions && (
         <Suggestion
-          isActive={SUGGESTION_MORE === cursorItem}
-          onClick={() => this.onSuggestionSelect(SUGGESTION_MORE)}
+          isActive={SUGGESTION_MORE_ITEM === cursorItem}
+          onClick={() => onSuggestionSelect(MORE)}
           className={styles.more}
         >
           View all results for "{searchTerm}"

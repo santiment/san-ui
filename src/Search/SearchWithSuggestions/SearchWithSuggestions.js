@@ -8,9 +8,10 @@ import { flatCategories } from './utils'
 import styles from './SearchWithSuggestions.module.scss'
 
 export const SUGGESTION_MORE = 'SUGGESTION_MORE'
-const MORE = {
-  category: 'more',
-  item: SUGGESTION_MORE
+export const SUGGESTION_MORE_ITEM = 'SUGGESTION_MORE_ITEM'
+export const MORE = {
+  category: SUGGESTION_MORE,
+  item: SUGGESTION_MORE_ITEM
 }
 
 let debounceTimer
