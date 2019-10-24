@@ -50,24 +50,12 @@ const Suggestions = ({
   isSearching,
   suggestedCategories,
   cursorItem,
-  emptySuggestions,
   withMoreSuggestions,
   onSuggestionSelect
 }) => {
-  if (!searchTerm && emptySuggestions) {
-    return emptySuggestions.map((category, index) => (
-      <Category
-        key={category.title + index}
-        {...category}
-        cursorItem={cursorItem}
-        onSuggestionSelect={onSuggestionSelect}
-      />
-    ))
-  }
-
   return suggestedCategories.length > 0 ? (
     <>
-      {withMoreSuggestions && (
+      {searchTerm && withMoreSuggestions && (
         <Suggestion
           isActive={SUGGESTION_MORE === cursorItem}
           onClick={() => this.onSuggestionSelect(SUGGESTION_MORE)}
