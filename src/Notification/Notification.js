@@ -21,6 +21,8 @@ const Notification = ({
   variant,
   onClose,
   actions,
+  closeBtn,
+  classes,
   ...rest
 }) => (
   <Panel
@@ -39,10 +41,14 @@ const Notification = ({
         width={22}
         height={22}
       />
-      <div className={styles.title}>{title}</div>
-      <Icon type='close' onClick={onClose} className={styles.closeIcon} />
+      <div className={cx(styles.title, classes.title)}>{title}</div>
+      {closeBtn && (
+        <Icon type='close' onClick={onClose} className={styles.closeIcon} />
+      )}
     </div>
-    {description && <div className={styles.content}>{description}</div>}
+    {description && (
+      <div className={cx(styles.content, classes.content)}>{description}</div>
+    )}
     {actions && (
       <div className={styles.content}>
         {actions.map(({ label, onClick }) => (
@@ -59,10 +65,15 @@ Notification.propTypes = {
   className: PropTypes.string,
   description: PropTypes.node,
   solidFill: PropTypes.bool,
+  closeBtn: PropTypes.bool,
   titleIconName: PropTypes.string,
   onClose: PropTypes.func,
   variant: PropTypes.oneOf(['info', 'warning', 'success', 'error']),
   title: PropTypes.string.isRequired,
+  classes: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string
+  }),
   actions: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
@@ -73,7 +84,9 @@ Notification.propTypes = {
 
 Notification.defaultProps = {
   onClose: () => {},
-  variant: 'info'
+  variant: 'info',
+  classes: {},
+  closeBtn: true
 }
 
 export default Notification

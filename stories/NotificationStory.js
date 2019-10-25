@@ -66,6 +66,12 @@ const notifications = [
     description: 'This is a simple text description',
     title: 'Any',
     actions: []
+  },
+  {
+    id: 11,
+    title: 'Notification without close button',
+    variant: 'info',
+    closeBtn: false
   }
 ]
 
