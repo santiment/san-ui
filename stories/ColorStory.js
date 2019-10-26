@@ -12,8 +12,9 @@ const darks = [
   'bali-hai',
   'jungle-green-dark',
   'jungle-green-dark-2',
+  'jungle-green-dark-3',
   'jungle-green-a-dark',
-  'persimmom-dark',
+  'persimmon-dark',
   'lima-dark',
   'texas-rose-dark',
   'dodger-blue-dark',
@@ -24,6 +25,7 @@ const darks = [
 const breaksAfter = [
   'rhino',
   'bali-hai',
+  'jungle-green-accent',
   'jungle-green-a-dark',
   'texas-rose-dark',
   'persimmon-dark',
