@@ -21,7 +21,7 @@ const Notification = ({
   variant,
   onClose,
   actions,
-  closeBtn,
+  hasCloseBtn,
   classes,
   ...rest
 }) => (
@@ -42,7 +42,7 @@ const Notification = ({
         height={22}
       />
       <div className={cx(styles.title, classes.title)}>{title}</div>
-      {closeBtn && (
+      {hasCloseBtn && (
         <Icon type='close' onClick={onClose} className={styles.closeIcon} />
       )}
     </div>
@@ -65,7 +65,7 @@ Notification.propTypes = {
   className: PropTypes.string,
   description: PropTypes.node,
   solidFill: PropTypes.bool,
-  closeBtn: PropTypes.bool,
+  hasCloseBtn: PropTypes.bool,
   titleIconName: PropTypes.string,
   onClose: PropTypes.func,
   variant: PropTypes.oneOf(['info', 'warning', 'success', 'error']),
@@ -86,7 +86,7 @@ Notification.defaultProps = {
   onClose: () => {},
   variant: 'info',
   classes: {},
-  closeBtn: true
+  hasCloseBtn: true
 }
 
 export default Notification

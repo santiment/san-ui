@@ -71,7 +71,7 @@ const notifications = [
     id: 11,
     title: 'Notification without close button',
     variant: 'info',
-    closeBtn: false
+    hasCloseBtn: false
   }
 ]
 
