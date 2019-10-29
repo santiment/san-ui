@@ -81,6 +81,10 @@
   --malibu: #{$malibu}; // NEW
   --malibu-hover: #{$malibu-hover}; // NEW
   --malibu-light: #{$malibu-light}; // NEW
+
+  // bright-sun
+  --bright-sun: #{$bright-sun};// NEW
+  --bright-sun-hover: #{$bright-sun-hover}; // NEW
 }
 
 :global(.night-mode) {
