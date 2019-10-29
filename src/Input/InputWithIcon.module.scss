@@ -18,27 +18,27 @@
   }
 }
 
-.disabled {
-  & .icon {
-    fill: var(--mystic);
-  }
-
-  &:hover .icon {
-    fill: var(--mystic);
-  }
-}
-
-.error {
-  &:hover .icon {
-    fill: var(--casper);
-  }
-}
-
 .wrapper {
   position: relative;
 
   &:hover .icon {
     fill: var(--green);
+  }
+
+  &.disabled {
+    & .icon {
+      fill: var(--mystic);
+    }
+
+    &:hover .icon {
+      fill: var(--mystic);
+    }
+  }
+
+  &.error {
+    &:hover .icon {
+      fill: var(--casper);
+    }
   }
 }
 
