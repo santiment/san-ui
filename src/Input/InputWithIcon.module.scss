@@ -1,36 +1,53 @@
 @import '../variables.scss';
 
-.wrapper {
-    position: relative;
+.icon {
+  box-sizing: content-box;
+  width: 14px;
+  position: absolute;
+  top: 0;
+  padding: 0 10px;
+  height: 100%;
+  fill: var(--casper);
 
-    &:hover .icon {
-        fill: var(--green);
-    }
+  &.left {
+    left: 0;
+  }
+
+  &.right {
+    right: 0;
+  }
 }
 
-.icon {
-    box-sizing: content-box;
-    width: 14px;
-    position: absolute;
-    top: 0;
-    padding: 0 10px;
-    height: 100%;
-    fill: var(--grey-dark);
+.disabled {
+  & .icon {
+    fill: var(--mystic);
+  }
 
-    &.left {
-        left: 0;
-    }
-    &.right {
-        right: 0;
-    }
+  &:hover .icon {
+    fill: var(--mystic);
+  }
+}
+
+.error {
+  &:hover .icon {
+    fill: var(--casper);
+  }
+}
+
+.wrapper {
+  position: relative;
+
+  &:hover .icon {
+    fill: var(--green);
+  }
 }
 
 .input {
-    &.left {
-        padding-left: 30px;
-    }
+  &.left {
+    padding-left: 30px;
+  }
 
-    &.right {
-        padding-right: 30px;
-    }
+  &.right {
+    padding-right: 30px;
+  }
 }
