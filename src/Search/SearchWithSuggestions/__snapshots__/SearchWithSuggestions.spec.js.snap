@@ -50,17 +50,17 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
         value="Big"
       >
         <div
-          className=" wrapper"
+          className="wrapper"
         >
           <Input
-            className=" input undefined"
+            className="input undefined"
             onChange={[Function]}
             onFocus={[Function]}
             placeholder="Type to search..."
             value="Big"
           >
             <input
-              className="input    input undefined"
+              className="input   input undefined"
               onChange={[Function]}
               onFocus={[Function]}
               placeholder="Type to search..."
