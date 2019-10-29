@@ -28,6 +28,7 @@ const breaksAfter = [
   'jungle-green-accent',
   'jungle-green-a-dark',
   'texas-rose-dark',
+  'bright-sun-hover',
   'persimmon-dark',
   'lima-dark',
   'sheets-hover',
