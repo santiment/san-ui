@@ -13,7 +13,7 @@
   padding: 6px 10px;
   border-radius: 4px;
   height: 32px;
-  color: var(--mirage);
+  color: var(--rhino);
 
   @include responsive('phone-xs', 'phone') {
     @include text('body-2');
@@ -28,6 +28,11 @@
 
   &[disabled] {
     color: var(--mystic);
+    background-color: var(--athens);
+
+    &:hover {
+      border-color: var(--porcelain);
+    }
   }
 
   &:focus {
