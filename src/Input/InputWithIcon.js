@@ -8,7 +8,6 @@ import styles from './InputWithIcon.module.scss'
 const InputWithIcon = ({
   icon,
   iconPosition,
-  disabled,
   isError,
   className,
   inputClassName,
@@ -16,17 +15,9 @@ const InputWithIcon = ({
   ...props
 }) => {
   return (
-    <div
-      className={cx(
-        className,
-        styles.wrapper,
-        disabled && styles.disabled,
-        isError && styles.error
-      )}
-    >
+    <div className={cx(className, styles.wrapper, isError && styles.error)}>
       <Input
         className={cx(inputClassName, styles.input, styles[iconPosition])}
-        disabled={disabled}
         isError={isError}
         {...props}
       />
@@ -43,7 +34,6 @@ const InputWithIcon = ({
 InputWithIcon.propTypes = {
   icon: PropTypes.string.isRequired,
   iconPosition: PropTypes.oneOf(['left', 'right']),
-  disabled: PropTypes.bool,
   isError: PropTypes.bool,
   className: PropTypes.string,
   inputClassName: PropTypes.string,

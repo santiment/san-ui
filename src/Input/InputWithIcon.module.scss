@@ -22,24 +22,12 @@
   position: relative;
 
   &:hover .icon {
-    fill: var(--green);
+    fill: var(--jungle-green);
   }
+}
 
-  &.disabled {
-    & .icon {
-      fill: var(--mystic);
-    }
-
-    &:hover .icon {
-      fill: var(--mystic);
-    }
-  }
-
-  &.error {
-    &:hover .icon {
-      fill: var(--casper);
-    }
-  }
+.error:hover .icon {
+  fill: var(--casper);
 }
 
 .input {
@@ -49,5 +37,13 @@
 
   &.right {
     padding-right: 30px;
+  }
+
+  &[disabled] + .icon {
+    fill: var(--mystic);
+  }
+
+  &[disabled]:hover + .icon {
+    fill: var(--mystic);
   }
 }
