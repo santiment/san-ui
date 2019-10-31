@@ -34,6 +34,8 @@ class SearchWithSuggestions extends PureComponent {
     ).isRequired,
     onSuggestionSelect: PropTypes.func,
     onSuggestionsUpdate: PropTypes.func,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
     maxSuggestions: PropTypes.number,
     iconPosition: PropTypes.oneOf(['left', 'right']),
     debounceTime: PropTypes.number,
@@ -196,17 +198,17 @@ class SearchWithSuggestions extends PureComponent {
 
   onFocus = () => {
     window.addEventListener('keydown', this.onKeyDown)
-    this.setState({ isFocused: true })
+    this.setState({ isFocused: true }, this.props.onFocus)
   }
 
   onBlur = () => {
     window.removeEventListener('keydown', this.onKeyDown)
-    this.setState({ isFocused: false })
+    this.setState({ isFocused: false }, this.props.onBlur)
   }
 
   onKeyDown = evt => {
-    const { suggestions, cursor, searchTerm } = this.state
-    const { key, currentTarget } = evt
+    const { suggestions, cursor } = this.state
+    const { key } = evt
 
     let newCursor = cursor
     let selectedSuggestion

@@ -113,6 +113,8 @@ stories.add('Suggestions (With suggestions on empty input)', () => (
       onSuggestionSelect={action('selected')}
       iconPosition='left'
       maxSuggestions={5}
+      onFocus={action('onFocus')}
+      onBlur={action('onBlur')}
       emptySuggestions={[
         {
           title: 'Recently searched',
