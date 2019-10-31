@@ -46,4 +46,4 @@ Icon.propTypes = {
   type: PropTypes.oneOf(Object.keys(icons)).isRequired
 }
 
-export default Icon
+export default (process.env.NODE_ENV === 'test' ? () => <svg /> : Icon)

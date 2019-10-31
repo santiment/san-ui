@@ -31,47 +31,89 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
   value=""
   withMoreSuggestions={true}
 >
-  <div
-    className="wrapper"
+  <Search
+    className=""
+    onChange={[Function]}
+    onFocus={[Function]}
+    wrapperRef={
+      Object {
+        "current": <div
+          class="wrapper wrapper"
+        >
+          <input
+            class="input   input input left"
+            placeholder="Type to search..."
+            type="text"
+            value="Big"
+          />
+          <svg />
+          <svg />
+        </div>,
+      }
+    }
   >
-    <Search
+    <InputWithIcon
+      className="wrapper"
+      icon="search-small"
+      iconClassName="icon"
+      iconPosition="left"
+      inputClassName="input"
       onChange={[Function]}
       onFocus={[Function]}
+      placeholder="Type to search..."
       value="Big"
-    >
-      <InputWithIcon
-        className=""
-        icon="search-small"
-        iconClassName="icon"
-        inputClassName=""
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="Type to search..."
-        value="Big"
-      >
-        <div
-          className="wrapper"
-        >
-          <Input
-            className="input undefined"
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="Type to search..."
-            value="Big"
+      wrapperRef={
+        Object {
+          "current": <div
+            class="wrapper wrapper"
           >
             <input
-              className="input   input undefined"
-              onChange={[Function]}
-              onFocus={[Function]}
+              class="input   input input left"
               placeholder="Type to search..."
               type="text"
               value="Big"
             />
-          </Input>
-        </div>
-      </InputWithIcon>
-    </Search>
-  </div>
+            <svg />
+            <svg />
+          </div>,
+        }
+      }
+    >
+      <div
+        className="wrapper wrapper"
+      >
+        <Input
+          className="input input left"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Type to search..."
+          value="Big"
+        >
+          <input
+            className="input   input input left"
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="Type to search..."
+            type="text"
+            value="Big"
+          />
+        </Input>
+        <Component
+          className="icon icon left"
+          type="search-small"
+        >
+          <svg />
+        </Component>
+        <Component
+          className="clear"
+          onClick={[Function]}
+          type="close-medium"
+        >
+          <svg />
+        </Component>
+      </div>
+    </InputWithIcon>
+  </Search>
 </SearchWithSuggestions>
 `;
 
