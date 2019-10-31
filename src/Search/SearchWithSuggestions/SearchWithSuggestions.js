@@ -67,14 +67,14 @@ class SearchWithSuggestions extends PureComponent {
     { lastValue, searchTerm, suggestedCategories, isSearching }
   ) {
     if (
-      emptySuggestions &&
       !searchTerm &&
       !isSearching &&
       emptySuggestions !== suggestedCategories
     ) {
+      const checkedEmptySuggestions = emptySuggestions || []
       return {
-        suggestions: flatCategories(emptySuggestions, []),
-        suggestedCategories: emptySuggestions
+        suggestions: flatCategories(checkedEmptySuggestions, []),
+        suggestedCategories: checkedEmptySuggestions
       }
     }
 
@@ -88,6 +88,8 @@ class SearchWithSuggestions extends PureComponent {
     return null
   }
 
+  searchRef = React.createRef()
+
   state = {
     suggestions: [],
     searchTerm: this.props.defaultValue,
@@ -100,6 +102,7 @@ class SearchWithSuggestions extends PureComponent {
   componentWillUnmount () {
     clearTimeout(debounceTimer)
     window.removeEventListener('keydown', this.onKeyDown)
+    document.removeEventListener('click', this.handleClickAway)
   }
 
   onInputChange = ({ currentTarget }) => {
@@ -196,12 +199,20 @@ class SearchWithSuggestions extends PureComponent {
     )
   }, this.props.debounceTime)
 
+  handleClickAway = ({ target }) => {
+    if (!this.searchRef.current.contains(target)) {
+      this.onBlur()
+    }
+  }
+
   onFocus = () => {
+    document.addEventListener('click', this.handleClickAway)
     window.addEventListener('keydown', this.onKeyDown)
     this.setState({ isFocused: true }, this.props.onFocus)
   }
 
   onBlur = () => {
+    document.removeEventListener('click', this.handleClickAway)
     window.removeEventListener('keydown', this.onKeyDown)
     this.setState({ isFocused: false }, this.props.onBlur)
   }
@@ -257,35 +268,29 @@ class SearchWithSuggestions extends PureComponent {
     } = this.props
     const cursorSuggestion = suggestions[cursor]
     return (
-      <div className={cx(styles.wrapper, className)}>
+      <div className={cx(styles.wrapper, className)} ref={this.searchRef}>
         <Search
           iconPosition={iconPosition}
           value={searchTerm}
           onFocus={this.onFocus}
-          onBlur={
-            isFocused && suggestions.length === 0 ? this.onBlur : undefined
-          }
           onChange={this.onInputChange}
           {...inputProps}
         />
         {isFocused && (emptySuggestions || searchTerm) && (
-          <>
-            <Panel
-              variant='modal'
-              className={styles.suggestions}
-              {...suggestionsProps}
-            >
-              <Suggestions
-                cursorItem={cursorSuggestion && cursorSuggestion.item}
-                suggestedCategories={suggestedCategories}
-                isSearching={isSearching}
-                searchTerm={searchTerm}
-                withMoreSuggestions={withMoreSuggestions}
-                onSuggestionSelect={this.onSuggestionSelect}
-              />
-            </Panel>
-            <div className={styles.blur} onClick={this.onBlur} />
-          </>
+          <Panel
+            variant='modal'
+            className={styles.suggestions}
+            {...suggestionsProps}
+          >
+            <Suggestions
+              cursorItem={cursorSuggestion && cursorSuggestion.item}
+              suggestedCategories={suggestedCategories}
+              isSearching={isSearching}
+              searchTerm={searchTerm}
+              withMoreSuggestions={withMoreSuggestions}
+              onSuggestionSelect={this.onSuggestionSelect}
+            />
+          </Panel>
         )}
       </div>
     )
