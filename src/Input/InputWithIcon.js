@@ -12,10 +12,15 @@ const InputWithIcon = ({
   className,
   inputClassName,
   iconClassName,
+  children,
+  wrapperRef,
   ...props
 }) => {
   return (
-    <div className={cx(className, styles.wrapper, isError && styles.error)}>
+    <div
+      className={cx(className, styles.wrapper, isError && styles.error)}
+      ref={wrapperRef}
+    >
       <Input
         className={cx(inputClassName, styles.input, styles[iconPosition])}
         isError={isError}
@@ -27,6 +32,7 @@ const InputWithIcon = ({
           className={cx(iconClassName, styles.icon, styles[iconPosition])}
         />
       )}
+      {children}
     </div>
   )
 }
