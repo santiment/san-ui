@@ -76,13 +76,14 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
 `;
 
 exports[`SearchWithSuggestions should render correctly 1`] = `
-<div
-  className="wrapper"
->
-  <Search
-    onChange={[Function]}
-    onFocus={[Function]}
-    value=""
-  />
-</div>
+<Search
+  className=""
+  onChange={[Function]}
+  onFocus={[Function]}
+  wrapperRef={
+    Object {
+      "current": null,
+    }
+  }
+/>
 `;
