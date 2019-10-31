@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import cx from 'classnames'
 import PropTypes from 'prop-types'
 import Suggestions from './Suggestions'
 import Panel from '../../Panel'
@@ -190,7 +189,6 @@ class SearchWithSuggestions extends PureComponent {
   }, this.props.debounceTime)
 
   handleClickAway = ({ target }) => {
-    console.log(this.searchRef.current, target)
     if (!this.searchRef.current.contains(target)) {
       this.onBlur()
     }
