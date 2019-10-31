@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import cx from 'classnames'
 import PropTypes from 'prop-types'
 import Suggestions from './Suggestions'
 import Panel from '../../Panel'
@@ -37,7 +36,6 @@ class SearchWithSuggestions extends PureComponent {
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     maxSuggestions: PropTypes.number,
-    iconPosition: PropTypes.oneOf(['left', 'right']),
     debounceTime: PropTypes.number,
     inputProps: PropTypes.object,
     suggestionsProps: PropTypes.object,
@@ -49,7 +47,6 @@ class SearchWithSuggestions extends PureComponent {
 
   static defaultProps = {
     maxSuggestions: 5,
-    iconPosition: undefined,
     onSuggestionSelect: () => {},
     onSuggestionsUpdate: () => {},
     inputProps: {},
@@ -64,7 +61,7 @@ class SearchWithSuggestions extends PureComponent {
 
   static getDerivedStateFromProps (
     { value, emptySuggestions },
-    { lastValue, searchTerm, suggestedCategories, isSearching }
+    { searchTerm, suggestedCategories, isSearching }
   ) {
     if (
       !searchTerm &&
@@ -78,13 +75,6 @@ class SearchWithSuggestions extends PureComponent {
       }
     }
 
-    if (lastValue !== value) {
-      return {
-        searchTerm: value,
-        lastValue: value
-      }
-    }
-
     return null
   }
 
@@ -93,7 +83,6 @@ class SearchWithSuggestions extends PureComponent {
   state = {
     suggestions: [],
     searchTerm: this.props.defaultValue,
-    lastValue: this.props.value,
     isFocused: false,
     cursor: 0,
     isSearching: false
@@ -105,11 +94,11 @@ class SearchWithSuggestions extends PureComponent {
     document.removeEventListener('click', this.handleClickAway)
   }
 
-  onInputChange = ({ currentTarget }) => {
+  onInputChange = searchTerm => {
     this.setState(
       prevState => ({
         ...prevState,
-        searchTerm: currentTarget.value,
+        searchTerm,
         isSearching: true
       }),
       this.filterData
@@ -259,7 +248,6 @@ class SearchWithSuggestions extends PureComponent {
       suggestions
     } = this.state
     const {
-      iconPosition,
       inputProps = {},
       suggestionsProps = {},
       className,
@@ -268,14 +256,13 @@ class SearchWithSuggestions extends PureComponent {
     } = this.props
     const cursorSuggestion = suggestions[cursor]
     return (
-      <div className={cx(styles.wrapper, className)} ref={this.searchRef}>
-        <Search
-          iconPosition={iconPosition}
-          value={searchTerm}
-          onFocus={this.onFocus}
-          onChange={this.onInputChange}
-          {...inputProps}
-        />
+      <Search
+        className={className}
+        onFocus={this.onFocus}
+        onChange={this.onInputChange}
+        wrapperRef={this.searchRef}
+        {...inputProps}
+      >
         {isFocused && (emptySuggestions || searchTerm) && (
           <Panel
             variant='modal'
@@ -292,7 +279,7 @@ class SearchWithSuggestions extends PureComponent {
             />
           </Panel>
         )}
-      </div>
+      </Search>
     )
   }
 }

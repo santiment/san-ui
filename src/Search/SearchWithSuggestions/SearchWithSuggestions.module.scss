@@ -1,12 +1,5 @@
 @import '../../mixins';
 
-$border-color-night: #4a4a4a;
-
-.wrapper {
-  position: relative;
-  z-index: 1;
-}
-
 .suggestions {
   position: absolute;
   top: 100%;

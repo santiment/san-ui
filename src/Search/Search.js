@@ -1,16 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
+import cx from 'classnames'
+import Icon from '../Icon'
 import { InputWithIcon } from '../Input'
 import styles from './Search.module.scss'
 
-const Search = props => {
+const Search = ({
+  children,
+  className,
+  onChange,
+  defaultValue = '',
+  ...props
+}) => {
+  const [input, setInput] = useState(defaultValue)
+
+  function onInputChange (evt) {
+    const { value } = evt.currentTarget
+    setInput(value)
+    onChange(value, evt)
+  }
+
+  function onClearClick () {
+    setInput('')
+    onChange('')
+  }
+
   return (
     <InputWithIcon
       icon='search-small'
+      inputClassName={styles.input}
       iconClassName={styles.icon}
       placeholder='Type to search...'
+      iconPosition='left'
+      className={cx(styles.wrapper, className)}
+      value={input}
+      onChange={onInputChange}
       {...props}
-    />
+    >
+      {input && (
+        <Icon
+          type='close-medium'
+          className={styles.clear}
+          onClick={onClearClick}
+        />
+      )}
+      {children}
+    </InputWithIcon>
   )
+}
+
+Search.defaultProps = {
+  onChange: () => {}
 }
 
 export default Search

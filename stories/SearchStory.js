@@ -22,43 +22,10 @@ const watchlists = ['Easy money', 'Test portfolio', 'Test 123', 'Money money']
 const simplePredicate = searchTerm => item =>
   item.toUpperCase().includes(searchTerm.toUpperCase())
 
-class Test extends React.PureComponent {
-  state = {
-    value: 'Bibox Token'
-  }
-
-  render () {
-    return (
-      <SearchWithSuggestions
-        data={[
-          {
-            title: 'Assets',
-            items: assets,
-            predicate: simplePredicate,
-            suggestionContent: suggestion => suggestion
-          }
-        ]}
-        onSuggestionSelect={suggestion => {
-          this.setState({ value: suggestion })
-          action('selected')(suggestion)
-        }}
-        iconPosition='left'
-        maxSuggestions={5}
-        dontResetStateAfterSelection
-        value={'000=' + this.state.value}
-      />
-    )
-  }
-}
-
 stories.add('Simple', () => (
   <ColorModeComparison>
-    <Search defaultValue='No icon' />
-    <Search iconPosition='left' defaultValue='Left icon' />
-    <Search iconPosition='right' defaultValue='Right icon' />
+    <Search defaultValue='With default input' />
     <Search />
-    <Search iconPosition='left' />
-    <Search iconPosition='right' />
   </ColorModeComparison>
 ))
 
@@ -76,6 +43,8 @@ stories.add('Suggestions', () => (
       onSuggestionSelect={action('selected')}
       iconPosition='left'
       maxSuggestions={5}
+      onFocus={action('onFocus')}
+      onBlur={action('onBlur')}
     />
   </ColorModeComparison>
 ))
@@ -95,6 +64,8 @@ stories.add('Suggestions (no "more" option) ', () => (
       iconPosition='left'
       maxSuggestions={5}
       withMoreSuggestions={false}
+      onFocus={action('onFocus')}
+      onBlur={action('onBlur')}
     />
   </ColorModeComparison>
 ))
@@ -146,6 +117,8 @@ stories.add('Suggestions (multiple categories)', () => (
       onSuggestionSelect={action('selected')}
       iconPosition='left'
       maxSuggestions={5}
+      onFocus={action('onFocus')}
+      onBlur={action('onBlur')}
     />
   </ColorModeComparison>
 ))
@@ -165,6 +138,8 @@ stories.add('Suggestions (Keep state after suggestion)', () => (
       iconPosition='left'
       maxSuggestions={5}
       dontResetStateAfterSelection
+      onFocus={action('onFocus')}
+      onBlur={action('onBlur')}
     />
     <br />
     <div>Setting input value after suggestion selection</div>
@@ -181,6 +156,8 @@ stories.add('Suggestions (Keep state after suggestion)', () => (
       iconPosition='left'
       maxSuggestions={5}
       dontResetStateAfterSelection
+      onFocus={action('onFocus')}
+      onBlur={action('onBlur')}
     />
   </ColorModeComparison>
 ))
@@ -201,13 +178,9 @@ stories.add('Suggestions (Sorting by length)', () => (
       iconPosition='left'
       maxSuggestions={5}
       dontResetStateAfterSelection
+      onFocus={action('onFocus')}
+      onBlur={action('onBlur')}
     />
-  </ColorModeComparison>
-))
-
-stories.add('Suggestions derived value', () => (
-  <ColorModeComparison>
-    <Test />
   </ColorModeComparison>
 ))
 

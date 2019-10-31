@@ -1,3 +1,25 @@
+.wrapper {
+  position: relative;
+}
+
+.input {
+  padding-right: 25px;
+}
+
 .icon {
-    width: 12px;
+  width: 12px;
+}
+
+.clear {
+  fill: var(--mirage);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 0 12px 0 10px;
+  cursor: pointer;
+
+  &:hover {
+    fill: var(--jungle-green);
+  }
 }
