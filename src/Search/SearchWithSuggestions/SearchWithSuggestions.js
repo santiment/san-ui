@@ -262,6 +262,9 @@ class SearchWithSuggestions extends PureComponent {
           iconPosition={iconPosition}
           value={searchTerm}
           onFocus={this.onFocus}
+          onBlur={
+            isFocused && suggestions.length === 0 ? this.onBlur : undefined
+          }
           onChange={this.onInputChange}
           {...inputProps}
         />

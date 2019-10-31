@@ -39,6 +39,10 @@
     padding-right: 30px;
   }
 
+  &:focus + .icon {
+    fill: var(--mirage);
+  }
+
   &[disabled] + .icon {
     fill: var(--mystic);
   }
