@@ -11,6 +11,7 @@
 }
 
 .clear {
+  box-sizing: content-box;
   fill: var(--mirage);
   position: absolute;
   height: 100%;
