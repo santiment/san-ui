@@ -184,3 +184,15 @@ In order for \`Tooltip\` to work, component hierarchy should look like this:
       test afisudhfoaidsufh content
     </Example>
   ))
+  .add('Tooltip with offsetX = 100 and offsetY = 100', () => (
+    <Example
+      shown
+      position='bottom'
+      align='start'
+      offsetX={100}
+      offsetY={100}
+      trigger={<Icon type='cloud-big' />}
+    >
+      test afisudhfoaidsufh content
+    </Example>
+  ))

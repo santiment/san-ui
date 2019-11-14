@@ -51,9 +51,11 @@ class TooltipContent extends PureComponent {
     if (position === 'top' || position === 'bottom') {
       top +=
         (position === 'top' ? -tooltipHeight : triggerHeight) + sign * offsetY
-      left += calculateAlignment(triggerWidth, tooltipWidth, align)
+      left +=
+        calculateAlignment(triggerWidth, tooltipWidth, align) + sign * offsetX
     } else {
-      top += calculateAlignment(triggerHeight, tooltipHeight, align)
+      top +=
+        calculateAlignment(triggerHeight, tooltipHeight, align) + sign * offsetY
       left +=
         (position === 'left' ? -tooltipWidth : triggerWidth) + sign * offsetX
     }
