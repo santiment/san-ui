@@ -180,6 +180,9 @@ stories.add('Suggestions (Sorting by length)', () => (
       dontResetStateAfterSelection
       onFocus={action('onFocus')}
       onBlur={action('onBlur')}
+      inputProps={{
+        icon: 'search'
+      }}
     />
   </ColorModeComparison>
 ))
