@@ -9,7 +9,7 @@ const Search = ({
   className,
   onChange,
   defaultValue = '',
-  icon = 'search-small',
+  icon,
   ...props
 }) => {
   const [input, setInput] = useState(defaultValue)
@@ -50,7 +50,8 @@ const Search = ({
 }
 
 Search.defaultProps = {
-  onChange: () => {}
+  onChange: () => {},
+  icon: 'search-small'
 }
 
 export default Search
