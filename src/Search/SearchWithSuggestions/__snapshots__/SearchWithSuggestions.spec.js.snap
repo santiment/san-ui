@@ -33,6 +33,7 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
 >
   <Search
     className=""
+    icon="search-small"
     onChange={[Function]}
     onFocus={[Function]}
     wrapperRef={
@@ -120,6 +121,7 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
 exports[`SearchWithSuggestions should render correctly 1`] = `
 <Search
   className=""
+  icon="search-small"
   onChange={[Function]}
   onFocus={[Function]}
   wrapperRef={
