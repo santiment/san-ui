@@ -63,33 +63,11 @@
   padding: 0 20px 20px;
 
   @include responsive('phone-xs', 'phone') {
-    padding: 0;
+    padding: 16px;
   }
 }
 
 .approve {
-  @include responsive('phone-xs', 'phone') {
-    color: var(--jungle-green);
-    border: none;
-    background: none !important;
-
-    &:hover {
-      color: var(--jungle-green) !important;
-      border: none;
-      background: none !important;
-    }
-  }
-
-  &.disabled {
-    @include responsive('phone-xs', 'phone') {
-      background: none !important;
-
-      &:hover {
-        background: none !important;
-      }
-    }
-  }
-
   &.loading {
     color: var(--white) !important;
 
@@ -103,25 +81,7 @@
 
 .cancel {
   @include responsive('phone-xs', 'phone') {
-    color: var(--waterloo);
-
-    &:hover {
-      color: var(--waterloo);
-      border: none;
-      background: none;
-    }
-  }
-}
-
-.cancel,
-.approve {
-  @include responsive('phone-xs', 'phone') {
-    background: none;
-    border: none;
-    width: 50%;
-    display: block;
-    height: auto;
-    padding: 16px 12px;
+    display: none;
   }
 }
 

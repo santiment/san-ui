@@ -21,10 +21,20 @@
   background: var(--white);
   color: var(---btn-accent-color);
   fill: var(---btn-accent-color);
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     color: var(---btn-accent-color-hover);
     fill: var(---btn-accent-color-hover);
+  }
+
+  @include responsive('phone', 'phone-xs') {
+    height: 40px;
+    padding: 8px 20px;
+    width: 100%;
+    justify-content: center;
+
+    @include text('body-2');
   }
 }
 
