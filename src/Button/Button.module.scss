@@ -29,11 +29,6 @@
   }
 
   @include responsive('phone', 'phone-xs') {
-    height: 40px;
-    padding: 8px 20px;
-    width: 100%;
-    justify-content: center;
-
     @include text('body-2');
   }
 }
@@ -50,6 +45,13 @@
 
   --dot-bg: var(--white);
 
+  @include responsive('phone', 'phone-xs') {
+    height: 40px;
+    padding: 8px 20px;
+    width: 100%;
+    justify-content: center;
+  }
+
   &:hover {
     background: var(--btn-accent-color-hover);
     color: var(--white);
@@ -62,6 +64,13 @@
   border: 1px solid var(--btn-accent-color, var(--porcelain));
   color: var(--btn-accent-color, var(--mirage));
   fill: var(--btn-accent-color, var(--mirage));
+
+  @include responsive('phone', 'phone-xs') {
+    height: 40px;
+    padding: 8px 20px;
+    width: 100%;
+    justify-content: center;
+  }
 
   &:hover {
     color: var(--btn-accent-color-hover, var(--jungle-green-hover));
