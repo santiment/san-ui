@@ -8,14 +8,18 @@ export const SelectorItem = ({
   value = 'all',
   name = 'all',
   setFilter,
-  disabled = false
+  disabled = false,
+  className
 }) => (
   <div
-    className={cx({
-      [styles['btn']]: true,
-      [styles['selected']]: isSelected,
-      [styles['disabled']]: disabled
-    })}
+    className={cx(
+      {
+        [styles['btn']]: true,
+        [styles['selected']]: isSelected,
+        [styles['disabled']]: disabled
+      },
+      className
+    )}
     onClick={() => !disabled && setFilter(value)}
   >
     {name}
@@ -31,7 +35,8 @@ export class Selector extends Component {
     defaultSelected: undefined,
     options: [],
     disabled: false,
-    className: ''
+    className: '',
+    itemClassName: ''
   }
 
   static propTypes = {
@@ -40,6 +45,7 @@ export class Selector extends Component {
     onSelectOption: PropTypes.func,
     disabled: PropTypes.bool,
     className: PropTypes.string,
+    itemClassName: PropTypes.string,
     variant: PropTypes.oneOf(['border'])
   }
 
@@ -62,7 +68,8 @@ export class Selector extends Component {
       options,
       nameOptions = options,
       disabled,
-      className
+      className,
+      itemClassName
     } = this.props
 
     return (
@@ -81,6 +88,7 @@ export class Selector extends Component {
             value={option}
             setFilter={this.onSelectOption}
             disabled={disabled}
+            className={itemClassName}
           />
         ))}
       </div>
