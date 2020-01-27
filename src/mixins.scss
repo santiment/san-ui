@@ -95,7 +95,7 @@
     line-height: 66px;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
   }
 
@@ -104,7 +104,7 @@
     line-height: 44px;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
   }
 
@@ -113,7 +113,7 @@
     line-height: 40px;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
   }
 
@@ -122,7 +122,7 @@
     line-height: 30px;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
   }
 
@@ -137,7 +137,7 @@
       line-height: 26px;
 
       @if $mod == 'm' {
-        font-weight: bold;
+        font-weight: 500;
       }
     }
   }
@@ -147,7 +147,7 @@
     line-height: 24px;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
   }
 
@@ -156,7 +156,7 @@
     line-height: 20px;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
   }
 
@@ -165,7 +165,7 @@
     line-height: 18px;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
   }
 }
