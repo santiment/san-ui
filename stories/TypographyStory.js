@@ -93,7 +93,7 @@ const nodes = [
   }
 ]
 
-storiesOf('Label', module).add('Primary (Proxima Nova)', () => (
+storiesOf('Typography', module).add('Primary (Proxima Nova)', () => (
   <div>
     {nodes.map(({ type, boldness }, idx) => (
       <div key={idx} className={styles.line}>
