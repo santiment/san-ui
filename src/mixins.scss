@@ -5,7 +5,7 @@
 }
 
 @mixin text-normal {
-  font-family: Rubik, sans-serif;
+  font-family: 'Proxima Nova', sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 22px;
@@ -87,41 +87,57 @@
 }
 
 @mixin text($type, $mod: null) {
-  font-family: Rubik, sans-serif;
-  font-weight: 400;
+  font-family: 'Proxima Nova', sans-serif;
+  font-weight: normal;
 
   @if $type == 'h1' {
-    font-size: 52px;
-    line-height: 66px;
+    font-size: 48px;
+    line-height: 56px;
 
     @if $mod == 'm' {
+      font-weight: bold;
+    }
+
+    @if $mod == 'bold' {
       font-weight: bold;
     }
   }
 
   @if $type == 'h2' {
-    font-size: 38px;
-    line-height: 44px;
+    font-size: 40px;
+    line-height: 48px;
 
     @if $mod == 'm' {
+      font-weight: bold;
+    }
+
+    @if $mod == 'bold' {
       font-weight: bold;
     }
   }
 
   @if $type == 'h3' {
-    font-size: 28px;
+    font-size: 32px;
     line-height: 40px;
 
     @if $mod == 'm' {
       font-weight: bold;
     }
+
+    @if $mod == 'bold' {
+      font-weight: bold;
+    }
   }
 
   @if $type == 'h4' {
-    font-size: 22px;
-    line-height: 30px;
+    font-size: 24px;
+    line-height: 32px;
 
     @if $mod == 'm' {
+      font-weight: bold;
+    }
+
+    @if $mod == 'bold' {
       font-weight: bold;
     }
   }
@@ -137,7 +153,11 @@
       line-height: 26px;
 
       @if $mod == 'm' {
-        font-weight: bold;
+        font-weight: 600;
+      }
+
+      @if $mod == 'semibold' {
+        font-weight: 600;
       }
     }
   }
@@ -149,6 +169,10 @@
     @if $mod == 'm' {
       font-weight: bold;
     }
+
+    @if $mod == 'bold' {
+      font-weight: bold;
+    }
   }
 
   @if $type == 'body-3' {
@@ -158,6 +182,14 @@
     @if $mod == 'm' {
       font-weight: bold;
     }
+
+    @if $mod == 'm' {
+      font-weight: bold;
+    }
+
+    @if $mod == 'medium' {
+      font-weight: 500;
+    }
   }
 
   @if $type == 'caption' {
@@ -165,6 +197,27 @@
     line-height: 18px;
 
     @if $mod == 'm' {
+      font-weight: bold;
+    }
+
+    @if $mod == 'bold' {
+      font-weight: bold;
+    }
+
+    @if $mod == 'medium' {
+      font-weight: 500;
+    }
+  }
+
+  @if $type == 'tiny' {
+    font-size: 12px;
+    line-height: 18px;
+
+    @if $mod == 'medium' {
+      font-weight: 500;
+    }
+
+    @if $mod == 'bold' {
       font-weight: bold;
     }
   }
