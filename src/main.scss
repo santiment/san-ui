@@ -23,6 +23,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../static/ProximaNova-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
 @import './variables.scss';
 
 // --CSS VARS--
