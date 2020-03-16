@@ -60,12 +60,12 @@ const Dropdown = ({
         >
           {children ||
             options.map(option => {
-              const { index = option } = option
-              const { content = option } = option
+              const { index: selectedIndex = selected } = selected
+              const { index = option, content = option } = option
               return (
                 <DropdownItem
                   key={index}
-                  isActive={selected === index}
+                  isActive={selectedIndex === index}
                   option={option}
                   onSelect={onSelect}
                   className={classes.option}
