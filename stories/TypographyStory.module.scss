@@ -1,0 +1,92 @@
+@import '../src/mixins';
+
+.line {
+  border-top: 1px solid var(--porcelain);
+  height: 112px;
+  display: flex;
+  align-items: center;
+}
+
+.h1 {
+  @include text('h1');
+
+  &.bold {
+    @include text('h1', 'bold');
+  }
+}
+
+.h2 {
+  @include text('h2');
+
+  &.bold {
+    @include text('h2', 'bold');
+  }
+}
+
+.h3 {
+  @include text('h3');
+
+  &.bold {
+    @include text('h3', 'bold');
+  }
+}
+
+.h4 {
+  @include text('h4');
+
+  &.bold {
+    @include text('h4', 'bold');
+  }
+}
+
+.body-1 {
+  @include text('body-1');
+
+  &.semibold {
+    @include text('body-1', 'semibold');
+  }
+}
+
+.body-2 {
+  @include text('body-2');
+
+  &.bold {
+    @include text('body-2', 'bold');
+  }
+}
+
+.body-3 {
+  @include text('body-3');
+
+  &.medium {
+    @include text('body-3', 'medium');
+  }
+
+  &.bold {
+    @include text('body-3', 'bold');
+  }
+}
+
+.caption {
+  @include text('caption');
+
+  &.medium {
+    @include text('caption', 'medium');
+  }
+
+  &.bold {
+    @include text('caption', 'bold');
+  }
+}
+
+.tiny {
+  @include text('tiny');
+
+  &.medium {
+    @include text('tiny', 'medium');
+  }
+
+  &.bold {
+    @include text('tiny', 'bold');
+  }
+}

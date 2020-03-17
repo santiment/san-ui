@@ -55,7 +55,7 @@ const Dropdown = ({
           className={cx(
             styles.options,
             children && styles.options_custom,
-            classes.options,
+            classes.options
           )}
         >
           {children ||
@@ -87,8 +87,8 @@ Dropdown.propTypes = {
   classes: PropTypes.shape({
     wrapper: PropTypes.string,
     options: PropTypes.string,
-    option: PropTypes.string,
-  }),
+    option: PropTypes.string
+  })
 }
 
 export default Dropdown

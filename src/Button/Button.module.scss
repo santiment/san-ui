@@ -13,8 +13,9 @@
   outline: none;
   height: 32px;
   padding: 6px 12px;
-  font-family: Rubik, sans-serif;
+  font-family: 'Proxima Nova', sans-serif;
   font-size: $font-size-regular;
+  font-weight: 500;
   line-height: 1;
   border-radius: $border-radius;
   cursor: pointer;
@@ -40,10 +41,10 @@
 
 .fill {
   background: var(--btn-accent-color);
-  color: var(--white);
-  fill: var(--white);
+  color: $white;
+  fill: $white;
 
-  --dot-bg: var(--white);
+  --dot-bg: white;
 
   @include responsive('phone', 'phone-xs') {
     height: 40px;
@@ -54,8 +55,8 @@
 
   &:hover {
     background: var(--btn-accent-color-hover);
-    color: var(--white);
-    fill: var(--white);
+    color: $white;
+    fill: $white;
   }
 }
 
