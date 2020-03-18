@@ -2,6 +2,34 @@
     This file should be included at the top of the target project index.scss
 */
 
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../static/ProximaNova-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../static/ProximaNova-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../static/ProximaNova-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../static/ProximaNova-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
 @import './variables.scss';
 
 // --CSS VARS--
