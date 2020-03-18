@@ -194,7 +194,7 @@
 
   @if $type == 'caption' {
     font-size: 12px;
-    line-height: 18px;
+    line-height: 16px;
 
     @if $mod == 'm' {
       font-weight: bold;
@@ -204,17 +204,17 @@
       font-weight: bold;
     }
 
-    @if $mod == 'medium' {
-      font-weight: 500;
+    @if $mod == 'semibold' {
+      font-weight: 600;
     }
   }
 
   @if $type == 'tiny' {
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 10px;
+    line-height: 14px;
 
-    @if $mod == 'medium' {
-      font-weight: 500;
+    @if $mod == 'semibold' {
+      font-weight: 600;
     }
 
     @if $mod == 'bold' {
@@ -228,7 +228,7 @@
 
   &::before {
     font-size: 12px;
-    line-height: 18px;
+    line-height: 16px;
     position: absolute;
     background: $fiord;
     color: $white;
