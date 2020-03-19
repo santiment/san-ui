@@ -70,8 +70,8 @@
 .caption {
   @include text('caption');
 
-  &.medium {
-    @include text('caption', 'medium');
+  &.semibold {
+    @include text('caption', 'semibold');
   }
 
   &.bold {
@@ -82,8 +82,8 @@
 .tiny {
   @include text('tiny');
 
-  &.medium {
-    @include text('tiny', 'medium');
+  &.semibold {
+    @include text('tiny', 'semibold');
   }
 
   &.bold {
