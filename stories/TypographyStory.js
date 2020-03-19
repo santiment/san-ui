@@ -77,7 +77,7 @@ const nodes = [
   },
   {
     type: 'caption',
-    boldness: BOLDNESS.MEDIUM
+    boldness: BOLDNESS.SEMIBOLD
   },
   {
     type: 'caption',
@@ -89,7 +89,7 @@ const nodes = [
   },
   {
     type: 'tiny',
-    boldness: BOLDNESS.MEDIUM
+    boldness: BOLDNESS.SEMIBOLD
   }
 ]
 
