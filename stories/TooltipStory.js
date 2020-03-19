@@ -1,5 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 import Tooltip from '../src/Tooltip'
 import Button from '../src/Button'
 import Panel from '../src/Panel/Panel'
@@ -13,7 +14,7 @@ const Example = ({ children, ...props }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        height: '100vh'
+        height: '100vh',
       }}
     >
       <div
@@ -93,9 +94,24 @@ In order for \`Tooltip\` to work, component hierarchy should look like this:
 
    **WRONG**: Trigger(Custom Component) -> Custom Component -> DOM Element
       `,
-      propTablesExclude: [Example]
-    }
+      propTablesExclude: [Example],
+    },
   })
+  .add('position: "top", on: "hover", trigger event handler', () => (
+    <Example
+      position='top'
+      trigger={
+        <span
+          onMouseEnter={action('On trigger mouse enter')}
+          onMouseLeave={action('On trigger mouse leave')}
+        >
+          trigger
+        </span>
+      }
+    >
+      test afisudhfoaidsufh content
+    </Example>
+  ))
   .add('position: "top", on: "hover"', () => (
     <Example position='top' trigger={<span>trigger</span>}>
       test afisudhfoaidsufh content

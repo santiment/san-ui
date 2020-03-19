@@ -30,7 +30,7 @@ class Tooltip extends PureComponent {
     classes: {},
     as: Fragment,
     onOpen: () => {},
-    onClose: () => {}
+    onClose: () => {},
   }
 
   static propTypes = {
@@ -53,7 +53,7 @@ class Tooltip extends PureComponent {
     /**
        Class will be applied to the tooltip wrapper
      */
-    className: PropTypes.string
+    className: PropTypes.string,
   }
 
   static getDerivedStateFromProps ({ shown }) {
@@ -62,12 +62,12 @@ class Tooltip extends PureComponent {
     }
 
     return {
-      shown
+      shown,
     }
   }
 
   state = {
-    shown: false
+    shown: false,
   }
 
   triggerRef = React.createRef()
@@ -92,7 +92,7 @@ class Tooltip extends PureComponent {
     this.stopCloseTimer()
     this.setState(
       { shown: true },
-      this.state.shown ? undefined : this.props.onOpen
+      this.state.shown ? undefined : this.props.onOpen,
     )
   }
 
@@ -127,13 +127,23 @@ class Tooltip extends PureComponent {
       ? undefined
       : { className: cx(styles.wrapper, classes.wrapper) }
 
+    const onMouseLeave = preserveUserHandler(
+      this.startCloseTimer,
+      trigger.props.onMouseLeave,
+    )
+
+    const triggerEventHandler = preserveUserHandler(
+      this.openTooltip,
+      trigger.props[triggerEvent],
+    )
+
     return (
       <El {...wrapperProps}>
         {React.cloneElement(trigger, {
           [ref]: this.triggerRef,
-          [triggerEvent]: this.openTooltip,
-          onMouseLeave: this.startCloseTimer,
-          [passOpenStateAs]: passOpenStateAs ? shown : undefined
+          [triggerEvent]: triggerEventHandler,
+          [passOpenStateAs]: passOpenStateAs ? shown : undefined,
+          onMouseLeave,
         })}
         {shown
           ? isFragment
@@ -143,6 +153,15 @@ class Tooltip extends PureComponent {
       </El>
     )
   }
+}
+
+function preserveUserHandler (libHandler, userHandler) {
+  return userHandler
+    ? (...args) => {
+        libHandler(...args)
+        userHandler(...args)
+      }
+    : libHandler
 }
 
 export default Tooltip
