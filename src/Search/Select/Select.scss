@@ -145,7 +145,7 @@ $select-height: 32px;
 
   .Select.has-value.Select--single > .Select-control .Select-value .Select-value-label,
   .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
-    color: var(--mirage);
+    color: var(--rhino);
   }
 
   .Select.has-value.Select--single > .Select-control .Select-value a.Select-value-label,
@@ -186,7 +186,7 @@ $select-height: 32px;
     background-color: var(--white);
     border: 1px solid var(--porcelain);
     border-radius: $border-radius;
-    color: var(--mirage);
+    color: var(--rhino);
     cursor: default;
     display: table;
     border-spacing: 0;
@@ -420,7 +420,7 @@ $select-height: 32px;
   }
 
   .VirtualizedSelectOption {
-    color: var(--mirage);
+    color: var(--rhino);
 
     @include text('body-3');
   }
@@ -470,7 +470,7 @@ $select-height: 32px;
     vertical-align: top;
     border-radius: 12px;
     font-size: 12px;
-    color: var(--mirage);
+    color: var(--rhino);
     font-weight: normal;
     background: var(--white);
     border: 1px solid var(--porcelain);
@@ -540,7 +540,7 @@ $select-height: 32px;
   .Select--multi.is-disabled .Select-value {
     background-color: #fcfcfc;
     border: 1px solid #e3e3e3;
-    color: var(--mirage);
+    color: var(--rhino);
   }
 
   .Select--multi.is-disabled .Select-value-icon {

@@ -2,7 +2,7 @@
 @import '../mixins.scss';
 
 .button {
-  ---btn-accent-color: var(--btn-accent-color, var(--mirage));
+  ---btn-accent-color: var(--btn-accent-color, var(--rhino));
   ---btn-accent-color-hover: var(--btn-accent-color-hover, var(--jungle-green));
 
   @include border-box;
@@ -16,7 +16,6 @@
   font-family: 'Proxima Nova', sans-serif;
   font-size: $font-size-regular;
   font-weight: 500;
-  line-height: 1;
   border-radius: $border-radius;
   cursor: pointer;
   background: var(--white);
@@ -63,8 +62,8 @@
 .bordered {
   background: var(--white);
   border: 1px solid var(--btn-accent-color, var(--porcelain));
-  color: var(--btn-accent-color, var(--mirage));
-  fill: var(--btn-accent-color, var(--mirage));
+  color: var(--btn-accent-color, var(--rhino));
+  fill: var(--btn-accent-color, var(--rhino));
 
   @include responsive('phone', 'phone-xs') {
     height: 40px;
@@ -95,7 +94,7 @@
 
 .ghost {
   &:hover {
-    background: var(--grey-light);
+    background: var(--athens);
   }
 
   &.active {

@@ -42,10 +42,11 @@
 }
 
 .title {
-  font-weight: bold;
   padding: 0 30px 0 11px;
   width: 100%;
-  color: var(--black);
+  color: var(--rhino);
+
+  @include text('body-3', 'medium');
 }
 
 .action {
