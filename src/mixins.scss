@@ -94,12 +94,8 @@
     font-size: 48px;
     line-height: 56px;
 
-    @if $mod == 'm' {
-      font-weight: bold;
-    }
-
-    @if $mod == 'bold' {
-      font-weight: bold;
+    @if $mod == 'l' {
+      font-weight: 600;
     }
   }
 
@@ -107,12 +103,8 @@
     font-size: 40px;
     line-height: 48px;
 
-    @if $mod == 'm' {
-      font-weight: bold;
-    }
-
-    @if $mod == 'bold' {
-      font-weight: bold;
+    @if $mod == 'l' {
+      font-weight: 600;
     }
   }
 
@@ -120,12 +112,8 @@
     font-size: 32px;
     line-height: 40px;
 
-    @if $mod == 'm' {
-      font-weight: bold;
-    }
-
-    @if $mod == 'bold' {
-      font-weight: bold;
+    @if $mod == 'l' {
+      font-weight: 600;
     }
   }
 
@@ -134,11 +122,11 @@
     line-height: 32px;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
 
-    @if $mod == 'bold' {
-      font-weight: bold;
+    @if $mod == 'l' {
+      font-weight: 600;
     }
   }
 
@@ -152,11 +140,7 @@
     @else {
       line-height: 26px;
 
-      @if $mod == 'm' {
-        font-weight: 600;
-      }
-
-      @if $mod == 'semibold' {
+      @if $mod == 'l' {
         font-weight: 600;
       }
     }
@@ -167,11 +151,11 @@
     line-height: 24px;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
 
-    @if $mod == 'bold' {
-      font-weight: bold;
+    @if $mod == 'l' {
+      font-weight: 600;
     }
   }
 
@@ -180,31 +164,24 @@
     line-height: 20px;
 
     @if $mod == 'm' {
-      font-weight: bold;
-    }
-
-    @if $mod == 'bold' {
-      font-weight: bold;
-    }
-
-    @if $mod == 'medium' {
       font-weight: 500;
+    }
+
+    @if $mod == 'l' {
+      font-weight: 600;
     }
   }
 
   @if $type == 'caption' {
     font-size: 12px;
     line-height: 16px;
+    font-weight: 500;
 
     @if $mod == 'm' {
-      font-weight: bold;
+      font-weight: 500;
     }
 
-    @if $mod == 'bold' {
-      font-weight: bold;
-    }
-
-    @if $mod == 'semibold' {
+    @if $mod == 'l' {
       font-weight: 600;
     }
   }
@@ -212,13 +189,14 @@
   @if $type == 'tiny' {
     font-size: 10px;
     line-height: 14px;
+    font-weight: 500;
 
-    @if $mod == 'semibold' {
-      font-weight: 600;
+    @if $mod == 'm' {
+      font-weight: 500;
     }
 
-    @if $mod == 'bold' {
-      font-weight: bold;
+    @if $mod == 'l' {
+      font-weight: 600;
     }
   }
 }
