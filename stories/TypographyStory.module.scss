@@ -10,32 +10,36 @@
 .h1 {
   @include text('h1');
 
-  &.bold {
-    @include text('h1', 'bold');
+  &.semibold {
+    @include text('h1', 'l');
   }
 }
 
 .h2 {
   @include text('h2');
 
-  &.bold {
-    @include text('h2', 'bold');
+  &.semibold {
+    @include text('h2', 'l');
   }
 }
 
 .h3 {
   @include text('h3');
 
-  &.bold {
-    @include text('h3', 'bold');
+  &.semibold {
+    @include text('h3', 'l');
   }
 }
 
 .h4 {
   @include text('h4');
 
-  &.bold {
-    @include text('h4', 'bold');
+  &.semibold {
+    @include text('h4', 'l');
+  }
+
+  &.medium {
+    @include text('h4', 'm');
   }
 }
 
@@ -43,15 +47,19 @@
   @include text('body-1');
 
   &.semibold {
-    @include text('body-1', 'semibold');
+    @include text('body-1', 'l');
   }
 }
 
 .body-2 {
   @include text('body-2');
 
-  &.bold {
-    @include text('body-2', 'bold');
+  &.semibold {
+    @include text('body-2', 'l');
+  }
+
+  &.medium {
+    @include text('body-2', 'm');
   }
 }
 
@@ -59,11 +67,11 @@
   @include text('body-3');
 
   &.medium {
-    @include text('body-3', 'medium');
+    @include text('body-3', 'm');
   }
 
-  &.bold {
-    @include text('body-3', 'bold');
+  &.semibold {
+    @include text('body-3', 'l');
   }
 }
 
@@ -71,11 +79,11 @@
   @include text('caption');
 
   &.semibold {
-    @include text('caption', 'semibold');
+    @include text('caption', 'l');
   }
 
-  &.bold {
-    @include text('caption', 'bold');
+  &.medium {
+    @include text('caption', 'm');
   }
 }
 
@@ -83,10 +91,10 @@
   @include text('tiny');
 
   &.semibold {
-    @include text('tiny', 'semibold');
+    @include text('tiny', 'l');
   }
 
-  &.bold {
-    @include text('tiny', 'bold');
+  &.medium {
+    @include text('tiny', 'm');
   }
 }

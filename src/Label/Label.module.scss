@@ -6,8 +6,8 @@
 
   display: inline-block;
   box-sizing: border-box;
-  color: var(--accent, var(--mirage));
-  fill: var(--accent, var(--mirage));
+  color: var(--accent, var(--rhino));
+  fill: var(--accent, var(--rhino));
 }
 
 @each $accent
@@ -31,7 +31,7 @@
 
 .athens {
   --accent: var(--athens);
-  --accent-color: var(--mirage);
+  --accent-color: var(--rhino);
 }
 
 .fill,
