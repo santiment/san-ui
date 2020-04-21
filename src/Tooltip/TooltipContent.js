@@ -43,6 +43,48 @@ const calculateAlignment = (triggerProp, tooltipProp, align) => {
   }
 }
 
+const getArrowPosition = (align, position, offset) => {
+  const offsetStyle = getArrowOffset(align, position, offset)
+  switch (position) {
+    case 'top':
+      return { top: '100%', ...offsetStyle }
+    case 'bottom':
+      return { top: 0, ...offsetStyle }
+    case 'left':
+      return { left: '100%', ...offsetStyle }
+    case 'right':
+      return { left: 0, ...offsetStyle }
+  }
+}
+
+const getArrowOffset = (align, position, offset) => {
+  if (position === 'top' || position === 'bottom') {
+    switch (align) {
+      case 'start':
+        return { left: offset, transform: `translateY(-50%)` }
+      case 'center':
+        return {
+          left: '50%',
+          transform: `translateX(-50%) translateY(-50%)`
+        }
+      case 'end':
+        return { right: offset, transform: `translateY(-50%)` }
+    }
+  } else {
+    switch (align) {
+      case 'start':
+        return { top: offset, transform: `translateX(-50%)` }
+      case 'center':
+        return {
+          top: '50%',
+          transform: `translateY(-50%) translateX(-50%)`
+        }
+      case 'end':
+        return { bottom: offset, transform: `translateX(-50%)` }
+    }
+  }
+}
+
 const isCoverTriggerBorder = (triggerBorderPos, tooltipStart, tooltipEnd) => {
   if (triggerBorderPos >= tooltipStart && triggerBorderPos <= tooltipEnd) {
     return true
@@ -161,6 +203,9 @@ class TooltipContent extends PureComponent {
 
     const {
       viewportOffset,
+      withArrow,
+      arrowOffset = 8,
+      align,
       triggerRef: { current: trigger }
     } = this.props
     const {
@@ -183,7 +228,7 @@ class TooltipContent extends PureComponent {
       this.props.position
     )
 
-    let topRes, leftRes
+    let tooltipTop, tooltipLeft, tooltipPosition
 
     for (let i = 0; i < 4; i++) {
       const { top, left, bottom, right } = this.getTooltipCoordinates({
@@ -212,15 +257,23 @@ class TooltipContent extends PureComponent {
           triggerRight: triggerLeft + triggerWidth
         })
       ) {
-        topRes = top
-        leftRes = left
+        tooltipTop = top
+        tooltipLeft = left
+        tooltipPosition = positionPriorities[i]
         break
       }
     }
 
+    const arrowStyle = withArrow
+      ? getArrowPosition(align, tooltipPosition, `${arrowOffset}px`)
+      : {}
+
     return {
-      top: `${topRes + scrollY}px`,
-      left: `${leftRes + scrollX}px`
+      tooltipStyle: {
+        top: `${tooltipTop + scrollY}px`,
+        left: `${tooltipLeft + scrollX}px`
+      },
+      arrow: arrowStyle
     }
   }
 
@@ -234,10 +287,12 @@ class TooltipContent extends PureComponent {
       children,
       offsetX,
       offsetY,
-      withCss
+      withCss,
+      withArrow
     } = this.props
 
     let style
+    let arrowStyle
     let classes
 
     if (withCss) {
@@ -252,7 +307,9 @@ class TooltipContent extends PureComponent {
       }
       classes = [styles.withCss, styles[position], styles[align]]
     } else {
-      style = this.getTooltipStyles()
+      const { tooltipStyle, arrow } = this.getTooltipStyles() || {}
+      style = tooltipStyle
+      arrowStyle = arrow
       classes = []
     }
 
@@ -264,6 +321,17 @@ class TooltipContent extends PureComponent {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
+        {withArrow && (
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='10'
+            height='10'
+            style={arrowStyle}
+            className={styles.arrow}
+          >
+            <path d='M.3 5.7a1 1 0 010-1.4l4-4a1 1 0 011.4 0l4 4a1 1 0 010 1.4l-4 4a1 1 0 01-1.4 0l-4-4z' />
+          </svg>
+        )}
         {children}
       </div>
     )
