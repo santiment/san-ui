@@ -291,6 +291,7 @@ class TooltipContent extends PureComponent {
       offsetY,
       withCss,
       withArrow,
+      arrowOffset = 8,
       arrowClassName
     } = this.props
 
@@ -309,6 +310,10 @@ class TooltipContent extends PureComponent {
           isVerticalPosition && `${offsetY}px`
       }
       classes = [styles.withCss, styles[position], styles[align]]
+
+      if (withArrow) {
+        arrowStyle = getArrowPosition(align, position, `${arrowOffset}px`)
+      }
     } else {
       const { tooltipStyle, arrow } = this.getTooltipStyles() || {}
       style = tooltipStyle
