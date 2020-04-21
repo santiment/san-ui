@@ -4,6 +4,12 @@
 
 .tooltip {
   position: absolute;
+  animation: appearing 0.15s ease-in-out;
+}
+
+@keyframes appearing {
+  0% { opacity: 0.2; }
+  100% { opacity: 1; }
 }
 
 .arrow {
