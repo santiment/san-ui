@@ -47,11 +47,11 @@ const getArrowPosition = (align, position, offset) => {
   const offsetStyle = getArrowOffset(align, position, offset)
   switch (position) {
     case 'top':
-      return { top: '100%', ...offsetStyle }
+      return { top: '99%', ...offsetStyle }
     case 'bottom':
       return { top: 0, ...offsetStyle }
     case 'left':
-      return { left: '100%', ...offsetStyle }
+      return { left: '99%', ...offsetStyle }
     case 'right':
       return { left: 0, ...offsetStyle }
   }
@@ -59,28 +59,30 @@ const getArrowPosition = (align, position, offset) => {
 
 const getArrowOffset = (align, position, offset) => {
   if (position === 'top' || position === 'bottom') {
+    const transform = 'translateY(-47%)'
     switch (align) {
       case 'start':
-        return { left: offset, transform: `translateY(-50%)` }
+        return { left: offset, transform: `${transform}` }
       case 'center':
         return {
           left: '50%',
-          transform: `translateX(-50%) translateY(-50%)`
+          transform: `translateX(-50%) ${transform}`
         }
       case 'end':
-        return { right: offset, transform: `translateY(-50%)` }
+        return { right: offset, transform: `${transform}` }
     }
   } else {
+    const transform = 'translateX(-47%)'
     switch (align) {
       case 'start':
-        return { top: offset, transform: `translateX(-50%)` }
+        return { top: offset, transform: `${transform}` }
       case 'center':
         return {
           top: '50%',
-          transform: `translateY(-50%) translateX(-50%)`
+          transform: `translateY(-50%) ${transform}`
         }
       case 'end':
-        return { bottom: offset, transform: `translateX(-50%)` }
+        return { bottom: offset, transform: `${transform}` }
     }
   }
 }
@@ -288,7 +290,8 @@ class TooltipContent extends PureComponent {
       offsetX,
       offsetY,
       withCss,
-      withArrow
+      withArrow,
+      arrowClassName
     } = this.props
 
     let style
@@ -327,7 +330,7 @@ class TooltipContent extends PureComponent {
             width='10'
             height='10'
             style={arrowStyle}
-            className={styles.arrow}
+            className={cx(styles.arrow, arrowClassName)}
           >
             <path d='M.3 5.7a1 1 0 010-1.4l4-4a1 1 0 011.4 0l4 4a1 1 0 010 1.4l-4 4a1 1 0 01-1.4 0l-4-4z' />
           </svg>
