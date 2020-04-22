@@ -18,6 +18,7 @@ const MultiInput = ({
   wrapperRef,
   onChange,
   forwardedRef,
+  maxValues,
   values: defaultValues,
   ...props
 }) => {
@@ -67,6 +68,8 @@ const MultiInput = ({
     }
   }
 
+  const shouldShowInput = maxValues ? values.length < maxValues : true
+
   return (
     <div
       className={cx(className, styles.wrapper)}
@@ -88,16 +91,18 @@ const MultiInput = ({
             <Icon type='close-small' className={styles.delete} />
           </Button>
         ))}
-        <Input
-          size={values.length === 0 ? placeholder.length : input.length + 1}
-          placeholder={values.length > 0 ? '' : placeholder}
-          className={cx(inputClassName, styles.input)}
-          onChange={onInputChange}
-          onKeyDown={onKeyDown}
-          value={input}
-          forwardedRef={inputRef}
-          {...props}
-        />
+        {shouldShowInput && (
+          <Input
+            size={values.length === 0 ? placeholder.length : input.length + 1}
+            placeholder={values.length > 0 ? '' : placeholder}
+            className={cx(inputClassName, styles.input)}
+            onChange={onInputChange}
+            onKeyDown={onKeyDown}
+            value={input}
+            forwardedRef={inputRef}
+            {...props}
+          />
+        )}
       </div>
       {children}
     </div>
@@ -112,7 +117,7 @@ MultiInput.propTypes = {
 MultiInput.defaultProps = {
   className: '',
   onChange: () => {},
-  values: ['blockchain', 'wow']
+  values: []
 }
 
 export default MultiInput
