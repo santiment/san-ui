@@ -19,6 +19,7 @@ const MultiInput = ({
   onChange,
   forwardedRef,
   maxValues,
+  valueContent,
   values: defaultValues,
   ...props
 }) => {
@@ -87,7 +88,7 @@ const MultiInput = ({
               onValueRemove(item)
             }}
           >
-            {item}
+            {valueContent ? valueContent(item) : item}
             <Icon type='close-small' className={styles.delete} />
           </Button>
         ))}

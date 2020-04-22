@@ -2,6 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Input, { InputWithIcon, MultiInput } from '../src/Input'
 import Button from '../src/Button'
+import Toggle from '../src/Toggle'
 import ColorModeComparison from './ColorModeComparison'
 import styles from './InputStory.module.scss'
 
