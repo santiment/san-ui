@@ -1,7 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Input, { InputWithIcon, MultiInput } from '../src/Input'
+import Button from '../src/Button'
 import ColorModeComparison from './ColorModeComparison'
+import styles from './InputStory.module.scss'
 
 storiesOf('Input', module)
   .add('Simple', () => (
@@ -61,6 +63,11 @@ storiesOf('Input', module)
       <ColorModeComparison>
         <MultiInput defaultValue='Built-in value' />
         <MultiInput placeholder='Enter a word or a phrase...' />
+        <MultiInput className={styles.input}>
+          <Button border className={styles.button}>
+            +
+          </Button>
+        </MultiInput>
       </ColorModeComparison>
     </div>
   ))

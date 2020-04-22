@@ -89,7 +89,7 @@ const MultiInput = ({
           </Button>
         ))}
         <Input
-          size={input.length + 1}
+          size={values.length === 0 ? placeholder.length : input.length + 1}
           placeholder={values.length > 0 ? '' : placeholder}
           className={cx(inputClassName, styles.input)}
           onChange={onInputChange}
