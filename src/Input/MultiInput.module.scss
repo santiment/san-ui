@@ -3,6 +3,10 @@
 
 .wrapper {
   position: relative;
+  background-color: var(--white);
+  border: 1px solid var(--porcelain);
+  border-radius: 4px;
+  color: var(--rhino);
 }
 
 .values {
@@ -24,6 +28,7 @@
   @include text('body-3');
 
   height: 40px;
+  border: none !important;
 }
 
 .delete {
