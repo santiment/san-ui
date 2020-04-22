@@ -39,11 +39,16 @@
   fill: var(--waterloo);
   position: relative;
   margin-left: 13px;
+
+  &:hover {
+    fill: var(--persimmon);
+  }
 }
 
 .value {
   margin-right: 4px;
   margin-top: 4px;
+  padding: 0 12px 0 10px;
 
   @include responsive('phone', 'phone-xs') {
     margin-right: 0;
@@ -51,9 +56,5 @@
 
   &:hover {
     color: var(--rhino);
-
-    .delete {
-      fill: var(--persimmon);
-    }
   }
 }

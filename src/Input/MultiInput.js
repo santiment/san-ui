@@ -85,11 +85,14 @@ const MultiInput = ({
             key={idx}
             onClick={evt => {
               evt.stopPropagation()
-              onValueRemove(item)
             }}
           >
             {valueContent ? valueContent(item) : item}
-            <Icon type='close-small' className={styles.delete} />
+            <Icon
+              type='close-small'
+              className={styles.delete}
+              onClick={() => onValueRemove(item)}
+            />
           </Button>
         ))}
         {shouldShowInput && (

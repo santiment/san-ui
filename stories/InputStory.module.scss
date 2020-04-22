@@ -10,3 +10,12 @@
   height: auto;
   background-color: var(--athens);
 }
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  margin-right: 8px;
+}

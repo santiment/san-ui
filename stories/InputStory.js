@@ -62,17 +62,30 @@ storiesOf('Input', module)
   .add('MultiInput', () => (
     <div>
       <ColorModeComparison>
-        <MultiInput defaultValue='Built-in value' values={['blockchain']} />
+        <h5>with defaultValue and placeholder:</h5>
         <MultiInput
+          defaultValue='Built-in value'
           placeholder='Enter a word or a phrase...'
+          values={['blockchain']}
+        />
+        <h5>with maxValues = 5 :</h5>
+        <MultiInput placeholder='Enter a word or a phrase...' maxValues={5} />
+        <h5>with custom value compponent:</h5>
+        <MultiInput
           values={[
             'blockchain',
             'corona OR coronavirus OR covid-19',
             'buy OR bought OR bottom OR bottomed'
           ]}
+          placeholder='Enter a word or a phrase...'
+          valueContent={text => (
+            <div className={styles.content}>
+              <Toggle className={styles.toggle} />
+              {text}
+            </div>
+          )}
         />
-        <MultiInput placeholder='Enter a word or a phrase...' />
-        <MultiInput placeholder='Enter a word or a phrase...' maxValues={5} />
+        <h5>with button:</h5>
         <MultiInput className={styles.input} values={['blockchain']}>
           <Button border className={styles.button}>
             +
