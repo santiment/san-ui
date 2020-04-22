@@ -41,11 +41,6 @@ const MultiInput = ({
     onChange(value, evt)
   }
 
-  function onEnter () {
-    setInput('')
-    onChange('')
-  }
-
   function onValueAdd (value) {
     setInput('')
     onChange('')
@@ -60,11 +55,10 @@ const MultiInput = ({
     setValues(values.filter(item => item !== value))
   }
 
-  function onKeyPress (evt) {
-    // 13: Enter, 9: Tab
-    const charCodes = [13, 9]
+  function onKeyDown (evt) {
+    const keys = ['Tab', 'Enter']
 
-    if (charCodes.includes(evt.charCode)) {
+    if (keys.includes(evt.key)) {
       evt.preventDefault()
       onValueAdd(evt.currentTarget.value)
     }
@@ -76,7 +70,7 @@ const MultiInput = ({
         className={cx(inputClassName, styles.input)}
         style={{ paddingLeft: `${width + 8}px` }}
         onChange={onInputChange}
-        onKeyPress={onKeyPress}
+        onKeyDown={onKeyDown}
         value={input}
         {...props}
       />
@@ -106,7 +100,7 @@ MultiInput.propTypes = {
 MultiInput.defaultProps = {
   className: '',
   onChange: () => {},
-  values: ['buy OR bought OR bottom OR bottomed', 'blockchain', 'wow']
+  values: ['blockchain', 'wow']
 }
 
 export default MultiInput
