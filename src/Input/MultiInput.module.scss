@@ -23,7 +23,6 @@
 
   @include responsive('phone', 'phone-xs') {
     position: relative;
-    margin-top: 8px;
   }
 }
 
@@ -54,7 +53,7 @@
   cursor: default;
 
   @include responsive('phone', 'phone-xs') {
-    margin-right: 0;
+    width: auto;
   }
 
   &:hover {
