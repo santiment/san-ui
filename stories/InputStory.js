@@ -63,7 +63,9 @@ storiesOf('Input', module)
   .add('MultiInput', () => (
     <div>
       <ColorModeComparison>
-        <h5>with defaultValue, placeholder and maxValues = 5:</h5>
+        <h5 className={styles.heading}>
+          with defaultValue, placeholder and maxValues = 5:
+        </h5>
         <MultiInput
           onValueAdd={action('onValueAdd')}
           onValueRemove={action('onValueRemove')}
@@ -73,7 +75,7 @@ storiesOf('Input', module)
           placeholder='Enter a word or a phrase...'
           defaultValues={['blockchain']}
         />
-        <h5>with custom value compponent:</h5>
+        <h5 className={styles.heading}>with custom value component:</h5>
         <MultiInput
           onValueAdd={action('onValueAdd')}
           onValueRemove={action('onValueRemove')}
@@ -87,7 +89,7 @@ storiesOf('Input', module)
             </div>
           )}
         />
-        <h5>with button:</h5>
+        <h5 className={styles.heading}>with button:</h5>
         <MultiInput
           onValueAdd={action('onValueAdd')}
           onValueRemove={action('onValueRemove')}
