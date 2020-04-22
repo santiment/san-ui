@@ -60,11 +60,7 @@ storiesOf('Input', module)
     <div>
       <ColorModeComparison>
         <MultiInput defaultValue='Built-in value' />
-        <MultiInput placeholder='Placeholder' />
-        <MultiInput defaultValue='Disabled Built-in value' disabled />
-        <MultiInput defaultValue='Read-only Built-in value' readOnly />
-        <MultiInput isError defaultValue='Error case' />
-        <MultiInput defaultValue='inplace username' inplace />
+        <MultiInput placeholder='Enter a word or a phrase...' />
       </ColorModeComparison>
     </div>
   ))
