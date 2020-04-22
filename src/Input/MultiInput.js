@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 import Input from './Input'
@@ -14,14 +14,23 @@ const MultiInput = ({
   inputClassName,
   children,
   defaultValue = '',
+  placeholder = '',
   wrapperRef,
   onChange,
-  placeholder = '',
+  forwardedRef,
   values: defaultValues,
   ...props
 }) => {
   const [input, setInput] = useState(defaultValue)
   const [values, setValues] = useState(defaultValues)
+
+  const inputRef = forwardedRef !== undefined ? forwardedRef : useRef(null)
+
+  function setFocus () {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }
 
   function onInputChange (evt) {
     const { value } = evt.currentTarget
@@ -59,14 +68,21 @@ const MultiInput = ({
   }
 
   return (
-    <div className={cx(className, styles.wrapper)} ref={wrapperRef}>
+    <div
+      className={cx(className, styles.wrapper)}
+      ref={wrapperRef}
+      onClick={setFocus}
+    >
       <div className={styles.values}>
         {values.map((item, idx) => (
           <Button
             border
             className={styles.value}
             key={idx}
-            onClick={() => onValueRemove(item)}
+            onClick={evt => {
+              evt.stopPropagation()
+              onValueRemove(item)
+            }}
           >
             {item}
             <Icon type='close-small' className={styles.delete} />
@@ -79,6 +95,7 @@ const MultiInput = ({
           onChange={onInputChange}
           onKeyDown={onKeyDown}
           value={input}
+          forwardedRef={inputRef}
           {...props}
         />
       </div>
