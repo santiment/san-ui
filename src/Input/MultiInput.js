@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 import Input from './Input'
@@ -6,18 +6,8 @@ import Button from '../Button'
 import Icon from '../Icon'
 import styles from './MultiInput.module.scss'
 
-function useSizes (values) {
-  const targetRef = useRef()
-  const [sizes, setSizes] = useState({ width: 0, height: 0 })
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      const elem = targetRef.current.getBoundingClientRect()
-      setSizes({ width: elem.width, height: elem.height })
-    }
-  }, [targetRef.current, values])
-
-  return { targetRef, width: sizes.width, height: sizes.height }
-}
+const VALUE_ADD_KEYS = ['Tab', 'Enter']
+const VALUE_REMOVE_KEYS = ['Delete', 'Backspace']
 
 const MultiInput = ({
   className,
@@ -31,9 +21,6 @@ const MultiInput = ({
 }) => {
   const [input, setInput] = useState(defaultValue)
   const [values, setValues] = useState(defaultValues)
-
-  const { targetRef, width, height } = useSizes(values)
-  console.log(targetRef, width, height)
 
   function onInputChange (evt) {
     const { value } = evt.currentTarget
@@ -56,15 +43,12 @@ const MultiInput = ({
   }
 
   function onKeyDown (evt) {
-    const valueAddKeys = ['Tab', 'Enter']
-    const valueRemoveKeys = ['Delete', 'Backspace']
-
-    if (valueAddKeys.includes(evt.key)) {
+    if (VALUE_ADD_KEYS.includes(evt.key)) {
       evt.preventDefault()
       onValueAdd(evt.currentTarget.value)
     }
 
-    if (valueRemoveKeys.includes(evt.key) && !input) {
+    if (VALUE_REMOVE_KEYS.includes(evt.key) && !input) {
       evt.preventDefault()
       onValueRemove(values[values.length - 1])
     }
@@ -72,15 +56,7 @@ const MultiInput = ({
 
   return (
     <div className={cx(className, styles.wrapper)} ref={wrapperRef}>
-      <Input
-        className={cx(inputClassName, styles.input)}
-        style={{ paddingLeft: `${width + 8}px` }}
-        onChange={onInputChange}
-        onKeyDown={onKeyDown}
-        value={input}
-        {...props}
-      />
-      <div className={styles.values} ref={targetRef}>
+      <div className={styles.values}>
         {values.map((item, idx) => (
           <Button
             border
@@ -92,6 +68,13 @@ const MultiInput = ({
             <Icon type='close-small' className={styles.delete} />
           </Button>
         ))}
+        <Input
+          className={cx(inputClassName, styles.input)}
+          onChange={onInputChange}
+          onKeyDown={onKeyDown}
+          value={input}
+          {...props}
+        />
       </div>
       {children}
     </div>

@@ -6,6 +6,7 @@
   background-color: var(--white);
   border: 1px solid var(--porcelain);
   border-radius: 4px;
+  padding: 0 0 4px 4px;
   color: var(--rhino);
 }
 
@@ -13,10 +14,12 @@
   @include text('body-3');
 
   color: var(--rhino);
-  position: absolute;
   top: 0;
   left: 4px;
   bottom: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 
   @include responsive('phone', 'phone-xs') {
     position: relative;
@@ -27,7 +30,8 @@
 .input {
   @include text('body-3');
 
-  height: 40px;
+  width: auto;
+  margin-top: 4px;
   border: none !important;
 }
 
