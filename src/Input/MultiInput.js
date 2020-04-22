@@ -13,7 +13,7 @@ const MultiInput = ({
   className,
   inputClassName,
   children,
-  value: defaultValue,
+  defaultValue = '',
   wrapperRef,
   onChange,
   placeholder = '',
@@ -30,6 +30,9 @@ const MultiInput = ({
   }
 
   function onValueAdd (value) {
+    if (!value) {
+      return
+    }
     setInput('')
     onChange('')
 
@@ -55,8 +58,6 @@ const MultiInput = ({
     }
   }
 
-  const inputWidth = (input || '').length
-
   return (
     <div className={cx(className, styles.wrapper)} ref={wrapperRef}>
       <div className={styles.values}>
@@ -72,7 +73,7 @@ const MultiInput = ({
           </Button>
         ))}
         <Input
-          size={inputWidth}
+          size={input.length + 1}
           placeholder={values.length > 0 ? '' : placeholder}
           className={cx(inputClassName, styles.input)}
           onChange={onInputChange}
