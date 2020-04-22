@@ -16,11 +16,13 @@ const MultiInput = ({
   defaultValue = '',
   placeholder = '',
   wrapperRef,
-  onChange,
+  onInputChange,
+  onValueAdd,
+  onValueRemove,
   forwardedRef,
   maxValues,
   valueContent,
-  values: defaultValues,
+  defaultValues,
   ...props
 }) => {
   const [input, setInput] = useState(defaultValue)
@@ -34,38 +36,43 @@ const MultiInput = ({
     }
   }
 
-  function onInputChange (evt) {
+  function onChange (evt) {
     const { value } = evt.currentTarget
     setInput(value)
-    onChange(value, evt)
+    onInputChange(value, evt)
   }
 
-  function onValueAdd (value) {
+  function addValue (value) {
     if (!value) {
       return
     }
     setInput('')
-    onChange('')
+    onInputChange('')
 
     const valuesSet = new Set(values)
-    valuesSet.add(value)
 
-    setValues([...valuesSet])
+    if (!values.includes(value)) {
+      const newValues = [...values, value]
+      onValueAdd(value, newValues)
+      setValues(newValues)
+    }
   }
 
-  function onValueRemove (value) {
-    setValues(values.filter(item => item !== value))
+  function removeValue (value) {
+    const newValues = values.filter(item => item !== value)
+    setValues(newValues)
+    onValueRemove(value, newValues)
   }
 
   function onKeyDown (evt) {
     if (VALUE_ADD_KEYS.includes(evt.key)) {
       evt.preventDefault()
-      onValueAdd(evt.currentTarget.value)
+      addValue(evt.currentTarget.value)
     }
 
     if (VALUE_REMOVE_KEYS.includes(evt.key) && !input) {
       evt.preventDefault()
-      onValueRemove(values[values.length - 1])
+      removeValue(values[values.length - 1])
     }
   }
 
@@ -91,7 +98,7 @@ const MultiInput = ({
             <Icon
               type='close-small'
               className={styles.delete}
-              onClick={() => onValueRemove(item)}
+              onClick={() => removeValue(item)}
             />
           </Button>
         ))}
@@ -100,7 +107,7 @@ const MultiInput = ({
             size={values.length === 0 ? placeholder.length : input.length + 1}
             placeholder={values.length > 0 ? '' : placeholder}
             className={cx(inputClassName, styles.input)}
-            onChange={onInputChange}
+            onChange={onChange}
             onKeyDown={onKeyDown}
             value={input}
             forwardedRef={inputRef}
@@ -115,13 +122,20 @@ const MultiInput = ({
 
 MultiInput.propTypes = {
   className: PropTypes.string,
-  inputClassName: PropTypes.string
+  inputClassName: PropTypes.string,
+  valueContent: PropTypes.func,
+  onInputChange: PropTypes.func,
+  onValueAdd: PropTypes.func,
+  onValueRemove: PropTypes.func,
+  maxValues: PropTypes.number
 }
 
 MultiInput.defaultProps = {
   className: '',
-  onChange: () => {},
-  values: []
+  onInputChange: () => {},
+  onValueAdd: () => {},
+  onValueRemove: () => {},
+  defaultValues: []
 }
 
 export default MultiInput
