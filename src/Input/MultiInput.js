@@ -56,11 +56,17 @@ const MultiInput = ({
   }
 
   function onKeyDown (evt) {
-    const keys = ['Tab', 'Enter']
+    const valueAddKeys = ['Tab', 'Enter']
+    const valueRemoveKeys = ['Delete', 'Backspace']
 
-    if (keys.includes(evt.key)) {
+    if (valueAddKeys.includes(evt.key)) {
       evt.preventDefault()
       onValueAdd(evt.currentTarget.value)
+    }
+
+    if (valueRemoveKeys.includes(evt.key) && !input) {
+      evt.preventDefault()
+      onValueRemove(values[values.length - 1])
     }
   }
 
