@@ -6,6 +6,7 @@ import Button from '../src/Button'
 import Panel from '../src/Panel/Panel'
 import Icon from '../src/Icon'
 import Label from '../src/Label'
+import styles from './TooltipStory.module.scss'
 
 const Example = ({ children, ...props }) => {
   return (
@@ -14,7 +15,7 @@ const Example = ({ children, ...props }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        height: '100vh',
+        height: '100vh'
       }}
     >
       <div
@@ -43,6 +44,35 @@ const Example = ({ children, ...props }) => {
         </Tooltip>
         <Tooltip {...props}>
           <Panel padding>{children}</Panel>
+        </Tooltip>
+      </div>
+      <div
+        className='dark'
+        style={{ display: 'flex', justifyContent: 'space-between' }}
+      >
+        <Tooltip
+          withArrow
+          className={styles.dark}
+          arrowClassName={styles.arrow}
+          {...props}
+        >
+          {children}
+        </Tooltip>
+        <Tooltip
+          withArrow
+          className={styles.dark}
+          arrowClassName={styles.arrow}
+          {...props}
+        >
+          {children}
+        </Tooltip>
+        <Tooltip
+          withArrow
+          className={styles.dark}
+          arrowClassName={styles.arrow}
+          {...props}
+        >
+          {children}
         </Tooltip>
       </div>
       <div
@@ -78,6 +108,40 @@ const ExampleAlign = props => (
     <Tooltip {...props} align='end'>
       <Panel padding>align="end"</Panel>
     </Tooltip>
+    <br />
+    <br />
+    <hr />
+    <br />
+    <Tooltip
+      {...props}
+      withArrow
+      className={styles.dark}
+      arrowClassName={styles.arrow}
+      align='start'
+    >
+      align="start" and Some text goes here
+    </Tooltip>
+    <br />
+    <br />
+    <Tooltip
+      withArrow
+      className={styles.dark}
+      arrowClassName={styles.arrow}
+      {...props}
+    >
+      align="center" (default) and Some text goes here
+    </Tooltip>
+    <br />
+    <br />
+    <Tooltip
+      withArrow
+      className={styles.dark}
+      arrowClassName={styles.arrow}
+      {...props}
+      align='end'
+    >
+      align="end" and Some text goes here
+    </Tooltip>
   </div>
 )
 
@@ -94,8 +158,8 @@ In order for \`Tooltip\` to work, component hierarchy should look like this:
 
    **WRONG**: Trigger(Custom Component) -> Custom Component -> DOM Element
       `,
-      propTablesExclude: [Example],
-    },
+      propTablesExclude: [Example]
+    }
   })
   .add('position: "top", on: "hover", trigger event handler', () => (
     <Example
