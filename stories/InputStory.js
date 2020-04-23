@@ -1,7 +1,11 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Input, { InputWithIcon } from '../src/Input'
+import { action } from '@storybook/addon-actions'
+import Input, { InputWithIcon, MultiInput } from '../src/Input'
+import Button from '../src/Button'
+import Toggle from '../src/Toggle'
 import ColorModeComparison from './ColorModeComparison'
+import styles from './InputStory.module.scss'
 
 storiesOf('Input', module)
   .add('Simple', () => (
@@ -53,6 +57,54 @@ storiesOf('Input', module)
           defaultValue='inplace username'
           inplace
         />
+      </ColorModeComparison>
+    </div>
+  ))
+  .add('MultiInput', () => (
+    <div>
+      <ColorModeComparison>
+        <h5 className={styles.heading}>
+          with defaultValue, placeholder and maxValues = 5:
+        </h5>
+        <MultiInput
+          onValueAdd={action('onValueAdd')}
+          onValueRemove={action('onValueRemove')}
+          onInputChange={action('onInputChange')}
+          maxValues={5}
+          defaultValue='Built-in value'
+          placeholder='Enter a word or a phrase...'
+          defaultValues={['blockchain']}
+        />
+        <h5 className={styles.heading}>with custom value component:</h5>
+        <MultiInput
+          onValueAdd={action('onValueAdd')}
+          onValueRemove={action('onValueRemove')}
+          onInputChange={action('onInputChange')}
+          defaultValues={['bitcoin']}
+          placeholder='Enter a word or a phrase...'
+          valueContent={text => (
+            <div className={styles.content}>
+              <Toggle className={styles.toggle} />
+              {text}
+            </div>
+          )}
+        />
+        <h5 className={styles.heading}>with button:</h5>
+        <MultiInput
+          onValueAdd={action('onValueAdd')}
+          onValueRemove={action('onValueRemove')}
+          onInputChange={action('onInputChange')}
+          className={styles.input}
+          defaultValues={[
+            'blockchain',
+            'corona OR coronavirus OR covid-19',
+            'buy OR bought OR bottom OR bottomed'
+          ]}
+        >
+          <Button border className={styles.button}>
+            +
+          </Button>
+        </MultiInput>
       </ColorModeComparison>
     </div>
   ))

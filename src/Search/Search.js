@@ -9,6 +9,7 @@ const Search = ({
   className,
   onChange,
   defaultValue = '',
+  placeholder = 'Type to search...',
   icon,
   ...props
 }) => {
@@ -30,7 +31,7 @@ const Search = ({
       icon={icon}
       inputClassName={styles.input}
       iconClassName={styles.icon}
-      placeholder='Type to search...'
+      placeholder={placeholder}
       iconPosition='left'
       className={cx(styles.wrapper, className)}
       value={input}

@@ -44,10 +44,10 @@
   }
 
   &[disabled] + .icon {
-    fill: var(--mystic);
+    fill: var(--casper);
   }
 
   &[disabled]:hover + .icon {
-    fill: var(--mystic);
+    fill: var(--casper);
   }
 }

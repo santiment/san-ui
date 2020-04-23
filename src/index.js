@@ -1,5 +1,5 @@
 export { default as Button } from './Button'
-export { default as Input, InputWithIcon } from './Input'
+export { default as Input, InputWithIcon, MultiInput } from './Input'
 export { default as Panel } from './Panel/Panel'
 export { default as PanelWithHeader } from './Panel/PanelWithHeader'
 export { default as Search } from './Search/Search'

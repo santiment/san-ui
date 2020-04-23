@@ -1,0 +1,62 @@
+@import '../variables';
+@import '../mixins';
+
+.wrapper {
+  position: relative;
+  background-color: var(--white);
+  border: 1px solid var(--porcelain);
+  border-radius: 4px;
+  padding: 0 0 4px 4px;
+  color: var(--rhino);
+}
+
+.values {
+  @include text('body-3');
+
+  color: var(--rhino);
+  top: 0;
+  left: 4px;
+  bottom: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @include responsive('phone', 'phone-xs') {
+    position: relative;
+  }
+}
+
+.input {
+  @include text('body-3');
+
+  width: auto;
+  margin-top: 4px;
+  border: none !important;
+}
+
+.delete {
+  fill: var(--waterloo);
+  position: relative;
+  margin-left: 5px;
+  padding: 8px 4px 8px 9px;
+  cursor: pointer;
+
+  &:hover {
+    fill: var(--persimmon);
+  }
+}
+
+.value {
+  margin-right: 4px;
+  margin-top: 4px;
+  padding: 0 8px;
+  cursor: default;
+
+  @include responsive('phone', 'phone-xs') {
+    width: auto;
+  }
+
+  &:hover {
+    color: var(--rhino);
+  }
+}
