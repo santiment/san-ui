@@ -9,7 +9,6 @@ const darks = [
   'ebony-clay',
   'cloud-burst',
   'fiord',
-  'fiord-night',
   'bali-hai',
   'jungle-green-dark',
   'jungle-green-dark-2',
