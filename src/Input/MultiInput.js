@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 import Input from './Input'
@@ -23,10 +23,19 @@ const MultiInput = ({
   maxValues,
   valueContent,
   defaultValues,
+  values: valuesFromProps,
   ...props
 }) => {
   const [input, setInput] = useState(defaultValue)
   const [values, setValues] = useState(defaultValues)
+
+  useEffect(() => {
+    if (!valuesFromProps) return
+
+    if (valuesFromProps !== values) {
+      setValues(valuesFromProps)
+    }
+  }, [valuesFromProps])
 
   const inputRef = forwardedRef !== undefined ? forwardedRef : useRef(null)
 
