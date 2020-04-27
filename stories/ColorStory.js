@@ -19,6 +19,7 @@ const darks = [
   'texas-rose-dark',
   'dodger-blue-dark',
   'heliotrope-dark',
+  'heliotrope-dark-2',
   'malibu-dark'
 ]
 
@@ -33,7 +34,7 @@ const breaksAfter = [
   'lima-dark',
   'sheets-hover',
   'dodger-blue-dark',
-  'heliotrope-dark'
+  'heliotrope-dark-2'
 ]
 
 storiesOf('Colors', module).add('List of all colors', () => (

@@ -18,6 +18,7 @@
   --mirage: #{$mirage}; // NEW
   --shark: #{$shark}; // NEW
   --rhino: #{$rhino}; // NEW
+  --fiord: #{$fiord}; // NEW
   --grey-light: #{$light-gray};
   --grey-light-2: #{$light-gray2};
   --grey-light-3: #{$light-gray3};
@@ -75,6 +76,7 @@
   --heliotrope: #{$heliotrope}; // NEW
   --heliotrope-hover: #{$heliotrope-hover}; // NEW
   --heliotrope-light: #{$heliotrope-light}; // NEW
+  --heliotrope-light-2: #{$heliotrope-light-2}; // NEW
 
   // cyan
   --cyan: #{$cyan};
@@ -102,6 +104,7 @@
   --casper: #{$fiord}; // NEW
   --waterloo: #{$bali-hai}; // NEW
   --rhino: #{$mystic}; // NEW
+  --fiord: #{$casper}; // NEW
   // green
   --green-light: #{$green-dark};
   --jungle-green-light: #{$jungle-green-dark}; // NEW
@@ -122,6 +125,7 @@
   // violet
   --violet-light: #{$violet-dark};
   --heliotrope-light: #{$heliotrope-dark}; // NEW
+  --heliotrope-light-2: #{$heliotrope-dark-2}; // NEW
   // cyan
   --malibu-light: #{$malibu-dark}; // NEW
 }
