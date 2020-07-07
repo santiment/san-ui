@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions'
 import Tabs from '../src/Tabs'
 import Button from '../src/Button'
 import ColorModeComparison from './ColorModeComparison'
+import styles from './TabsStory.module.scss'
 
 const tabs = {
   First: 'This is the content of the "First" tabs',
@@ -20,7 +21,7 @@ class Example extends React.Component {
     this.setState({ selectedTab })
   }
 
-  render() {
+  render () {
     const { selectedTab } = this.state
     return (
       <div>
@@ -68,6 +69,15 @@ storiesOf('Tabs', module)
           options={['1w', '1m', '3m', '6m', 'all']}
           defaultSelectedIndex='1m'
           as={props => <Button variant='ghost' {...props} />}
+          onSelect={action('Selected')}
+        />
+        <div>With external styles</div>
+        <Tabs
+          options={['1w', '1m', '3m', '6m', 'all']}
+          defaultSelectedIndex='1m'
+          as={props => <Button variant='ghost' {...props} />}
+          classes={styles}
+          disabledIndexes={['1m', '3m']}
           onSelect={action('Selected')}
         />
       </ColorModeComparison>
