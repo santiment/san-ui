@@ -1,15 +1,16 @@
 import React from 'react'
+import cx from 'classnames'
 import PropTypes from 'prop-types'
 import { BaseSelect, toggleSingle } from '../Selects'
 import styles from './Tabs.module.scss'
 
-const Tabs = ({ className, defaultSelectedIndex, ...props }) => (
-  <div className={`${styles.tabs} ${className}`}>
+const Tabs = ({ className, classes = {}, defaultSelectedIndex, ...props }) => (
+  <div className={cx(styles.tabs, className)}>
     <BaseSelect
       stateReducer={toggleSingle}
-      className={`${styles.tab}`}
-      selectedClassName={styles.selected}
-      disabledClassName={styles.disabled}
+      className={cx(styles.tab, classes.tab)}
+      selectedClassName={cx(styles.selected, classes.selectedTab)}
+      disabledClassName={cx(styles.disabled, classes.disabledTab)}
       {...props}
       defaultSelectedIndexes={defaultSelectedIndex && [defaultSelectedIndex]}
     />
