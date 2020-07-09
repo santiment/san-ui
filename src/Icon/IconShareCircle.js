@@ -1,13 +1,11 @@
 import React from 'react'
 
 export default (
-  <svg xmlns='http://www.w3.org/2000/svg' width='14' height='16' fill='none'>
-    <defs />
+  <svg xmlns='http://www.w3.org/2000/svg' width='14' height='16'>
     <path
-      fill='#2F354D'
-      fill-rule='evenodd'
+      fillRule='evenodd'
       d='M11.25 4.5a1.75 1.75 0 100-3.5 1.75 1.75 0 000 3.5zm0 1a2.75 2.75 0 10-2.6-1.81L4.97 6.15A2.75 2.75 0 104.38 10l4.18 2.56a2.75 2.75 0 10.43-.91l-3.92-2.4a2.74 2.74 0 00.33-2.19l3.77-2.51c.5.58 1.25.95 2.08.95zm-8.5.54c.56 0 1.06.26 1.38.67H4.1l.24.36a1.74 1.74 0 01-1.6 2.47 1.75 1.75 0 110-3.5zm10.23 7.2a1.75 1.75 0 11-3.5 0 1.75 1.75 0 013.5 0z'
-      clip-rule='evenodd'
+      clipRule='evenodd'
     />
   </svg>
 )
