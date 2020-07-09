@@ -9,7 +9,7 @@ const titleIcons = {
   error: 'error',
   info: 'info-round',
   warning: 'alert',
-  success: 'checkmark-round'
+  success: 'success-round'
 }
 
 const Notification = ({
@@ -43,7 +43,11 @@ const Notification = ({
       />
       <div className={cx(styles.title, classes.title)}>{title}</div>
       {hasCloseBtn && (
-        <Icon type='close' onClick={onClose} className={styles.closeIcon} />
+        <Icon
+          type='close-medium'
+          onClick={onClose}
+          className={styles.closeIcon}
+        />
       )}
     </div>
     {description && (
