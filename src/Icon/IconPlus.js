@@ -1,7 +1,13 @@
 import React from 'react'
 
 export default (
-  <svg width='10' height='10' xmlns='http://www.w3.org/2000/svg'>
-    <path d='M5.75 1.818a.75.75 0 0 0-1.5 0V4.25H1.818a.75.75 0 1 0 0 1.5H4.25v2.432a.75.75 0 0 0 1.5 0V5.75h2.432a.75.75 0 0 0 0-1.5H5.75V1.818z' />
+  <svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='none'>
+    <defs />
+    <path
+      fill='#2F354D'
+      fill-rule='evenodd'
+      d='M5.5.5a.5.5 0 10-1 0v4h-4a.5.5 0 000 1h4v4a.5.5 0 001 0v-4h4a.5.5 0 000-1h-4v-4z'
+      clip-rule='evenodd'
+    />
   </svg>
 )

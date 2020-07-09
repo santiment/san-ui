@@ -13,7 +13,7 @@ storiesOf('Icon', module).add('All', () => (
             flexDirection: 'column',
             alignItems: 'center',
             padding: 4,
-            margin: '0 10px 10px 0',
+            margin: '0 4px 4px 0',
             minWidth: 60,
             fontSize: 11,
             flex: '0 0 6%'
@@ -21,19 +21,19 @@ storiesOf('Icon', module).add('All', () => (
         >
           <div
             style={{
-              padding: '11px',
+              padding: '10px',
               background: '#f7f8f9',
               borderRadius: '4px',
-              width: 40,
-              height: 40,
-              marginBottm: 5,
+              width: 48,
+              height: 48,
+              marginBottm: 2,
               boxSizing: 'border-box',
               display: 'inline-flex',
               justifyContent: 'center',
               alignItems: 'center'
             }}
           >
-            <Icon type={iconKey} fill='#000' />
+            <Icon type={iconKey} fill='#2F354D' />
           </div>
           {iconKey}
         </div>
