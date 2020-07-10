@@ -30,7 +30,11 @@ const Dialog = ({
         <Panel.Title withPadding className={cx(styles.title, classes.title)}>
           {title}
           {showCloseBtn && (
-            <Icon type='close' onClick={closeModal} className={styles.close} />
+            <Icon
+              type='close-medium'
+              onClick={closeModal}
+              className={styles.close}
+            />
           )}
         </Panel.Title>
         {children}
