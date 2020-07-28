@@ -5,16 +5,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
   width: 16px;
   height: 16px;
   border-radius: 2px;
-  border: 1px solid var(--grey-light-3);
+  border: 1px solid var(--porcelain);
   background: var(--white);
 
   &:hover {
-    border-color: var(--green);
+    border-color: var(--jungle-green-hover);
   }
 }
 
@@ -24,39 +23,39 @@
 
 .selected {
   & .btn {
-    background: var(--green);
-    border-color: var(--green);
+    background: var(--jungle-green);
+    border-color: var(--jungle-green);
 
     &:hover {
-      background: var(--green-hover);
-      border-color: var(--green-hover);
+      background: var(--jungle-green-hover);
+      border-color: var(--jungle-green-hover);
     }
   }
 
   & .checkmark {
     display: block;
-    fill: var(--white);
+    fill: var(--athens);
   }
 }
 
 .disabled {
   & .btn {
     cursor: not-allowed;
-    background: var(--grey-light);
-    border-color: var(--grey-light-3);
+    background: var(--athens);
+    border-color: var(--porcelain);
 
     &:hover {
-      border-color: var(--grey-light-3);
+      border-color: var(--porcelain);
     }
   }
 
   &.selected .btn {
-    background: var(--grey-light-2);
-    border-color: var(--grey-light-2);
+    background: var(--porcelain);
+    border-color: var(--porcelain);
 
     &:hover {
-      background: var(--grey-light-2);
-      border-color: var(--grey-light-2);
+      background: var(--porcelain);
+      border-color: var(--porcelain);
     }
   }
 }
