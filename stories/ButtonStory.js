@@ -45,6 +45,7 @@ storiesOf('Button', module)
   .add('default (with icons)', () => (
     <div>
       <ColorModeComparison>
+        <Button icon='search'> Default button with type of icon</Button>
         <Button>
           <Icon type='search' /> Default button
         </Button>
@@ -134,6 +135,13 @@ storiesOf('Button', module)
         <Button variant='flat' accent='positive' disabled>
           Disabled
         </Button>
+
+        <Button border variant='flat' disabled>
+          Flat Border Button Bordered and Disabled
+        </Button>
+        <Button border variant='flat' icon='question-round' disabled>
+          Flat Border Button Bordered and Disabled
+        </Button>
         <Button variant='flat' accent='positive' isLoading>
           Loading
         </Button>
@@ -168,6 +176,9 @@ storiesOf('Button', module)
         <hr />
         <Button variant='ghost' accent='positive' disabled>
           Disabled
+        </Button>
+        <Button variant='ghost' accent='positive' border disabled>
+          Disabled with border
         </Button>
         <Button variant='ghost' accent='positive' isLoading>
           Loading

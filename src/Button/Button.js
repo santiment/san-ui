@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 import Loader from '../Loader/Loader'
+import Icon from '../Icon/Icon'
 import styles from './Button.module.scss'
 
 const Button = ({
@@ -17,6 +18,7 @@ const Button = ({
   className,
   forwardedRef,
   classes,
+  icon,
   ...props
 }) => {
   return (
@@ -28,11 +30,15 @@ const Button = ({
         [styles.bordered]: border,
         [styles.fluid]: fluid,
         [`${styles.disabled} ${classes.disabled}`]: disabled,
-        [styles.loading]: isLoading
+        [styles.loading]: isLoading,
+        [styles.withIcon]: !!icon
       })}
       ref={forwardedRef}
       {...props}
     >
+      {icon && (
+        <Icon type={icon} className={cx(styles.icon, classes.btnIcon)} />
+      )}
       {children}
       {isLoading && <Loader className={styles.loader} />}
     </BaseButton>
