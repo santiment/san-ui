@@ -19,10 +19,9 @@
   border: none;
   outline: none;
   height: 32px;
-  padding: 6px 16px;
-
-  @include text('body-3');
-
+  padding: 6px 12px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: $font-size-regular;
   border-radius: $border-radius;
   cursor: pointer;
   background: var(--white);
@@ -205,5 +204,5 @@
 
 .loader {
   position: absolute;
-  font-size: var(--loading-dot-size, 4px);
+  font-size: var(--loading-dot-size, 5px);
 }
