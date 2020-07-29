@@ -106,6 +106,10 @@
 }
 
 .ghost {
+  &:hover {
+    background: var(--white);
+  }
+
   &.active {
     color: var(--jungle-green);
     fill: var(--jungle-green);

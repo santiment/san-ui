@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 import Loader from '../Loader/Loader'
-import styles from './Button.module.scss'
 import Icon from '../Icon/Icon'
+import styles from './Button.module.scss'
 
 const Button = ({
   children,
