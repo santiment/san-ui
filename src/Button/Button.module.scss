@@ -1,6 +1,13 @@
 @import '../variables.scss';
 @import '../mixins.scss';
 
+.icon {
+  margin-right: 8px;
+  fill: var(--casper);
+  width: 16px;
+  height: 16px;
+}
+
 .button {
   ---btn-accent-color: var(--btn-accent-color, var(--rhino));
   ---btn-accent-color-hover: var(--btn-accent-color-hover, var(--jungle-green));
@@ -12,9 +19,10 @@
   border: none;
   outline: none;
   height: 32px;
-  padding: 6px 12px;
-  font-family: 'Proxima Nova', sans-serif;
-  font-size: $font-size-regular;
+  padding: 6px 16px;
+
+  @include text('body-3');
+
   border-radius: $border-radius;
   cursor: pointer;
   background: var(--white);
@@ -30,6 +38,10 @@
   @include responsive('phone', 'phone-xs') {
     @include text('body-2');
   }
+}
+
+.withIcon {
+  padding: 6px 12px;
 }
 
 .fluid {
@@ -59,6 +71,8 @@
 }
 
 .bordered {
+  --btn-disabled-color-border: var(--porcelain);
+
   background: var(--white);
   border: 1px solid var(--btn-accent-color, var(--porcelain));
   color: var(--btn-accent-color, var(--rhino));
@@ -92,10 +106,6 @@
 }
 
 .ghost {
-  &:hover {
-    background: var(--athens);
-  }
-
   &.active {
     color: var(--jungle-green);
     fill: var(--jungle-green);
@@ -153,7 +163,7 @@
 .disabled {
   color: var(--mystic) !important;
   background: var(--white) !important;
-  border-color: var(--porcelain) !important;
+  border-color: var(--btn-disabled-color-border, none);
   fill: var(--mystic) !important;
   pointer-events: none;
 
@@ -165,6 +175,10 @@
   &.fill,
   &.bordered {
     background: var(--athens) !important;
+  }
+
+  .icon {
+    fill: var(--mystic);
   }
 }
 
@@ -187,5 +201,5 @@
 
 .loader {
   position: absolute;
-  font-size: var(--loading-dot-size, 5px);
+  font-size: var(--loading-dot-size, 4px);
 }
