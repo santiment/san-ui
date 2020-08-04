@@ -1,4 +1,5 @@
 @import "../variables.scss";
+@import '../mixins.scss';
 
 .icon {
   transition: transform 0.2s ease-in-out;
@@ -26,6 +27,13 @@
   background-color: var(--casper);
   box-sizing: border-box;
 
+  @include responsive('phone-xs', 'phone') {
+    width: 48px;
+    height: 24px;
+    border-radius: 15px;
+    padding: 0 10px;
+  }
+
   &::before {
     transition: transform 0.2s ease-in-out;
     display: inline-block;
@@ -38,6 +46,13 @@
     transform: translateX(0);
     left: 3px;
     top: 3px;
+
+    @include responsive('phone-xs', 'phone') {
+      width: 16px;
+      height: 16px;
+      left: 5px;
+      top: 4px;
+    }
   }
 
   & .icon__active {
@@ -61,6 +76,10 @@
 
     &::before {
       transform: translateX(calc(100% + 2px));
+
+      @include responsive('phone-xs', 'phone') {
+        transform: translateX(calc(100% + 5px));
+      }
     }
 
     & .icon__notActive {
