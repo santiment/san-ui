@@ -16,7 +16,6 @@ const Notification = ({
   title,
   titleIconName,
   className,
-  solidFill,
   description,
   variant,
   onClose,
@@ -28,12 +27,7 @@ const Notification = ({
   <Panel
     {...rest}
     variant='modal'
-    className={cx(
-      className,
-      styles.wrapper,
-      styles[variant],
-      solidFill ? styles.solid : styles.default
-    )}
+    className={cx(className, styles.wrapper, styles[variant])}
   >
     <div className={styles.header}>
       <Icon
@@ -54,7 +48,7 @@ const Notification = ({
       <div className={cx(styles.content, classes.content)}>{description}</div>
     )}
     {actions && (
-      <div className={styles.content}>
+      <div className={styles.actions}>
         {actions.map(({ label, onClick }) => (
           <div key={label} className={styles.action} onClick={onClick}>
             {label}
@@ -68,7 +62,6 @@ const Notification = ({
 Notification.propTypes = {
   className: PropTypes.string,
   description: PropTypes.node,
-  solidFill: PropTypes.bool,
   hasCloseBtn: PropTypes.bool,
   titleIconName: PropTypes.string,
   onClose: PropTypes.func,

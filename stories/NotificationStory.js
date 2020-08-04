@@ -154,32 +154,10 @@ storiesOf('Notifications', module)
       <NotificationExample notifications={notifications} />
     </ColorModeComparison>
   ))
-  .add('With solid fills', () => (
-    <ColorModeComparison>
-      <NotificationExample
-        notifications={notifications.map(notification => ({
-          ...notification,
-          solidFill: true
-        }))}
-      />
-    </ColorModeComparison>
-  ))
   .add('With action buttons', () => {
     return (
       <ColorModeComparison>
         <NotificationExample notifications={notificationsWithActionButtons} />
-      </ColorModeComparison>
-    )
-  })
-  .add('With action buttons and solid fills', () => {
-    return (
-      <ColorModeComparison>
-        <NotificationExample
-          notifications={notificationsWithActionButtons.map(notification => ({
-            ...notification,
-            solidFill: true
-          }))}
-        />
       </ColorModeComparison>
     )
   })

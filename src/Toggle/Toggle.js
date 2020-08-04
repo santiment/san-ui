@@ -9,7 +9,7 @@ const Toggle = ({
   IconActive,
   IconNotActive,
   disabled,
-  onClick: onToggleClick,
+  onClick: onToggleClick = () => {},
   ...props
 }) => {
   return (
