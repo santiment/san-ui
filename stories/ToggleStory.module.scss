@@ -1,9 +1,14 @@
-.toggle {
-  rect {
-    fill: var(--persimmon) !important;
+@import '../src/variables.scss';
+@import '../src/mixins.scss';
 
-    &:hover {
-      fill: var(--persimmon-hover) !important;
-    }
+.icon {
+  fill: $jungle-green-light-2;
+}
+
+.toggle {
+  padding: 0 5px;
+
+  @include responsive('phone-xs', 'phone') {
+    padding: 0 9px;
   }
 }

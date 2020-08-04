@@ -1,50 +1,106 @@
 @import "../variables.scss";
+@import '../mixins.scss';
+
+.icon {
+  transition: transform 0.2s ease-in-out;
+
+  &__active {
+    fill: $athens;
+  }
+
+  &__notActive {
+    fill: $porcelain;
+  }
+}
 
 .toggle {
   position: relative;
   cursor: pointer;
-  display: inline-block;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  transition: background-color 0.2s ease-in-out;
+  background-color: var(--casper);
+  box-sizing: border-box;
 
-  & svg {
-    display: block;
+  @include responsive('phone-xs', 'phone') {
+    width: 48px;
+    height: 24px;
+    border-radius: 15px;
+    padding: 0 10px;
   }
 
   &::before {
+    transition: transform 0.2s ease-in-out;
     display: inline-block;
     content: '';
     position: absolute;
     width: 14px;
     height: 14px;
     background: $white;
-    border-radius: 10px;
+    border-radius: 50%;
+    transform: translateX(0);
     left: 3px;
     top: 3px;
-  }
 
-  & rect,
-  &::before {
-    transition: 200ms;
-  }
-
-  & rect {
-    fill: var(--casper);
-
-    &:hover {
-      fill: var(--waterloo);
+    @include responsive('phone-xs', 'phone') {
+      width: 16px;
+      height: 16px;
+      left: 5px;
+      top: 4px;
     }
+  }
+
+  & .icon__active {
+    transform: scale(0);
+  }
+
+  & .icon__notActive {
+    transform: scale(1);
+  }
+
+  &:hover {
+    background-color: var(--waterloo);
   }
 
   &.active {
-    & rect {
-      fill: var(--jungle-green);
+    background-color: var(--jungle-green);
 
-      &:hover {
-        fill: var(--jungle-green-hover);
-      }
+    &:hover {
+      background-color: var(--jungle-green-hover);
     }
 
     &::before {
-      left: calc(100% - 14px - 3px);
+      transform: translateX(calc(100% + 2px));
+
+      @include responsive('phone-xs', 'phone') {
+        transform: translateX(calc(100% + 5px));
+      }
+    }
+
+    & .icon__notActive {
+      transform: scale(0);
+    }
+
+    & .icon__active {
+      transform: scale(1);
+    }
+  }
+
+  &.disabled {
+    background-color: var(--porcelain);
+    cursor: not-allowed;
+
+    & svg {
+      fill: $white;
+    }
+
+    &:hover {
+      background-color: var(--porcelain);
     }
   }
 }
