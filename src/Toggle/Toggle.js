@@ -9,6 +9,7 @@ const Toggle = ({
   IconActive,
   IconNotActive,
   disabled,
+  onClick: onToggleClick,
   ...props
 }) => {
   return (
@@ -19,6 +20,7 @@ const Toggle = ({
         disabled && styles.disabled,
         className
       )}
+      onClick={() => (disabled ? {} : onToggleClick())}
       {...props}
     >
       {IconActive ? (

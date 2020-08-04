@@ -13,7 +13,7 @@ function Toggle (props) {
     <UIToggle
       {...props}
       isActive={isActive}
-      onClick={() => (props.disabled ? {} : setIsActive(!isActive))}
+      onClick={() => setIsActive(!isActive)}
     />
   )
 }
