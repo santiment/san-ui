@@ -2,8 +2,10 @@
 @import '../mixins.scss';
 
 .icon {
+  --btn-icon-color: var(--btn-icon-color, var(--casper));
+
   margin-right: 8px;
-  fill: var(--casper);
+  fill: var(--btn-icon-color);
   width: 16px;
   height: 16px;
 }
@@ -11,6 +13,7 @@
 .button {
   ---btn-accent-color: var(--btn-accent-color, var(--rhino));
   ---btn-accent-color-hover: var(--btn-accent-color-hover, var(--jungle-green));
+  ---btn-icon-color-hover: var(--btn-icon-color-hover, var(--jungle-green-light-3));
 
   @include border-box;
 
@@ -31,7 +34,11 @@
 
   &:hover {
     color: var(---btn-accent-color-hover);
-    fill: var(---btn-accent-color-hover);
+    fill: var(---btn-icon-color-hover);
+
+    .icon {
+      fill: var(---btn-icon-color-hover);
+    }
   }
 
   @include responsive('phone', 'phone-xs') {
@@ -49,6 +56,8 @@
 }
 
 .fill {
+  --btn-icon-color: $white;
+
   background: var(--btn-accent-color);
   color: $white;
   fill: $white;
@@ -66,6 +75,10 @@
     background: var(--btn-accent-color-hover);
     color: $white;
     fill: $white;
+
+    .icon {
+      fill: $white;
+    }
   }
 }
 
@@ -88,6 +101,10 @@
     color: var(--btn-accent-color-hover, var(--jungle-green-hover));
     fill: var(--btn-accent-color-hover, var(--jungle-green-hover));
     border-color: var(--btn-accent-color-hover, var(--porcelain));
+
+    .icon {
+      fill: var(--btn-accent-color-hover, var(--jungle-green-hover));
+    }
   }
 }
 
@@ -164,6 +181,8 @@
 }
 
 .disabled {
+  --btn-icon-color: var(--mystic);
+
   color: var(--mystic) !important;
   background: var(--white) !important;
   border-color: var(--btn-disabled-color-border, none);
@@ -178,10 +197,6 @@
   &.fill,
   &.bordered {
     background: var(--athens) !important;
-  }
-
-  .icon {
-    fill: var(--mystic);
   }
 }
 

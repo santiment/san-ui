@@ -60,6 +60,9 @@ storiesOf('Button', module)
           <Icon type='search' />
           Default disabled button
         </Button>
+        <Button icon='search' disabled>
+          Default disabled button
+        </Button>
         <Button isLoading>
           <Icon type='search' />
           Default loading button
@@ -74,6 +77,15 @@ storiesOf('Button', module)
         <AccentButtons border>{accent => `${accent} bordered`}</AccentButtons>
         <Button border accent='positive' disabled>
           Disabled
+        </Button>
+
+        <Button border>
+          <Icon type='search' />
+          Default search button
+        </Button>
+        <Button border icon='search'>
+          {' '}
+          Default button with type of icon
         </Button>
 
         <Button
@@ -118,6 +130,15 @@ storiesOf('Button', module)
         <Button variant='fill' accent='positive' isLoading>
           Loading
         </Button>
+
+        <Button variant='fill' accent='positive'>
+          <Icon type='search' />
+          Default search button
+        </Button>
+        <Button variant='fill' accent='positive' icon='search'>
+          {' '}
+          Default button with type of icon
+        </Button>
       </ColorModeComparison>
     </div>
   ))
@@ -144,6 +165,19 @@ storiesOf('Button', module)
         </Button>
         <Button variant='flat' accent='positive' isLoading>
           Loading
+        </Button>
+
+        <Button border variant='flat'>
+          <Icon type='search' />
+          Search button
+        </Button>
+        <Button border variant='flat' accent='positive' icon='search'>
+          {' '}
+          Positive button with type of icon
+        </Button>
+        <Button border variant='flat' icon='search'>
+          {' '}
+          Button with type of icon
         </Button>
       </ColorModeComparison>
     </div>
@@ -182,6 +216,19 @@ storiesOf('Button', module)
         </Button>
         <Button variant='ghost' accent='positive' isLoading>
           Loading
+        </Button>
+
+        <Button border variant='ghost'>
+          <Icon type='search' />
+          Search button
+        </Button>
+        <Button border variant='ghost' accent='positive' icon='search'>
+          {' '}
+          Positive button with type of icon
+        </Button>
+        <Button border variant='ghost' icon='search'>
+          {' '}
+          Button with type of icon
         </Button>
       </ColorModeComparison>
     </div>
