@@ -1,6 +1,5 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Panel from '../src/Panel/Panel'
 import vars from '../src/variables.scss'
 import './ColorStory.scss'
 
