@@ -29,7 +29,7 @@ const breaksAfter = [
   'jungle-green-a-dark',
   'texas-rose-dark',
   'bright-sun-hover',
-  'persimmon-dark',
+  'persimmon-dark-2',
   'lima-dark',
   'sheets-hover',
   'dodger-blue-dark',
