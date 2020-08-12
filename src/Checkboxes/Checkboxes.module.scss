@@ -11,6 +11,9 @@
   border-radius: 2px;
   border: 1px solid var(--porcelain);
   background: var(--white);
+  transition-property: border-color, background;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 
   &:hover {
     border-color: var(--jungle-green-hover);
@@ -25,11 +28,6 @@
   & .btn {
     background: var(--jungle-green);
     border-color: var(--jungle-green);
-
-    &:hover {
-      background: var(--jungle-green-hover);
-      border-color: var(--jungle-green-hover);
-    }
   }
 
   & .checkmark {
@@ -38,26 +36,29 @@
   }
 }
 
-.disabled {
-  & .btn {
-    cursor: not-allowed;
-    background: var(--athens);
-    border-color: var(--porcelain);
+.disabled .btn {
+  cursor: not-allowed;
+  background: var(--athens);
+  border-color: var(--porcelain);
+}
 
-    &:hover {
-      border-color: var(--porcelain);
-    }
-  }
+.disabled.selected .btn {
+  background: var(--porcelain);
+  border-color: var(--porcelain);
+}
 
-  &.selected .btn {
-    background: var(--porcelain);
-    border-color: var(--porcelain);
+.selected .btn:hover {
+  background: var(--jungle-green-hover);
+  border-color: var(--jungle-green-hover);
+}
 
-    &:hover {
-      background: var(--porcelain);
-      border-color: var(--porcelain);
-    }
-  }
+.disabled .btn:hover {
+  border-color: var(--porcelain);
+}
+
+.disabled.selected .btn:hover {
+  background: var(--porcelain);
+  border-color: var(--porcelain);
 }
 
 .checkbox {

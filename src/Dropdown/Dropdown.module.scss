@@ -3,6 +3,7 @@
 .icon {
   margin-left: 10px;
   fill: var(--waterloo);
+  transition: transform 0.25s ease-in-out;
 }
 
 .wrapper {
