@@ -2,10 +2,10 @@
 @import '../mixins.scss';
 
 .icon {
-  --btn-icon-color: var(--btn-icon-color, var(--casper));
+  ---btn-icon-color: var(--btn-icon-color, var(--casper));
 
   margin-right: 8px;
-  fill: var(--btn-icon-color);
+  fill: var(---btn-icon-color);
   width: 16px;
   height: 16px;
 }
@@ -56,7 +56,7 @@
 }
 
 .fill {
-  --btn-icon-color: $white;
+  --btn-icon-color: $white !important;
 
   background: var(--btn-accent-color);
   color: $white;
@@ -72,13 +72,11 @@
   }
 
   &:hover {
+    ---btn-icon-color-hover: $white;
+
     background: var(--btn-accent-color-hover);
     color: $white;
     fill: $white;
-
-    .icon {
-      fill: $white;
-    }
   }
 }
 
@@ -134,54 +132,70 @@
 
 .grey {
   --btn-accent-color: var(--waterloo);
+  --btn-icon-color: var(--waterloo);
   --btn-accent-color-hover: var(--waterloo);
+  --btn-icon-color-hover: var(--waterloo);
   --btn-accent-color-light: var(--porcelain);
 }
 
 .positive {
   --btn-accent-color: var(--jungle-green);
+  --btn-icon-color: var(--jungle-green);
   --btn-accent-color-hover: var(--jungle-green-hover);
+  --btn-icon-color-hover: var(--jungle-green-hover);
   --btn-accent-color-light: var(--jungle-green-light);
 }
 
 .negative {
   --btn-accent-color: var(--persimmon);
+  --btn-icon-color: var(--persimmon);
   --btn-accent-color-hover: var(--persimmon-hover);
+  --btn-icon-color-hover: var(--persimmon-hover);
   --btn-accent-color-light: var(--persimmon-light);
 }
 
 .orange {
   --btn-accent-color: var(--texas-rose);
+  --btn-icon-color: var(--texas-rose);
   --btn-accent-color-hover: var(--texas-rose-hover);
+  --btn-icon-color-hover: var(--texas-rose-hover);
   --btn-accent-color-light: var(--texas-rose-light);
 }
 
 .blue {
   --btn-accent-color: var(--dodger-blue);
+  --btn-icon-color: var(--dodger-blue);
   --btn-accent-color-hover: var(--dodger-blue-hover);
+  --btn-icon-color-hover: var(--dodger-blue-hover);
   --btn-accent-color-light: var(--dodger-blue-light);
 }
 
 .cyan {
   --btn-accent-color: var(--malibu);
+  --btn-icon-color: var(--malibu);
   --btn-accent-color-hover: var(--malibu-hover);
+  --btn-icon-color-hover: var(--malibu-hover);
   --btn-accent-color-light: var(--malibu-light);
 }
 
 .purple {
   --btn-accent-color: var(--heliotrope);
+  --btn-icon-color: var(--heliotrope);
   --btn-accent-color-hover: var(--heliotrope-hover);
+  --btn-icon-color-hover: var(--heliotrope-hover);
   --btn-accent-color-light: var(--heliotrope-light);
 }
 
 .sheets {
   --btn-accent-color: var(--sheets);
+  --btn-icon-color: var(--sheets);
   --btn-accent-color-hover: var(--sheets-hover);
+  --btn-icon-color-hover: var(--sheets-hover);
   --btn-accent-color-light: var(--white);
 }
 
 .disabled {
-  --btn-icon-color: var(--mystic);
+  ---btn-icon-color: var(--mystic);
 
   color: var(--mystic) !important;
   background: var(--white) !important;
