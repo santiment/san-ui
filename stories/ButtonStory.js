@@ -47,7 +47,6 @@ storiesOf('Button', module)
       <ColorModeComparison>
         <Button icon='search'> Default button with type of icon</Button>
         <Button icon='search' accent='orange'>
-          {' '}
           Default orange button with type of icon
         </Button>
         <Button>

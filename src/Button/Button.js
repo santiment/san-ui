@@ -31,7 +31,7 @@ const Button = ({
         [styles.fluid]: fluid,
         [`${styles.disabled} ${classes.disabled}`]: disabled,
         [styles.loading]: isLoading,
-        [styles.withIcon]: !!icon ? true : false
+        [styles.withIcon]: !!icon
       })}
       ref={forwardedRef}
       {...props}
