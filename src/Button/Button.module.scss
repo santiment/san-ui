@@ -13,7 +13,8 @@
 .button {
   ---btn-accent-color: var(--btn-accent-color, var(--rhino));
   ---btn-accent-color-hover: var(--btn-accent-color-hover, var(--jungle-green));
-  ---btn-icon-color-hover: var(--btn-icon-color-hover, var(--jungle-green-light-3));
+  ---btn-icon-color: var(---btn-accent-color);
+  ---btn-icon-color-hover: var(--btn-icon-color-hover, var(---btn-accent-color-hover));
 
   @include border-box;
 
@@ -82,6 +83,7 @@
 
 .bordered {
   --btn-disabled-color-border: var(--porcelain);
+  --btn-icon-color: var(--btn-accent-color, var(--rhino));
 
   background: var(--white);
   border: 1px solid var(--btn-accent-color, var(--porcelain));
@@ -132,66 +134,58 @@
 
 .grey {
   --btn-accent-color: var(--waterloo);
-  --btn-icon-color: var(--waterloo);
   --btn-accent-color-hover: var(--waterloo);
-  --btn-icon-color-hover: var(--waterloo);
   --btn-accent-color-light: var(--porcelain);
+  --btn-icon-color-hover: var(--waterloo);
 }
 
 .positive {
   --btn-accent-color: var(--jungle-green);
-  --btn-icon-color: var(--jungle-green);
   --btn-accent-color-hover: var(--jungle-green-hover);
-  --btn-icon-color-hover: var(--jungle-green-hover);
   --btn-accent-color-light: var(--jungle-green-light);
+  --btn-icon-color-hover: var(--jungle-green-light-3);
 }
 
 .negative {
   --btn-accent-color: var(--persimmon);
-  --btn-icon-color: var(--persimmon);
   --btn-accent-color-hover: var(--persimmon-hover);
-  --btn-icon-color-hover: var(--persimmon-hover);
   --btn-accent-color-light: var(--persimmon-light);
+  --btn-icon-color-hover: var(--persimmon-hover);
 }
 
 .orange {
   --btn-accent-color: var(--texas-rose);
-  --btn-icon-color: var(--texas-rose);
   --btn-accent-color-hover: var(--texas-rose-hover);
-  --btn-icon-color-hover: var(--texas-rose-hover);
   --btn-accent-color-light: var(--texas-rose-light);
+  --btn-icon-color-hover: var(--texas-rose-hover);
 }
 
 .blue {
   --btn-accent-color: var(--dodger-blue);
-  --btn-icon-color: var(--dodger-blue);
   --btn-accent-color-hover: var(--dodger-blue-hover);
-  --btn-icon-color-hover: var(--dodger-blue-hover);
   --btn-accent-color-light: var(--dodger-blue-light);
+  --btn-icon-color-hover: var(--dodger-blue-hover);
 }
 
 .cyan {
   --btn-accent-color: var(--malibu);
-  --btn-icon-color: var(--malibu);
   --btn-accent-color-hover: var(--malibu-hover);
-  --btn-icon-color-hover: var(--malibu-hover);
   --btn-accent-color-light: var(--malibu-light);
+  --btn-icon-color-hover: var(--malibu-hover);
 }
 
 .purple {
   --btn-accent-color: var(--heliotrope);
-  --btn-icon-color: var(--heliotrope);
   --btn-accent-color-hover: var(--heliotrope-hover);
-  --btn-icon-color-hover: var(--heliotrope-hover);
   --btn-accent-color-light: var(--heliotrope-light);
+  --btn-icon-color-hover: var(--heliotrope-hover);
 }
 
 .sheets {
   --btn-accent-color: var(--sheets);
-  --btn-icon-color: var(--sheets);
   --btn-accent-color-hover: var(--sheets-hover);
-  --btn-icon-color-hover: var(--sheets-hover);
   --btn-accent-color-light: var(--white);
+  --btn-icon-color-hover: var(--sheets-hover);
 }
 
 .disabled {
