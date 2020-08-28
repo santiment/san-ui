@@ -2,47 +2,47 @@
 @import '../mixins.scss';
 
 .wrapper {
-  @include text-normal;
-
-  border: 1px solid;
   box-sizing: border-box;
   border-radius: $border-radius;
   display: flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 10px 16px;
+  color: var(--rhino);
+
+  @include text('body-3', 'm');
 }
 
 .info {
-  background-color: var(--grey-light);
-  border-color: var(--grey-light-2);
-  color: var(--grey-dark-2);
-  fill: var(--grey-dark-2);
+  background-color: var(--athens);
+  fill: var(--waterloo);
+  color: var(--rhino);
 }
 
 .warn {
-  background-color: var(--orange-light);
-  border-color: var(--orange);
-  color: var(--orange);
-  fill: var(--orange);
+  background-color: var(--texas-rose-light);
+  fill: var(--texas-rose-hover);
+  color: var(--texas-rose);
 }
 
 .error {
-  background-color: var(--red-light);
-  border-color: var(--red);
-  color: var(--red);
-  fill: var(--red);
+  background-color: var(--persimmon-light);
+  fill: var(--persimmon-hover);
+  color: var(--persimmon);
 }
 
 .success {
-  background-color: var(--green-light);
-  border-color: var(--green);
-  color: var(--green);
-  fill: var(--green);
+  background-color: var(--jungle-green-light);
+  fill: var(--jungle-green-hover);
+  color: var(--jungle-green);
+}
+
+.withIcon {
+  color: var(--rhino);
 }
 
 .icon {
-  width: 17px;
-  height: 17px;
+  width: 16px;
+  height: 16px;
   text-align: center;
-  margin-right: 10px;
+  margin-right: 12px;
 }

@@ -6,43 +6,35 @@ import ColorModeComparison from './ColorModeComparison'
 storiesOf('Messages', module)
   .add('Default', () => (
     <ColorModeComparison>
-      <Message>
-        This is a message with default type.
+      <Message>This is a message with default type.</Message>
+
+      <Message variant='info'>
+        Message with variant = "info" (the same as default)
       </Message>
 
-      <Message variant="info">
-        You guessed it right, this is same as default.
-      </Message>
+      <Message variant='error'>Message with variant = "error"</Message>
 
-      <Message variant="error">
-        Message with error type
-      </Message>
+      <Message variant='success'>Message with variant = "success"</Message>
 
-      <Message variant="success">
-      Message with success type
-      </Message>
-
-      <Message variant="warn">
-        Message with warn type
-      </Message>
+      <Message variant='warn'>Message with variant = "warn"</Message>
     </ColorModeComparison>
   ))
   .add('Messages with Icon', () => (
     <ColorModeComparison>
-      <Message variant="info" icon="help-round">
-        You guessed it right, this is same as default.
+      <Message variant='info' icon='info-round'>
+        Message with variant = "info" (the same as default)
       </Message>
 
-      <Message variant="error" icon="close">
-        Message with error type
+      <Message variant='error' icon='error'>
+        Message with variant = "error"
       </Message>
 
-      <Message variant="success" icon="checkmark">
-      Message with success type
+      <Message variant='success' icon='success-round'>
+        Message with variant = "success"
       </Message>
 
-      <Message variant="warn" icon="alert">
-        Message with warn type
+      <Message variant='warn' icon='info-round'>
+        Message with variant = "warn"
       </Message>
     </ColorModeComparison>
-  ));
+  ))
