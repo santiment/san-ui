@@ -10,26 +10,34 @@ const Message = ({
   children,
   icon,
   iconClassName,
-  ...props,
+  ...props
 }) => (
-  <div className={cx(className, styles.wrapper, styles[variant])} {...props}>
+  <div
+    className={cx(
+      className,
+      styles.wrapper,
+      styles[variant],
+      icon && styles.withIcon
+    )}
+    {...props}
+  >
     {icon && <Icon type={icon} className={cx(iconClassName, styles.icon)} />}
     {children}
   </div>
-);
+)
 
 Message.propTypes = {
   iconClassName: PropTypes.string,
   className: PropTypes.string,
   variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
   icon: PropTypes.string,
-  children: PropTypes.any.isRequired,
-};
+  children: PropTypes.any.isRequired
+}
 
 Message.defaultProps = {
   variant: 'info',
   className: '',
-  iconClassName: '',
-};
+  iconClassName: ''
+}
 
-export default Message;
+export default Message
