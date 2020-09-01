@@ -47,11 +47,11 @@ const getArrowPosition = (align, position, offset) => {
   const offsetStyle = getArrowOffset(align, position, offset)
   switch (position) {
     case 'top':
-      return { top: '99%', ...offsetStyle }
+      return { top: '100%', ...offsetStyle }
     case 'bottom':
       return { top: 0, ...offsetStyle }
     case 'left':
-      return { left: '99%', ...offsetStyle }
+      return { left: '100%', ...offsetStyle }
     case 'right':
       return { left: 0, ...offsetStyle }
   }
@@ -59,7 +59,7 @@ const getArrowPosition = (align, position, offset) => {
 
 const getArrowOffset = (align, position, offset) => {
   if (position === 'top' || position === 'bottom') {
-    const transform = 'translateY(-47%)'
+    const transform = 'translateY(-50%) rotate(45deg)'
     switch (align) {
       case 'start':
         return { left: offset, transform: `${transform}` }
@@ -72,7 +72,7 @@ const getArrowOffset = (align, position, offset) => {
         return { right: offset, transform: `${transform}` }
     }
   } else {
-    const transform = 'translateX(-47%)'
+    const transform = 'translateX(-50%) rotate(45deg)'
     switch (align) {
       case 'start':
         return { top: offset, transform: `${transform}` }
@@ -330,15 +330,10 @@ class TooltipContent extends PureComponent {
         onMouseLeave={onMouseLeave}
       >
         {withArrow && (
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='10'
-            height='10'
+          <div
             style={arrowStyle}
             className={cx(styles.arrow, arrowClassName)}
-          >
-            <path d='M.3 5.7a1 1 0 010-1.4l4-4a1 1 0 011.4 0l4 4a1 1 0 010 1.4l-4 4a1 1 0 01-1.4 0l-4-4z' />
-          </svg>
+          />
         )}
         {children}
       </div>
