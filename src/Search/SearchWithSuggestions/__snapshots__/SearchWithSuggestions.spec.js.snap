@@ -108,7 +108,7 @@ exports[`SearchWithSuggestions should render Bigbom as a child 1`] = `
         <Component
           className="clear"
           onClick={[Function]}
-          type="close-medium"
+          type="close-small"
         >
           <svg />
         </Component>

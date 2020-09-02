@@ -51,6 +51,7 @@ Button.propTypes = {
   isActive: PropTypes.bool,
   isLoading: PropTypes.bool,
   border: PropTypes.bool,
+  icon: PropTypes.string,
   variant: PropTypes.oneOf(['flat', 'ghost', 'fill']),
   accent: PropTypes.oneOf([
     'grey',
