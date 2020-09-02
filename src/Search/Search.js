@@ -40,7 +40,7 @@ const Search = ({
     >
       {input && (
         <Icon
-          type='close-medium'
+          type='close-small'
           className={styles.clear}
           onClick={onClearClick}
         />
