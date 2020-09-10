@@ -88,6 +88,10 @@
 .close {
   cursor: pointer;
   fill: var(--waterloo);
+
+  &:hover {
+    fill: var(--rhino);
+  }
 }
 
 @keyframes appearing {
