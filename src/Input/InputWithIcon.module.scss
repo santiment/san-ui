@@ -18,16 +18,20 @@
   }
 }
 
+.error .icon {
+  fill: var(--persimmon-light-2);
+}
+
 .wrapper {
   position: relative;
 
   &:hover .icon {
-    fill: var(--jungle-green);
+    fill: var(--jungle-green-light-3);
   }
 }
 
 .error:hover .icon {
-  fill: var(--casper);
+  fill: var(--persimmon-light-2);
 }
 
 .input {
@@ -40,14 +44,18 @@
   }
 
   &:focus + .icon {
-    fill: var(--rhino);
+    fill: var(--jungle-green-light-3);
   }
 
   &[disabled] + .icon {
-    fill: var(--casper);
+    fill: var(--mystic);
   }
 
   &[disabled]:hover + .icon {
-    fill: var(--casper);
+    fill: var(--mystic);
   }
+}
+
+.error .input:focus + .icon {
+  fill: var(--persimmon-light-2);
 }

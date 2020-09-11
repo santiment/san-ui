@@ -30,13 +30,14 @@
 
     .icon {
       transform: rotate(180deg);
+      fill: var(--rhino);
     }
   }
 }
 
 .options {
   top: 100%;
-  margin-top: 4px;
+  margin-top: 8px;
   border-radius: 4px;
   position: absolute;
   padding: 8px;
