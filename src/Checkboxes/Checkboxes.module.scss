@@ -22,6 +22,15 @@
 
 .checkmark {
   display: none;
+
+  & path {
+    fill: none;
+    stroke: var(--athens);
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: dash 1s ease-in-out;
+    animation-fill-mode: forwards;
+  }
 }
 
 .selected {
@@ -32,7 +41,7 @@
 
   & .checkmark {
     display: block;
-    fill: var(--athens);
+    stroke: var(--athens);
   }
 }
 
@@ -63,4 +72,10 @@
 
 .checkbox {
   display: inline-flex;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
