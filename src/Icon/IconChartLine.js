@@ -1,11 +1,16 @@
 import React from 'react'
 
 export default (
-  <svg xmlns='http://www.w3.org/2000/svg' width='14' height='8' stroke='#000'>
+  <svg
+    width='14'
+    height='10'
+    viewBox='0 0 14 10'
+    xmlns='http://www.w3.org/2000/svg'
+  >
     <path
-      d='M10 4c0-.552.168-1 .375-1h3.25c.207 0 .375.448.375 1s-.168 1-.375 1h-3.25C10.168 5 10 4.552 10 4zM0 4c0-.552.168-1 .375-1h3.25C3.832 3 4 3.448 4 4s-.168 1-.375 1H.375C.168 5 0 4.552 0 4z'
-      stroke='none'
+      fillRule='evenodd'
+      clipRule='evenodd'
+      d='M10.8 5a3.8 3.8 0 11-7.6 0 3.8 3.8 0 017.6 0zm1.175.5a5 5 0 01-9.95 0H.5a.5.5 0 010-1h1.525a5 5 0 019.95 0H13.5a.5.5 0 010 1h-1.525z'
     />
-    <circle cx='7' cy='4' r='3.25' fill='none' strokeWidth='1.5' />
   </svg>
 )
