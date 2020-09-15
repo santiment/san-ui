@@ -1,11 +1,20 @@
 import React from 'react'
 
 export default (
-  <svg xmlns='http://www.w3.org/2000/svg' width='14' height='8' stroke='#000'>
+  <svg
+    width='14'
+    height='10'
+    viewBox='0 0 14 10'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    stroke='#000'
+  >
     <path
-      d='M10 4c0-.552.168-1 .375-1h3.25c.207 0 .375.448.375 1s-.168 1-.375 1h-3.25C10.168 5 10 4.552 10 4zM0 4c0-.552.168-1 .375-1h3.25C3.832 3 4 3.448 4 4s-.168 1-.375 1H.375C.168 5 0 4.552 0 4z'
-      stroke='none'
+      d='M11 5C11 7.20914 9.20914 9 7 9C4.79086 9 3 7.20914 3 5M11 5C11 2.79086 9.20914 1 7 1C4.79086 1 3 2.79086 3 5M11 5H13M3 5H1'
+      fill='none'
+      stroke-width='1.2'
+      stroke-linecap='round'
+      stroke-linejoin='round'
     />
-    <circle cx='7' cy='4' r='3.25' fill='none' strokeWidth='1.5' />
   </svg>
 )
