@@ -25,10 +25,10 @@
 
   & path {
     fill: none;
-    stroke: var(--athens);
+    stroke: $athens;
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
-    animation: dash 1s ease-in-out;
+    animation: dash 0.7s ease-in-out;
     animation-fill-mode: forwards;
   }
 }
@@ -41,7 +41,6 @@
 
   & .checkmark {
     display: block;
-    stroke: var(--athens);
   }
 }
 
