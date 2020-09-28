@@ -55,14 +55,13 @@
   }
 }
 
-.wrapper {
-  display: inline-block;
+.errorWrapper {
   position: relative;
   width: 100%;
 }
 
-.notification {
+.errorText {
   position: absolute;
-  top: calc(100% + 4px);
+  top: 4px;
   z-index: 1;
 }

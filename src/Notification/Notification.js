@@ -35,6 +35,7 @@ const Notification = ({
         type={titleIconName || titleIcons[variant]}
         width={size === 'small' ? 16 : 22}
         height={size === 'small' ? 16 : 22}
+        className={styles.icon}
       />
       <div className={cx(styles.title, classes.title)}>{title}</div>
       {hasCloseBtn && (

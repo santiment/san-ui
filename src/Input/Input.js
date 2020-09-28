@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import cx from 'classnames'
 import Notification from '../Notification'
 import styles from './Input.module.scss'
 
@@ -8,28 +9,34 @@ const Input = ({
   errorText,
   inplace,
   className = '',
+  errorClassName = '',
   ...props
 }) => {
   return (
-    <div className={styles.wrapper}>
+    <>
       <input
         ref={forwardedRef}
         type='text'
-        className={`${styles.input} ${inplace ? styles['inplace'] : ''} ${
-          isError ? styles.error : ''
-        } ${className}`}
+        className={cx(
+          styles.input,
+          inplace && styles['inplace'],
+          isError && styles.error,
+          className
+        )}
         {...props}
       />
       {errorText && (
-        <Notification
-          hasCloseBtn={false}
-          className={styles.notification}
-          title={errorText}
-          size='small'
-          variant='error'
-        />
+        <div className={cx(styles.errorWrapper, errorClassName)}>
+          <Notification
+            hasCloseBtn={false}
+            className={styles.errorText}
+            title={errorText}
+            size='small'
+            variant='error'
+          />
+        </div>
       )}
-    </div>
+    </>
   )
 }
 
