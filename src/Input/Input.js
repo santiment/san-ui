@@ -11,7 +11,7 @@ const Input = ({
   ...props
 }) => {
   return (
-    <>
+    <div className={styles.wrapper}>
       <input
         ref={forwardedRef}
         type='text'
@@ -29,7 +29,7 @@ const Input = ({
           variant='error'
         />
       )}
-    </>
+    </div>
   )
 }
 

@@ -55,8 +55,14 @@
   }
 }
 
+.wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
 .notification {
   position: absolute;
-  margin-top: 4px;
+  top: calc(100% + 4px);
   z-index: 1;
 }
