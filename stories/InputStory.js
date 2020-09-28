@@ -15,7 +15,7 @@ storiesOf('Input', module)
         <Input placeholder='Placeholder' />
         <Input defaultValue='Disabled Built-in value' disabled />
         <Input defaultValue='Read-only Built-in value' readOnly />
-        <Input isError defaultValue='Error case' />
+        <Input isError defaultValue='Error case' errorText='ErrorText field' />
         <Input defaultValue='inplace username' inplace />
       </ColorModeComparison>
     </div>
@@ -48,14 +48,16 @@ storiesOf('Input', module)
         <InputWithIcon
           icon='search-small'
           iconPosition='left'
-          isError
-          defaultValue='Error case'
+          defaultValue='inplace username'
+          inplace
         />
         <InputWithIcon
           icon='search-small'
           iconPosition='left'
-          defaultValue='inplace username'
-          inplace
+          isError
+          defaultValue='Error case'
+          errorText='Some error text goes here, which contain two
+or more than two lines'
         />
       </ColorModeComparison>
     </div>

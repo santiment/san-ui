@@ -54,3 +54,14 @@
     border-color: var(--persimmon);
   }
 }
+
+.errorWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.errorText {
+  position: absolute;
+  top: 4px;
+  z-index: 1;
+}

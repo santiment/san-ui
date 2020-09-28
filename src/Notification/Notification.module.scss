@@ -5,10 +5,17 @@
   @include text-normal;
 
   border-radius: $border-radius;
-  padding: 16px 18px 18px 16px;
-  min-width: 320px;
   color: var(--waterloo);
   background-color: var(--white);
+}
+
+.large {
+  padding: 16px 18px 18px 16px;
+  min-width: 320px;
+}
+
+.small {
+  padding: 6px 8px;
 }
 
 .info {
@@ -40,6 +47,10 @@
   fill: var(--rhino);
   right: 0;
   top: 7px;
+}
+
+.icon {
+  min-width: 16px;
 }
 
 .title {
@@ -80,4 +91,10 @@
 .actions {
   display: flex;
   padding: 10px 0 0 33px;
+}
+
+.small .title {
+  padding: 1px 8px 0 8px;
+
+  @include text('caption', 'm');
 }
