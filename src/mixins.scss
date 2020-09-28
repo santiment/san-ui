@@ -140,6 +140,10 @@
     @else {
       line-height: 26px;
 
+      @if $mod == 'm' {
+        font-weight: 500;
+      }
+
       @if $mod == 'l' {
         font-weight: 600;
       }

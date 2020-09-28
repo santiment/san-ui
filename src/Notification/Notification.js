@@ -21,19 +21,20 @@ const Notification = ({
   onClose,
   actions,
   hasCloseBtn,
+  size,
   classes,
   ...rest
 }) => (
   <Panel
     {...rest}
     variant='modal'
-    className={cx(className, styles.wrapper, styles[variant])}
+    className={cx(className, styles.wrapper, styles[variant], styles[size])}
   >
     <div className={styles.header}>
       <Icon
         type={titleIconName || titleIcons[variant]}
-        width={22}
-        height={22}
+        width={size === 'small' ? 16 : 22}
+        height={size === 'small' ? 16 : 22}
       />
       <div className={cx(styles.title, classes.title)}>{title}</div>
       {hasCloseBtn && (
@@ -66,6 +67,7 @@ Notification.propTypes = {
   titleIconName: PropTypes.string,
   onClose: PropTypes.func,
   variant: PropTypes.oneOf(['info', 'warning', 'success', 'error']),
+  size: PropTypes.oneOf(['large', 'small']),
   title: PropTypes.string.isRequired,
   classes: PropTypes.shape({
     title: PropTypes.string,
@@ -83,6 +85,7 @@ Notification.defaultProps = {
   onClose: () => {},
   variant: 'info',
   classes: {},
+  size: 'large',
   hasCloseBtn: true
 }
 
