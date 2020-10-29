@@ -18,15 +18,29 @@ class Modal extends Component {
   }
 
   state = {
-    open: this.props.defaultOpen
+    open: this.props.defaultOpen,
+    allowClosingOnDimmed: false
   }
 
   componentDidMount () {
     window.addEventListener('keyup', this.onKeyUp)
   }
 
+  componentDidUpdate ({ open: prevOpen }) {
+    if (prevOpen !== this.state.open && this.state.open) {
+      this.closeTimer = setTimeout(() => {
+        this.setState({ allowClosingOnDimmed: true })
+      }, 1000)
+    }
+
+    if (!this.state.open && this.state.allowClosingOnDimmed) {
+      this.setState({ allowClosingOnDimmed: false })
+    }
+  }
+
   componentWillUnmount () {
     window.removeEventListener('keyup', this.onKeyUp)
+    clearTimeout(this.closeTimer)
   }
 
   openModal = () => {
@@ -35,6 +49,12 @@ class Modal extends Component {
 
   closeModal = () => {
     this.setState({ open: false }, this.props.onClose)
+  }
+
+  onDimmedClose = () => {
+    if (this.state.allowClosingOnDimmed) {
+      this.closeModal()
+    }
   }
 
   onKeyUp = ({ code }) => {
@@ -72,7 +92,7 @@ class Modal extends Component {
               </El>
               <div
                 className={cx(styles.dimmed, classes.bg)}
-                onClick={this.closeModal}
+                onClick={this.onDimmedClose}
               />
             </div>,
             document.body
