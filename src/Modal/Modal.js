@@ -19,7 +19,8 @@ class Modal extends Component {
 
   state = {
     open: this.props.defaultOpen,
-    allowClosingOnDimmed: false
+    // to prevent false-click and close dialog. Useful for popup, that appears on non-user clicks (after timeout) or several fast clicks
+    closeOnDimmed: !this.props.preventCloseOnDimmedFromStart
   }
 
   componentDidMount () {
@@ -27,14 +28,22 @@ class Modal extends Component {
   }
 
   componentDidUpdate ({ open: prevOpen }) {
-    if (prevOpen !== this.state.open && this.state.open) {
+    if (
+      this.props.preventCloseOnDimmedFromStart &&
+      prevOpen !== this.state.open &&
+      this.state.open
+    ) {
       this.closeTimer = setTimeout(() => {
-        this.setState({ allowClosingOnDimmed: true })
+        this.setState({ closeOnDimmed: true })
       }, 1000)
     }
 
-    if (!this.state.open && this.state.allowClosingOnDimmed) {
-      this.setState({ allowClosingOnDimmed: false })
+    if (
+      !this.state.open &&
+      this.props.preventCloseOnDimmedFromStart &&
+      this.state.closeOnDimmed
+    ) {
+      this.setState({ closeOnDimmed: false })
     }
   }
 
@@ -52,7 +61,7 @@ class Modal extends Component {
   }
 
   onDimmedClose = () => {
-    if (this.state.allowClosingOnDimmed) {
+    if (this.state.closeOnDimmed) {
       this.closeModal()
     }
   }
