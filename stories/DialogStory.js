@@ -24,7 +24,12 @@ class ControlledDialog extends React.PureComponent {
     return (
       <>
         <Button onClick={this.openModal}>Open modal</Button>
-        <Dialog title='test' open={this.state.open} onClose={this.closeModal}>
+        <Dialog
+          title='test'
+          open={this.state.open}
+          onClose={this.closeModal}
+          preventCloseOnDimmedFromStart
+        >
           <Dialog.ScrollContent withPadding>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
             quaerat?
