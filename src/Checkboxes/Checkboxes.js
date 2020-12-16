@@ -10,7 +10,7 @@ const SelectElement = () => (
       xmlns='http://www.w3.org/2000/svg'
       width='9'
       height='7'
-      viewMode='0 0 9 7'
+      viewBox='0 0 9 7'
       className={styles.checkmark}
     >
       <path strokeLinecap='round' strokeLinejoin='round' d='M1 3l2.5 3L8 1' />
