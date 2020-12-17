@@ -7,33 +7,54 @@
   display: flex;
   align-items: center;
   padding: 10px 16px;
+  border: 1px solid;
   color: var(--rhino);
 
   @include text('body-3', 'm');
 }
 
 .info {
-  background-color: var(--athens);
   fill: var(--waterloo);
   color: var(--rhino);
+  border-color: var(--porcelain);
+
+  &.filled {
+    border-color: var(--athens);
+    background-color: var(--athens);
+  }
 }
 
 .warn {
-  background-color: var(--texas-rose-light);
   fill: var(--texas-rose-hover);
   color: var(--texas-rose);
+  border-color: var(--texas-rose-light-2);
+
+  &.filled {
+    border-color: var(--texas-rose-light);
+    background-color: var(--texas-rose-light);
+  }
 }
 
 .error {
-  background-color: var(--persimmon-light);
   fill: var(--persimmon-hover);
   color: var(--persimmon);
+  border-color: var(--persimmon-light-2);
+
+  &.filled {
+    border-color: var(--persimmon-light);
+    background-color: var(--persimmon-light);
+  }
 }
 
 .success {
-  background-color: var(--jungle-green-light);
   fill: var(--jungle-green-hover);
   color: var(--jungle-green);
+  border-color: var(--jungle-green-light-2);
+
+  &.filled {
+    border-color: var(--jungle-green-light);
+    background-color: var(--jungle-green-light);
+  }
 }
 
 .withIcon {

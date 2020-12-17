@@ -17,6 +17,22 @@ storiesOf('Messages', module)
       <Message variant='success'>Message with variant = "success"</Message>
 
       <Message variant='warn'>Message with variant = "warn"</Message>
+
+      <Message fill={false} variant='info'>
+        Message with variant = "info" and fill="false"
+      </Message>
+
+      <Message fill={false} variant='error'>
+        Message with variant = "error" and fill="false"
+      </Message>
+
+      <Message fill={false} variant='success'>
+        Message with variant = "success" and fill="false"
+      </Message>
+
+      <Message fill={false} variant='warn'>
+        Message with variant = "warn" and fill="false"
+      </Message>
     </ColorModeComparison>
   ))
   .add('Messages with Icon', () => (
@@ -35,6 +51,22 @@ storiesOf('Messages', module)
 
       <Message variant='warn' icon='info-round'>
         Message with variant = "warn"
+      </Message>
+
+      <Message fill={false} variant='info' icon='info-round'>
+        Message with variant = "info" and fill="false"
+      </Message>
+
+      <Message fill={false} variant='error' icon='error'>
+        Message with variant = "error" and fill="false"
+      </Message>
+
+      <Message fill={false} variant='success' icon='success-round'>
+        Message with variant = "success" and fill="false"
+      </Message>
+
+      <Message fill={false} variant='warn' icon='info-round'>
+        Message with variant = "warn" and fill="false"
       </Message>
     </ColorModeComparison>
   ))
