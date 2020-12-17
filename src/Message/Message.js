@@ -10,6 +10,7 @@ const Message = ({
   children,
   icon,
   iconClassName,
+  fill,
   ...props
 }) => (
   <div
@@ -17,6 +18,7 @@ const Message = ({
       className,
       styles.wrapper,
       styles[variant],
+      fill && styles.filled,
       icon && styles.withIcon
     )}
     {...props}
@@ -31,13 +33,15 @@ Message.propTypes = {
   className: PropTypes.string,
   variant: PropTypes.oneOf(['info', 'warn', 'success', 'error']),
   icon: PropTypes.string,
+  fill: PropTypes.bool,
   children: PropTypes.any.isRequired
 }
 
 Message.defaultProps = {
   variant: 'info',
   className: '',
-  iconClassName: ''
+  iconClassName: '',
+  fill: true
 }
 
 export default Message
