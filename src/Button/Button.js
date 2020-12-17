@@ -49,7 +49,8 @@ Button.propTypes = {
   as: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func,
-    PropTypes.element
+    PropTypes.element,
+    PropTypes.elementType
   ]),
   fluid: PropTypes.bool,
   isActive: PropTypes.bool,
