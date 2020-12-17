@@ -46,7 +46,12 @@ const Button = ({
 }
 
 Button.propTypes = {
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  as: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.element,
+    PropTypes.elementType
+  ]),
   fluid: PropTypes.bool,
   isActive: PropTypes.bool,
   isLoading: PropTypes.bool,
