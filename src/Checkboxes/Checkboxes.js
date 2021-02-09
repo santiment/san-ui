@@ -1,7 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
 import { LabeledSelect, toggleMultiple } from '../Selects'
-import Icon from '../Icon'
 import styles from './Checkboxes.module.scss'
 
 const SelectElement = () => (

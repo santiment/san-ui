@@ -21,13 +21,14 @@
 }
 
 .checkmark {
-  display: none;
+  opacity: 0;
 
   & path {
     fill: none;
     stroke: $athens;
     stroke-dasharray: 100;
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 0.7s ease-in-out;
   }
 }
 
@@ -38,12 +39,11 @@
   }
 
   & .checkmark {
-    display: block;
-  }
+    opacity: 1;
 
-  &:hover path {
-    animation: dash 0.7s ease-in-out;
-    animation-fill-mode: forwards;
+    & path {
+      stroke-dashoffset: 0;
+    }
   }
 }
 
@@ -74,14 +74,4 @@
 
 .checkbox {
   display: inline-flex;
-}
-
-@keyframes dash {
-  from {
-    stroke-dashoffset: 100;
-  }
-
-  to {
-    stroke-dashoffset: 0;
-  }
 }
