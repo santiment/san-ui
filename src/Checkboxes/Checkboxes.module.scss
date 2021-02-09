@@ -28,7 +28,6 @@
     stroke: $athens;
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
-    transition: stroke-dashoffset 0.7s ease-in-out;
   }
 }
 
@@ -43,6 +42,7 @@
 
     & path {
       stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.7s ease-in-out;
     }
   }
 }
