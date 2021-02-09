@@ -3,13 +3,18 @@ import React from 'react'
 export default (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width='16'
+    width='14'
     height='9'
-    viewBox='0 0 16 9'
+    viewBox='0 0 14 9'
   >
     <path
       fillRule='evenodd'
-      d='M.5 3.5a.5.5 0 000 1h13.4l-3.7 2.6a.5.5 0 10.6.8l5-3.5a.5.5 0 000-.8l-5-3.5a.5.5 0 00-.6.8L14 3.5H.5z'
+      d='M9.1.2c-.2.2-.1.5 0 .7L12.8 4 9.2 7.1a.5.5 0 10.6.8l4-3.5a.5.5 0 000-.8L9.8.1a.5.5 0 00-.7 0z'
+      clipRule='evenodd'
+    />
+    <path
+      fillRule='evenodd'
+      d='M0 4c0-.3.2-.5.5-.5h12a.5.5 0 110 1H.5A.5.5 0 010 4z'
       clipRule='evenodd'
     />
   </svg>
