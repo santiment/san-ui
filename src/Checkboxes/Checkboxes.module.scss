@@ -27,9 +27,7 @@
     fill: none;
     stroke: $athens;
     stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: dash 0.7s ease-in-out;
-    animation-fill-mode: forwards;
+    stroke-dashoffset: 0;
   }
 }
 
@@ -41,6 +39,11 @@
 
   & .checkmark {
     display: block;
+  }
+
+  &:hover path {
+    animation: dash 0.7s ease-in-out;
+    animation-fill-mode: forwards;
   }
 }
 
@@ -74,6 +77,10 @@
 }
 
 @keyframes dash {
+  from {
+    stroke-dashoffset: 100;
+  }
+
   to {
     stroke-dashoffset: 0;
   }
