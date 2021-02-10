@@ -92,6 +92,13 @@ storiesOf('Dialog', module)
       Unstyled content
     </Dialog>
   ))
+  .add('Without title', () => (
+    <Dialog size='m' trigger={<Button>test</Button>}>
+      <Dialog.ScrollContent withPadding>
+        <LongText />
+      </Dialog.ScrollContent>
+    </Dialog>
+  ))
   .add('Scrollable content', () => (
     <Dialog title='test' trigger={<Button>Show</Button>}>
       <Dialog.ScrollContent withPadding>

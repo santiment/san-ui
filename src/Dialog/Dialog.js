@@ -15,6 +15,7 @@ const Dialog = ({
   children,
   autoFocus,
   showCloseBtn,
+  withHeader,
   size,
   ...props
 }) => (
@@ -35,7 +36,14 @@ const Dialog = ({
   >
     {closeModal => (
       <>
-        <Panel.Title withPadding className={cx(styles.title, classes.title)}>
+        <Panel.Title
+          withPadding
+          className={cx(
+            styles.title,
+            !title && styles.title__emptyTitle,
+            classes.title
+          )}
+        >
           <span>{title}</span>
           {showCloseBtn && (
             <Icon
@@ -81,6 +89,7 @@ Dialog.Approve = ({ className, disabled, isLoading, ...props }) => (
 
 Dialog.defaultProps = {
   showCloseBtn: true,
+  withHeader: true,
   size: null,
   classes: {
     dialog: '',

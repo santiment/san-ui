@@ -46,6 +46,11 @@
   align-items: center;
   justify-content: space-between;
 
+  &__emptyTitle {
+    border-bottom: none;
+    padding: 20px 20px 0 0 !important;
+  }
+
   @include responsive('phone-xs', 'phone') {
     background-color: var(--athens);
     border-radius: 15px 15px 0 0;
