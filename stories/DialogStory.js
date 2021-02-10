@@ -72,6 +72,16 @@ storiesOf('Dialog', module)
       Unstyled content
     </Dialog>
   ))
+  .add('size="s" (width: 480px)', () => (
+    <Dialog title='test' size='s' trigger={<Button>Show</Button>}>
+      Unstyled content
+    </Dialog>
+  ))
+  .add('size="m" (width: 600px)', () => (
+    <Dialog title='test' size='m' trigger={<Button>Show</Button>}>
+      Unstyled content
+    </Dialog>
+  ))
 
   .add('Without close button', () => (
     <Dialog
@@ -82,8 +92,15 @@ storiesOf('Dialog', module)
       Unstyled content
     </Dialog>
   ))
+  .add('Without title', () => (
+    <Dialog size='m' trigger={<Button>test</Button>}>
+      <Dialog.ScrollContent withPadding>
+        <LongText />
+      </Dialog.ScrollContent>
+    </Dialog>
+  ))
   .add('Scrollable content', () => (
-    <Dialog title='test' trigger={<Button>Show</Button>}>
+    <Dialog title='test' withAnimation={false} trigger={<Button>Show</Button>}>
       <Dialog.ScrollContent withPadding>
         <LongText />
       </Dialog.ScrollContent>
@@ -97,7 +114,7 @@ storiesOf('Dialog', module)
     </Dialog>
   ))
   .add('Scrollable content with actions', () => (
-    <Dialog title='test' trigger={<Button>Show</Button>}>
+    <Dialog title='test' withAnimation={false} trigger={<Button>Show</Button>}>
       <Dialog.ScrollContent withPadding>
         <LongText />
       </Dialog.ScrollContent>

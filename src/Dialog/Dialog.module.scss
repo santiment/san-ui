@@ -17,6 +17,16 @@
   display: flex;
   flex-direction: column;
 
+  &__s {
+    width: 480px;
+    max-width: 480px;
+  }
+
+  &__m {
+    width: 600px;
+    max-width: 600px;
+  }
+
   @include responsive('phone-xs', 'phone') {
     width: 100%;
     max-width: 100%;
@@ -27,8 +37,7 @@
 
 .animation {
   @include responsive('phone-xs', 'phone') {
-    animation-name: appearing;
-    animation-duration: 0.3s;
+    animation: slideIn 0.3s ease-out both;
   }
 }
 
@@ -37,13 +46,19 @@
   align-items: center;
   justify-content: space-between;
 
+  &__emptyTitle {
+    border-bottom: none;
+    padding: 20px 20px 0 0 !important;
+    background: none !important;
+  }
+
   @include responsive('phone-xs', 'phone') {
     background-color: var(--athens);
     border-radius: 15px 15px 0 0;
     color: var(--waterloo);
     padding: 16px 20px;
 
-    @include text('caption', 'm');
+    @include text('body-2', 'l');
   }
 }
 
@@ -88,13 +103,36 @@
 .close {
   cursor: pointer;
   fill: var(--waterloo);
+  position: relative;
+  height: 16px;
+  transition-property: transform, fill;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+
+  @include responsive('phone-xs', 'phone') {
+    transform: scale(1.2) translateY(-3px);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
 
   &:hover {
     fill: var(--rhino);
+
+    @include responsive('tablet','laptop', 'desktop') {
+      transform: rotate(90deg);
+    }
   }
 }
 
-@keyframes appearing {
+@keyframes slideIn {
   0% {
     transform: translateY(70vh);
   }

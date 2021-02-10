@@ -15,6 +15,8 @@ const Dialog = ({
   children,
   autoFocus,
   showCloseBtn,
+  withHeader,
+  size,
   ...props
 }) => (
   <Modal
@@ -22,19 +24,30 @@ const Dialog = ({
     {...props}
     classes={{
       wrapper: styles.wrapper,
-      modal: cx(styles.modal, classes.dialog, !autoFocus && styles.animation)
+      modal: cx(
+        styles.modal,
+        size === 's' && styles.modal__s,
+        size === 'm' && styles.modal__m,
+        classes.dialog,
+        !autoFocus && styles.animation
+      )
     }}
   >
     {closeModal => (
       <>
-        <Panel.Title withPadding className={cx(styles.title, classes.title)}>
-          {title}
+        <Panel.Title
+          withPadding
+          className={cx(
+            styles.title,
+            !title && styles.title__emptyTitle,
+            classes.title
+          )}
+        >
+          <span>{title}</span>
           {showCloseBtn && (
-            <Icon
-              type='close-medium'
-              onClick={closeModal}
-              className={styles.close}
-            />
+            <div onClick={closeModal} className={styles.close}>
+              <Icon type='close-medium' />
+            </div>
           )}
         </Panel.Title>
         {children}
@@ -73,6 +86,9 @@ Dialog.Approve = ({ className, disabled, isLoading, ...props }) => (
 
 Dialog.defaultProps = {
   showCloseBtn: true,
+  withHeader: true,
+  withAnimation: true,
+  size: null,
   classes: {
     dialog: '',
     title: ''
