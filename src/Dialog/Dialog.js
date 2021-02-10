@@ -20,6 +20,7 @@ const Dialog = ({
 }) => (
   <Modal
     as={Panel}
+    withAnimation
     {...props}
     classes={{
       wrapper: styles.wrapper,

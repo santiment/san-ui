@@ -69,7 +69,11 @@ class Modal extends Component {
   }
 
   closeModal = () => {
-    this.setState({ showCloseAnimation: true })
+    if (this.props.withAnimation) {
+      this.setState({ showCloseAnimation: true })
+    } else {
+      this.setState({ open: false }, this.props.onClose)
+    }
   }
 
   onDimmedClose = () => {
@@ -91,6 +95,7 @@ class Modal extends Component {
       children,
       classes,
       as: El,
+      withAnimation,
       passOpenStateAs,
       modalProps = {}
     } = this.props
@@ -111,7 +116,7 @@ class Modal extends Component {
               <El
                 className={cx(
                   styles.modal,
-                  showCloseAnimation && styles.hide,
+                  withAnimation && showCloseAnimation && styles.hide,
                   classes.modal
                 )}
                 {...modalProps}
