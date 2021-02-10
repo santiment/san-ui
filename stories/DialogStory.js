@@ -72,6 +72,16 @@ storiesOf('Dialog', module)
       Unstyled content
     </Dialog>
   ))
+  .add('size="s" (width: 480px)', () => (
+    <Dialog title='test' size='s' trigger={<Button>Show</Button>}>
+      Unstyled content
+    </Dialog>
+  ))
+  .add('size="m" (width: 600px)', () => (
+    <Dialog title='test' size='m' trigger={<Button>Show</Button>}>
+      Unstyled content
+    </Dialog>
+  ))
 
   .add('Without close button', () => (
     <Dialog

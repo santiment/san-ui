@@ -17,6 +17,16 @@
   display: flex;
   flex-direction: column;
 
+  &__s {
+    width: 480px;
+    max-width: 480px;
+  }
+
+  &__m {
+    width: 600px;
+    max-width: 600px;
+  }
+
   @include responsive('phone-xs', 'phone') {
     width: 100%;
     max-width: 100%;

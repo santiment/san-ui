@@ -15,6 +15,7 @@ const Dialog = ({
   children,
   autoFocus,
   showCloseBtn,
+  size,
   ...props
 }) => (
   <Modal
@@ -22,7 +23,13 @@ const Dialog = ({
     {...props}
     classes={{
       wrapper: styles.wrapper,
-      modal: cx(styles.modal, classes.dialog, !autoFocus && styles.animation)
+      modal: cx(
+        styles.modal,
+        size === 's' && styles.modal__s,
+        size === 'm' && styles.modal__m,
+        classes.dialog,
+        !autoFocus && styles.animation
+      )
     }}
   >
     {closeModal => (
@@ -73,6 +80,7 @@ Dialog.Approve = ({ className, disabled, isLoading, ...props }) => (
 
 Dialog.defaultProps = {
   showCloseBtn: true,
+  size: null,
   classes: {
     dialog: '',
     title: ''
