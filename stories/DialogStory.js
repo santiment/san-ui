@@ -100,7 +100,7 @@ storiesOf('Dialog', module)
     </Dialog>
   ))
   .add('Scrollable content', () => (
-    <Dialog title='test' trigger={<Button>Show</Button>}>
+    <Dialog title='test' withAnimation={false} trigger={<Button>Show</Button>}>
       <Dialog.ScrollContent withPadding>
         <LongText />
       </Dialog.ScrollContent>
@@ -114,7 +114,7 @@ storiesOf('Dialog', module)
     </Dialog>
   ))
   .add('Scrollable content with actions', () => (
-    <Dialog title='test' trigger={<Button>Show</Button>}>
+    <Dialog title='test' withAnimation={false} trigger={<Button>Show</Button>}>
       <Dialog.ScrollContent withPadding>
         <LongText />
       </Dialog.ScrollContent>
