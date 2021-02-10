@@ -36,7 +36,7 @@ const Dialog = ({
     {closeModal => (
       <>
         <Panel.Title withPadding className={cx(styles.title, classes.title)}>
-          {title}
+          <span>{title}</span>
           {showCloseBtn && (
             <Icon
               type='close-medium'

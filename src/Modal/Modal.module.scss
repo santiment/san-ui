@@ -20,11 +20,22 @@
   bottom: 0;
   left: 0;
   background: rgba(47, 53, 77, 0.6);
-  animation: fadeIn 0.3s ease-in-out both;
+
+  &__withAnimation {
+    animation: fadeIn 0.3s ease-in-out both;
+  }
 }
 
 .opened {
   overflow: hidden;
+}
+
+.modal {
+  &__withAnimation {
+    @include responsive('tablet','laptop', 'desktop') {
+      animation: zoomIn 0.25s ease-out both;
+    }
+  }
 }
 
 .hide {
@@ -78,5 +89,17 @@
 
   100% {
     transform: scale(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

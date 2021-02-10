@@ -116,6 +116,7 @@ class Modal extends Component {
               <El
                 className={cx(
                   styles.modal,
+                  withAnimation && styles.modal__withAnimation,
                   withAnimation && showCloseAnimation && styles.hide,
                   classes.modal
                 )}
@@ -124,7 +125,11 @@ class Modal extends Component {
                 {render}
               </El>
               <div
-                className={cx(styles.dimmed, classes.bg)}
+                className={cx(
+                  styles.dimmed,
+                  withAnimation && styles.dimmed__withAnimation,
+                  classes.bg
+                )}
                 onClick={this.onDimmedClose}
               />
             </div>,
