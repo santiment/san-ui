@@ -28,7 +28,7 @@
   }
 
   @include responsive('tablet','laptop', 'desktop') {
-    animation: zoomIn 0.3s ease-in-out;
+    animation: zoomIn 0.25s ease-out both;
   }
 
   @include responsive('phone-xs', 'phone') {
@@ -41,7 +41,7 @@
 
 .animation {
   @include responsive('phone-xs', 'phone') {
-    animation: growY 0.3s ease-out;
+    animation: slideIn 0.3s ease-out both;
   }
 }
 
@@ -107,17 +107,7 @@
   }
 }
 
-@keyframes growY {
-  0% {
-    transform: translateY(70vh);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes growY {
+@keyframes slideIn {
   0% {
     transform: translateY(70vh);
   }
@@ -130,11 +120,11 @@
 @keyframes zoomIn {
   0% {
     opacity: 0;
-    transform: scale3d(0.1, 0.1, 0.1);
+    transform: scale(0);
   }
 
   100% {
     opacity: 1;
-    transform: scale3d(1, 1, 1);
+    transform: scale(1);
   }
 }

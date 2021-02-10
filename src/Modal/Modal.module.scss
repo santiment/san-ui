@@ -1,3 +1,4 @@
+@import '../mixins.scss';
 @import '../variables.scss';
 
 .wrapper {
@@ -19,11 +20,25 @@
   bottom: 0;
   left: 0;
   background: rgba(47, 53, 77, 0.6);
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out both;
 }
 
 .opened {
   overflow: hidden;
+}
+
+.hide {
+  @include responsive('tablet','laptop', 'desktop') {
+    animation: zoomOut 0.15s ease-in both, fadeOut 0.1s ease-in both !important;
+  }
+
+  @include responsive('phone-xs', 'phone') {
+    animation: slideOut 0.15s ease-in both !important;
+  }
+
+  & + .dimmed {
+    animation: fadeOut 0.15s ease-in both;
+  }
 }
 
 @keyframes fadeIn {
@@ -33,5 +48,35 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(70vh);
+  }
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
   }
 }

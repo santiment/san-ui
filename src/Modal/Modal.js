@@ -19,6 +19,7 @@ class Modal extends Component {
 
   state = {
     open: this.props.defaultOpen,
+    showCloseAnimation: false,
     // to prevent false-click and close dialog. Useful for popup, that appears on non-user clicks (after timeout) or several fast clicks
     closeOnDimmed: !this.props.preventCloseOnDimmedFromStart
   }
@@ -45,6 +46,17 @@ class Modal extends Component {
     ) {
       this.setState({ closeOnDimmed: false })
     }
+
+    if (this.state.showCloseAnimation) {
+      setTimeout(
+        () =>
+          this.setState(
+            { open: false, showCloseAnimation: false },
+            this.props.onClose
+          ),
+        150
+      )
+    }
   }
 
   componentWillUnmount () {
@@ -57,7 +69,7 @@ class Modal extends Component {
   }
 
   closeModal = () => {
-    this.setState({ open: false }, this.props.onClose)
+    this.setState({ showCloseAnimation: true })
   }
 
   onDimmedClose = () => {
@@ -73,7 +85,7 @@ class Modal extends Component {
   }
 
   render () {
-    const { open } = this.state
+    const { open, showCloseAnimation } = this.state
     const {
       trigger,
       children,
@@ -96,7 +108,14 @@ class Modal extends Component {
         {open &&
           ReactDOM.createPortal(
             <div className={cx(styles.wrapper, classes.wrapper)}>
-              <El className={cx(styles.modal, classes.modal)} {...modalProps}>
+              <El
+                className={cx(
+                  styles.modal,
+                  showCloseAnimation && styles.hide,
+                  classes.modal
+                )}
+                {...modalProps}
+              >
                 {render}
               </El>
               <div
