@@ -21,7 +21,6 @@ const Dialog = ({
 }) => (
   <Modal
     as={Panel}
-    withAnimation
     {...props}
     classes={{
       wrapper: styles.wrapper,
@@ -46,11 +45,9 @@ const Dialog = ({
         >
           <span>{title}</span>
           {showCloseBtn && (
-            <Icon
-              type='close-medium'
-              onClick={closeModal}
-              className={styles.close}
-            />
+            <div onClick={closeModal} className={styles.close}>
+              <Icon type='close-medium' />
+            </div>
           )}
         </Panel.Title>
         {children}
@@ -90,6 +87,7 @@ Dialog.Approve = ({ className, disabled, isLoading, ...props }) => (
 Dialog.defaultProps = {
   showCloseBtn: true,
   withHeader: true,
+  withAnimation: true,
   size: null,
   classes: {
     dialog: '',

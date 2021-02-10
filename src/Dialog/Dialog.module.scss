@@ -49,6 +49,7 @@
   &__emptyTitle {
     border-bottom: none;
     padding: 20px 20px 0 0 !important;
+    background: none !important;
   }
 
   @include responsive('phone-xs', 'phone') {
@@ -57,7 +58,7 @@
     color: var(--waterloo);
     padding: 16px 20px;
 
-    @include text('caption', 'm');
+    @include text('body-2', 'l');
   }
 }
 
@@ -102,6 +103,22 @@
 .close {
   cursor: pointer;
   fill: var(--waterloo);
+  position: relative;
+  height: 16px;
+
+  @include responsive('phone-xs', 'phone') {
+    transform: scale(1.2) translateY(-3px);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
 
   &:hover {
     fill: var(--rhino);
