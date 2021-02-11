@@ -24,6 +24,7 @@ const ContextMenu = ({
     <Modal
       onClose={onClose}
       onOpen={onOpen}
+      withAnimation
       trigger={React.cloneElement(trigger, {
         [ref]: triggerRef
       })}

@@ -27,7 +27,6 @@ const Notification = ({
 }) => (
   <Panel
     {...rest}
-    variant='modal'
     className={cx(className, styles.wrapper, styles[variant], styles[size])}
   >
     <div className={styles.header}>
