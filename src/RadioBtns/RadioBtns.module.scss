@@ -1,44 +1,47 @@
 @import '../variables.scss';
 
 .btn {
-    box-sizing: border-box;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    border: 1px solid var(--grey-light-3);
-    background: var(--white);
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--porcelain);
+  background: var(--white);
 
-    &:hover {
-        border-color: var(--green);
-    }
+  &:hover {
+    border-color: var(--jungle-green);
+  }
 }
 
+/* stylelint-disable */
 .selected {
-    & .btn {
-        border: 4px solid var(--green);
+  & .btn {
+    border: 4px solid var(--jungle-green);
 
-        &:hover {
-            border-color: var(--green-hover);
-        }
+    &:hover {
+      border-color: var(--jungle-green-hover);
     }
+  }
 }
 
 .disabled {
-    & .btn {
-        cursor: not-allowed;
-        background: var(--grey-light);
+  & .btn {
+    cursor: not-allowed;
+    background: var(--athens);
 
-        &:hover {
-            border-color: var(--grey-light-3);
-        }
+    &:hover {
+      border-color: var(--porcelain);
     }
+  }
+}
 
-    &.selected .btn {
-        border-color: var(--grey-light-2);
+.disabled.selected {
+  & .btn {
+    border-color: var(--porcelain);
 
-        &:hover {
-            border-color: var(--grey-light-2);
-        }
+    &:hover {
+      border-color: var(--porcelain);
     }
+  }
 }

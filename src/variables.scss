@@ -112,6 +112,10 @@ $malibu-dark: #253a4b;
 
 // DECORATORS
 $border-radius: 4px;
+$modal-box-shadow: 0 4px 24px rgba($mirage, 0.05), 0 2px 6px rgba($mirage, 0.02);
+$modal-box-shadow-night: 0 4px 24px rgba($white, 0.05), 0 2px 6px rgba($white, 0.02);
+$box-shadow: 0 6px 32px rgba($mirage, 0.03);
+$box-shadow-night: 0 6px 32px rgba($white, 0.03);
 
 // RESPONSIVE BREAKPOINTS
 // Most common screen sizes
@@ -179,4 +183,8 @@ $phoneMinWidth: 480px;
   malibu-light: $malibu-light;
   malibu-accent: $malibu-accent;
   malibu-dark: $malibu-dark;
+  modal-box-shadow: $modal-box-shadow;
+  modal-box-shadow-night: $modal-box-shadow-night;
+  box-shadow: $box-shadow;
+  box-shadow-night: $box-shadow-night;
 }

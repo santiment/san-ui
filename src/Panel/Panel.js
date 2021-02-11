@@ -42,7 +42,7 @@ Panel.Content = ({ className, withPadding, ...props }) => (
 )
 
 Panel.propTypes = {
-  variant: PropTypes.oneOf(['tooltip-small', 'tooltip', 'modal']),
+  variant: PropTypes.oneOf(['modal']),
   padding: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.any.isRequired

@@ -88,6 +88,10 @@
   // bright-sun
   --bright-sun: #{$bright-sun};// NEW
   --bright-sun-hover: #{$bright-sun-hover}; // NEW
+
+  // box-shadows
+  --modal-box-shadow: #{$modal-box-shadow};
+  --box-shadow: #{$box-shadow};
 }
 
 :global(.night-mode) {
@@ -130,6 +134,8 @@
   --heliotrope-light-2: #{$heliotrope-dark-2}; // NEW
   // cyan
   --malibu-light: #{$malibu-dark}; // NEW
+  --box-shadow: #{$box-shadow-night};
+  --modal-box-shadow: #{$modal-box-shadow-night};
 }
 
 body {

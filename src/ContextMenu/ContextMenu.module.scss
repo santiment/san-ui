@@ -14,6 +14,8 @@
 }
 
 .menu {
+  box-shadow: var(--modal-box-shadow);
+
   @include responsive('phone-xs', 'phone') {
     bottom: 0;
     top: initial !important;
