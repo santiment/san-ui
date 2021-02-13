@@ -1,12 +1,7 @@
 import React from 'react'
 
 export default (
-  <svg
-    xmlns='http://www.w3.org/2000/svg'
-    width='14'
-    height='9'
-    viewBox='0 0 14 9'
-  >
+  <svg width='14' height='9' viewBox='0 0 14 9'>
     <path
       fillRule='evenodd'
       d='M9.1.2c-.2.2-.1.5 0 .7L12.8 4 9.2 7.1a.5.5 0 10.6.8l4-3.5a.5.5 0 000-.8L9.8.1a.5.5 0 00-.7 0z'
