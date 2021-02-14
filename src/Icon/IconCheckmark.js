@@ -5,7 +5,6 @@ export default (
     <path
       fillRule='evenodd'
       d='M7.83.13c.21.18.23.5.04.7l-4.5 5a.5.5 0 01-.75-.01l-2.5-3a.5.5 0 01.76-.64l2.13 2.56L7.13.17a.5.5 0 01.7-.04z'
-      clipRule='evenodd'
     />
   </svg>
 )
