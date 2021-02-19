@@ -12,6 +12,13 @@ const Description = () => (
 
 const notifications = [
   {
+    id: 0,
+    title: 'Small notification without close button',
+    variant: 'error',
+    size: 'small',
+    hasCloseBtn: false
+  },
+  {
     id: 1,
     description: 'This is a simple text description',
     title: 'Error',
@@ -71,13 +78,6 @@ const notifications = [
     id: 11,
     title: 'Notification without close button',
     variant: 'info',
-    hasCloseBtn: false
-  },
-  {
-    id: 12,
-    title: 'Small notification without close button',
-    variant: 'error',
-    size: 'small',
     hasCloseBtn: false
   }
 ]
