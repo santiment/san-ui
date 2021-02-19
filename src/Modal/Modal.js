@@ -7,16 +7,6 @@ import styles from './Modal.module.scss'
  * "Modal" is a primitive for building higher level abstractions like "Dialog".
  */
 class Modal extends Component {
-  static getDerivedStateFromProps ({ open }) {
-    if (typeof open === 'undefined') {
-      return null
-    }
-
-    return {
-      open
-    }
-  }
-
   state = {
     open: this.props.defaultOpen,
     showCloseAnimation: false,
@@ -40,22 +30,31 @@ class Modal extends Component {
     }
 
     if (
+      typeof this.props.open !== 'undefined' &&
+      this.props.open !== this.state.open &&
+      this.props.open !== prevOpen
+    ) {
+      if (this.props.open) {
+        this.setState({ open: this.props.open })
+      } else if (this.props.withAnimation && !this.state.showCloseAnimation) {
+        this.setState({ showCloseAnimation: true })
+        setTimeout(
+          () =>
+            this.setState(
+              { open: false, showCloseAnimation: false },
+              this.props.onClose
+            ),
+          150
+        )
+      }
+    }
+
+    if (
       !this.state.open &&
       this.props.preventCloseOnDimmedFromStart &&
       this.state.closeOnDimmed
     ) {
       this.setState({ closeOnDimmed: false })
-    }
-
-    if (this.state.showCloseAnimation) {
-      setTimeout(
-        () =>
-          this.setState(
-            { open: false, showCloseAnimation: false },
-            this.props.onClose
-          ),
-        150
-      )
     }
   }
 
@@ -71,6 +70,14 @@ class Modal extends Component {
   closeModal = () => {
     if (this.props.withAnimation) {
       this.setState({ showCloseAnimation: true })
+      setTimeout(
+        () =>
+          this.setState(
+            { open: false, showCloseAnimation: false },
+            this.props.onClose
+          ),
+        150
+      )
     } else {
       this.setState({ open: false }, this.props.onClose)
     }

@@ -7,16 +7,25 @@
   border-radius: $border-radius;
   color: var(--waterloo);
   background-color: var(--white);
-  box-shadow: var(--modal-box-shadow);
+}
+
+.icon {
+  min-width: 16px;
 }
 
 .large {
   padding: 16px 18px 18px 16px;
   min-width: 320px;
+  box-shadow: var(--modal-box-shadow);
+
+  & .icon {
+    margin-top: 4px;
+  }
 }
 
 .small {
   padding: 6px 8px;
+  box-shadow: var(--box-shadow);
 }
 
 .info {
@@ -48,10 +57,6 @@
   fill: var(--rhino);
   right: 0;
   top: 7px;
-}
-
-.icon {
-  min-width: 16px;
 }
 
 .title {

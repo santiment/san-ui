@@ -106,12 +106,6 @@
   fill: var(--waterloo);
   position: relative;
   height: 16px;
-  transition-property: transform, fill;
-
-  & svg {
-    transition-duration: 0.25s;
-    transition-timing-function: ease-in-out;
-  }
 
   @include responsive('phone-xs', 'phone') {
     transform: scale(1.2) translateY(-3px);
@@ -129,12 +123,6 @@
 
   &:hover {
     fill: var(--rhino);
-
-    @include responsive('tablet','laptop', 'desktop') {
-      & svg {
-        transform: rotate(90deg);
-      }
-    }
   }
 }
 
