@@ -8,10 +8,7 @@ import styles from './Modal.module.scss'
  */
 class Modal extends Component {
   state = {
-    open:
-      typeof this.props.defaultOpen === 'undefined'
-        ? this.props.open
-        : this.props.defaultOpen,
+    open: this.props.defaultOpen || this.props.open,
     showCloseAnimation: false,
     // to prevent false-click and close dialog. Useful for popup, that appears on non-user clicks (after timeout) or several fast clicks
     closeOnDimmed: !this.props.preventCloseOnDimmedFromStart
@@ -160,7 +157,7 @@ Modal.defaultProps = {
   as: 'div',
   classes: { wrapper: '', modal: '', bg: '' },
   open: undefined,
-  defaultOpen: false
+  defaultOpen: undefined
 }
 
 Modal.propTypes = {
