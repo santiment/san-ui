@@ -10,7 +10,7 @@ Dialog.Cancel.displayName = 'Dialog.Cancel'
 Dialog.Approve.displayName = 'Dialog.Approve'
 
 class ControlledDialog extends React.PureComponent {
-  state = { open: false }
+  state = { open: !!this.props.defaultOpen }
 
   closeModal = () => {
     this.setState({ open: false })
@@ -25,9 +25,11 @@ class ControlledDialog extends React.PureComponent {
       <>
         <Button onClick={this.openModal}>Open modal</Button>
         <Dialog
+          defaultOpen={this.props.defaultOpen}
           title='test'
           open={this.state.open}
           onClose={this.closeModal}
+          withAnimation={this.props.withAnimation}
           preventCloseOnDimmedFromStart
         >
           <Dialog.ScrollContent withPadding>
@@ -124,4 +126,11 @@ storiesOf('Dialog', module)
       </Dialog.Actions>
     </Dialog>
   ))
-  .add('Controlled Dialog', () => <ControlledDialog />)
+  .add('Controlled animated Dialog', () => <ControlledDialog />)
+  .add('Controlled animated Dialog opened by default', () => (
+    <ControlledDialog defaultOpen={true} />
+  ))
+  .add('Controlled Dialog', () => <ControlledDialog withAnimation={false} />)
+  .add('Controlled Dialog opened by default', () => (
+    <ControlledDialog withAnimation={false} defaultOpen={true} />
+  ))
