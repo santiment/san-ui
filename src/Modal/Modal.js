@@ -157,7 +157,7 @@ Modal.defaultProps = {
   as: 'div',
   classes: { wrapper: '', modal: '', bg: '' },
   open: undefined,
-  defaultOpen: undefined
+  defaultOpen: false
 }
 
 Modal.propTypes = {
