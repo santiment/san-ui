@@ -8,7 +8,10 @@ import styles from './Modal.module.scss'
  */
 class Modal extends Component {
   state = {
-    open: this.props.defaultOpen,
+    open:
+      typeof this.props.defaultOpen === 'undefined'
+        ? this.props.open
+        : this.props.defaultOpen,
     showCloseAnimation: false,
     // to prevent false-click and close dialog. Useful for popup, that appears on non-user clicks (after timeout) or several fast clicks
     closeOnDimmed: !this.props.preventCloseOnDimmedFromStart
@@ -18,34 +21,33 @@ class Modal extends Component {
     window.addEventListener('keyup', this.onKeyUp)
   }
 
-  componentDidUpdate ({ open: prevOpen }) {
+  componentDidUpdate ({ open: prevOpen }, prevState) {
     if (
       this.props.preventCloseOnDimmedFromStart &&
-      prevOpen !== this.state.open &&
+      prevState.open !== this.state.open &&
       this.state.open
     ) {
-      this.closeTimer = setTimeout(() => {
-        this.setState({ closeOnDimmed: true })
-      }, 1000)
+      this.closeTimer = setTimeout(
+        () => this.setState({ closeOnDimmed: true }),
+        1000
+      )
     }
 
-    if (
-      typeof this.props.open !== 'undefined' &&
-      this.props.open !== this.state.open &&
-      this.props.open !== prevOpen
-    ) {
+    const isControlled = typeof this.props.open !== 'undefined'
+
+    if (isControlled && this.props.open !== prevOpen) {
       if (this.props.open) {
-        this.setState({ open: this.props.open })
-      } else if (this.props.withAnimation && !this.state.showCloseAnimation) {
-        this.setState({ showCloseAnimation: true })
-        setTimeout(
-          () =>
-            this.setState(
-              { open: false, showCloseAnimation: false },
-              this.props.onClose
-            ),
-          150
-        )
+        this.setState({ open: true })
+      } else if (this.props.withAnimation) {
+        if (!this.state.showCloseAnimation) {
+          this.setState({ showCloseAnimation: true })
+          setTimeout(
+            () => this.setState({ open: false, showCloseAnimation: false }),
+            150
+          )
+        }
+      } else {
+        this.setState({ open: false })
       }
     }
 
@@ -68,18 +70,23 @@ class Modal extends Component {
   }
 
   closeModal = () => {
-    if (this.props.withAnimation) {
-      this.setState({ showCloseAnimation: true })
-      setTimeout(
-        () =>
-          this.setState(
-            { open: false, showCloseAnimation: false },
-            this.props.onClose
-          ),
-        150
-      )
+    const isControlled = typeof this.props.open !== 'undefined'
+    if (isControlled) {
+      this.props.onClose()
     } else {
-      this.setState({ open: false }, this.props.onClose)
+      if (this.props.withAnimation) {
+        this.setState({ showCloseAnimation: true })
+        setTimeout(
+          () =>
+            this.setState(
+              { open: false, showCloseAnimation: false },
+              this.props.onClose
+            ),
+          150
+        )
+      } else {
+        this.setState({ open: false }, this.props.onClose)
+      }
     }
   }
 
