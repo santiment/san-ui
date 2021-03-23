@@ -273,3 +273,39 @@
     content: $text;
   }
 }
+
+@mixin thin-scroll {
+  scrollbar-width: thin;
+}
+
+@mixin overlay-hover-scroll($dir: 'y') {
+  @if $dir == 'y' {
+    overflow-y: auto;
+    overflow-y: overlay;
+
+    @include thin-scroll;
+
+    @media (hover: hover) {
+      overflow-y: hidden;
+
+      &:hover {
+        overflow-y: auto;
+        overflow-y: overlay;
+      }
+    }
+  }
+
+  @if $dir == 'x' {
+    overflow-x: auto;
+    overflow-x: overlay;
+
+    @media (hover: hover) {
+      overflow-x: hidden;
+
+      &:hover {
+        overflow-x: auto;
+        overflow-x: overlay;
+      }
+    }
+  }
+}
