@@ -279,11 +279,11 @@
 }
 
 @mixin overlay-hover-scroll($dir: 'y') {
+  @include thin-scroll;
+
   @if $dir == 'y' {
     overflow-y: auto;
     overflow-y: overlay;
-
-    @include thin-scroll;
 
     @media (hover: hover) {
       overflow-y: hidden;
