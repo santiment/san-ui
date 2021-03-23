@@ -278,19 +278,21 @@
   scrollbar-width: thin;
 }
 
-@mixin overlay-hover-scroll($dir: 'y') {
+@mixin overlay-scroll($on: 'hover', $dir: 'y') {
   @include thin-scroll;
 
   @if $dir == 'y' {
     overflow-y: auto;
     overflow-y: overlay;
 
-    @media (hover: hover) {
-      overflow-y: hidden;
+    @if $on == 'hover' {
+      @media (hover: hover) {
+        overflow-y: hidden;
 
-      &:hover {
-        overflow-y: auto;
-        overflow-y: overlay;
+        &:hover {
+          overflow-y: auto;
+          overflow-y: overlay;
+        }
       }
     }
   }
@@ -299,12 +301,14 @@
     overflow-x: auto;
     overflow-x: overlay;
 
-    @media (hover: hover) {
-      overflow-x: hidden;
+    @if $on == 'hover' {
+      @media (hover: hover) {
+        overflow-x: hidden;
 
-      &:hover {
-        overflow-x: auto;
-        overflow-x: overlay;
+        &:hover {
+          overflow-x: auto;
+          overflow-x: overlay;
+        }
       }
     }
   }
