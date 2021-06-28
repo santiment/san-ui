@@ -10,6 +10,7 @@
   --black: #{$black};
 
   // shades of grey
+  --bleach: #{bleach};
   --athens: #{$athens}; // NEW
   --porcelain: #{$porcelain}; // NEW
   --mystic: #{$mystic}; // NEW
@@ -96,27 +97,29 @@
 }
 
 :global(.night-mode) {
-  --white: #{$mirage}; // NEW
-  --black: #{$white};
-  --mirage: #{$white}; // NEW
+  //outdated
   --grey-light: #{$dark-1};
   --grey-light-2: #{$dark-2};
   --grey-light-3: #{$dark-3};
   --grey-dark: #{$dark-4};
   --grey-dark-2: #{$dark-5};
-  --athens: #{$ebony-clay}; // NEW
-  --porcelain: #{$cloud-burst}; // NEW
-  --mystic: #{$rhino}; // NEW
-  --casper: #{$fiord}; // NEW
-  --waterloo: #{$bali-hai}; // NEW
-  --rhino: #{$mystic}; // NEW
-  --fiord: #{$casper}; // NEW
+  --black: #{$white};
+  // new
+  --white: #{$bleach-night};
+  --bleach: #{$bleach-night};
+  --mirage: #{$mirage-night};
+  --athens: #{$athens-night};
+  --porcelain: #{$porcelain-night};
+  --mystic: #{$mystic-night};
+  --casper: #{$casper-night};
+  --waterloo: #{$waterloo-night};
+  --rhino: #{$rhino-night};
+  --fiord: #{$fiord-night};
   // green
   --green-light: #{$green-dark};
   --jungle-green-light: #{$jungle-green-dark}; // NEW
   --jungle-green-light-2: #{$jungle-green-dark-2}; // NEW
   --jungle-green-light-3: #{$jungle-green-dark-3}; // NEW
-  --jungle-green-accent: #{$jungle-green-a-dark}; // NEW
   // orange
   --orange-light: #{$orange-dark};
   --texas-rose-light: #{$texas-rose-dark}; // NEW

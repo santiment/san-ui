@@ -44,18 +44,31 @@ $violet-dark: #28244b;
 $cyan: #68dbf4;
 
 // new color naming
-$athens: #f9fafc;
+$bleach: #fff;
+$bleach-night: #181b2b;
+$athens: #f7f8fb;
+$athens-night: #1c1f31;
 $porcelain: #e7eaf3;
-$mystic: #d2d6e6;
+$porcelain-night: #222639;
+$mystic: #d2d6e7;
+$mystic-night: #343a52;
 $casper: #9faac4;
+$casper-night: #4e5472;
 $waterloo: #7a859e;
+$waterloo-night: #7a809a;
 $mirage: #181b2b;
+$mirage-night: #f8f9ff;
 $shark: #15181f;
 $rhino: #2f354d;
+$rhino-night: #dfe1ec;
+$fiord: #505573;
+$fiord-night: #a2a7bd;
+
+// outdated
+$bali-hai: #7a809a;
 $ebony-clay: #1c1f31;
 $cloud-burst: #222639;
-$fiord: #505573;
-$bali-hai: #8b93b6;
+//
 
 $jungle-green: #14c393;
 $jungle-green-hover: #1fac85;
@@ -63,10 +76,9 @@ $jungle-green-light: #edf8f5;
 $jungle-green-light-2: #dcf6ef;
 $jungle-green-light-3: #89e1c9;
 $jungle-green-accent: #8affce;
-$jungle-green-dark: #142532;
-$jungle-green-dark-2: #17343b;
-$jungle-green-dark-3: #174d4a;
-$jungle-green-a-dark: #6edeaf;
+$jungle-green-dark: #182833;
+$jungle-green-dark-2: #173d40;
+$jungle-green-dark-3: #165e55;
 
 $texas-rose: #ffad4d;
 $texas-rose-hover: #fd9317;
@@ -88,12 +100,12 @@ $lima-dark: #1a3424;
 $sheets: #1aa168;
 $sheets-hover: #158a59;
 
-$persimmon: #ff5b5b;
-$persimmon-hover: #db4040;
+$persimmon: #ff6363;
+$persimmon-hover: #f85454;
 $persimmon-light: #ffe6e6;
-$persimmon-light-2: #efa7a7;
-$persimmon-dark: #3b2532;
-$persimmon-dark-2: #633b4c;
+$persimmon-light-2: #ffadad;
+$persimmon-dark: #462835;
+$persimmon-dark-2: #74353e;
 
 $dodger-blue: #5275ff;
 $dodger-blue-hover: #375be9;
@@ -130,18 +142,25 @@ $phoneMinWidth: 480px;
 
 /* stylelint-disable */
 :export {
+  bleach: $bleach;
   athens: $athens;
   porcelain: $porcelain;
   mystic: $mystic;
   casper: $casper;
   waterloo: $waterloo;
+  fiord: $fiord;
+  rhino: $rhino;
   mirage: $mirage;
   shark: $shark;
-  rhino: $rhino;
-  ebony-clay: $ebony-clay;
-  cloud-burst: $cloud-burst;
-  fiord: $fiord;
-  bali-hai: $bali-hai;
+  bleach-night: $bleach-night;
+  athens-night: $athens-night;
+  porcelain-night: $porcelain-night;
+  mystic-night: $mystic-night;
+  casper-night: $casper-night;
+  waterloo-night: $waterloo-night;
+  fiord-night: $fiord-night;
+  rhino-night: $rhino-night;
+  mirage-night: $mirage-night;
   jungle-green: $jungle-green;
   jungle-green-hover: $jungle-green-hover;
   jungle-green-light: $jungle-green-light;
@@ -151,15 +170,14 @@ $phoneMinWidth: 480px;
   jungle-green-dark: $jungle-green-dark;
   jungle-green-dark-2: $jungle-green-dark-2;
   jungle-green-dark-3: $jungle-green-dark-3;
-  jungle-green-a-dark: $jungle-green-a-dark;
   texas-rose: $texas-rose;
   texas-rose-hover: $texas-rose-hover;
   texas-rose-light: $texas-rose-light;
   texas-rose-light-2: $texas-rose-light-2;
   texas-rose-light-3: $texas-rose-light-3;
+  texas-rose-dark: $texas-rose-dark;
   texas-rose-dark-2: $texas-rose-dark-2;
   texas-rose-dark-3: $texas-rose-dark-3;
-  texas-rose-dark: $texas-rose-dark;
   bright-sun: $bright-sun;
   bright-sun-hover: $bright-sun-hover;
   persimmon: $persimmon;
@@ -189,8 +207,4 @@ $phoneMinWidth: 480px;
   malibu-light: $malibu-light;
   malibu-accent: $malibu-accent;
   malibu-dark: $malibu-dark;
-  modal-box-shadow: $modal-box-shadow;
-  modal-box-shadow-night: $modal-box-shadow-night;
-  box-shadow: $box-shadow;
-  box-shadow-night: $box-shadow-night;
 }
