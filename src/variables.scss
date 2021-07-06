@@ -109,8 +109,12 @@ $persimmon-dark-2: #74353e;
 
 $dodger-blue: #5275ff;
 $dodger-blue-hover: #375be9;
-$dodger-blue-light: #e5eaff;
-$dodger-blue-dark: #21284b;
+$dodger-blue-light: #ecf0fe;
+$dodger-blue-light-2: #dae0fd;
+$dodger-blue-light-3: #a9baff;
+$dodger-blue-dark: #1d223e;
+$dodger-blue-dark-2: #21284b;
+$dodger-blue-dark-3: #354895;
 
 $heliotrope: #8358ff;
 $heliotrope-hover: #6339dd;
@@ -124,6 +128,9 @@ $malibu-hover: #18c0e4;
 $malibu-light: #e5f9fd;
 $malibu-accent: #72ffff;
 $malibu-dark: #253a4b;
+
+$browny: #b76a50;
+$browny-night: #bb7760;
 
 // DECORATORS
 $border-radius: 4px;
@@ -195,7 +202,11 @@ $phoneMinWidth: 480px;
   dodger-blue: $dodger-blue;
   dodger-blue-hover: $dodger-blue-hover;
   dodger-blue-light: $dodger-blue-light;
+  dodger-blue-light-2: $dodger-blue-light-2;
+  dodger-blue-light-3: $dodger-blue-light-3;
   dodger-blue-dark: $dodger-blue-dark;
+  dodger-blue-dark-2: $dodger-blue-dark-2;
+  dodger-blue-dark-3: $dodger-blue-dark-3;
   heliotrope: $heliotrope;
   heliotrope-hover: $heliotrope-hover;
   heliotrope-light: $heliotrope-light;
@@ -207,4 +218,6 @@ $phoneMinWidth: 480px;
   malibu-light: $malibu-light;
   malibu-accent: $malibu-accent;
   malibu-dark: $malibu-dark;
+  browny: $browny;
+  browny-night: $browny-night;
 }

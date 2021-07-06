@@ -3,22 +3,6 @@ import { storiesOf } from '@storybook/react'
 import vars from '../src/variables.scss'
 import './ColorStory.scss'
 
-const darks = [
-  'jungle-green-dark',
-  'jungle-green-dark-2',
-  'jungle-green-dark-3',
-  'persimmon-dark',
-  'persimmon-dark-2',
-  'lima-dark',
-  'texas-rose-dark',
-  'texas-rose-dark-2',
-  'texas-rose-dark-3',
-  'dodger-blue-dark',
-  'heliotrope-dark',
-  'heliotrope-dark-2',
-  'malibu-dark'
-]
-
 const breaksAfter = [
   'shark',
   'mirage-night',
@@ -28,8 +12,9 @@ const breaksAfter = [
   'persimmon-dark-2',
   'lima-dark',
   'sheets-hover',
-  'dodger-blue-dark',
-  'heliotrope-dark-2'
+  'dodger-blue-dark-3',
+  'heliotrope-dark-2',
+  'malibu-dark'
 ]
 
 storiesOf('Colors', module).add('List of all colors', () => (
@@ -52,7 +37,7 @@ storiesOf('Colors', module).add('List of all colors', () => (
           />
           <div>
             {name} ({vars[name]})
-            {(darks.includes(name) || name.includes('night')) && (
+            {(name.includes('night') || name.includes('dark')) && (
               <p>
                 When in night-mode, this color automatically takes place of
                 day-mode color synonym

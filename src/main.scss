@@ -71,6 +71,8 @@
   --dodger-blue: #{$dodger-blue}; // NEW
   --dodger-blue-hover: #{$dodger-blue-hover}; // NEW
   --dodger-blue-light: #{$dodger-blue-light}; // NEW
+  --dodger-blue-light-2: #{$dodger-blue-light-2}; // NEW
+  --dodger-blue-light-3: #{$dodger-blue-light-3}; // NEW
 
   // violet
   --violet: #{$violet};
@@ -86,6 +88,7 @@
   --malibu: #{$malibu}; // NEW
   --malibu-hover: #{$malibu-hover}; // NEW
   --malibu-light: #{$malibu-light}; // NEW
+  --browny: #{$browny}; // NEW
 
   // bright-sun
   --bright-sun: #{$bright-sun};// NEW
@@ -134,12 +137,15 @@
   // blue
   --blue-light: #{$blue-dark};
   --dodger-blue-light: #{$dodger-blue-dark}; // NEW
+  --dodger-blue-light-2: #{$dodger-blue-dark-2}; // NEW
+  --dodger-blue-light-3: #{$dodger-blue-dark-3}; // NEW
   // violet
   --violet-light: #{$violet-dark};
   --heliotrope-light: #{$heliotrope-dark}; // NEW
   --heliotrope-light-2: #{$heliotrope-dark-2}; // NEW
   // cyan
   --malibu-light: #{$malibu-dark}; // NEW
+  --browny: #{$browny-night}; // NEW
   --box-shadow: #{$box-shadow-night};
   --modal-box-shadow: #{$modal-box-shadow-night};
 }
