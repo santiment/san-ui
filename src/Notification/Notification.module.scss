@@ -3,6 +3,7 @@
 
 .wrapper {
   @include text-normal;
+  @include nightshadow;
 
   border-radius: $border-radius;
   color: var(--waterloo);
