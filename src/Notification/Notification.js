@@ -49,7 +49,11 @@ const Notification = ({
     {actions && (
       <div className={styles.actions}>
         {actions.map(({ label, onClick }) => (
-          <div key={label} className={styles.action} onClick={onClick}>
+          <div
+            key={label}
+            className={styles.action}
+            onClick={e => onClick(e, onClose)}
+          >
             {label}
           </div>
         ))}
