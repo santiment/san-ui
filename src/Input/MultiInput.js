@@ -113,7 +113,7 @@ const MultiInput = ({
             )}
           </Button>
         ))}
-        {shouldShowInput && (
+        {!props.hideInput && shouldShowInput && (
           <Input
             size={values.length === 0 ? placeholder.length : input.length + 1}
             placeholder={values.length > 0 ? '' : placeholder}
