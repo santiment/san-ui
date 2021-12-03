@@ -91,7 +91,11 @@ const MultiInput = ({
     <div
       className={cx(className, styles.wrapper)}
       ref={wrapperRef}
-      onClick={setFocus}
+      onClick={evt =>
+        props.hideInput && props.clickHandler
+          ? props.clickHandler(evt)
+          : setFocus()
+      }
     >
       <div className={styles.values}>
         {values.map((item, idx) => (
