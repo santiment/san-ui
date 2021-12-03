@@ -91,11 +91,12 @@ const MultiInput = ({
     <div
       className={cx(className, styles.wrapper)}
       ref={wrapperRef}
-      onClick={evt =>
-        props.hideInput && props.clickHandler
-          ? props.clickHandler(evt)
-          : setFocus()
-      }
+      onClick={evt => {
+        setFocus()
+        if (props.clickHandler) {
+          props.clickHandler(evt)
+        }
+      }}
     >
       <div className={styles.values}>
         {values.map((item, idx) => (
@@ -117,7 +118,7 @@ const MultiInput = ({
             )}
           </Button>
         ))}
-        {!props.hideInput && shouldShowInput && (
+        {shouldShowInput && (
           <Input
             size={values.length === 0 ? placeholder.length : input.length + 1}
             placeholder={values.length > 0 ? '' : placeholder}
