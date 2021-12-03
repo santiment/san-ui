@@ -104,11 +104,14 @@ const MultiInput = ({
             }}
           >
             {valueContent ? valueContent(item) : item}
-            <Icon
-              type='close-small'
-              className={styles.delete}
-              onClick={() => removeValue(item)}
-            />
+            {(!props.hideLastItemClose ||
+              (props.hideLastItemClose && idx < values.length - 1)) && (
+              <Icon
+                type='close-small'
+                className={styles.delete}
+                onClick={() => removeValue(item)}
+              />
+            )}
           </Button>
         ))}
         {shouldShowInput && (
