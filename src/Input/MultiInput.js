@@ -104,10 +104,7 @@ const MultiInput = ({
             }}
           >
             {valueContent ? valueContent(item) : item}
-            {(!props.hideLastItemClose ||
-              (props.hideLastItemClose &&
-                idx > 2 &&
-                idx < values.length - 1)) && (
+            {(!props.hideCloseList || !hideCloseList.includes(idx)) && (
               <Icon
                 type='close-small'
                 className={styles.delete}
