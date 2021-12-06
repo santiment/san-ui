@@ -1,4 +1,8 @@
+@import '../mixins.scss';
+
 .panel {
+  @include nightshadow;
+
   box-sizing: border-box;
   background-color: var(--white);
   color: var(--rhino);

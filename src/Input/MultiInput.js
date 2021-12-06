@@ -91,7 +91,12 @@ const MultiInput = ({
     <div
       className={cx(className, styles.wrapper)}
       ref={wrapperRef}
-      onClick={setFocus}
+      onClick={evt => {
+        setFocus()
+        if (props.clickHandler) {
+          props.clickHandler(evt)
+        }
+      }}
     >
       <div className={styles.values}>
         {values.map((item, idx) => (
@@ -104,11 +109,13 @@ const MultiInput = ({
             }}
           >
             {valueContent ? valueContent(item) : item}
-            <Icon
-              type='close-small'
-              className={styles.delete}
-              onClick={() => removeValue(item)}
-            />
+            {(!props.hideCloseList || !hideCloseList.includes(idx)) && (
+              <Icon
+                type='close-small'
+                className={styles.delete}
+                onClick={() => removeValue(item)}
+              />
+            )}
           </Button>
         ))}
         {shouldShowInput && (
