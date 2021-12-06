@@ -87,7 +87,8 @@ const menuStyles = provided => ({
   boxShadow: '0px 4px 8px rgba(24, 27, 43, 0.03)',
   border: '1px solid var(--porcelain)',
   boxSizing: 'border-box',
-  zIndex: 2
+  zIndex: 2,
+  minHeight: 48
 })
 
 const valueContainerStyles = (provided, state) => ({
