@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import Select from '../src/Search/Select/Select'
+import Select from '../src/Select/Select'
 import ColorModeComparison from './ColorModeComparison'
 
 // Dummy array of test values.
@@ -14,29 +13,31 @@ const stories = storiesOf('VirtualizedSelect', module)
 
 stories.add('Simple', () => (
   <ColorModeComparison>
+    <Select isDisabled options={options} />
     <Select options={options} />
-    <Select options={options} disabled />
-    <Select options={options} value={options[0]} />
-    <Select options={options} value={options[0]} multi />
+    <Select options={options} isError errorText='404' />
   </ColorModeComparison>
 ))
 
-class SelectExample extends React.Component {
-  state = {
-    selected: ''
+const SelectExample = () => {
+  const [values, setValues] = useState([])
+
+  const handleValuesChange = option => {
+    if (Array.isArray(option)) {
+      setValues(option)
+    } else {
+      setValues([...values, option])
+    }
   }
 
-  render () {
-    return (
-      <Select
-        autofocus
-        options={options}
-        multi={true}
-        value={this.state.selected}
-        onChange={selected => this.setState({ selected })}
-      />
-    )
-  }
+  return (
+    <Select
+      options={options}
+      isMulti
+      value={values}
+      onChange={handleValuesChange}
+    />
+  )
 }
 
 stories.add('Open options menu', () => (

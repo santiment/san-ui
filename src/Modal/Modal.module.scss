@@ -1,5 +1,5 @@
-@import '../mixins.scss';
-@import '../variables.scss';
+@import "../mixins.scss";
+@import "../variables.scss";
 
 .wrapper {
   position: fixed;
@@ -10,6 +10,10 @@
   right: 0;
   overflow-y: auto;
   overflow-x: hidden;
+
+  body {
+    overflow: hidden;
+  }
 }
 
 .dimmed {
@@ -32,18 +36,18 @@
 
 .modal {
   &__withAnimation {
-    @include responsive('tablet','laptop', 'desktop') {
+    @include responsive("tablet", "laptop", "desktop") {
       animation: zoomIn 0.25s ease-out both;
     }
   }
 }
 
 .hide {
-  @include responsive('tablet','laptop', 'desktop') {
+  @include responsive("tablet", "laptop", "desktop") {
     animation: zoomOut 0.15s ease-in both, fadeOut 0.1s ease-in both !important;
   }
 
-  @include responsive('phone-xs', 'phone') {
+  @include responsive("phone-xs", "phone") {
     animation: slideOut 0.15s ease-in both !important;
   }
 

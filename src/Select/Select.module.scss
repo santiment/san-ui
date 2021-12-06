@@ -1,0 +1,45 @@
+@import "../mixins.scss";
+
+.placeholder {
+  @include text("body-3");
+}
+
+.value {
+  @include text("body-3");
+}
+
+.menu {
+  [class*="fast-option"] {
+    padding: 0 8px;
+    box-sizing: border-box;
+    color: var(--rhino);
+
+    @include text("body-3");
+  }
+
+  [class*="fast-option-selected"] {
+    color: var(--jungle-green);
+    background: var(--white);
+  }
+
+  [class*="fast-option-focused"] {
+    color: var(--jungle-green);
+    background: var(--athens);
+    border-radius: 4px;
+  }
+
+  [class*="ReactVirtualized__List"] {
+    padding: 8px;
+  }
+}
+
+.errorWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.errorText {
+  position: absolute;
+  z-index: 1;
+  margin-top: 4px;
+}
