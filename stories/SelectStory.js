@@ -32,6 +32,7 @@ const SelectExample = () => {
 
   return (
     <Select
+      menuIsOpen
       options={options}
       isMulti
       value={values}

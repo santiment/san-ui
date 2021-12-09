@@ -1,14 +1,94 @@
 @import "../mixins.scss";
 
-.placeholder {
-  @include text("body-3");
+.disabled {
+  --main-color: var(--mystic);
+  --control-background-color: var(--athens);
 }
 
-.value {
-  @include text("body-3");
+.menuIsOpen {
+  --control-border-color: var(--jungle-green);
+  --dropdown-transform: rotate(180deg);
+}
+
+.error {
+  --control-border-color: var(--persimmon);
+  --control-border-hover-color: var(--persimmon-hover);
+}
+
+.multi {
+  --value-container-padding: 4px;
+}
+
+.selectContainer {
+  height: 32px;
+}
+
+.control {
+  &[class*="virtualized-select__control"] {
+    min-height: 32px;
+    background: var(--control-background-color, var(--white));
+    border: 1px solid var(--control-border-color, var(--porcelain));
+    box-shadow: none;
+
+    &:hover {
+      border: 1px solid
+        var(--control-border-hover-color, var(--jungle-green-hover));
+    }
+  }
+}
+
+.input {
+  &[class*="virtualized-select__input-container"] {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.valueContainer {
+  &[class*="virtualized-select__value-container"] {
+    padding: var(--value-container-padding, 0 10px);
+    box-sizing: border-box;
+    gap: 4px;
+  }
+}
+
+.multiValue {
+  &[class*="virtualized-select__multi-value"],
+  &[class*="virtualized-select__multi-value__label"] {
+    padding: 0;
+    color: var(--main-color, var(--rhino));
+  }
+
+  &[class*="virtualized-select__multi-value"]:not([class*="virtualized-select__multi-value__label"]),
+  &[class*="virtualized-select__multi-value__remove"] {
+    padding: 0;
+    margin-left: 6px;
+    fill: var(--waterloo);
+  }
+
+  &[class*="virtualized-select__multi-value"]:not([class*="virtualized-select__multi-value__label"]):not([class*="virtualized-select__multi-value__remove"]) {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    margin: 0;
+    padding: 0 8px;
+    background: var(--white);
+    border: 1px solid var(--porcelain);
+    border-radius: 4px;
+  }
 }
 
 .menu {
+  &[class*="virtualized-select__menu"] {
+    top: unset;
+    background: var(--white);
+    box-shadow: 0 4px 8px rgba(24, 27, 43, 0.03);
+    border: 1px solid var(--porcelain);
+    box-sizing: border-box;
+    z-index: 2;
+    min-height: 48px;
+  }
+
   [class*="fast-option"] {
     padding: 0 8px;
     box-sizing: border-box;
@@ -31,6 +111,56 @@
   [class*="ReactVirtualized__List"] {
     min-height: 48px;
     padding: 8px;
+  }
+}
+
+.placeholder {
+  &[class*="virtualized-select__placeholder"] {
+    color: var(--main-color, var(--casper));
+
+    @include text("body-3");
+  }
+}
+
+.singleValue {
+  &[class*="virtualized-select__single-value"] {
+    color: var(--main-color, var(--rhino));
+
+    @include text("body-3");
+  }
+}
+
+.dropdownIndicator {
+  &[class*="virtualized-select__dropdown-indicator"] {
+    transform: var(--dropdown-transform, none);
+    padding: 10px 12px;
+    fill: var(--main-color, var(--waterloo));
+    cursor: pointer;
+  }
+}
+
+.indicatorSeparator {
+  &[class*="virtualized-select__indicator-separator"] {
+    align-self: stretch;
+    background-color: var(--porcelain);
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 1px;
+    min-height: 30px;
+  }
+}
+
+.clearIndicator {
+  &[class*="virtualized-select__clear-indicator"] {
+    padding: 0 12px;
+    fill: var(--main-color, var(--waterloo));
+    cursor: pointer;
+  }
+}
+
+.indicatorsContainer {
+  &[class*="virtualized-select__indicators"] {
+    justify-content: center;
   }
 }
 
