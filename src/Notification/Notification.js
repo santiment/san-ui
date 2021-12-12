@@ -37,7 +37,7 @@ const Notification = ({
       <div className={cx(styles.title, classes.title)}>{title}</div>
       {hasCloseBtn && (
         <Icon
-          type='close-medium'
+          type='close-small'
           onClick={onClose}
           className={styles.closeIcon}
         />

@@ -1,5 +1,5 @@
-@import '../mixins.scss';
-@import '../variables.scss';
+@import "../mixins.scss";
+@import "../variables.scss";
 
 .wrapper {
   @include text-normal;
@@ -47,17 +47,15 @@
 
 .header {
   display: flex;
+  align-items: center;
   position: relative;
 }
 
 .closeIcon {
-  position: absolute;
   cursor: pointer;
-  width: 10px;
-  height: 10px;
   fill: var(--rhino);
-  right: 0;
-  top: 7px;
+  width: 100%;
+  max-width: 8px;
 }
 
 .title {
@@ -65,7 +63,7 @@
   width: 100%;
   color: var(--rhino);
 
-  @include text('body-3', 'm');
+  @include text("body-3", "m");
 }
 
 .action {
@@ -103,5 +101,5 @@
 .small .title {
   padding: 1px 8px 0 8px;
 
-  @include text('caption', 'm');
+  @include text("caption", "m");
 }
