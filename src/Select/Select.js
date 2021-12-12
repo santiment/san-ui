@@ -6,15 +6,13 @@ import Notification from '../Notification'
 import Icon from '../Icon'
 import styles from './Select.module.scss'
 
-function SelectContainer (props) {
-  return (
-    <components.SelectContainer className={styles.selectContainer} {...props}>
-      {props.children}
-    </components.SelectContainer>
-  )
-}
+const SelectContainer = props => (
+  <components.SelectContainer className={styles.selectContainer} {...props}>
+    {props.children}
+  </components.SelectContainer>
+)
 
-function Control (props) {
+const Control = props => {
   const {
     selectProps: { menuIsOpen, isError, isDisabled }
   } = props
@@ -34,15 +32,13 @@ function Control (props) {
   )
 }
 
-function Input (props) {
-  return (
-    <components.Input className={styles.input} {...props}>
-      {props.children}
-    </components.Input>
-  )
-}
+const Input = props => (
+  <components.Input className={styles.input} {...props}>
+    {props.children}
+  </components.Input>
+)
 
-function ValueContainer (props) {
+const ValueContainer = props => {
   const { isMulti } = props
 
   return (
@@ -55,92 +51,71 @@ function ValueContainer (props) {
   )
 }
 
-function ClearIndicator (props) {
-  return (
-    <components.ClearIndicator className={styles.clearIndicator} {...props}>
-      <Icon type='close-small' />
-    </components.ClearIndicator>
-  )
-}
+const ClearIndicator = props => (
+  <components.ClearIndicator className={styles.clearIndicator} {...props}>
+    <Icon type='close-small' />
+  </components.ClearIndicator>
+)
 
-function IndicatorSeparator (props) {
-  return (
-    <components.IndicatorSeparator
-      className={styles.indicatorSeparator}
-      {...props}
-    />
-  )
-}
+const IndicatorSeparator = props => (
+  <components.IndicatorSeparator
+    className={styles.indicatorSeparator}
+    {...props}
+  />
+)
 
-function MultiValueRemove (props) {
-  return (
-    <components.MultiValueRemove {...props}>
-      <Icon type='close-small' />
-    </components.MultiValueRemove>
-  )
-}
+const MultiValueRemove = props => (
+  <components.MultiValueRemove {...props}>
+    <Icon type='close-small' />
+  </components.MultiValueRemove>
+)
 
-function DropdownIndicator (props) {
-  return (
-    <components.DropdownIndicator
-      className={styles.dropdownIndicator}
-      {...props}
-    >
-      <Icon type='arrow-down' />
-    </components.DropdownIndicator>
-  )
-}
+const DropdownIndicator = props => (
+  <components.DropdownIndicator className={styles.dropdownIndicator} {...props}>
+    <Icon type='arrow-down' />
+  </components.DropdownIndicator>
+)
 
-function IndicatorsContainer (props) {
-  return (
-    <components.IndicatorsContainer
-      className={styles.indicatorsContainer}
-      {...props}
-    >
-      {props.children}
-    </components.IndicatorsContainer>
-  )
-}
+const IndicatorsContainer = props => (
+  <components.IndicatorsContainer
+    className={styles.indicatorsContainer}
+    {...props}
+  >
+    {props.children}
+  </components.IndicatorsContainer>
+)
 
-function Placeholder (props) {
-  return (
-    <components.Placeholder className={styles.placeholder} {...props}>
-      {props.children}
-    </components.Placeholder>
-  )
-}
+const Placeholder = props => (
+  <components.Placeholder className={styles.placeholder} {...props}>
+    {props.children}
+  </components.Placeholder>
+)
 
-function Menu (props) {
-  return (
-    <components.Menu className={styles.menu} {...props}>
-      {props.children}
-    </components.Menu>
-  )
-}
+const Menu = props => (
+  <components.Menu className={styles.menu} {...props}>
+    {props.children}
+  </components.Menu>
+)
 
-function SingleValue (props) {
-  return (
-    <components.SingleValue className={styles.singleValue} {...props}>
-      {props.children}
-    </components.SingleValue>
-  )
-}
+const SingleValue = props => (
+  <components.SingleValue className={styles.singleValue} {...props}>
+    {props.children}
+  </components.SingleValue>
+)
 
-function MultiValue (props) {
-  return (
-    <components.MultiValue className={styles.multiValue} {...props}>
-      {props.children}
-    </components.MultiValue>
-  )
-}
+const MultiValue = props => (
+  <components.MultiValue className={styles.multiValue} {...props}>
+    {props.children}
+  </components.MultiValue>
+)
 
-function Select ({
+const Select = ({
   isError,
   errorText,
   errorClassName,
   customStyles,
   ...rest
-}) {
+}) => {
   const [isErrorNotificationOpen, setIsErrorNotificationOpen] = useState(
     isError
   )
