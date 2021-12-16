@@ -2,6 +2,8 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Icon, { icons } from '../src/Icon'
 
+const STROKE_KEYS = ['sold']
+
 storiesOf('Icon', module).add('All', () => (
   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
     {Object.keys(icons).map(iconKey => {
@@ -33,7 +35,11 @@ storiesOf('Icon', module).add('All', () => (
               alignItems: 'center'
             }}
           >
-            <Icon type={iconKey} fill='#2F354D' />
+            <Icon
+              type={iconKey}
+              fill={STROKE_KEYS.includes(iconKey) ? 'none' : '#2F354D'}
+              stroke={STROKE_KEYS.includes(iconKey) && '#2F354D'}
+            />
           </div>
           {iconKey}
         </div>
