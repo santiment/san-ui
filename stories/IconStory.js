@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Icon, { icons } from '../src/Icon'
 
-const STROKE_KEYS = ['sold']
+const STROKE_KEYS = ['sell']
 
 storiesOf('Icon', module).add('All', () => (
   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
