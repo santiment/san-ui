@@ -214,7 +214,6 @@ const Select = ({
   return (
     <>
       <SelectComponent
-        menuPlacement='top'
         classNamePrefix='virtualized-select'
         optionHeight={optionHeight || 32}
         components={{
