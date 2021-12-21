@@ -179,7 +179,6 @@
   @if $type == 'caption' {
     font-size: 12px;
     line-height: 16px;
-    font-weight: 500;
 
     @if $mod == 'm' {
       font-weight: 500;

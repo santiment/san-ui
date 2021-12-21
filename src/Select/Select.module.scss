@@ -19,6 +19,10 @@
   --value-container-padding: 4px;
 }
 
+.hasValue {
+  --indicator-separator-background: var(--porcelain);
+}
+
 .selectContainer {
   height: 32px;
 }
@@ -125,6 +129,7 @@
 .singleValue {
   &[class*="virtualized-select__single-value"] {
     color: var(--main-color, var(--rhino));
+    text-overflow: initial;
 
     @include text("body-3");
   }
@@ -142,7 +147,7 @@
 .indicatorSeparator {
   &[class*="virtualized-select__indicator-separator"] {
     align-self: stretch;
-    background-color: var(--porcelain);
+    background-color: var(--indicator-separator-background, transparent);
     margin-bottom: 0;
     margin-top: 0;
     width: 1px;
