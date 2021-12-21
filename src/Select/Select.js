@@ -1,67 +1,15 @@
-import React, { useState } from 'react'
-import VirtualizedSelect from 'react-select-virtualized'
-import { components } from 'react-select'
+import React, { useCallback, useState } from 'react'
+import { components, components as ReactSelectComponents } from 'react-select'
 import cx from 'classnames'
 import Notification from '../Notification'
 import Icon from '../Icon'
+import SelectComponent from './SelectComponent'
 import styles from './Select.module.scss'
 
-const SelectContainer = props => (
-  <components.SelectContainer className={styles.selectContainer} {...props}>
-    {props.children}
-  </components.SelectContainer>
-)
-
-const Control = props => {
-  const {
-    selectProps: { menuIsOpen, isError, isDisabled }
-  } = props
-
-  return (
-    <components.Control
-      className={cx(
-        styles.control,
-        menuIsOpen && styles.menuIsOpen,
-        isError && styles.error,
-        isDisabled && styles.disabled
-      )}
-      {...props}
-    >
-      {props.children}
-    </components.Control>
-  )
-}
-
-const Input = props => (
-  <components.Input className={styles.input} {...props}>
-    {props.children}
-  </components.Input>
-)
-
-const ValueContainer = props => {
-  const { isMulti } = props
-
-  return (
-    <components.ValueContainer
-      className={cx(styles.valueContainer, isMulti && styles.multi)}
-      {...props}
-    >
-      {props.children}
-    </components.ValueContainer>
-  )
-}
-
 const ClearIndicator = props => (
-  <components.ClearIndicator className={styles.clearIndicator} {...props}>
+  <components.ClearIndicator {...props}>
     <Icon type='close-small' />
   </components.ClearIndicator>
-)
-
-const IndicatorSeparator = props => (
-  <components.IndicatorSeparator
-    className={styles.indicatorSeparator}
-    {...props}
-  />
 )
 
 const MultiValueRemove = props => (
@@ -71,42 +19,9 @@ const MultiValueRemove = props => (
 )
 
 const DropdownIndicator = props => (
-  <components.DropdownIndicator className={styles.dropdownIndicator} {...props}>
+  <components.DropdownIndicator {...props}>
     <Icon type='arrow-down' />
   </components.DropdownIndicator>
-)
-
-const IndicatorsContainer = props => (
-  <components.IndicatorsContainer
-    className={styles.indicatorsContainer}
-    {...props}
-  >
-    {props.children}
-  </components.IndicatorsContainer>
-)
-
-const Placeholder = props => (
-  <components.Placeholder className={styles.placeholder} {...props}>
-    {props.children}
-  </components.Placeholder>
-)
-
-const Menu = props => (
-  <components.Menu className={styles.menu} {...props}>
-    {props.children}
-  </components.Menu>
-)
-
-const SingleValue = props => (
-  <components.SingleValue className={styles.singleValue} {...props}>
-    {props.children}
-  </components.SingleValue>
-)
-
-const MultiValue = props => (
-  <components.MultiValue className={styles.multiValue} {...props}>
-    {props.children}
-  </components.MultiValue>
 )
 
 const Select = ({
@@ -114,34 +29,215 @@ const Select = ({
   errorText,
   errorClassName,
   customStyles,
+  components,
+  optionHeight,
+  onMenuOpen,
   ...rest
 }) => {
   const [isErrorNotificationOpen, setIsErrorNotificationOpen] = useState(
     isError
   )
 
+  const originalSelectContainerComponent =
+    (components && components.SelectContainer) ||
+    ReactSelectComponents.SelectContainer
+
+  const SelectContainer = useCallback(props => {
+    const { className } = props
+
+    return originalSelectContainerComponent({
+      ...props,
+      className: cx(styles.selectContainer, className)
+    })
+  }, [originalSelectContainerComponent])
+
+  const originalControlComponent =
+    (components && components.Control) || ReactSelectComponents.Control
+
+  const Control = useCallback(props => {
+    const {
+      selectProps: { menuIsOpen, isDisabled },
+      className
+    } = props
+
+    return originalControlComponent({
+      ...props,
+      className: cx(
+        styles.control,
+        menuIsOpen && styles.menuIsOpen,
+        isError && styles.error,
+        isDisabled && styles.disabled,
+        className
+      )
+    })
+  }, [originalControlComponent])
+
+  const originalInputComponent =
+    (components && components.Input) || ReactSelectComponents.Input
+
+  const Input = useCallback(props => {
+    const { className } = props
+
+    return originalInputComponent({
+      ...props,
+      className: cx(styles.input, className)
+    })
+  }, [originalInputComponent])
+
+  const originalValueContainerComponent =
+    (components && components.ValueContainer) ||
+    ReactSelectComponents.ValueContainer
+
+  const ValueContainer = useCallback(props => {
+    const { className, isMulti } = props
+
+    return originalValueContainerComponent({
+      ...props,
+      className: cx(styles.valueContainer, isMulti && styles.multi, className)
+    })
+  }, [originalValueContainerComponent])
+
+  const originalClearIndicatorComponent =
+    (components && components.ClearIndicator) || ClearIndicator
+
+  const ClearIndicatorComponent = useCallback(props => {
+    const { className } = props
+
+    return originalClearIndicatorComponent({
+      ...props,
+      className: cx(styles.clearIndicator, className)
+    })
+  }, [originalClearIndicatorComponent])
+
+  const originalIndicatorSeparatorComponent =
+    (components && components.IndicatorSeparator) ||
+    ReactSelectComponents.IndicatorSeparator
+
+  const IndicatorSeparator = useCallback(props => {
+    const {
+      hasValue,
+      selectProps: { isClearable },
+      className
+    } = props
+
+    return originalIndicatorSeparatorComponent({
+      ...props,
+      className: cx(
+        styles.indicatorSeparator,
+        hasValue && isClearable && styles.hasValue,
+        className
+      )
+    })
+  }, [originalIndicatorSeparatorComponent])
+
+  const originalMultiValueRemoveComponent =
+    (components && components.MultiValueRemove) || MultiValueRemove
+
+  const MultiValueRemoveComponent = useCallback(
+    props => originalMultiValueRemoveComponent(props),
+    [originalMultiValueRemoveComponent]
+  )
+
+  const originalDropdownIndicatorComponent =
+    (components && components.DropdownIndicator) || DropdownIndicator
+
+  const DropdownIndicatorComponent = useCallback(props => {
+    const { className } = props
+
+    return originalDropdownIndicatorComponent({
+      ...props,
+      className: cx(styles.dropdownIndicator, className)
+    })
+  }, [originalDropdownIndicatorComponent])
+
+  const originalIndicatorsContainerComponent =
+    (components && components.IndicatorsContainer) ||
+    ReactSelectComponents.IndicatorsContainer
+
+  const IndicatorsContainer = useCallback(props => {
+    const { className } = props
+
+    return originalIndicatorsContainerComponent({
+      ...props,
+      className: cx(styles.indicatorsContainer, className)
+    })
+  }, [originalIndicatorsContainerComponent])
+
+  const originalPlaceholderComponent =
+    (components && components.Placeholder) || ReactSelectComponents.Placeholder
+
+  const Placeholder = useCallback(props => {
+    const { className } = props
+
+    return originalPlaceholderComponent({
+      ...props,
+      className: cx(styles.placeholder, className)
+    })
+  }, [originalPlaceholderComponent])
+
+  const originalMenuComponent =
+    (components && components.Menu) || ReactSelectComponents.Menu
+
+  const Menu = useCallback(props => {
+    const { className } = props
+
+    return originalMenuComponent({
+      ...props,
+      className: cx(styles.menu, className)
+    })
+  }, [originalMenuComponent])
+
+  const originalSingleValueComponent =
+    (components && components.SingleValue) || ReactSelectComponents.SingleValue
+
+  const SingleValue = useCallback(props => {
+    const { className } = props
+
+    return originalSingleValueComponent({
+      ...props,
+      className: cx(styles.singleValue, className)
+    })
+  }, [originalSingleValueComponent])
+
+  const originalMultiValueComponent =
+    (components && components.MultiValue) || ReactSelectComponents.MultiValue
+
+  const MultiValue = useCallback(props => {
+    const { className } = props
+
+    return originalMultiValueComponent({
+      ...props,
+      className: cx(styles.multiValue, className)
+    })
+  }, [originalMultiValueComponent])
+
   return (
     <>
-      <VirtualizedSelect
+      <SelectComponent
+        menuPlacement='top'
         classNamePrefix='virtualized-select'
-        optionHeight={32}
+        optionHeight={optionHeight || 32}
         components={{
+          ...components,
           SelectContainer,
           Control,
           Input,
           ValueContainer,
+          ClearIndicator: ClearIndicatorComponent,
+          MultiValueRemove: MultiValueRemoveComponent,
           MultiValue,
-          DropdownIndicator,
-          ClearIndicator,
+          DropdownIndicator: DropdownIndicatorComponent,
           IndicatorSeparator,
           IndicatorsContainer,
           Placeholder,
           SingleValue,
-          Menu,
-          MultiValueRemove
+          Menu
         }}
         isError={isError}
-        onMenuOpen={() => isError && setIsErrorNotificationOpen(false)}
+        onMenuOpen={() => {
+          isError && setIsErrorNotificationOpen(false)
+          onMenuOpen && onMenuOpen()
+        }}
         {...rest}
       />
       {errorText && isErrorNotificationOpen && (
