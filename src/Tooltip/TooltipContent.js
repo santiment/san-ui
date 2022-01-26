@@ -163,7 +163,7 @@ class TooltipContent extends PureComponent {
     viewportOffset,
     position
   }) {
-    const { offsetX, offsetY, align } = this.props
+    const { offsetX, offsetY, align, flexible = true } = this.props
 
     const sign = getSignByPosition(position)
     let top = triggerTop
@@ -189,11 +189,14 @@ class TooltipContent extends PureComponent {
       viewportOffset
     )
 
+    const normalizedTop = flexible ? shiftedTop : top
+    const normalizedLeft = flexible ? shiftedLeft : left
+
     return {
-      top: shiftedTop,
-      left: shiftedLeft,
-      bottom: shiftedTop + tooltipHeight,
-      right: shiftedLeft + tooltipWidth
+      top: normalizedTop,
+      left: normalizedLeft,
+      bottom: normalizedTop + tooltipHeight,
+      right: normalizedLeft + tooltipWidth
     }
   }
 

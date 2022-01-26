@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions'
 import ContextMenu from '../src/ContextMenu'
 import Button from '../src/Button'
 import Panel from '../src/Panel/Panel'
+import TooltipContent from '../src/Tooltip/TooltipContent'
 
 class ControlledContextMenu extends React.PureComponent {
   state = {
@@ -80,5 +81,19 @@ storiesOf('ContextMenu', module)
       </Panel>
     </ContextMenu>
   ))
-
+  .add('not flexible', () => (
+    <ContextMenu
+      trigger={<button>Show</button>}
+      as={TooltipContent}
+      onClose={action('onClose')}
+      onOpen={action('onOpen')}
+      position='bottom'
+      align='left'
+      flexible={false}
+    >
+      <Panel padding>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quaerat?
+      </Panel>
+    </ContextMenu>
+  ))
   .add('controlled', () => <ControlledContextMenu />)
