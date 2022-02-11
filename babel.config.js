@@ -10,6 +10,12 @@ module.exports = function (api) {
       {
         mode: 'unsafe-wrap'
       }
+    ],
+    [
+      'inline-import-data-uri',
+      {
+        extensions: ['.png', '.jpg']
+      }
     ]
   ]
 
