@@ -23,7 +23,7 @@ const Dialog = ({
     as={Panel}
     {...props}
     classes={{
-      wrapper: styles.wrapper,
+      wrapper: cx(styles.wrapper, classes.modalWrapper),
       modal: cx(
         styles.modal,
         size === 's' && styles.modal__s,
