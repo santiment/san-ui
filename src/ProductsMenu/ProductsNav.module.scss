@@ -1,0 +1,53 @@
+@import '~@santiment-network/ui/mixins';
+
+.container {
+  padding: 24px 30px;
+  width: 260px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.column {
+  width: 92px;
+
+  &:first-of-type {
+    margin-right: 26px;
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--waterloo);
+  margin-bottom: 20px;
+}
+
+.products {
+  li {
+    margin-bottom: 12px;
+    font-size: 14px;
+
+    a {
+      line-height: 20px;
+      color: var(--rhino);
+
+      &:hover {
+        color: var(--jungle-green);
+      }
+    }
+  }
+}
+
+.label {
+  background: var(--texas-rose-light);
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: var(--texas-rose);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 4px;
+  white-space: normal;
+}
