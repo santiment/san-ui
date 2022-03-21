@@ -10,11 +10,11 @@ export const SUGGESTION_MORE = 'SUGGESTION_MORE'
 export const SUGGESTION_MORE_ITEM = 'SUGGESTION_MORE_ITEM'
 export const MORE = {
   category: SUGGESTION_MORE,
-  item: SUGGESTION_MORE_ITEM,
+  item: SUGGESTION_MORE_ITEM
 }
 
 let debounceTimer
-const debounce = (clb, time) => (clbArgs) => {
+const debounce = (clb, time) => clbArgs => {
   clearTimeout(debounceTimer)
   debounceTimer = setTimeout(() => clb(clbArgs), time)
 }
@@ -28,8 +28,8 @@ class SearchWithSuggestions extends PureComponent {
         suggestionContent: PropTypes.func.isRequired,
         predicate: PropTypes.func.isRequired,
         sorter: PropTypes.func,
-        maxSuggestions: PropTypes.number,
-      }),
+        maxSuggestions: PropTypes.number
+      })
     ).isRequired,
     onSuggestionSelect: PropTypes.func,
     onSuggestionsUpdate: PropTypes.func,
@@ -43,6 +43,7 @@ class SearchWithSuggestions extends PureComponent {
     className: PropTypes.string,
     emptySuggestions: PropTypes.array,
     withMoreSuggestions: PropTypes.bool,
+    header: PropTypes.any
   }
 
   static defaultProps = {
@@ -54,14 +55,15 @@ class SearchWithSuggestions extends PureComponent {
     debounceTime: 200,
     dontResetStateAfterSelection: false,
     withMoreSuggestions: true,
+    header: null,
     value: '',
     defaultValue: '',
-    className: '',
+    className: ''
   }
 
-  static getDerivedStateFromProps(
+  static getDerivedStateFromProps (
     { value, emptySuggestions },
-    { searchTerm, suggestedCategories, isSearching },
+    { searchTerm, suggestedCategories, isSearching }
   ) {
     if (
       !searchTerm &&
@@ -71,7 +73,7 @@ class SearchWithSuggestions extends PureComponent {
       const checkedEmptySuggestions = emptySuggestions || []
       return {
         suggestions: flatCategories(checkedEmptySuggestions, []),
-        suggestedCategories: checkedEmptySuggestions,
+        suggestedCategories: checkedEmptySuggestions
       }
     }
 
@@ -85,38 +87,38 @@ class SearchWithSuggestions extends PureComponent {
     searchTerm: this.props.defaultValue,
     isFocused: false,
     cursor: 0,
-    isSearching: false,
+    isSearching: false
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearTimeout(debounceTimer)
     window.removeEventListener('keydown', this.onKeyDown)
     document.removeEventListener('click', this.handleClickAway)
   }
 
-  onInputChange = (searchTerm) => {
+  onInputChange = searchTerm => {
     this.setState(
-      (prevState) => ({
+      prevState => ({
         ...prevState,
         searchTerm,
-        isSearching: true,
+        isSearching: true
       }),
-      this.filterData,
+      this.filterData
     )
   }
 
-  onSuggestionSelect = (suggestion) => {
+  onSuggestionSelect = suggestion => {
     const {
       dontResetStateAfterSelection,
       onSuggestionSelect,
-      emptySuggestions,
+      emptySuggestions
     } = this.props
 
     this.onBlur()
     this.setState(
       dontResetStateAfterSelection
         ? {
-            isSearching: false,
+            isSearching: false
           }
         : {
             isSearching: false,
@@ -125,9 +127,9 @@ class SearchWithSuggestions extends PureComponent {
               ? flatCategories(emptySuggestions, [])
               : [],
             suggestedCategories: emptySuggestions || [],
-            cursor: 0,
+            cursor: 0
           },
-      () => onSuggestionSelect(suggestion),
+      () => onSuggestionSelect(suggestion)
     )
   }
 
@@ -137,11 +139,11 @@ class SearchWithSuggestions extends PureComponent {
       emptySuggestions = [],
       onSuggestionsUpdate,
       withMoreSuggestions,
-      maxSuggestions: commonMaxSuggestions,
+      maxSuggestions: commonMaxSuggestions
     } = this.props
 
     this.setState(
-      (prevState) => {
+      prevState => {
         const suggestedCategories = prevState.searchTerm
           ? data
               .map(
@@ -153,7 +155,7 @@ class SearchWithSuggestions extends PureComponent {
                   ...rest
                 }) => {
                   const filteredItems = items.filter(
-                    predicate(prevState.searchTerm),
+                    predicate(prevState.searchTerm)
                   )
 
                   if (sorter) {
@@ -162,16 +164,16 @@ class SearchWithSuggestions extends PureComponent {
 
                   return {
                     ...rest,
-                    items: filteredItems.slice(0, maxSuggestions),
+                    items: filteredItems.slice(0, maxSuggestions)
                   }
-                },
+                }
               )
               .filter(({ items }) => items.length)
           : emptySuggestions
 
         const suggestions = flatCategories(
           suggestedCategories,
-          withMoreSuggestions && prevState.searchTerm ? [MORE] : [],
+          withMoreSuggestions && prevState.searchTerm ? [MORE] : []
         )
 
         const cursor = +Boolean(withMoreSuggestions && suggestions.length)
@@ -181,10 +183,10 @@ class SearchWithSuggestions extends PureComponent {
           suggestedCategories,
           suggestions,
           cursor,
-          isSearching: false,
+          isSearching: false
         }
       },
-      () => onSuggestionsUpdate(this.state.suggestions),
+      () => onSuggestionsUpdate(this.state.suggestions)
     )
   }, this.props.debounceTime)
 
@@ -206,7 +208,7 @@ class SearchWithSuggestions extends PureComponent {
     this.setState({ isFocused: false }, this.props.onBlur)
   }
 
-  onKeyDown = (evt) => {
+  onKeyDown = evt => {
     const { suggestions, cursor } = this.state
     const { key } = evt
 
@@ -224,8 +226,34 @@ class SearchWithSuggestions extends PureComponent {
         break
       case 'Enter':
         evt.target.blur()
-        selectedSuggestion = suggestions[cursor]
-        return selectedSuggestion && this.onSuggestionSelect(selectedSuggestion)
+        if (this.state.searchTerm.includes(',')) {
+          const terms = this.state.searchTerm
+            .split(',')
+            .map(term => term.trim().toUpperCase())
+          const items = this.props.data[0].items
+          const foundItems = []
+          terms.forEach(term => {
+            const item = items.find(item => item.ticker === term)
+            if (item) foundItems.push(item)
+          })
+          const $this = this
+          foundItems.forEach(foundItem =>
+            $this.onSuggestionSelect({ item: foundItem })
+          )
+        } else {
+          selectedSuggestion = suggestions[cursor]
+          selectedSuggestion && this.onSuggestionSelect(selectedSuggestion)
+        }
+        this.setState({
+          suggestions: [],
+          searchTerm: undefined,
+          isFocused: false,
+          cursor: 0,
+          isSearching: false
+        })
+        document.dispatchEvent(new CustomEvent('clearsearchterminput'))
+        evt.target.focus()
+        return
       default:
         return
     }
@@ -238,14 +266,14 @@ class SearchWithSuggestions extends PureComponent {
     this.setState({ cursor: nextCursor })
   }
 
-  render() {
+  render () {
     const {
       suggestedCategories = [],
       searchTerm,
       isFocused,
       isSearching,
       cursor,
-      suggestions,
+      suggestions
     } = this.state
     const {
       inputProps = {},
@@ -253,6 +281,7 @@ class SearchWithSuggestions extends PureComponent {
       className,
       emptySuggestions,
       withMoreSuggestions,
+      header
     } = this.props
     const cursorSuggestion = suggestions[cursor]
     return (
@@ -269,6 +298,7 @@ class SearchWithSuggestions extends PureComponent {
             className={styles.suggestions}
             {...suggestionsProps}
           >
+            {header && header}
             <Suggestions
               cursorItem={cursorSuggestion && cursorSuggestion.item}
               suggestedCategories={suggestedCategories}

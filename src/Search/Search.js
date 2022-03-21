@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import cx from 'classnames'
 import Icon from '../Icon'
 import { InputWithIcon } from '../Input'
@@ -25,6 +25,12 @@ const Search = ({
     setInput('')
     onChange('')
   }
+
+  useEffect(() => {
+    document.addEventListener('clearsearchterminput', onClearClick)
+    return () =>
+      document.removeEventListener('clearsearchterminput', onClearClick)
+  }, [])
 
   return (
     <InputWithIcon
