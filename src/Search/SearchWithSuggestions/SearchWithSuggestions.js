@@ -42,7 +42,8 @@ class SearchWithSuggestions extends PureComponent {
     dontResetStateAfterSelection: PropTypes.bool,
     className: PropTypes.string,
     emptySuggestions: PropTypes.array,
-    withMoreSuggestions: PropTypes.bool
+    withMoreSuggestions: PropTypes.bool,
+    header: PropTypes.element
   }
 
   static defaultProps = {
