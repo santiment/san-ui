@@ -10,7 +10,7 @@
     "storybook": "start-storybook -p 6006",
     "start": "PORT=3000 node server/index.js",
     "clean": "rimraf lib-build",
-    "test:js": "jest",
+    "test:js": "jest --clearCache",
     "test": "yarn test:js",
     "scripts": "node scripts/copy-files && node scripts/update-version",
     "lib-publish": "yarn publish lib-build --patch --no-git-tag-version",

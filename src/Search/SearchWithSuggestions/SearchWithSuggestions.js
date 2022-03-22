@@ -227,7 +227,7 @@ class SearchWithSuggestions extends PureComponent {
         newCursor = cursor + 1
         break
       case 'Enter':
-        if (this.props.multipleCheck) {
+        if (this.props.multipleCheck && this.state.searchTerm.includes(',')) {
           const terms = this.state.searchTerm
             .split(',')
             .map(term => term.trim().toUpperCase())
