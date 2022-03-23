@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import cx from 'classnames'
 import Icon from '../Icon'
 import { InputWithIcon } from '../Input'
@@ -11,6 +11,7 @@ const Search = ({
   defaultValue = '',
   placeholder = 'Type to search...',
   icon,
+  setOnClear,
   ...props
 }) => {
   const [input, setInput] = useState(defaultValue)
@@ -25,6 +26,10 @@ const Search = ({
     setInput('')
     onChange('')
   }
+
+  useEffect(() => {
+    if (setOnClear) setOnClear(onClearClick)
+  }, [])
 
   return (
     <InputWithIcon

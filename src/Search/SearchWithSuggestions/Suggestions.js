@@ -31,7 +31,7 @@ const Category = ({
   suggestionContent,
   cursorItem,
   onSuggestionSelect,
-  classes = {},
+  classes = {}
 }) => (
   <>
     {title && <h3 className={cx(styles.title, classes.title)}>{title}</h3>}
@@ -54,7 +54,7 @@ const Suggestions = ({
   suggestedCategories,
   cursorItem,
   withMoreSuggestions,
-  onSuggestionSelect,
+  onSuggestionSelect
 }) => {
   return suggestedCategories.length > 0 ? (
     <>

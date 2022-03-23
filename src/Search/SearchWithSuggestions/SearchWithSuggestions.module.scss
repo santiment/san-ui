@@ -5,10 +5,12 @@
   top: 100%;
   width: 100%;
   margin-top: 4px;
-  padding: 8px;
   z-index: 10;
   max-height: 250px;
   overflow: auto;
+  box-shadow: 0 4px 8px rgba(24, 27, 43, 0.08);
+  border-radius: 4px;
+  padding: 8px;
 }
 
 .suggestion {
