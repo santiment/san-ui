@@ -227,28 +227,12 @@ class SearchWithSuggestions extends PureComponent {
         newCursor = cursor + 1
         break
       case 'Enter':
-        if (this.props.multipleCheck && this.state.searchTerm.includes(',')) {
-          const terms = this.state.searchTerm
-            .split(',')
-            .map(term => term.trim().toUpperCase())
-          const items = this.props.data[0].items
-          const foundItems = []
-          terms.forEach(term => {
-            const item = items.find(item => item.ticker === term)
-            if (item) foundItems.push(item)
-          })
-          const $this = this
-          foundItems.forEach(foundItem =>
-            $this.onSuggestionSelect({ item: foundItem })
-          )
-        } else {
-          selectedSuggestion = suggestions[cursor]
-          selectedSuggestion && this.onSuggestionSelect(selectedSuggestion)
-        }
+        selectedSuggestion = suggestions[cursor]
+        if (selectedSuggestion) this.onSuggestionSelect(selectedSuggestion)
         this.setState({
           suggestions: [],
           searchTerm: undefined,
-          isFocused: false,
+          isFocused: true,
           cursor: 0,
           isSearching: false
         })

@@ -76,11 +76,9 @@ const Suggestions = ({
       ))}
     </>
   ) : (
-    !searchTerm.includes(',') && (
-      <div className={styles.suggestion + ' ' + styles.noresults}>
-        {!isSearching ? 'No results found' : 'Searching...'}
-      </div>
-    )
+    <div className={styles.suggestion + ' ' + styles.noresults}>
+      {!isSearching ? 'No results found' : 'Searching...'}
+    </div>
   )
 }
 
