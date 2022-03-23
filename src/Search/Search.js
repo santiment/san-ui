@@ -11,6 +11,7 @@ const Search = ({
   defaultValue = '',
   placeholder = 'Type to search...',
   icon,
+  setOnClear,
   ...props
 }) => {
   const [input, setInput] = useState(defaultValue)
@@ -27,9 +28,7 @@ const Search = ({
   }
 
   useEffect(() => {
-    document.addEventListener('clearsearchterminput', onClearClick)
-    return () =>
-      document.removeEventListener('clearsearchterminput', onClearClick)
+    if (setOnClear) setOnClear(onClearClick)
   }, [])
 
   return (

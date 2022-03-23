@@ -89,7 +89,8 @@ class SearchWithSuggestions extends PureComponent {
     searchTerm: this.props.defaultValue,
     isFocused: false,
     cursor: 0,
-    isSearching: false
+    isSearching: false,
+    onClear: () => {}
   }
 
   componentWillUnmount () {
@@ -229,14 +230,15 @@ class SearchWithSuggestions extends PureComponent {
       case 'Enter':
         selectedSuggestion = suggestions[cursor]
         if (selectedSuggestion) this.onSuggestionSelect(selectedSuggestion)
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
           suggestions: [],
           searchTerm: undefined,
           isFocused: true,
           cursor: 0,
           isSearching: false
-        })
-        document.dispatchEvent(new CustomEvent('clearsearchterminput'))
+        }))
+        this.state.onClear()
         return
       default:
         return
@@ -274,6 +276,12 @@ class SearchWithSuggestions extends PureComponent {
         onFocus={this.onFocus}
         onChange={this.onInputChange}
         wrapperRef={this.searchRef}
+        setOnClear={onClearFn =>
+          this.setState(prevState => ({
+            ...prevState,
+            onClear: onClearFn
+          }))
+        }
         {...inputProps}
       >
         {isFocused && (emptySuggestions || searchTerm) && (
