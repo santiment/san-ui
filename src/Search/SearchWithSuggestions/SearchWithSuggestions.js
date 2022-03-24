@@ -230,15 +230,8 @@ class SearchWithSuggestions extends PureComponent {
       case 'Enter':
         selectedSuggestion = suggestions[cursor]
         if (selectedSuggestion) this.onSuggestionSelect(selectedSuggestion)
-        this.setState(prevState => ({
-          ...prevState,
-          suggestions: [],
-          searchTerm: undefined,
-          isFocused: true,
-          cursor: 0,
-          isSearching: false
-        }))
         this.state.onClear()
+        this.onFocus()
         return
       default:
         return
