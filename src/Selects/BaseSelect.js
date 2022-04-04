@@ -54,7 +54,7 @@ class BaseSelect extends Component {
     )
   }
 
-  render() {
+  render () {
     const {
       className,
       selectedClassName,

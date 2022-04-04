@@ -30,7 +30,7 @@ class Tooltip extends PureComponent {
     classes: {},
     as: Fragment,
     onOpen: () => {},
-    onClose: () => {},
+    onClose: () => {}
   }
 
   static propTypes = {
@@ -53,7 +53,7 @@ class Tooltip extends PureComponent {
     /**
        Class will be applied to the tooltip wrapper
      */
-    className: PropTypes.string,
+    className: PropTypes.string
   }
 
   static getDerivedStateFromProps ({ shown }) {
@@ -62,12 +62,12 @@ class Tooltip extends PureComponent {
     }
 
     return {
-      shown,
+      shown
     }
   }
 
   state = {
-    shown: false,
+    shown: false
   }
 
   triggerRef = React.createRef()
@@ -92,7 +92,7 @@ class Tooltip extends PureComponent {
     this.stopCloseTimer()
     this.setState(
       { shown: true },
-      this.state.shown ? undefined : this.props.onOpen,
+      this.state.shown ? undefined : this.props.onOpen
     )
   }
 
@@ -129,12 +129,12 @@ class Tooltip extends PureComponent {
 
     const onMouseLeave = preserveUserHandler(
       this.startCloseTimer,
-      trigger.props.onMouseLeave,
+      trigger.props.onMouseLeave
     )
 
     const triggerEventHandler = preserveUserHandler(
       this.openTooltip,
-      trigger.props[triggerEvent],
+      trigger.props[triggerEvent]
     )
 
     return (
@@ -143,7 +143,7 @@ class Tooltip extends PureComponent {
           [ref]: this.triggerRef,
           [triggerEvent]: triggerEventHandler,
           [passOpenStateAs]: passOpenStateAs ? shown : undefined,
-          onMouseLeave,
+          onMouseLeave
         })}
         {shown
           ? isFragment
