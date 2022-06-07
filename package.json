@@ -30,6 +30,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
+    "classnames": "^2.3.1",
     "css-loader": "^1.0.1",
     "express": "^4.16.4",
     "glob": "^7.1.3",
