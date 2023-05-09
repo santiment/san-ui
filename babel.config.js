@@ -1,5 +1,13 @@
 module.exports = function (api) {
-  const presets = ['@babel/preset-env', '@babel/preset-react']
+  const presets = [
+    [
+      '@babel/preset-env',
+      {
+        modules: false
+      }
+    ],
+    '@babel/preset-react'
+  ]
   const plugins = [
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     ['@babel/plugin-proposal-object-rest-spread', { loose: true }],
