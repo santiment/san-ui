@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react'
-import VirtualizedSelect from 'react-select-virtualized'
 import { components as ReactSelectComponents } from 'react-select'
 
 export const SelectComponent = React.memo(props => {
@@ -49,33 +48,7 @@ export const SelectComponent = React.memo(props => {
     })
   }, [originalOptionComponent, setHasUserSelectedOption])
 
-  return (
-    <VirtualizedSelect
-      {...props}
-      components={{
-        ...props.components,
-        Option: OptionComponent
-      }}
-      onKeyDown={onKeyDown}
-      onMenuClose={onMenuClose}
-      styles={{
-        ...props.styles,
-        option: (provided, selectProps) => {
-          const useUnselectedColors =
-            selectProps.isFocused &&
-            !hasUserSelectedOption &&
-            props.value == null
-
-          return {
-            ...provided,
-            backgroundColor: useUnselectedColors
-              ? 'transparent'
-              : provided.backgroundColor
-          }
-        }
-      }}
-    />
-  )
+  return null
 })
 
 SelectComponent.displayName = 'SelectComponent'
