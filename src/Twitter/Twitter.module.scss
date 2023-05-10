@@ -1,37 +1,45 @@
 @import '../mixins.scss';
 
-.container {
-  padding: 96px 0 100px;
+.wrapper {
+  max-width: 100%;
   margin: 0;
-  width: 100%;
+  padding: 140px 0;
+  background-color: #f7f8fb;
 
-  @include responsive('phone', 'phone-xs') {
-    padding: 56px 0 44px;
+  @include responsive("laptop") {
+    padding: 64px 0;
+  }
+
+  :global(.tablet) &,
+  :global(.phone-xs) &,
+  :global(.phone) & {
+    padding: 64px 0;
   }
 }
 
-.wrapper {
-  margin: 0 !important;
-  max-width: 100% !important;
+.title {
+  margin-bottom: 40px;
+  color: #181b2b;
+
+  :global(.tablet) &,
+  :global(.phone-xs) &,
+  :global(.phone) & {
+    @include text("h4", "l");
+
+    padding: 0 16px;
+    margin-bottom: 32px;
+  }
 }
 
 .scroller {
-  height: 420px;
-  max-width: 100vw;
+  height: 400px;
+  max-width: 100%;
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
   padding-left: 32px;
-
-  @include responsive('phone', 'phone-xs') {
-    padding-left: 24px;
-    margin: 0 -15px;
-  }
 }
 
 .tweets {
-  display: flex;
-  align-items: center;
   animation-name: moving;
   animation-duration: var(--time, 30s);
   animation-timing-function: linear;
@@ -44,17 +52,15 @@
   left: 0;
   height: 100%;
 
-  @media (hover: hover) {
-    &:hover {
-      animation-play-state: paused;
-    }
+  &:hover {
+    animation-play-state: paused;
   }
 
-  @include responsive('tablet') {
+  @include responsive("tablet") {
     animation-duration: calc(var(--time, 30s) * 1.5);
   }
 
-  @include responsive('phone', 'phone-xs') {
+  @include responsive("phone", "phone-xs") {
     animation-duration: calc(var(--time, 30s) * 2);
   }
 }
