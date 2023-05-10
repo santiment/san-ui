@@ -37,7 +37,7 @@
     "prop-types": "^15.8.1",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.1.0",
-    "storybook": "^1.0.0",
+    "storybook": "^6.5.13",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.27.1"
